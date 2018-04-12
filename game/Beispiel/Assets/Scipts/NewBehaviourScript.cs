@@ -4,7 +4,7 @@ using System.Collections;
 public class NewBehaviourScript : MonoBehaviour {
 
     public float paddleSpeed = 1f;
-
+    public string dstring = "Merge this!";
 
     private Vector3 playerPos = new Vector3 (0, -9.5f, 0);
 
