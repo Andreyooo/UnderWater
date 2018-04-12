@@ -5,6 +5,8 @@ public class NewBehaviourScript : MonoBehaviour {
 
     public float paddleSpeed = 1f;
 
+    public int pimmelzange;
+
 
     private Vector3 playerPos = new Vector3 (0, -9.5f, 0);
 
