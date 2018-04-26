@@ -1,9 +1,0 @@
-diff a/game/Beispiel/Assets/Scipts/NewBehaviourScript.cs b/game/Beispiel/Assets/Scipts/NewBehaviourScript.cs	(rejected hunks)
-@@ -4,7 +4,6 @@
- public class NewBehaviourScript : MonoBehaviour {
- 
-     public float paddleSpeed = 1f;
--    public string dstring = "Merge this shit digger!";
- 
-     public string dstring = "Merge this!";
- 
