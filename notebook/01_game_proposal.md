@@ -3,7 +3,7 @@
 _Amin Uzdenov, André Lavrinov, Dennis Lavrinov
 WF: Spieleentwicklung & Creative Coding_
 
-_19. April 2018_
+_19.04.2018_
 &nbsp;
 
 ### Glooms
