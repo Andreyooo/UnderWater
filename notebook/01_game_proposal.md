@@ -75,7 +75,7 @@ entstehen soll.
 * Beeinflussbare Umgebung (Map)
   * zerstörbar
   * Wind, Wasser, etc.
-&nbsp;
+    &nbsp;
 
 
 #### Big Idea:
@@ -157,10 +157,10 @@ vielleicht wenig Schaden zufügen.
 * Startscreen mit Artworks
 * erweiterte Story mit Hintergrundinformationen zu den Fraktionen
   * Story Trailer
-&nbsp;
+    &nbsp;
 
 ####  Entwicklungszeitplan
-* ![Link zu Agantty](https://app.agantty.com/sharing/8d5aa254c7f989a3175797d66d6447ed)
+* Link zu Agantty: https://app.agantty.com/sharing/8d5aa254c7f989a3175797d66d6447ed
 
 &nbsp;
 
