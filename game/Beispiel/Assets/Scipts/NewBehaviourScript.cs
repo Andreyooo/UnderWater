@@ -4,6 +4,7 @@ using System.Collections;
 public class NewBehaviourScript : MonoBehaviour {
 
     public float paddleSpeed = 1f;
+    public string dstring = "Merge this shit digger!";
 
     public string dstring = "Merge this!";
 
