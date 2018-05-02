@@ -6,8 +6,13 @@
 
 __Weiteres entnehmen Sie bitte dem Übungsblatt!__
 
+Wir haben einen ganzen Tag damit verbracht an unseren physischen Prototypen zu arbeiten.
+Dazu hat jeder Materialien mitgebracht, größtenteils Dinge die wir Zuhause rumliegen hatten.
+Uns war bereits klar, dass wir die Waffen und Aktionen, die bei unserem Spiel zum Einsatz kommen, durch Karten darstellen. Unsere 2D-Map haben wir improvisiert und sah wie folgt aus.
+![Unsere 2D-Map](./images/IMG_5162.jpg)
+
 Beispielbilder:
-![](./images/dummyimg1.jpg)
+
 ![](./images/dummyimg2.jpg)
 ![](./images/dummyimg3.jpg)
 
