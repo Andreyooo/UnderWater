@@ -6,8 +6,13 @@
 
 __Weiteres entnehmen Sie bitte dem Übungsblatt!__
 
+
+
 Wir haben einen ganzen Tag damit verbracht an unserem physischen Prototypen zu arbeiten.
 Dazu hat jeder Materialien mitgebracht, größtenteils Dinge die wir Zuhause rumliegen hatten.
+
+__Das Gameplay__
+
 Uns war bereits klar, dass wir die Waffen und Aktionen, die bei unserem Spiel zum Einsatz kommen, durch Karten darstellen. Unsere 2D-Map haben wir improvisiert, sie sah wie folgt aus:
 ![](./images/IMG_5162.JPG)
 
@@ -22,8 +27,13 @@ Ein Gloomy kann sich beispielsweise für einen Schläger im Nahkampf entscheiden
 
 &nbsp;
 
-Ein sicherer Treffer, der dem Feind noch zusätzlichen Fallschaden hinzufügt
+Ein sicherer Treffer, der... 
 ![](./images/IMG_5111.JPG)
+
+&nbsp;
+
+... dem Feind noch zusätzlichen Fallschaden hinzufügt
+![](./images/IMG_5134.JPG)
 
 &nbsp;
 
@@ -44,6 +54,8 @@ Beim Einsammeln erkennt man erst den wahren Wert einer Kiste
 ![](./images/IMG_5145.JPG)
 
 &nbsp;
+
+__Unsere Erkenntnisse__
 
 Wir hatten viel Spaß beim Basteln, da man kreativ mit seinen Materialien umgehen musste.
 Interne Streitigkeiten wurden stets auf diplomatischem Wege gelöst ![](./images/IMG_5102.JPG)
