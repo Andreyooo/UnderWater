@@ -41,7 +41,7 @@ Ein Gloomy kann solange Aktionen durchführen bis seine Aktionspunkte aufgebrauc
 Mehrere Angriffe sind damit auch möglich. Zu Beginn ist die Anzahl der Aktionspunkte noch gering, sie steigt jedoch im Verlaufe des Spiels über Zeit und durch LvlUps.
 Nach beenden des Zuges ist der nächste Gloomy einer anderen Fraktion an der Reihe.
 Erfolgreiche Treffer mithilfe von Waffen geben Gloomys Erfahrung, wodurch sie ein Level aufsteigen können und zwischen verschiedenen Upgrades auswählen können.
-Beispiel-Upgrades ![](./images/IMG_5157.JPG)
+Beispiel-Upgrades: ![](./images/IMG_5157.JPG)
 
 &nbsp;
 
@@ -62,7 +62,7 @@ Interne Streitigkeiten wurden stets auf diplomatischem Wege gelöst ![](./images
 
 &nbsp;
 
-Einen großen Aspekt des Spiels, den wir noch nicht genug durchdacht hatten, war das Schadens System im Zusammenspiel mit den Lvling-Möglichkeiten. Wir habens uns dazu die ersten verschiedenen Waffentypen ausgedacht und uns auf erste provisorische Werte für den Schaden der Waffen sowie der Lebenspunkte(25) von den Gloomys geeignigt. 
+Ein großer Aspekt des Spiels, den wir noch nicht genug durchdacht hatten, war das Schadens System im Zusammenspiel mit den Lvling-Möglichkeiten. Wir habens uns dazu die ersten verschiedenen Waffentypen ausgedacht und uns auf erste provisorische Werte für den Schaden der Waffen sowie der Lebenspunkte(25) von den Gloomys geeignigt. 
 Grundsätzlich ist das Zusammenspiel der ganzen Elemente für uns die größte Herausforderung.
 Wie genau unsere Fähigkeiten beim Lvl-Up aussehen, können wir erst entscheiden wenn die Basis fürs Spiel steht und wir ein Gefühl für unser Gameplay haben. 
 Wie sich das Gameplay im Laufe des Spiels entwickelt hängt von vielen verschiedenen Faktoren ab, daher wird die Entwicklung des Spiels aufbauend verlaufen. Das heißt wir werden Stück für Stück weitere Elemente ins Spiel einbauen und darauf achten wie der Spielfluss sich ändert. Es kann sich daher noch vieles während der Entwicklung tun. Beispielsweise haben wir die Upgrades beim LvlUp momentanen noch sehr einfach gehalten. Die Powerups sollen später weitaus ausgereifter und kreativer sein.
