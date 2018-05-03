@@ -3,7 +3,7 @@
 Wir haben einen ganzen Tag damit verbracht an unserem physischen Prototypen zu arbeiten.
 Dazu hat jeder Materialien mitgebracht, größtenteils Dinge die wir Zuhause rumliegen hatten.
 
-###Das Gameplay###
+### Das Gameplay
 
 Uns war bereits klar, dass wir die Waffen und Aktionen, die bei unserem Spiel zum Einsatz kommen, durch Karten darstellen. Unsere 2D-Map haben wir improvisiert, sie sah wie folgt aus:
 ![](./images/IMG_5162.JPG)
@@ -47,7 +47,7 @@ Beim Einsammeln erkennt man erst den wahren Wert einer Kiste
 
 &nbsp;
 
-###Unsere Erkenntnisse###
+### Unsere Erkenntnisse
 
 Wir hatten viel Spaß beim Basteln, da man kreativ mit seinen Materialien umgehen musste.
 Interne Streitigkeiten wurden stets auf diplomatischem Wege gelöst ![](./images/IMG_5102.JPG)
