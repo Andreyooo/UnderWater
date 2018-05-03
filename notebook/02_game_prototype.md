@@ -1,4 +1,4 @@
-### Der Prototyp
+## Der Prototyp
 
 Wir haben einen ganzen Tag damit verbracht an unserem physischen Prototypen zu arbeiten.
 Dazu hat jeder Materialien mitgebracht, größtenteils Dinge die wir Zuhause rumliegen hatten.
