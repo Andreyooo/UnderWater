@@ -344,6 +344,8 @@ GameObject:
   - component: {fileID: 495393540}
   - component: {fileID: 495393543}
   - component: {fileID: 495393544}
+  - component: {fileID: 495393545}
+  - component: {fileID: 495393546}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -413,7 +415,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 495393539}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.05, y: 3.23, z: 0}
+  m_LocalPosition: {x: -4.05, y: 4.23, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -447,6 +449,56 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1b313d86dc3de04c849f14280488cc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!50 &495393545
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 495393539}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 1
+  m_AngularDrag: 0.1
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
+--- !u!60 &495393546
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 495393539}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.41666666, y: 0.5416667}
+    newSize: {x: 0.41666666, y: 0.5416667}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.16666667, y: 0.27083334}
+      - {x: -0.20833334, y: 0.22916667}
+      - {x: -0.21247292, y: -0.21426487}
+      - {x: 0.20942473, y: -0.21433687}
+      - {x: 0.20695353, y: -0.2101264}
+      - {x: 0.20948386, y: 0.26753283}
 --- !u!1 &1122467947
 GameObject:
   m_ObjectHideFlags: 0
@@ -457,7 +509,7 @@ GameObject:
   - component: {fileID: 1122467949}
   - component: {fileID: 1122467948}
   m_Layer: 0
-  m_Name: Sky (background)
+  m_Name: Map
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -600,8 +652,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1166740508}
   - component: {fileID: 1166740509}
+  - component: {fileID: 1166740510}
+  - component: {fileID: 1166740511}
   m_Layer: 0
-  m_Name: rocks_2
+  m_Name: Map
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -664,6 +718,71 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!50 &1166740510
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1166740507}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!68 &1166740511
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1166740507}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: cd9a8fc0e5e6ac244bfb28438bfb2b14, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -9.56047, y: -2.5102077}
+  - {x: -8.371443, y: -2.1224275}
+  - {x: -7.5489874, y: -1.2370129}
+  - {x: -6.4514, y: -1.0787785}
+  - {x: -5.3872523, y: -0.7187488}
+  - {x: -5.0333858, y: -0.79965734}
+  - {x: -4.837106, y: -0.7389231}
+  - {x: -4.322139, y: -0.9142666}
+  - {x: -4.1911383, y: -1.0445662}
+  - {x: -3.8921494, y: -0.9920149}
+  - {x: -2.785671, y: -0.33449054}
+  - {x: -2.215535, y: 0.07859707}
+  - {x: -1.3127671, y: 0.09346199}
+  - {x: -0.24516952, y: 0.30055332}
+  - {x: 0.09102097, y: -0.5942066}
+  - {x: 0.65467364, y: -1.2471128}
+  - {x: 1.5728172, y: -1.9764428}
+  - {x: 2.6050844, y: -1.826329}
+  - {x: 2.8349137, y: -1.4142156}
+  - {x: 3.8427622, y: -1.0338922}
+  - {x: 4.585347, y: -0.4620726}
+  - {x: 5.0286555, y: 0.75039864}
+  - {x: 5.734978, y: 0.9341798}
+  - {x: 6.523898, y: 1.8243213}
+  - {x: 6.867582, y: 2.253675}
+  - {x: 7.3023133, y: 2.417377}
+  - {x: 7.915345, y: 0.1590581}
+  - {x: 8.480591, y: -0.57939696}
+  - {x: 8.808954, y: -1.9183636}
+  - {x: 9.609103, y: -2.5573502}
 --- !u!1 &1317778015
 GameObject:
   m_ObjectHideFlags: 0
