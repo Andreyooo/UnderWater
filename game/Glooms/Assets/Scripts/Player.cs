@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        var x = Input.GetAxis("Horizontal") * Time.deltaTime * 3.0f;
+        var x = Input.GetAxis("Horizontal") * Time.deltaTime * 1.8f;
         transform.Translate(x, 0, 0);
         if(x != pos)
         {
