@@ -14,7 +14,7 @@ public class ShootingWeapon : MonoBehaviour {
     private float chargeLevel = 0;
     private float chargeSpeed = 0.6f;
     private float chargeLimit = 1;
-    private float colorChangingRangeGreen = 234;
+    private float colorChangingRangeGreen = 200;
 
     private SpriteRenderer weaponSR;
     private SpriteRenderer chargingBarSR;
@@ -56,7 +56,7 @@ public class ShootingWeapon : MonoBehaviour {
 
                 chargeLevel += Time.deltaTime * chargeSpeed;
                 chargingBar.transform.localScale = new Vector3(chargeLevel, chargeLevel, 1);
-                byte greenValue = (byte)(235 - colorChangingRangeGreen * Mathf.Pow(chargeLevel, 5));
+                byte greenValue = (byte)(235 - colorChangingRangeGreen * Mathf.Pow(chargeLevel, 7));
                 chargingBarSR.color = new Color32(235, greenValue, 0, 255);
                 rotationEnabled = false;
             } else
