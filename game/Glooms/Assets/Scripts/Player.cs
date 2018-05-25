@@ -5,26 +5,59 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     private Animator anim;
-    private float pos;
     private SpriteRenderer characterSR;
+    private Rigidbody2D characterRB;
+    [SerializeField]
+    private Transform[] groundPoints;
+    [SerializeField]
+    private float groundRadius;
+    [SerializeField]
+    private LayerMask whatIsGround;
+    private bool isGrounded, jump;
+    private float pos;
+    [SerializeField]
+    private float jumpSpeed;
 
     private void Start()
     {
         anim = GetComponent<Animator>();
         characterSR = GetComponent<SpriteRenderer>();
         pos = transform.position.x;
+        characterRB = GetComponent<Rigidbody2D>();
     }
 
-    void Update()
+    //void Update()
+    //{
+    //    Moving();
+    //}
+
+    void FixedUpdate()
     {
+        // Reihenfolge wichtig
+        HandleInput();
+        isGrounded = IsGrounded();
         Moving();
+
+        ResetValues();
     }
 
     //Movement+Animation
     private void Moving()
     {
         var x = Input.GetAxis("Horizontal") * Time.deltaTime * 1f;
+        var z = Input.GetAxis("Vertical") * Time.deltaTime * 5f;// swag
+ 
         transform.Translate(x, 0, 0);
+        transform.Translate(0, z, 0); // swag
+
+        //jumping
+        if (isGrounded && jump)
+        {
+            isGrounded = false;
+            characterRB.AddForce(new Vector2(0, jumpSpeed));
+
+        }
+
         if (x != pos)
         {
             pos = x;
@@ -33,6 +66,15 @@ public class Player : MonoBehaviour
         else
         {
             anim.SetTrigger("Idle");
+        }
+    }
+
+    private void HandleInput()
+    {
+        if (Input.GetKey(KeyCode.Space))
+        {
+            //Debug.Log("Pressed Space");
+            jump = true;
         }
     }
 
@@ -47,4 +89,39 @@ public class Player : MonoBehaviour
     {
         characterSR.flipX = bo;
     }
+
+    //checks if Character is grounded, ///(GZIBLCHSDJKBPICUS
+    private bool IsGrounded()
+    {
+        if (characterRB.velocity.y <= 0)
+        {
+            foreach (Transform point in groundPoints)
+            {
+                Collider2D[] colliders = Physics2D.OverlapCircleAll(point.position, groundRadius, whatIsGround );
+
+                for (int i = 0; i < colliders.Length; i++)
+                {
+                    if (colliders[i].gameObject != gameObject)
+                    {
+                        //Debug.Log("Grounded");
+                        return true;
+                    }
+
+                }
+            }
+        }
+        return false;
+    }
+
+    public void ResetValues()
+    {
+        jump = false;
+    }
 }
+
+
+// TODO
+
+// soll man in der luft laufen können? evtl beheben/verhindern
+
+// hintereinander Space ist man noch in der luft, die groundpoints ggf. höher setzen bzw den "Boden" anpassen
