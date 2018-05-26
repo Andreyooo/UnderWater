@@ -8,11 +8,12 @@ public class ShootingWeapon : MonoBehaviour {
     public GameObject chargingBar;
     public GameObject chargingBarOutline;
     public Transform firepoint;
+    public TurnManager turnmanager;
 
     private float bulletSpeed = 30;
     private float lifeTime = 3;
     private float chargeLevel = 0;
-    private float chargeSpeed = 0.6f;
+    private float chargeSpeed = 0.7f;
     private float chargeLimit = 1;
     private float colorChangingRangeGreen = 200;
 
@@ -39,7 +40,7 @@ public class ShootingWeapon : MonoBehaviour {
     }
 
     void Update()
-    {   
+    {
         //rotate when not in shooting mode
         if(rotationEnabled)
         {
@@ -99,6 +100,7 @@ public class ShootingWeapon : MonoBehaviour {
         bullet.transform.rotation = gameObject.transform.rotation;
         bullet.GetComponent<Rigidbody2D>().AddForce(firepoint.forward * bulletSpeed * chargeLevel, ForceMode2D.Impulse);
         StartCoroutine(DestroyBulletAfterTime(bullet, lifeTime));
+        turnmanager.HasFired();
     }
 
     //Destroys bullet after time
