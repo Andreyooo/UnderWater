@@ -17,6 +17,8 @@ public class Player : MonoBehaviour
     private float pos;
     [SerializeField]
     private float jumpSpeed;
+    [SerializeField]
+    private bool airControl;
 
     private void Start()
     {
@@ -44,11 +46,13 @@ public class Player : MonoBehaviour
     //Movement+Animation
     private void Moving()
     {
-        var x = Input.GetAxis("Horizontal") * Time.deltaTime * 1f;
-        var z = Input.GetAxis("Vertical") * Time.deltaTime * 5f;// swag
- 
-        transform.Translate(x, 0, 0);
-        transform.Translate(0, z, 0); // swag
+        var x = Input.GetAxis("Horizontal") * 10f * Time.deltaTime;
+
+        //horizontal movement
+        if (isGrounded || airControl)
+        {
+            characterRB.velocity = new Vector2(x, characterRB.velocity.y);//transform.Translate(x, 0, 0);
+        }
 
         //jumping
         if (isGrounded && jump)
@@ -58,7 +62,7 @@ public class Player : MonoBehaviour
 
         }
 
-        if (x != pos)
+        if (x != pos && isGrounded || airControl)
         {
             pos = x;
             anim.SetTrigger("Walk");
