@@ -19,6 +19,8 @@ public class Player : MonoBehaviour
     private float jumpSpeed;
     [SerializeField]
     private bool airControl;
+    [SerializeField]
+    private float movementSpeed;
 
     private void Start()
     {
@@ -46,7 +48,7 @@ public class Player : MonoBehaviour
     //Movement+Animation
     private void Moving()
     {
-        var x = Input.GetAxis("Horizontal") * 10f * Time.deltaTime;
+        var x = Input.GetAxis("Horizontal") * movementSpeed * Time.deltaTime;
 
         //horizontal movement
         if (isGrounded || airControl)
