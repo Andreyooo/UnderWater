@@ -50,6 +50,7 @@ public class Player : MonoBehaviour
     {
         var x = Input.GetAxis("Horizontal") * movementSpeed * Time.deltaTime;
 
+
         //horizontal movement
         if (isGrounded || airControl)
         {
