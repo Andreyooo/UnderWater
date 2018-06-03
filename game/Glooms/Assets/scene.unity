@@ -479,6 +479,7 @@ MonoBehaviour:
     m_Bits: 4294967295
   jumpSpeed: 200
   airControl: 0
+  aiming: {fileID: 0}
 --- !u!212 &495393541
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -822,6 +823,12 @@ Prefab:
       propertyPath: whatIsGround.m_Bits
       value: 4294967240
       objectReference: {fileID: 0}
+    - target: {fileID: 114401837311718854, guid: 832ce539d0cee0344947f96e7b83face,
+        type: 2}
+      propertyPath: aiming
+      value: 
+      objectReference: {fileID: 21300000, guid: 3c58a95aa0ae070438f548e7dd48f369,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 832ce539d0cee0344947f96e7b83face, type: 2}
   m_IsPrefabParent: 0
@@ -894,6 +901,12 @@ Prefab:
       propertyPath: whatIsGround.m_Bits
       value: 256
       objectReference: {fileID: 0}
+    - target: {fileID: 114431884586272452, guid: 942f1f7ceb270cb4080af45874aa21bb,
+        type: 2}
+      propertyPath: aiming
+      value: 
+      objectReference: {fileID: 21300000, guid: 3c58a95aa0ae070438f548e7dd48f369,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 942f1f7ceb270cb4080af45874aa21bb, type: 2}
   m_IsPrefabParent: 0
