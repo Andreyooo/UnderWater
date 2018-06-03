@@ -7,6 +7,9 @@ public class PlayerController : PhysicsObject
 
     public float maxSpeed = 0.1f;
     public float jumpTakeOffSpeed = 5;
+    public bool aimingMode;
+    public bool movingMode;
+
 
     private SpriteRenderer spriteRenderer;
     private Animator animator;
@@ -18,35 +21,50 @@ public class PlayerController : PhysicsObject
         animator = GetComponent<Animator>();
     }
 
-    protected override void ComputeVelocity()
+    protected override void HandlePlayer()
     {
-        Vector2 move = Vector2.zero;
-
-
-        move.x = Input.GetAxis("Horizontal");
-
-
-        if (Input.GetButtonDown("Jump") && grounded)
+        if(movingMode)
         {
-            velocity.y = jumpTakeOffSpeed;
-        }
-        else if (Input.GetButtonUp("Jump"))
-        {
-            if (velocity.y > 0)
+            //Animation
+            if (!inAir)
             {
-                velocity.y = velocity.y * 0.5f;
+                if (Input.GetAxis("Horizontal") != 0)
+                {
+                    animator.SetTrigger("Walk");
+                }
+                else
+                {
+                    animator.SetTrigger("Idle");
+                }
+            } else
+            {
+                animator.SetTrigger("Offground");
             }
+
+            Vector2 move = Vector2.zero;
+            move.x = Input.GetAxis("Horizontal");
+
+            //Jump
+            if (Input.GetButtonDown("Jump") && grounded)
+            {
+                velocity.y = jumpTakeOffSpeed;
+            }
+            else if (Input.GetButtonUp("Jump"))
+            {
+                if (velocity.y > 0)
+                {
+                    velocity.y = velocity.y * 0.5f;
+                }
+            }
+
+            //Flip player when moving
+            bool flipSprite = (spriteRenderer.flipX ? (move.x > 0.01f) : (move.x < -0.01f));
+            if (flipSprite)
+            {
+                spriteRenderer.flipX = !spriteRenderer.flipX;
+            }
+
+            targetVelocity = move * maxSpeed;
         }
-
-        bool flipSprite = (spriteRenderer.flipX ? (move.x > 0.01f) : (move.x < 0.01f));
-        if (flipSprite)
-        {
-            spriteRenderer.flipX = !spriteRenderer.flipX;
-        }
-
-        animator.SetBool("grounded", grounded);
-        animator.SetFloat("velocityX", Mathf.Abs(velocity.x) / maxSpeed);
-
-        targetVelocity = move * maxSpeed;
     }
 }
