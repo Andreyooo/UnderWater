@@ -86,7 +86,6 @@ public class ShootingWeapon : MonoBehaviour {
         chargingBarOutlineSR.enabled = false;
         chargingBarSR.color = new Color32(235, 235, 0, 255);
         chargingBar.transform.localScale = new Vector3(0, 0, 1);
-        Debug.Log(chargeLevel);
         Shoot();
         chargeLevel = 0;
         rotationEnabled = true;
