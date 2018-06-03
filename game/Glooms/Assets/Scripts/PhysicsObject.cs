@@ -10,6 +10,7 @@ public class PhysicsObject : MonoBehaviour
 
     protected Vector2 targetVelocity;
     protected bool grounded;
+    protected bool inAir = true;
     protected Vector2 groundNormal;
     protected Rigidbody2D rb2d;
     protected Vector2 velocity;
@@ -36,10 +37,10 @@ public class PhysicsObject : MonoBehaviour
     void Update()
     {
         targetVelocity = Vector2.zero;
-        ComputeVelocity();
+        HandlePlayer();
     }
 
-    protected virtual void ComputeVelocity()
+    protected virtual void HandlePlayer()
     {
 
     }
@@ -75,6 +76,14 @@ public class PhysicsObject : MonoBehaviour
             for (int i = 0; i < count; i++)
             {
                 hitBufferList.Add(hitBuffer[i]);
+            }
+
+            if(count == 0)
+            {
+                inAir = true;
+            } else
+            {
+                inAir = false;
             }
 
             for (int i = 0; i < hitBufferList.Count; i++)
