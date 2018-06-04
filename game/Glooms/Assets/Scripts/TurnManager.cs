@@ -42,21 +42,21 @@ public class TurnManager : MonoBehaviour {
         if (currentPlayer == 1)
         {
             player1Objects[0].transform.Find("ShootingWeapon").gameObject.SetActive(true);
-            player1Objects[0].GetComponent<Player>().enabled = true;
+            player1Objects[0].GetComponent<PlayerController>().enabled = true;
 
             player2Objects[0].transform.Find("ShootingWeapon").gameObject.SetActive(false);
-            player2Objects[0].GetComponent<Player>().enabled = false;
+            player2Objects[0].GetComponent<PlayerController>().enabled = false;
 
         }
 
         if (currentPlayer == 2)
         {
             player2Objects[0].transform.Find("ShootingWeapon").gameObject.SetActive(true);
-            player2Objects[0].GetComponent<Player>().enabled = true;
+            player2Objects[0].GetComponent<PlayerController>().enabled = true;
 
 
             player1Objects[0].transform.Find("ShootingWeapon").gameObject.SetActive(false);
-            player1Objects[0].GetComponent<Player>().enabled = false;
+            player1Objects[0].GetComponent<PlayerController>().enabled = false;
 
         }
     }

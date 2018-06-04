@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ShootingWeapon : MonoBehaviour {
-    public Player player;
+    public PlayerController player;
     public GameObject bulletPrefab;
     public GameObject chargingBar;
     public GameObject chargingBarOutline;
@@ -11,7 +11,7 @@ public class ShootingWeapon : MonoBehaviour {
     public TurnManager turnmanager;
 
     private float bulletSpeed = 30;
-    private float lifeTime = 3;
+    private float lifeTime = 10;
     private float chargeLevel = 0;
     private float chargeSpeed = 0.7f;
     private float chargeLimit = 1;
@@ -24,13 +24,6 @@ public class ShootingWeapon : MonoBehaviour {
     private bool rotationEnabled = true;
     private bool canShoot = true;
 
-    private void Awake()
-    {
-        if(firepoint == null)
-        {
-            Debug.LogError("Kein Firepoint zugewiesen.");
-        }
-    }
 
     void Start()
     {
@@ -98,8 +91,9 @@ public class ShootingWeapon : MonoBehaviour {
         bullet.transform.position = firepoint.transform.position;
         bullet.transform.rotation = gameObject.transform.rotation;
         bullet.GetComponent<Rigidbody2D>().AddForce(firepoint.forward * bulletSpeed * chargeLevel, ForceMode2D.Impulse);
+        Debug.Log(firepoint.forward * bulletSpeed * chargeLevel);
         StartCoroutine(DestroyBulletAfterTime(bullet, lifeTime));
-        turnmanager.HasFired();
+        //turnmanager.HasFired();
     }
 
     //Destroys bullet after time

@@ -23,48 +23,64 @@ public class PlayerController : PhysicsObject
 
     protected override void HandlePlayer()
     {
-        if(movingMode)
+        if (movingMode)
         {
-            //Animation
-            if (!inAir)
-            {
-                if (Input.GetAxis("Horizontal") != 0)
-                {
-                    animator.SetTrigger("Walk");
-                }
-                else
-                {
-                    animator.SetTrigger("Idle");
-                }
-            } else
-            {
-                animator.SetTrigger("Offground");
-            }
-
-            Vector2 move = Vector2.zero;
-            move.x = Input.GetAxis("Horizontal");
-
-            //Jump
-            if (Input.GetButtonDown("Jump") && grounded)
-            {
-                velocity.y = jumpTakeOffSpeed;
-            }
-            else if (Input.GetButtonUp("Jump"))
-            {
-                if (velocity.y > 0)
-                {
-                    velocity.y = velocity.y * 0.5f;
-                }
-            }
-
-            //Flip player when moving
-            bool flipSprite = (spriteRenderer.flipX ? (move.x > 0.01f) : (move.x < -0.01f));
-            if (flipSprite)
-            {
-                spriteRenderer.flipX = !spriteRenderer.flipX;
-            }
-
-            targetVelocity = move * maxSpeed;
+            Moving();
         }
+        if (aimingMode)
+        {
+            animator.SetTrigger("Aim"); 
+            transform.Find("ShootingWeapon").gameObject.SetActive(true);
+        }
+    }
+    private void Moving()
+    {
+        //Animation
+        if (!inAir)
+        {
+            if (Input.GetAxis("Horizontal") != 0)
+            {
+                animator.SetTrigger("Walk");
+            }
+            else
+            {
+                animator.SetTrigger("Idle");
+            }
+        }
+        else
+        {
+            animator.SetTrigger("Offground");
+        }
+
+        Vector2 move = Vector2.zero;
+        move.x = Input.GetAxis("Horizontal");
+
+        //Jump
+        if (Input.GetButtonDown("Jump") && grounded)
+        {
+            velocity.y = jumpTakeOffSpeed;
+        }
+        else if (Input.GetButtonUp("Jump"))
+        {
+            if (velocity.y > 0)
+            {
+                velocity.y = velocity.y * 0.5f;
+            }
+        }
+
+        //Flip player when moving
+        bool flipSprite = (spriteRenderer.flipX ? (move.x > 0.01f) : (move.x < -0.01f));
+        if (flipSprite)
+        {
+            spriteRenderer.flipX = !spriteRenderer.flipX;
+        }
+
+        targetVelocity = move * maxSpeed;
+    }
+
+    //flipping Character
+    public void FlipX(bool bo)
+    {
+        spriteRenderer.flipX = bo;
     }
 }
