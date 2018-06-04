@@ -862,7 +862,7 @@ Prefab:
         type: 2}
       propertyPath: bulletPrefab
       value: 
-      objectReference: {fileID: 1317530739851440, guid: 2639da5aa5701ac47b192f1a9e89e061,
+      objectReference: {fileID: 1977473097257162, guid: 4d4921510c4cc6441a139acd401a42a4,
         type: 2}
     - target: {fileID: 1748090815799990, guid: 832ce539d0cee0344947f96e7b83face, type: 2}
       propertyPath: m_IsActive
@@ -1595,8 +1595,8 @@ MonoBehaviour:
   gravityModifier: 1
   maxSpeed: 2
   jumpTakeOffSpeed: 4
-  aimingMode: 0
-  movingMode: 1
+  aimingMode: 1
+  movingMode: 0
 --- !u!4 &1447499415 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4463249855486794, guid: 832ce539d0cee0344947f96e7b83face,
