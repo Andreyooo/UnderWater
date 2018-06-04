@@ -9,7 +9,7 @@ public class BulletScript : MonoBehaviour {
     private void OnCollisionEnter(Collision collision)
     {
         Debug.Log("hit");
-       //Debug.Log(collision.gameObject.name);
+        //Debug.Log(collision.gameObject.name);
         Destroy(transform.parent.gameObject);
         if (collision.gameObject.name == "Player2")
         {
