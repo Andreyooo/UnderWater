@@ -6,17 +6,31 @@ public class BulletScript : MonoBehaviour {
 
     private Rigidbody2D rb2D;
     private bool inAir = true;
-    public int dmg = 1;
+    public int dmg = 10;
 
+    private void DestroyProjectile()
+    {
+        Destroy(gameObject);
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        //rb2D.isKinematic = true;
+        Debug.Log(collision.gameObject.name);
         inAir = false;
-       // Debug.Log(collision.gameObject.name);
-        if (collision.gameObject.name == "Player2")
+        Invoke("DestroyProjectile", 1f);
+        // Debug.Log(collision.gameObject.name);
+        if (collision.gameObject.name == "Player2" || collision.gameObject.name == "Player1")
         {
-            Debug.Log("PLAYER HIT!!!!");
-            Destroy(transform.parent.gameObject);
+            var hit = collision.gameObject;
+            var health = hit.GetComponent<PlayerHealth>();
+
+            if (health != null)
+            {
+                health.TakeDamage(dmg);
+                Debug.Log("Schaden: " + dmg + " / Leben: " + health);
+            }
         }
+
     }
 
     private void Awake()
