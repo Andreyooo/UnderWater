@@ -32,6 +32,7 @@ public class BulletScript : MonoBehaviour {
     {
         inAir = false;
         rb2D.isKinematic = true;
+        rb2D.velocity = Vector2.zero;
         //Debug.Log(collision.gameObject.name);
         Invoke("DestroyProjectile", 1f);
         if (collision.gameObject.name == "Player2" || collision.gameObject.name == "Player1")

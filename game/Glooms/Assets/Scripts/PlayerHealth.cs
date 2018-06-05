@@ -28,8 +28,8 @@ using System.Collections;
 		void Awake ()
 		{
 			// If the instance variable is already assigned, then there are multiple player health scripts in the scene. Inform the user.
-			if( instance != null )
-				Debug.LogError( "There are multiple instances of the Player Health script. Assigning the most recent one to Instance." );
+			/*if( instance != null )
+				Debug.LogError( "There are multiple instances of the Player Health script. Assigning the most recent one to Instance." );*/
 			
 			// Assign the instance variable as the Player Health script on this object.
 			instance = GetComponent<PlayerHealth>();
