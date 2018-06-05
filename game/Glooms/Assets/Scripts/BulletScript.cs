@@ -8,15 +8,14 @@ public class BulletScript : MonoBehaviour {
     private bool inAir = true;
     public int dmg = 1;
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         inAir = false;
-        Debug.Log("hit");
-        //Debug.Log(collision.gameObject.name);
-        Destroy(transform.parent.gameObject);
+       // Debug.Log(collision.gameObject.name);
         if (collision.gameObject.name == "Player2")
         {
-          Destroy(transform.parent.gameObject);
+            Debug.Log("PLAYER HIT!!!!");
+            Destroy(transform.parent.gameObject);
         }
     }
 

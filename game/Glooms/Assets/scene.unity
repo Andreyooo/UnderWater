@@ -1929,8 +1929,8 @@ MonoBehaviour:
   gravityModifier: 1
   maxSpeed: 2
   jumpTakeOffSpeed: 4
-  aimingMode: 1
-  movingMode: 0
+  aimingMode: 0
+  movingMode: 1
 --- !u!4 &1447499415 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4463249855486794, guid: 832ce539d0cee0344947f96e7b83face,
@@ -2030,7 +2030,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1739139666
 Transform:
   m_ObjectHideFlags: 0
@@ -2057,7 +2057,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shotsPerTurn: 1
   currentPlayer: 1
-  previousPlayer: 0
   player1Objects:
   - {fileID: 957043004}
   player2Objects:

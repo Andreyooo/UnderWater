@@ -12,7 +12,7 @@ public class TurnManager : MonoBehaviour {
 
 
     public int currentPlayer = 1;
-	public int previousPlayer;
+	private int previousPlayer;
 	public GameObject[] player1Objects;
     public GameObject[] player2Objects;
 
