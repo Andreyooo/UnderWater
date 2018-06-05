@@ -27,11 +27,9 @@ public class PlayerController : PhysicsObject
         {
             Moving();
         }
-        if (aimingMode)
+        /*if (aimingMode)
         {
-            animator.SetTrigger("Aim"); 
-            transform.Find("ShootingWeapon").gameObject.SetActive(true);
-        }
+        }*/
     }
     private void Moving()
     {
@@ -78,7 +76,25 @@ public class PlayerController : PhysicsObject
         targetVelocity = move * maxSpeed;
     }
 
-    //flipping Character
+    //Set To Aiming Mode
+    public void AimingModeActive()
+    {
+        movingMode = false;
+        aimingMode = true;
+        animator.SetTrigger("Aim");
+        transform.Find("ShootingWeapon").gameObject.SetActive(true);
+    }
+
+    //Set To Aiming Mode
+    public void MovingModeActive()
+    {
+        aimingMode = false;
+        movingMode = true;
+        transform.Find("ShootingWeapon").gameObject.SetActive(false);
+        animator.SetTrigger("Moving");
+    }
+
+    //Flip Character
     public void FlipX(bool bo)
     {
         spriteRenderer.flipX = bo;
