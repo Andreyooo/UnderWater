@@ -118,7 +118,7 @@ using System.Collections;
 			//StartCoroutine( "Invulnerablilty" );
 
 			// Shake the camera for a moment to make each hit more dramatic.
-		    StartCoroutine( "ShakeCamera" );
+		    //StartCoroutine( "ShakeCamera" );
 
 			// Update the Health and Shield status bars.
 			healthBar.UpdateBar( currentHealth, maxHealth );
@@ -161,7 +161,6 @@ using System.Collections;
 			{
 				// Create a temporary vector2 with the camera's original position modified by a random distance from the origin.
 				Vector2 tempVec = origPos + Random.insideUnitCircle;
-                Debug.Log(tempVec);
 
 				// Apply the temporary vector.
 				Camera.main.transform.position = tempVec;
