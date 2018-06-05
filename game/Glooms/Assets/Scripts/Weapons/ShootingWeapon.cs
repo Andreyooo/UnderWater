@@ -93,7 +93,7 @@ public class ShootingWeapon : MonoBehaviour {
         bullet.GetComponent<Rigidbody2D>().AddForce(firepoint.forward * bulletSpeed * chargeLevel, ForceMode2D.Impulse);
         Debug.Log(firepoint.forward * bulletSpeed * chargeLevel);
         StartCoroutine(DestroyBulletAfterTime(bullet, lifeTime));
-        //turnmanager.HasFired();
+        turnmanager.HasFired();
     }
 
     //Destroys bullet after time
