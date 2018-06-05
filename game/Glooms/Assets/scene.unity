@@ -888,6 +888,11 @@ Prefab:
       propertyPath: m_Name
       value: Player2
       objectReference: {fileID: 0}
+    - target: {fileID: 50430610994733820, guid: 832ce539d0cee0344947f96e7b83face,
+        type: 2}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114401837311718854, guid: 832ce539d0cee0344947f96e7b83face, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 832ce539d0cee0344947f96e7b83face, type: 2}
@@ -1076,14 +1081,14 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.027548552, y: 0.25124866}
-      - {x: -0.14305091, y: 0.16714847}
-      - {x: -0.15955353, y: -0.084745884}
-      - {x: -0.018421888, y: -0.15701222}
+    - - {x: 0.010903835, y: 0.24986148}
+      - {x: -0.13472843, y: 0.17130971}
+      - {x: -0.13319874, y: -0.11942351}
+      - {x: -0.03368044, y: -0.17227042}
       - {x: -0.0012023449, y: -0.21038467}
-      - {x: 0.021205664, y: -0.15774173}
+      - {x: 0.033689976, y: -0.17022574}
       - {x: 0.19388032, y: -0.09739262}
-      - {x: 0.19038057, y: 0.16801363}
+      - {x: 0.19454193, y: 0.17078781}
 --- !u!4 &696054770 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4463249855486794, guid: 832ce539d0cee0344947f96e7b83face,
@@ -1159,11 +1164,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4463249855486794, guid: 832ce539d0cee0344947f96e7b83face, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -2.33
+      value: -1.29
       objectReference: {fileID: 0}
     - target: {fileID: 4463249855486794, guid: 832ce539d0cee0344947f96e7b83face, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0.73
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 4463249855486794, guid: 832ce539d0cee0344947f96e7b83face, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1336,6 +1341,11 @@ Prefab:
       propertyPath: m_Name
       value: Player1
       objectReference: {fileID: 0}
+    - target: {fileID: 50430610994733820, guid: 832ce539d0cee0344947f96e7b83face,
+        type: 2}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114401837311718854, guid: 832ce539d0cee0344947f96e7b83face, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 832ce539d0cee0344947f96e7b83face, type: 2}
@@ -1417,14 +1427,14 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.027548552, y: 0.25124866}
-      - {x: -0.14305091, y: 0.16714847}
-      - {x: -0.15955353, y: -0.084745884}
-      - {x: -0.018421888, y: -0.15701222}
+    - - {x: 0.014841676, y: 0.2909574}
+      - {x: -0.19228947, y: 0.21321052}
+      - {x: -0.17067206, y: -0.06250906}
+      - {x: -0.040658712, y: -0.16654229}
       - {x: -0.0012023449, y: -0.21038467}
-      - {x: 0.021205664, y: -0.15774173}
-      - {x: 0.19388032, y: -0.09739262}
-      - {x: 0.19038057, y: 0.16801363}
+      - {x: 0.060914397, y: -0.1688602}
+      - {x: 0.2034105, y: -0.07992077}
+      - {x: 0.23803103, y: 0.20931065}
 --- !u!4 &957043013 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4463249855486794, guid: 832ce539d0cee0344947f96e7b83face,
