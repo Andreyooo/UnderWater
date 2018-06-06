@@ -7,11 +7,11 @@ public class SoundManager : MonoBehaviour
     public static AudioSource efxSource;                   //Drag a reference to the audio source which will play the sound effects.
     public AudioSource musicSource;                 //Drag a reference to the audio source which will play the music.
     public static SoundManager instance = null;     //Allows other scripts to call functions from SoundManager.             
-    public float lowPitchRange = .95f;              //The lowest a sound effect will be randomly pitched.
-    public float highPitchRange = 1.05f;            //The highest a sound effect will be randomly pitched.
+    public static float lowPitchRange = .95f;              //The lowest a sound effect will be randomly pitched.
+    public static float highPitchRange = 1.05f;            //The highest a sound effect will be randomly pitched.
 
-    public static AudioClip arrowShotSound, arrowHitSound, ouchSound, jumpSound;
-
+    public static AudioClip arrowShotSound, arrowHitSound, ouchSound1, ouchSound2, ouchSound3, ouchSound4, jumpSound;
+    public static AudioClip[] ouch;
     void Awake()
     {
         //Check if there is already an instance of SoundManager
@@ -29,7 +29,11 @@ public class SoundManager : MonoBehaviour
 
         arrowShotSound = Resources.Load<AudioClip>("PfeilSchuss");
         arrowHitSound = Resources.Load<AudioClip>("PfeilTreffer");
-        ouchSound = Resources.Load<AudioClip>("ouch");
+        ouchSound1 = Resources.Load<AudioClip>("ouch1");
+        ouchSound2 = Resources.Load<AudioClip>("ouch2");
+        ouchSound3 = Resources.Load<AudioClip>("ouch3");
+        ouchSound4 = Resources.Load<AudioClip>("ouch4");
+        ouch = new AudioClip[] { ouchSound1, ouchSound2, ouchSound3, ouchSound4};
         jumpSound = Resources.Load<AudioClip>("Jump");
 
         efxSource = GetComponent<AudioSource>();
@@ -60,7 +64,7 @@ public class SoundManager : MonoBehaviour
                 efxSource.PlayOneShot(jumpSound);
                 break;
             case "ouch":
-                efxSource.PlayOneShot(ouchSound);
+                efxSource.PlayOneShot(RandomizeSfx(ouch));
                 break;
 
         }
@@ -68,7 +72,7 @@ public class SoundManager : MonoBehaviour
 
 
     //RandomizeSfx chooses randomly between various audio clips and slightly changes their pitch.
-    public void RandomizeSfx(params AudioClip[] clips)
+    public static AudioClip RandomizeSfx(params AudioClip[] clips)
     {
         //Generate a random number between 0 and the length of our array of clips passed in.
         int randomIndex = Random.Range(0, clips.Length);
@@ -80,9 +84,6 @@ public class SoundManager : MonoBehaviour
         efxSource.pitch = randomPitch;
 
         //Set the clip to the clip at our randomly chosen index.
-        efxSource.clip = clips[randomIndex];
-
-        //Play the clip.
-        efxSource.Play();
+        return clips[randomIndex];
     }
 }
