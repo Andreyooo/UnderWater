@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+
 
 public class ShootingWeapon : MonoBehaviour {
     public PlayerController player;
@@ -40,7 +42,7 @@ public class ShootingWeapon : MonoBehaviour {
         }
 
         //charging Bulletpower
-        if (Input.GetButton("Fire1") && canShoot)
+        if (Input.GetButton("Fire1") && canShoot && !EventSystem.current.IsPointerOverGameObject())
         {
             if (chargeLevel < chargeLimit)
             {
@@ -59,7 +61,7 @@ public class ShootingWeapon : MonoBehaviour {
             }
         }
 
-        if (Input.GetButtonUp("Fire1"))
+        if (Input.GetButtonUp("Fire1") && !EventSystem.current.IsPointerOverGameObject())
         {
             if(canShoot)
             {
@@ -90,7 +92,6 @@ public class ShootingWeapon : MonoBehaviour {
         bullet.transform.position = firepoint.transform.position;
         bullet.transform.rotation = gameObject.transform.rotation;
         bullet.GetComponent<Rigidbody2D>().AddForce(firepoint.forward * bulletSpeed * chargeLevel, ForceMode2D.Impulse);
-        //Debug.Log(firepoint.forward * bulletSpeed * chargeLevel);
         StartCoroutine(DestroyBulletAfterTime(bullet, lifeTime));
     }
 

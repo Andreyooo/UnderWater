@@ -27,9 +27,10 @@ public class PlayerController : PhysicsObject
         {
             Moving();
         }
-        /*if (aimingMode)
+        if (aimingMode)
         {
-        }*/
+            animator.SetTrigger("Aim");
+        }
     }
     private void Moving()
     {
@@ -91,7 +92,6 @@ public class PlayerController : PhysicsObject
         aimingMode = false;
         movingMode = true;
         transform.Find("ShootingWeapon").gameObject.SetActive(false);
-        animator.SetTrigger("Moving");
     }
 
     //Flip Character
