@@ -57,10 +57,10 @@ public class SoundManager : MonoBehaviour
                 efxSource.PlayOneShot(arrowHitSound);
                 break;
             case "jump":
-                efxSource.PlayOneShot(ouchSound);
+                efxSource.PlayOneShot(jumpSound);
                 break;
             case "ouch":
-                efxSource.PlayOneShot(jumpSound);
+                efxSource.PlayOneShot(ouchSound);
                 break;
 
         }
