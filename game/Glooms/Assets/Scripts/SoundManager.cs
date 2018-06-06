@@ -4,12 +4,13 @@ using System.Collections;
 
 public class SoundManager : MonoBehaviour
 {
-    public AudioSource efxSource;                   //Drag a reference to the audio source which will play the sound effects.
+    public static AudioSource efxSource;                   //Drag a reference to the audio source which will play the sound effects.
     public AudioSource musicSource;                 //Drag a reference to the audio source which will play the music.
     public static SoundManager instance = null;     //Allows other scripts to call functions from SoundManager.             
     public float lowPitchRange = .95f;              //The lowest a sound effect will be randomly pitched.
     public float highPitchRange = 1.05f;            //The highest a sound effect will be randomly pitched.
 
+    public static AudioClip arrowShotSound, arrowHitSound, ouchSound, jumpSound;
 
     void Awake()
     {
@@ -24,6 +25,14 @@ public class SoundManager : MonoBehaviour
 
         //Set SoundManager to DontDestroyOnLoad so that it won't be destroyed when reloading our scene.
         DontDestroyOnLoad(gameObject);
+
+
+        arrowShotSound = Resources.Load<AudioClip>("PfeilSchuss");
+        arrowHitSound = Resources.Load<AudioClip>("PfeilTreffer");
+        ouchSound = Resources.Load<AudioClip>("ouch");
+        jumpSound = Resources.Load<AudioClip>("Jump");
+
+        efxSource = GetComponent<AudioSource>();
     }
 
 
@@ -35,6 +44,26 @@ public class SoundManager : MonoBehaviour
 
         //Play the clip.
         efxSource.Play();
+    }
+
+    public static void PlaySound(string clip)
+    {
+        switch (clip)
+        {
+            case "arrowShot":
+                efxSource.PlayOneShot(arrowShotSound);
+                break;
+            case "arrowHit":
+                efxSource.PlayOneShot(arrowHitSound);
+                break;
+            case "jump":
+                efxSource.PlayOneShot(ouchSound);
+                break;
+            case "ouch":
+                efxSource.PlayOneShot(jumpSound);
+                break;
+
+        }
     }
 
 
