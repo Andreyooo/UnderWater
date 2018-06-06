@@ -7,6 +7,7 @@ public class PhysicsObject : MonoBehaviour
 
     public float minGroundNormalY = .65f;
     public float gravityModifier = 1f;
+    private PlayerController PController;
 
     protected Vector2 targetVelocity;
     protected bool grounded;
@@ -25,6 +26,7 @@ public class PhysicsObject : MonoBehaviour
     void OnEnable()
     {
         rb2d = GetComponent<Rigidbody2D>();
+        PController = GetComponent<PlayerController>(); 
     }
 
     void Start()
@@ -39,7 +41,8 @@ public class PhysicsObject : MonoBehaviour
         targetVelocity = Vector2.zero;
         HandlePlayer();
     }
-
+   
+    //Wichtig! Wird von einer anderen Klasse benutzt.
     protected virtual void HandlePlayer()
     {
 
@@ -91,6 +94,7 @@ public class PhysicsObject : MonoBehaviour
                 Vector2 currentNormal = hitBufferList[i].normal;
                 if (currentNormal.y > minGroundNormalY)
                 {
+                    PController.SetJumped(false);
                     grounded = true;
                     if (yMovement)
                     {

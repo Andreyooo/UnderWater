@@ -7,8 +7,9 @@ public class PlayerController : PhysicsObject
 
     public float maxSpeed = 0.1f;
     public float jumpTakeOffSpeed = 5;
-    public bool aimingMode;
-    public bool movingMode;
+    private bool aimingMode;
+    private bool movingMode;
+    private bool jumped;
 
 
     private SpriteRenderer spriteRenderer;
@@ -48,7 +49,10 @@ public class PlayerController : PhysicsObject
         }
         else
         {
-            animator.SetTrigger("Offground");
+            if (jumped)
+            {
+                animator.SetTrigger("Offground");
+            }
         }
 
         Vector2 move = Vector2.zero;
@@ -57,6 +61,7 @@ public class PlayerController : PhysicsObject
         //Jump
         if (Input.GetButtonDown("Jump") && grounded)
         {
+            jumped = true;
             SoundManager.PlaySound("jump");
             velocity.y = jumpTakeOffSpeed;
         }
@@ -99,5 +104,10 @@ public class PlayerController : PhysicsObject
     public void FlipX(bool bo)
     {
         spriteRenderer.flipX = bo;
+    }
+
+    public void SetJumped(bool bo)
+    {
+        jumped = bo;
     }
 }
