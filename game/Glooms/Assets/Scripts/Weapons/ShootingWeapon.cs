@@ -64,7 +64,8 @@ public class ShootingWeapon : MonoBehaviour {
             if(canShoot)
             {
                 ReleaseProjectile();
-            } else
+            }
+            else
             {
                 canShoot = true;
             }
@@ -81,6 +82,8 @@ public class ShootingWeapon : MonoBehaviour {
         Shoot();
         chargeLevel = 0;
         rotationEnabled = true;
+        SoundManager.PlaySound("arrowShot");
+
     }
 
     //Shoot Bullets

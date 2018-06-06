@@ -30,6 +30,7 @@ public class BulletScript : MonoBehaviour {
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        SoundManager.PlaySound("arrowHit");
         inAir = false;
         rb2D.isKinematic = true;
         rb2D.velocity = Vector2.zero;

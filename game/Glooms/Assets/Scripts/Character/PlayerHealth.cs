@@ -122,13 +122,15 @@ using System.Collections;
 
 			// Update the Health and Shield status bars.
 			healthBar.UpdateBar( currentHealth, maxHealth );
-		//	shieldBar.UpdateBar( currentShield, maxShield );
+            SoundManager.PlaySound("ouch");
 
-			// Reset the shield regen timer.
-	//		regenShieldTimer = regenShieldTimerMax;
-		}
+        //	shieldBar.UpdateBar( currentShield, maxShield );
 
-		public void Death ()
+        // Reset the shield regen timer.
+        //		regenShieldTimer = regenShieldTimerMax;
+    }
+
+    public void Death ()
 		{
 			// Show the death screen, and disable the player's control.
 		//	GameManager.Instance.ShowDeathScreen();
