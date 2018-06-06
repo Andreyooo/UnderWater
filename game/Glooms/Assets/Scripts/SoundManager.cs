@@ -55,13 +55,13 @@ public class SoundManager : MonoBehaviour
         switch (clip)
         {
             case "arrowShot":
-                efxSource.PlayOneShot(arrowShotSound);
+                efxSource.PlayOneShot(RandomizeSfx(arrowShotSound));
                 break;
             case "arrowHit":
-                efxSource.PlayOneShot(arrowHitSound);
+                efxSource.PlayOneShot(RandomizeSfx(arrowHitSound));
                 break;
             case "jump":
-                efxSource.PlayOneShot(jumpSound);
+                efxSource.PlayOneShot(RandomizeSfx(jumpSound));
                 break;
             case "ouch":
                 efxSource.PlayOneShot(RandomizeSfx(ouch));
