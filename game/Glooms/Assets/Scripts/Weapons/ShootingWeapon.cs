@@ -26,7 +26,7 @@ public class ShootingWeapon : MonoBehaviour {
     private bool canShoot = true;
 
 
-    void Start()
+    void Awake()
     {
         weaponSR = GetComponent<SpriteRenderer>();
         chargingBarSR = chargingBar.GetComponent<SpriteRenderer>();
@@ -96,6 +96,7 @@ public class ShootingWeapon : MonoBehaviour {
         bullet.transform.rotation = gameObject.transform.rotation;
         bullet.GetComponent<Rigidbody2D>().AddForce(firepoint.forward * bulletSpeed * chargeLevel, ForceMode2D.Impulse);
         StartCoroutine(DestroyBulletAfterTime(bullet, lifeTime));
+        GameManager.instance.HasFired();
     }
 
     //Destroys bullet after time
