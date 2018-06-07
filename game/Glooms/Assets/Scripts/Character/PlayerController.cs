@@ -1,14 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : PhysicsObject
 {
-
-    public float maxSpeed = 0.1f;
+    public Button movementButton;
+    public Button weaponButton;
+    public float maxSpeed = 2f;
     public float jumpTakeOffSpeed = 5;
-    private bool aimingMode;
-    private bool movingMode;
+    public bool aimingMode = false;
+    public bool movingMode = false;
+    public bool passiveMode;
     private bool jumped;
 
 
@@ -20,17 +23,27 @@ public class PlayerController : PhysicsObject
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
+        movementButton = GameObject.Find("Movement Button").GetComponent<Button>();
+        movementButton.onClick.AddListener((UnityEngine.Events.UnityAction)this.MovingModeActive);
+        weaponButton = GameObject.Find("Weapon Button").GetComponent<Button>();
+        weaponButton.onClick.AddListener((UnityEngine.Events.UnityAction)this.AimingModeActive);
     }
 
     protected override void HandlePlayer()
     {
-        if (movingMode)
+        if (!passiveMode)
         {
-            Moving();
-        }
-        if (aimingMode)
+            if (movingMode)
+            {
+                Moving();
+            }
+            if (aimingMode)
+            {
+                animator.SetTrigger("Aim");
+            }
+        } else
         {
-            animator.SetTrigger("Aim");
+            animator.SetTrigger("Idle");
         }
     }
     private void Moving()
@@ -86,18 +99,43 @@ public class PlayerController : PhysicsObject
     //Set To Aiming Mode
     public void AimingModeActive()
     {
-        movingMode = false;
-        aimingMode = true;
-        animator.SetTrigger("Aim");
-        transform.Find("ShootingWeapon").gameObject.SetActive(true);
+        Debug.Log("Aiming Pressed");
+        if (!passiveMode)
+        {
+            movingMode = false;
+            aimingMode = true;
+            animator.SetTrigger("Aim");
+            transform.Find("ShootingWeapon").gameObject.SetActive(true);
+        }
     }
 
-    //Set To Aiming Mode
+    //Set To Moving Mode
     public void MovingModeActive()
     {
+        Debug.Log("Moving Pressed");
+        Debug.Log(passiveMode);
+        if (!passiveMode)
+        {
+            aimingMode = false;
+            movingMode = true;
+            transform.Find("ShootingWeapon").gameObject.SetActive(false);
+
+        }
+    }
+
+    //Player is Passive
+    public void SetPassive()
+    {
+        movingMode = false;
         aimingMode = false;
-        movingMode = true;
+        passiveMode = true;
         transform.Find("ShootingWeapon").gameObject.SetActive(false);
+    }
+
+    //Player is Activ
+    public void SetActive()
+    {
+        passiveMode = false;
     }
 
     //Flip Character
