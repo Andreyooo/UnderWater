@@ -11,7 +11,7 @@ public class ShootingWeapon : MonoBehaviour {
     public GameObject chargingBarOutline;
     public Transform firepoint;
 
-    private float bulletSpeed = 30;
+    private float bulletSpeed = 15;
     private float lifeTime = 10;
     private float chargeLevel = 0;
     private float chargeSpeed = 0.7f;
@@ -96,14 +96,15 @@ public class ShootingWeapon : MonoBehaviour {
         bullet.transform.rotation = gameObject.transform.rotation;
         bullet.GetComponent<Rigidbody2D>().AddForce(firepoint.forward * bulletSpeed * chargeLevel, ForceMode2D.Impulse);
         StartCoroutine(DestroyBulletAfterTime(bullet, lifeTime));
-        GameManager.instance.HasFired(bullet);
+        //GameManager.instance.HasFired(bullet);
+        StartCoroutine(GameManager.instance.HasFired(bullet));
     }
 
     //Destroys bullet after time
     private IEnumerator DestroyBulletAfterTime(GameObject bullet, float delay)
     {
         yield return new WaitForSeconds(delay);
-        Destroy(bullet);
+        bullet.GetComponent<BulletScript>().DestroyProjectile();
     }
 
     //Weapon Rotation

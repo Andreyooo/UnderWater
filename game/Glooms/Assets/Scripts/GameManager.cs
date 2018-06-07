@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour {
     public static GameManager instance = null;
 
     public int shotsPerTurn = 1;
+    public bool projectileDestroyed = false;
 	private int currentShots;
 
     public int currentPlayer = 0;
@@ -43,11 +44,14 @@ public class GameManager : MonoBehaviour {
         SwitchPlayer();
 	}
 
-	public void HasFired(GameObject projectile){
-
+	public IEnumerator HasFired(GameObject projectile){
 		currentShots--;
-        players[currentPlayer].GetComponent<PlayerController>().SetPassive();
         if (currentShots <= 0){
+            players[currentPlayer].GetComponent<PlayerController>().SetPassive();
+            Debug.Log("Start Waiting");
+            yield return new WaitUntil(() => projectileDestroyed);
+            Debug.Log("Stop Waiting");
+            projectileDestroyed = false;
             SwitchPlayer();
         }
 	}
@@ -58,12 +62,11 @@ public class GameManager : MonoBehaviour {
         {
             if (!players[j].activeSelf)
             {
-                Debug.Log("Test");
+                Debug.Log("Player " + j + " aus der SpielerListe gelöscht");
                 players.RemoveAt(j);
                 if (currentPlayer>=j)
                 {
                     currentPlayer--;
-                    Debug.Log("After Remove: " + currentPlayer);
                 }
                 j--;
             }
@@ -76,7 +79,7 @@ public class GameManager : MonoBehaviour {
         {
             currentPlayer = 0;
         }
-        Debug.Log(currentPlayer);
+        Debug.Log("Spieler " + currentPlayer + " ist dran");
         if (previousPlayer != null && previousPlayer.activeSelf)
         {
             previousPlayer.GetComponent<PlayerController>().SetPassive();

@@ -14,6 +14,11 @@ public class BulletScript : MonoBehaviour {
         rb2D.freezeRotation = true;
     }
 
+    private void Start()
+    {
+        
+    }
+
     private void Update()
     {
         if (inAir)
@@ -24,10 +29,17 @@ public class BulletScript : MonoBehaviour {
         }
     }
 
-    private void DestroyProjectile()
+    public void DestroyProjectile()
     {
+        Invoke("ExecuteProjectileDestruction", 1f);
+    }
+
+    private void ExecuteProjectileDestruction()
+    {
+        GameManager.instance.projectileDestroyed = true;
         Destroy(gameObject);
     }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         SoundManager.PlaySound("arrowHit");
@@ -35,7 +47,7 @@ public class BulletScript : MonoBehaviour {
         rb2D.isKinematic = true;
         rb2D.velocity = Vector2.zero;
         //Debug.Log(collision.gameObject.name);
-        Invoke("DestroyProjectile", 1f);
+        DestroyProjectile();
         if (collision.gameObject.name == "Player(Clone)")
         {
             var hit = collision.gameObject;

@@ -12,7 +12,7 @@ public class PlayerController : PhysicsObject
     public bool aimingMode = false;
     public bool movingMode = false;
     public bool passiveMode;
-    private bool jumped;
+    public bool jumped;
 
 
     private SpriteRenderer spriteRenderer;
