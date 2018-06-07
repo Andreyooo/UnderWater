@@ -43,44 +43,44 @@ public class GameManager : MonoBehaviour {
         SwitchPlayer();
 	}
 
-	public void HasFired(){
+	public void HasFired(GameObject projectile){
+
 		currentShots--;
-		if(currentShots <= 0){
-			previousPlayer = players[currentPlayer];
-			currentShots = shotsPerTurn;
-            currentPlayer++;
-            if (currentPlayer > players.Count-1)
-            {
-                currentPlayer = 0;
-            }
+        players[currentPlayer].GetComponent<PlayerController>().SetPassive();
+        if (currentShots <= 0){
             SwitchPlayer();
         }
 	}
 
     public void SwitchPlayer()
     {
-        if (previousPlayer != null)
+        for (int j = 0; j < players.Count - 1; j++)
+        {
+            if (!players[j].activeSelf)
+            {
+                Debug.Log("Test");
+                players.RemoveAt(j);
+                if (currentPlayer>=j)
+                {
+                    currentPlayer--;
+                    Debug.Log("After Remove: " + currentPlayer);
+                }
+                j--;
+            }
+        }
+
+        previousPlayer = players[currentPlayer];
+        currentPlayer++;
+        currentShots = shotsPerTurn;
+        if (currentPlayer > players.Count - 1)
+        {
+            currentPlayer = 0;
+        }
+        Debug.Log(currentPlayer);
+        if (previousPlayer != null && previousPlayer.activeSelf)
         {
             previousPlayer.GetComponent<PlayerController>().SetPassive();
         }
         players[currentPlayer].GetComponent<PlayerController>().SetActive();
-
-        /*if (currentPlayer == 0)
-        {
-            player2.GetComponent<PlayerController>().SetPassive();
-            player1.GetComponent<PlayerController>().SetActive();
-        }
-
-        if (currentPlayer == 1)
-        {
-            player1.GetComponent<PlayerController>().SetPassive();
-            player2.GetComponent<PlayerController>().SetActive();
-        }
-
-        if (currentPlayer == 2)
-        {
-            player1.GetComponent<PlayerController>().SetPassive();
-            player2.GetComponent<PlayerController>().SetActive();
-        }*/
     }
 }

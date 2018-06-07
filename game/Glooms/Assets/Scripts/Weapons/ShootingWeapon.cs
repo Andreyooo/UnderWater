@@ -96,7 +96,7 @@ public class ShootingWeapon : MonoBehaviour {
         bullet.transform.rotation = gameObject.transform.rotation;
         bullet.GetComponent<Rigidbody2D>().AddForce(firepoint.forward * bulletSpeed * chargeLevel, ForceMode2D.Impulse);
         StartCoroutine(DestroyBulletAfterTime(bullet, lifeTime));
-        GameManager.instance.HasFired();
+        GameManager.instance.HasFired(bullet);
     }
 
     //Destroys bullet after time

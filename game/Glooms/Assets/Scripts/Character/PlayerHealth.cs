@@ -144,7 +144,7 @@ using System.Collections;
         // Destroy the explosion in 2 seconds.
         //Destroy(explo, 2 );
         SoundManager.PlaySound("death");
-        StartCoroutine("ShakeCamera");
+        
         Instantiate(blood, transform.position, Quaternion.identity);
         Instantiate(deadBody, transform.position, Quaternion.identity);
         Instantiate(deadHead, transform.position, Quaternion.identity);
@@ -152,7 +152,10 @@ using System.Collections;
         Instantiate(deadRightLeg, transform.position, Quaternion.identity);
         Instantiate(deadLeftHand, transform.position, Quaternion.identity);
         Instantiate(deadRightHand, transform.position, Quaternion.identity);
+        StartCoroutine("ShakeCamera");
+
         gameObject.SetActive(false);
+        
         //Destroy(blood, 2f);
 
         // Destroy this game object.
@@ -172,8 +175,7 @@ using System.Collections;
 		{
 			// Store the original position of the camera.
 			Vector2 origPos = Camera.main.transform.position;
-        //for( float t = 0.0f; t < 1.0f; t += Time.deltaTime * 2.0f )
-        for (float t = 0.0f; t < 0.1f; t += Time.deltaTime * 2.0f)
+        for( float t = 0.0f; t < 0.1f; t += Time.deltaTime * 2.0f )
         {
 				// Create a temporary vector2 with the camera's original position modified by a random distance from the origin.
 				Vector2 tempVec = origPos + Random.insideUnitCircle/5;

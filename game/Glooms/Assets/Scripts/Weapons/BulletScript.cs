@@ -36,7 +36,7 @@ public class BulletScript : MonoBehaviour {
         rb2D.velocity = Vector2.zero;
         //Debug.Log(collision.gameObject.name);
         Invoke("DestroyProjectile", 1f);
-        if (collision.gameObject.name == "Player2" || collision.gameObject.name == "Player1")
+        if (collision.gameObject.name == "Player(Clone)")
         {
             var hit = collision.gameObject;
             var health = hit.GetComponent<PlayerHealth>();
@@ -44,7 +44,6 @@ public class BulletScript : MonoBehaviour {
             if (health != null)
             {
                 health.TakeDamage(dmg);
-                Debug.Log("Schaden: " + dmg + " / Leben: " + health);
             }
         }
 

@@ -454,7 +454,6 @@ MonoBehaviour:
   chargingBar: {fileID: 1502858361489632}
   chargingBarOutline: {fileID: 1982152408669454}
   firepoint: {fileID: 4597184999921452}
-  turnmanager: {fileID: 0}
 --- !u!114 &114578487983567950
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -512,6 +511,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d3aca7aa4d8bea4097ae727154893ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blood: {fileID: 1319144548630846, guid: 4d167a25f8374144297f717afd63c5ed, type: 2}
+  deadHead: {fileID: 1903056644159274, guid: 9ad42b590eb36ee47a83cecd9128d76f, type: 2}
+  deadBody: {fileID: 1931134669790892, guid: 36c50ac8b365bb849badbf358a76c652, type: 2}
+  deadLeftLeg: {fileID: 1780980918660912, guid: 1b6d3e4a760aa9645a1cc747a70f9ba5,
+    type: 2}
+  deadLeftHand: {fileID: 1687203027496558, guid: 1895a8eff42a1814a99d675aa12babe8,
+    type: 2}
+  deadRightLeg: {fileID: 1699519758710338, guid: ca0cbc9fa5a292843b6685b9057d58fb,
+    type: 2}
+  deadRightHand: {fileID: 1189673228545400, guid: 41f63d72263bf9345ba5094a2e638e71,
+    type: 2}
   maxHealth: 25
   invulnerabilityTime: 0
   maxShield: 25

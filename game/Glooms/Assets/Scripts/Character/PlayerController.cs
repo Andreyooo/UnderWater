@@ -99,12 +99,10 @@ public class PlayerController : PhysicsObject
     //Set To Aiming Mode
     public void AimingModeActive()
     {
-        Debug.Log("Aiming Pressed");
         if (!passiveMode)
         {
             movingMode = false;
             aimingMode = true;
-            animator.SetTrigger("Aim");
             transform.Find("ShootingWeapon").gameObject.SetActive(true);
         }
     }
@@ -112,8 +110,7 @@ public class PlayerController : PhysicsObject
     //Set To Moving Mode
     public void MovingModeActive()
     {
-        Debug.Log("Moving Pressed");
-        Debug.Log(passiveMode);
+
         if (!passiveMode)
         {
             aimingMode = false;
