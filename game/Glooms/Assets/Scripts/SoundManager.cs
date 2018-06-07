@@ -10,7 +10,7 @@ public class SoundManager : MonoBehaviour
     public static float lowPitchRange = .95f;              //The lowest a sound effect will be randomly pitched.
     public static float highPitchRange = 1.05f;            //The highest a sound effect will be randomly pitched.
 
-    public static AudioClip arrowShotSound, arrowHitSound, ouchSound1, ouchSound2, ouchSound3, ouchSound4, jumpSound;
+    public static AudioClip arrowShotSound, arrowHitSound, ouchSound1, ouchSound2, ouchSound3, ouchSound4, jumpSound, deathSound;
     public static AudioClip[] ouch;
     void Awake()
     {
@@ -33,6 +33,7 @@ public class SoundManager : MonoBehaviour
         ouchSound2 = Resources.Load<AudioClip>("ouch2");
         ouchSound3 = Resources.Load<AudioClip>("ouch3");
         ouchSound4 = Resources.Load<AudioClip>("ouch4");
+        deathSound = Resources.Load<AudioClip>("death");
         ouch = new AudioClip[] { ouchSound1, ouchSound2, ouchSound3, ouchSound4};
         jumpSound = Resources.Load<AudioClip>("Jump");
 
@@ -65,6 +66,9 @@ public class SoundManager : MonoBehaviour
                 break;
             case "ouch":
                 efxSource.PlayOneShot(RandomizeSfx(ouch));
+                break;
+            case "death":
+                efxSource.PlayOneShot(deathSound);
                 break;
 
         }

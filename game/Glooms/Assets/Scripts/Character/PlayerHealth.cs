@@ -4,9 +4,11 @@ using UnityEngine;
 using System.Collections;
 
 
-	public class PlayerHealth : MonoBehaviour
-	{
+	public class PlayerHealth : MonoBehaviour{
+        
 		static PlayerHealth instance;
+        public GameObject blood, deadHead, deadBody, deadLeftLeg, deadLeftHand, deadRightLeg, deadRightHand;
+
 		public static PlayerHealth Instance { get { return instance; } }
 		bool canTakeDamage = true;
 
@@ -100,9 +102,9 @@ using System.Collections;
 			}*/
 			// Else there was no shield, so reduce health.
 			currentHealth -= damage;
-
-			// If the health is less than zero...
-			if( currentHealth <= 0 )
+            if(currentHealth > 0) SoundManager.PlaySound("ouch");
+        // If the health is less than zero...
+        if ( currentHealth <= 0 )
 			{
 				// Set the current health to zero.
 				currentHealth = 0;
@@ -122,7 +124,7 @@ using System.Collections;
 
 			// Update the Health and Shield status bars.
 			healthBar.UpdateBar( currentHealth, maxHealth );
-            SoundManager.PlaySound("ouch");
+            
 
         //	shieldBar.UpdateBar( currentShield, maxShield );
 
@@ -132,21 +134,32 @@ using System.Collections;
 
     public void Death ()
 		{
-			// Show the death screen, and disable the player's control.
-		//	GameManager.Instance.ShowDeathScreen();
-		//	GetComponent<PlayerController>().canControl = false;
+        // Show the death screen, and disable the player's control.
+        //	GameManager.Instance.ShowDeathScreen();
+        //	GetComponent<PlayerController>().canControl = false;
 
-			// Spawn an explosion particle effect and the player's current position.
-			GameObject explo = ( GameObject )Instantiate( explosionParticles, transform.position, Quaternion.identity );
+        // Spawn an explosion particle effect and the player's current position.
+        //GameObject explo = ( GameObject )Instantiate( explosionParticles, transform.position, Quaternion.identity );
 
-			// Destroy the explosion in 2 seconds.
-			Destroy(explo, 2 );
+        // Destroy the explosion in 2 seconds.
+        //Destroy(explo, 2 );
+        SoundManager.PlaySound("death");
+        StartCoroutine("ShakeCamera");
+        Instantiate(blood, transform.position, Quaternion.identity);
+        Instantiate(deadBody, transform.position, Quaternion.identity);
+        Instantiate(deadHead, transform.position, Quaternion.identity);
+        Instantiate(deadLeftLeg, transform.position, Quaternion.identity);
+        Instantiate(deadRightLeg, transform.position, Quaternion.identity);
+        Instantiate(deadLeftHand, transform.position, Quaternion.identity);
+        Instantiate(deadRightHand, transform.position, Quaternion.identity);
+        gameObject.SetActive(false);
+        //Destroy(blood, 2f);
 
-			// Destroy this game object.
-	//		Destroy( gameObject );
-		}
+        // Destroy this game object.
+        //		Destroy( gameObject );
+    }
 
-		IEnumerator Invulnerablilty ()
+    IEnumerator Invulnerablilty ()
 		{
 			// Wait for the invulnerability time variable.
 			yield return new WaitForSeconds( invulnerabilityTime );
@@ -159,10 +172,11 @@ using System.Collections;
 		{
 			// Store the original position of the camera.
 			Vector2 origPos = Camera.main.transform.position;
-			for( float t = 0.0f; t < 1.0f; t += Time.deltaTime * 2.0f )
-			{
+        //for( float t = 0.0f; t < 1.0f; t += Time.deltaTime * 2.0f )
+        for (float t = 0.0f; t < 0.1f; t += Time.deltaTime * 2.0f)
+        {
 				// Create a temporary vector2 with the camera's original position modified by a random distance from the origin.
-				Vector2 tempVec = origPos + Random.insideUnitCircle;
+				Vector2 tempVec = origPos + Random.insideUnitCircle/5;
 
 				// Apply the temporary vector.
 				Camera.main.transform.position = tempVec;

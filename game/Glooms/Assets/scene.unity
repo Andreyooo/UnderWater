@@ -474,8 +474,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   musicSource: {fileID: 357005123}
-  lowPitchRange: 0.95
-  highPitchRange: 1.05
 --- !u!82 &357005123
 AudioSource:
   m_ObjectHideFlags: 0
@@ -887,6 +885,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d3aca7aa4d8bea4097ae727154893ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blood: {fileID: 1319144548630846, guid: 4d167a25f8374144297f717afd63c5ed, type: 2}
+  deadHead: {fileID: 1903056644159274, guid: 9ad42b590eb36ee47a83cecd9128d76f, type: 2}
+  deadBody: {fileID: 1931134669790892, guid: 36c50ac8b365bb849badbf358a76c652, type: 2}
+  deadLeftLeg: {fileID: 1780980918660912, guid: 1b6d3e4a760aa9645a1cc747a70f9ba5,
+    type: 2}
+  deadLeftHand: {fileID: 1687203027496558, guid: 1895a8eff42a1814a99d675aa12babe8,
+    type: 2}
+  deadRightLeg: {fileID: 1699519758710338, guid: ca0cbc9fa5a292843b6685b9057d58fb,
+    type: 2}
+  deadRightHand: {fileID: 1189673228545400, guid: 41f63d72263bf9345ba5094a2e638e71,
+    type: 2}
   maxHealth: 25
   invulnerabilityTime: 0
   maxShield: 25
@@ -955,14 +964,14 @@ RectTransform:
   m_GameObject: {fileID: 556470056}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.9999536, y: 0.9999536, z: 0}
+  m_LocalScale: {x: 25, y: 25, z: 0}
   m_Children: []
   m_Father: {fileID: 1243988253}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -177.95, y: 0}
+  m_AnchoredPosition: {x: 2.3, y: 1.8}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &556470058
@@ -997,18 +1006,18 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_SortingLayerID: -2060553763
+  m_SortingLayer: 5
+  m_SortingOrder: 2
+  m_Sprite: {fileID: 21300000, guid: 9f56cfdf37343ee49b4dff399b375677, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.51, y: 1.48}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
 --- !u!1001 &577580822
 Prefab:
@@ -1275,7 +1284,7 @@ SpriteRenderer:
   m_SortingLayerID: -2060553763
   m_SortingLayer: 5
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: d11bf2a258114024db50edf2044ac8af, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d1809d5dd6f23b94283a5505a0b2759a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1638,6 +1647,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d3aca7aa4d8bea4097ae727154893ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blood: {fileID: 1319144548630846, guid: 4d167a25f8374144297f717afd63c5ed, type: 2}
+  deadHead: {fileID: 1903056644159274, guid: 9ad42b590eb36ee47a83cecd9128d76f, type: 2}
+  deadBody: {fileID: 1931134669790892, guid: 36c50ac8b365bb849badbf358a76c652, type: 2}
+  deadLeftLeg: {fileID: 1780980918660912, guid: 1b6d3e4a760aa9645a1cc747a70f9ba5,
+    type: 2}
+  deadLeftHand: {fileID: 1687203027496558, guid: 1895a8eff42a1814a99d675aa12babe8,
+    type: 2}
+  deadRightLeg: {fileID: 1699519758710338, guid: ca0cbc9fa5a292843b6685b9057d58fb,
+    type: 2}
+  deadRightHand: {fileID: 1189673228545400, guid: 41f63d72263bf9345ba5094a2e638e71,
+    type: 2}
   maxHealth: 25
   invulnerabilityTime: 0
   maxShield: 25
@@ -2814,7 +2834,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1702932820
 RectTransform:
   m_ObjectHideFlags: 0

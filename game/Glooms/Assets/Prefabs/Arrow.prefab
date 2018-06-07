@@ -216,7 +216,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86b6890b99168f9479453a96f382a186, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dmg: 1
+  dmg: 5
 --- !u!212 &212494007673635138
 SpriteRenderer:
   m_ObjectHideFlags: 1
