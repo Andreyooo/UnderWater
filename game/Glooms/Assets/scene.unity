@@ -422,7 +422,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: ef208eb48169bed49894fe948c22e9fb, type: 3}
+  m_audioClip: {fileID: 8300000, guid: af9ca05442a6517408a47da6a86f1da3, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -2003,6 +2003,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shotsPerTurn: 1
+  projectileDestroyed: 0
   currentPlayer: 0
   playerPrefab: {fileID: 1777682727503648, guid: e8f2e58f340d1d3438dc2a6b2227a4fd,
     type: 2}
