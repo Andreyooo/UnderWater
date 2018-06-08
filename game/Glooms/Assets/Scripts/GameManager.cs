@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour {
 	public IEnumerator HasFired(GameObject projectile){
 		currentShots--;
         if (currentShots <= 0){
-            players[currentPlayer].GetComponent<PlayerController>().SetPassive();
+            //players[currentPlayer].GetComponent<PlayerController>().SetPassive();
             Debug.Log("Start Waiting");
             yield return new WaitUntil(() => projectileDestroyed);
             Debug.Log("Stop Waiting");

@@ -15,7 +15,8 @@ using System.Collections;
 		public int maxHealth = 50;
 		float currentHealth = 0;
 		public float invulnerabilityTime = 0.5f;
-
+        private int soundVar;
+        private string playerHitSound;
 		float currentShield = 0;
 		public int maxShield = 25;
 		float regenShieldTimer = 0.0f;
@@ -41,10 +42,12 @@ using System.Collections;
 		{
 			// Set the current health and shield to max values.
 			currentHealth = maxHealth;
-		//	currentShield = maxShield;
-
-			// Update the Simple Health Bar with the updated values of Health and Shield.
-			healthBar.UpdateBar( currentHealth, maxHealth );
+            //	currentShield = maxShield;
+            soundVar = Random.Range(0, 2);
+            if (soundVar == 0) playerHitSound = "ouch";
+            if (soundVar == 1) playerHitSound = "hmpf";
+            // Update the Simple Health Bar with the updated values of Health and Shield.
+            healthBar.UpdateBar( currentHealth, maxHealth );
 	//		shieldBar.UpdateBar( currentShield, maxShield );
 		}
 
@@ -102,7 +105,7 @@ using System.Collections;
 			}*/
 			// Else there was no shield, so reduce health.
 			currentHealth -= damage;
-            if(currentHealth > 0) SoundManager.PlaySound("ouch");
+            if(currentHealth > 0) SoundManager.PlaySound(playerHitSound);
         // If the health is less than zero...
         if ( currentHealth <= 0 )
 			{
