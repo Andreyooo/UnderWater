@@ -10,9 +10,10 @@ public class SoundManager : MonoBehaviour
     public static float lowPitchRange = .95f;              //The lowest a sound effect will be randomly pitched.
     public static float highPitchRange = 1.05f;            //The highest a sound effect will be randomly pitched.
 
-    public static AudioClip arrowShotSound, arrowHitSound, ouchSound1, ouchSound2, ouchSound3, ouchSound4, jumpSound, deathSound, hmpfSound1, hmpfSound2, hmpfSound3, hmpfSound4;
+    public static AudioClip arrowShotSound, arrowHitSound, ouchSound1, ouchSound2, ouchSound3, ouchSound4, jumpSound, deathSound, hmpfSound1, hmpfSound2, hmpfSound3, hmpfSound4, arghSound1, arghSound2, arghSound3, arghSound4;
     public static AudioClip[] ouch;
     public static AudioClip[] hmpf;
+    public static AudioClip[] argh;
     void Awake()
     {
         //Check if there is already an instance of SoundManager
@@ -38,9 +39,14 @@ public class SoundManager : MonoBehaviour
         hmpfSound2 = Resources.Load<AudioClip>("hmpf2");
         hmpfSound3 = Resources.Load<AudioClip>("hmpf3");
         hmpfSound4 = Resources.Load<AudioClip>("hmpf4");
+        arghSound1 = Resources.Load<AudioClip>("argh1");
+        arghSound2 = Resources.Load<AudioClip>("argh2");
+        arghSound3 = Resources.Load<AudioClip>("argh3");
+        arghSound4 = Resources.Load<AudioClip>("argh4");
         deathSound = Resources.Load<AudioClip>("death");
-        ouch = new AudioClip[] { ouchSound1, ouchSound2, ouchSound3, ouchSound4};
+        ouch = new AudioClip[] { ouchSound1, ouchSound2, ouchSound3, ouchSound4 };
         hmpf = new AudioClip[] { hmpfSound1, hmpfSound2, hmpfSound3, hmpfSound4 };
+        argh = new AudioClip[] { arghSound1, arghSound2, arghSound3, arghSound4 };
         jumpSound = Resources.Load<AudioClip>("Jump");
 
         efxSource = GetComponent<AudioSource>();
@@ -75,6 +81,9 @@ public class SoundManager : MonoBehaviour
                 break;
             case "hmpf":
                 efxSource.PlayOneShot(RandomizeSfx(hmpf));
+                break;
+            case "argh":
+                efxSource.PlayOneShot(RandomizeSfx(argh));
                 break;
             case "death":
                 efxSource.PlayOneShot(deathSound);
