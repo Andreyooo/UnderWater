@@ -29,9 +29,10 @@ public class BulletScript : MonoBehaviour {
         }
     }
 
-    public void DestroyProjectile()
+    //Destroys bullet after time
+    public void DestroyProjectileAfterTime(float delay)
     {
-        Invoke("ExecuteProjectileDestruction", 1f);
+        Invoke("ExecuteProjectileDestruction", delay);
     }
 
     private void ExecuteProjectileDestruction()
@@ -47,7 +48,7 @@ public class BulletScript : MonoBehaviour {
         rb2D.isKinematic = true;
         rb2D.velocity = Vector2.zero;
         //Debug.Log(collision.gameObject.name);
-        DestroyProjectile();
+        DestroyProjectileAfterTime(1);
         if (collision.gameObject.name == "Player(Clone)")
         {
             var hit = collision.gameObject;

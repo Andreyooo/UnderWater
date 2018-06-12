@@ -11,7 +11,7 @@ public class ShootingWeapon : MonoBehaviour {
     public GameObject chargingBarOutline;
     public Transform firepoint;
 
-    private float bulletSpeed = 15;
+    private float bulletSpeed = 22;
     private float lifeTime = 10;
     private float chargeLevel = 0;
     private float chargeSpeed = 0.7f;
@@ -21,6 +21,7 @@ public class ShootingWeapon : MonoBehaviour {
     private SpriteRenderer weaponSR;
     private SpriteRenderer chargingBarSR;
     private SpriteRenderer chargingBarOutlineSR;
+    private bool active = false;
     private bool directionRight = true;
     private bool rotationEnabled = true;
     private bool canShoot = true;
@@ -35,41 +36,45 @@ public class ShootingWeapon : MonoBehaviour {
 
     void Update()
     {
-        //rotate when not in shooting mode
-        if(rotationEnabled)
+        if (active)
         {
-            Rotate();
-        }
-
-        //charging Bulletpower
-        if (Input.GetButton("Fire1") && canShoot && !EventSystem.current.IsPointerOverGameObject())
-        {
-            if (chargeLevel < chargeLimit)
+            //rotate when not in shooting mode
+            if (rotationEnabled)
             {
-                chargingBarSR.enabled = true;
-                chargingBarOutlineSR.enabled = true;
-
-                chargeLevel += Time.deltaTime * chargeSpeed;
-                chargingBar.transform.localScale = new Vector3(chargeLevel, chargeLevel, 1);
-                byte greenValue = (byte)(235 - colorChangingRangeGreen * Mathf.Pow(chargeLevel, 7));
-                chargingBarSR.color = new Color32(235, greenValue, 0, 255);
-                rotationEnabled = false;
-            } else
-            {
-                ReleaseProjectile();
-                canShoot = false;
+                Rotate();
             }
-        }
 
-        if (Input.GetButtonUp("Fire1") && !EventSystem.current.IsPointerOverGameObject())
-        {
-            if(canShoot)
+            //charging Bulletpower
+            if (Input.GetButton("Fire1") && canShoot && !EventSystem.current.IsPointerOverGameObject())
             {
-                ReleaseProjectile();
+                if (chargeLevel < chargeLimit)
+                {
+                    chargingBarSR.enabled = true;
+                    chargingBarOutlineSR.enabled = true;
+
+                    chargeLevel += Time.deltaTime * chargeSpeed;
+                    chargingBar.transform.localScale = new Vector3(chargeLevel, chargeLevel, 1);
+                    byte greenValue = (byte)(235 - colorChangingRangeGreen * Mathf.Pow(chargeLevel, 7));
+                    chargingBarSR.color = new Color32(235, greenValue, 0, 255);
+                    rotationEnabled = false;
+                }
+                else
+                {
+                    ReleaseProjectile();
+                    canShoot = false;
+                }
             }
-            else
+
+            if (Input.GetButtonUp("Fire1") && !EventSystem.current.IsPointerOverGameObject())
             {
-                canShoot = true;
+                if (canShoot)
+                {
+                    ReleaseProjectile();
+                }
+                else
+                {
+                    canShoot = true;
+                }
             }
         }
     }
@@ -95,16 +100,9 @@ public class ShootingWeapon : MonoBehaviour {
         bullet.transform.position = firepoint.transform.position;
         bullet.transform.rotation = gameObject.transform.rotation;
         bullet.GetComponent<Rigidbody2D>().AddForce(firepoint.forward * bulletSpeed * chargeLevel, ForceMode2D.Impulse);
-        StartCoroutine(DestroyBulletAfterTime(bullet, lifeTime));
+        bullet.GetComponent<BulletScript>().DestroyProjectileAfterTime(lifeTime);
         //GameManager.instance.HasFired(bullet);
         StartCoroutine(GameManager.instance.HasFired(bullet));
-    }
-
-    //Destroys bullet after time
-    private IEnumerator DestroyBulletAfterTime(GameObject bullet, float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        bullet.GetComponent<BulletScript>().DestroyProjectile();
     }
 
     //Weapon Rotation
@@ -126,6 +124,18 @@ public class ShootingWeapon : MonoBehaviour {
             this.FlipY(false);
         }
         transform.rotation = Quaternion.Euler(0f, 0f, rotation_z);
+    }
+
+    public void SetActive(bool bo)
+    {
+        active = bo;
+        if (bo == true)
+        {
+            weaponSR.enabled = true;
+        } else
+        {
+            weaponSR.enabled = false;
+        }
     }
 
     //flipping Weapon

@@ -17,6 +17,7 @@ using System.Collections;
 		public float invulnerabilityTime = 0.5f;
         private int soundVar;
         private string playerHitSound;
+        private string playerDeathSound;
 		//float currentShield = 0;
 		public int maxShield = 25;
 		//float regenShieldTimer = 0.0f;
@@ -44,9 +45,21 @@ using System.Collections;
 			currentHealth = maxHealth;
             //	currentShield = maxShield;
             soundVar = Random.Range(0, 3);
-            if (soundVar == 0) playerHitSound = "ouch";
-            if (soundVar == 1) playerHitSound = "hmpf";
-            if (soundVar == 2) playerHitSound = "argh";
+            if (soundVar == 0)
+            {
+                playerHitSound = "ouch";
+                playerDeathSound = "death";
+            }
+            if (soundVar == 1)
+            {
+                playerHitSound = "hmpf";
+                playerDeathSound = "death";
+            }
+            if (soundVar == 2)
+            {
+                playerHitSound = "argh";
+                playerDeathSound = "Viking Death";
+            }
             // Update the Simple Health Bar with the updated values of Health and Shield.
             healthBar.UpdateBar( currentHealth, maxHealth );
 	//		shieldBar.UpdateBar( currentShield, maxShield );
@@ -147,7 +160,7 @@ using System.Collections;
 
         // Destroy the explosion in 2 seconds.
         //Destroy(explo, 2 );
-        SoundManager.PlaySound("death");
+        SoundManager.PlaySound(playerDeathSound);
         
         Instantiate(blood, transform.position, Quaternion.identity);
         Instantiate(deadBody, transform.position, Quaternion.identity);
@@ -158,8 +171,10 @@ using System.Collections;
         Instantiate(deadRightHand, transform.position, Quaternion.identity);
         StartCoroutine("ShakeCamera");
 
-        gameObject.SetActive(false);
-        
+        Invoke("DeactivatePlayer", 11);
+        gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        gameObject.GetComponent<PolygonCollider2D>().enabled = false;
+
         //Destroy(blood, 2f);
 
         // Destroy this game object.
@@ -194,4 +209,9 @@ using System.Collections;
 			// Return back to the original position.
 			Camera.main.transform.position = origPos;
 		}
+        
+        private void DeactivatePlayer()
+        {
+            gameObject.SetActive(false);
+        }
 	}

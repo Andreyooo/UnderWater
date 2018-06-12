@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour {
 	public IEnumerator HasFired(GameObject projectile){
 		currentShots--;
         if (currentShots <= 0){
-            //players[currentPlayer].GetComponent<PlayerController>().SetPassive();
+            players[currentPlayer].GetComponent<PlayerController>().SetPassive();
             Debug.Log("Start Waiting");
             yield return new WaitUntil(() => projectileDestroyed);
             Debug.Log("Stop Waiting");
@@ -60,7 +60,7 @@ public class GameManager : MonoBehaviour {
     {
         for (int j = 0; j < players.Count - 1; j++)
         {
-            if (!players[j].activeSelf)
+            if (!players[j].GetComponent<PolygonCollider2D>().enabled)
             {
                 Debug.Log("Player " + j + " aus der SpielerListe gelöscht");
                 players.RemoveAt(j);

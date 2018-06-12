@@ -103,7 +103,7 @@ public class PlayerController : PhysicsObject
         {
             movingMode = false;
             aimingMode = true;
-            transform.Find("ShootingWeapon").gameObject.SetActive(true);
+            transform.Find("ShootingWeapon").gameObject.GetComponent<ShootingWeapon>().SetActive(true);
         }
     }
 
@@ -115,7 +115,7 @@ public class PlayerController : PhysicsObject
         {
             aimingMode = false;
             movingMode = true;
-            transform.Find("ShootingWeapon").gameObject.SetActive(false);
+            transform.Find("ShootingWeapon").gameObject.GetComponent<ShootingWeapon>().SetActive(false);
 
         }
     }
@@ -126,7 +126,7 @@ public class PlayerController : PhysicsObject
         movingMode = false;
         aimingMode = false;
         passiveMode = true;
-        transform.Find("ShootingWeapon").gameObject.SetActive(false);
+        transform.Find("ShootingWeapon").gameObject.GetComponent<ShootingWeapon>().SetActive(false);
     }
 
     //Player is Activ
