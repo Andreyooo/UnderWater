@@ -75,7 +75,7 @@ public class PlayerController : PhysicsObject
         if (Input.GetButtonDown("Jump") && grounded)
         {
             jumped = true;
-            SoundManager.PlaySound("jump");
+            SoundManager.PlaySound(gameObject.GetComponent<PlayerHealth>().playerJumpSound);
             velocity.y = jumpTakeOffSpeed;
         }
         else if (Input.GetButtonUp("Jump"))

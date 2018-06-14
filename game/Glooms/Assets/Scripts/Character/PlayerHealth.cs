@@ -17,6 +17,7 @@ using System.Collections;
 		public float invulnerabilityTime = 0.5f;
         private int soundVar;
         private string playerHitSound;
+        public string playerJumpSound;
         private string playerDeathSound;
 		//float currentShield = 0;
 		public int maxShield = 25;
@@ -48,16 +49,19 @@ using System.Collections;
             if (soundVar == 0)
             {
                 playerHitSound = "ouch";
+                playerJumpSound = "jump";
                 playerDeathSound = "death";
             }
             if (soundVar == 1)
             {
                 playerHitSound = "hmpf";
+                playerJumpSound = "jump";
                 playerDeathSound = "death";
             }
             if (soundVar == 2)
             {
                 playerHitSound = "argh";
+                playerJumpSound = "Viking Jump";
                 playerDeathSound = "Viking Death";
             }
             // Update the Simple Health Bar with the updated values of Health and Shield.
