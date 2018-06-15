@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour {
             aPlayer.transform.position = new Vector3(xPos[i], 2, 1);
             players.Add(aPlayer);
             if (i == 2)
-                aPlayer.GetComponent<PlayerController>().FlipX(true);
+                aPlayer.GetComponentInChildren<ShootingWeapon>().FlipWeapon();
         }
 		currentShots = shotsPerTurn;
         SwitchPlayer();

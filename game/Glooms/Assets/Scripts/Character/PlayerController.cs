@@ -13,14 +13,16 @@ public class PlayerController : PhysicsObject
     public bool movingMode = false;
     public bool passiveMode;
     public bool jumped;
+    public bool flipped = false;
 
-
+    private ShootingWeapon shootingWeaponScript;
     private SpriteRenderer spriteRenderer;
     private Animator animator;
 
     // Use this for initialization
     void Awake()
     {
+        shootingWeaponScript = gameObject.GetComponentInChildren<ShootingWeapon>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         movementButton = GameObject.Find("Movement Button").GetComponent<Button>();
@@ -77,7 +79,7 @@ public class PlayerController : PhysicsObject
             jumped = true;
             SoundManager.PlaySound(gameObject.GetComponent<PlayerHealth>().playerJumpSound);
             velocity.y = jumpTakeOffSpeed;
-        }
+        }   
         else if (Input.GetButtonUp("Jump"))
         {
             if (velocity.y > 0)
@@ -87,13 +89,25 @@ public class PlayerController : PhysicsObject
         }
 
         //Flip player when moving
-        bool flipSprite = (spriteRenderer.flipX ? (move.x > 0.01f) : (move.x < -0.01f));
+        bool flipSprite = (flipped ? (move.x > 0.01f) : (move.x < -0.01f));
+
         if (flipSprite)
         {
-            spriteRenderer.flipX = !spriteRenderer.flipX;
+            shootingWeaponScript.FlipWeapon();
+            //spriteRenderer.flipX = !spriteRenderer.flipX;
         }
 
         targetVelocity = move * maxSpeed;
+    }
+
+    //Flip
+    public void Flip()
+    {
+        flipped = !flipped;
+        Debug.Log("PlayerFlip = " + flipped);
+        Vector3 newScale = transform.localScale;
+        newScale.x *= -1;
+        transform.localScale = newScale;
     }
 
     //Set To Aiming Mode

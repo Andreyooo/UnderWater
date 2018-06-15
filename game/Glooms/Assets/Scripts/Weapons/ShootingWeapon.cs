@@ -111,17 +111,17 @@ public class ShootingWeapon : MonoBehaviour {
         Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         difference.Normalize();
         float rotation_z = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
-        if ((rotation_z > 90f && rotation_z <= 180 || rotation_z < -90 && rotation_z > -180) && directionRight == true)
+        if ((rotation_z > 90f && rotation_z <= 180 || rotation_z < -90 && rotation_z > -180) && player.flipped == false)
         {
-            directionRight = false;
-            player.FlipX(true);
-            this.FlipY(true);
+            FlipWeapon();
+            //player.FlipX(true);
+            //this.FlipY(true);
         }
-        if (rotation_z <= 90f && rotation_z >= -90 && directionRight == false)
+        if (rotation_z <= 90f && rotation_z >= -90 && player.flipped == true)
         {
-            directionRight = true;
-            player.FlipX(false);
-            this.FlipY(false);
+            FlipWeapon();
+            //player.FlipX(false);
+            //this.FlipY(false);
         }
         transform.rotation = Quaternion.Euler(0f, 0f, rotation_z);
     }
@@ -139,8 +139,12 @@ public class ShootingWeapon : MonoBehaviour {
     }
 
     //flipping Weapon
-    public void FlipY(bool bo)
+    public void FlipWeapon()
     {
-        weaponSR.flipY = bo;
+        player.Flip();
+        Vector3 newScale = transform.localScale;
+        newScale.x *= -1;
+        newScale.y *= -1;
+        transform.localScale = newScale;
     }
 }

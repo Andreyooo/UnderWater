@@ -438,6 +438,7 @@ MonoBehaviour:
   movingMode: 0
   passiveMode: 1
   jumped: 0
+  flipped: 0
 --- !u!114 &114514880690408372
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -525,6 +526,7 @@ MonoBehaviour:
     type: 2}
   maxHealth: 25
   invulnerabilityTime: 0
+  playerJumpSound: 
   maxShield: 25
   regenShieldTimerMax: 1
   explosionParticles: {fileID: 0}
@@ -664,7 +666,7 @@ SpriteRenderer:
   m_SortingLayerID: -1953543871
   m_SortingLayer: 3
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: ab99d08ac81a0824e867d316a7991e2f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2aa4fc509a7cb8c44a370f44536ba066, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

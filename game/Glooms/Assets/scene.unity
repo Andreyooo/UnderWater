@@ -840,7 +840,7 @@ GameObject:
   m_Component:
   - component: {fileID: 556470057}
   - component: {fileID: 556470058}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Weapon Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -993,7 +993,7 @@ GameObject:
   m_Component:
   - component: {fileID: 616437837}
   - component: {fileID: 616437838}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Movement Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1075,7 +1075,7 @@ GameObject:
   - component: {fileID: 663480975}
   - component: {fileID: 663480974}
   - component: {fileID: 663480977}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Movement Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1089,7 +1089,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 663480972}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -6233.968}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 0}
   m_Children:
   - {fileID: 907134103}
@@ -1868,7 +1868,7 @@ GameObject:
   - component: {fileID: 907134103}
   - component: {fileID: 907134105}
   - component: {fileID: 907134104}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2088,7 +2088,7 @@ GameObject:
   - component: {fileID: 1243988255}
   - component: {fileID: 1243988254}
   - component: {fileID: 1243988257}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Weapon Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2102,7 +2102,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1243988252}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -6233.968}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 0}
   m_Children:
   - {fileID: 1702932820}
@@ -2379,7 +2379,7 @@ GameObject:
   - component: {fileID: 1317778018}
   - component: {fileID: 1317778017}
   - component: {fileID: 1317778016}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -2420,7 +2420,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 3.303193
+  orthographic size: 3.5644426
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -2460,7 +2460,7 @@ GameObject:
   - component: {fileID: 1702932820}
   - component: {fileID: 1702932822}
   - component: {fileID: 1702932821}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2998,7 +2998,7 @@ GameObject:
   - component: {fileID: 1741906983}
   - component: {fileID: 1741906982}
   - component: {fileID: 1741906981}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
