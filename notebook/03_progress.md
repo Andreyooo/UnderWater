@@ -21,7 +21,7 @@ Wir haben bisher Layer1 und einige Elemente aus Layer2 implementiert.
   wurde. Die Hände wurden entfernt und an die einzelnen Waffen angefügt.
   ![](./images/Aiming.PNG) ![](./images/Bow.png)
   
-  Desweiteren mussten wir hier viele kleinerer Komponenten beachten wie: Rotation, Charackterspiegelelung und Feurposition des
+  Desweiteren mussten wir hier viele kleinerer Komponenten beachten wie: Rotation, Charakterspiegelelung und Feurposition des
   Projektils.
   
   Als nächstes brauchten wir eine Animation für das Aufladen des Projektilschusses. Da wir Online keine passende Hilfe gefunden 
@@ -32,9 +32,9 @@ Wir haben bisher Layer1 und einige Elemente aus Layer2 implementiert.
   ![](./images/LoadingBulletOutLine.png)
   ![](./images/LoadingBullet.png) 
   
-  Hier habem sich sehr viele Komplikationen bemerkbar gemacht. Manchmal hat sich der Player nicht richtig gedreht. Die Waffe
+  Hier haben sich sehr viele Komplikationen bemerkbar gemacht. Manchmal hat sich der Player nicht richtig gedreht. Die Waffe
   musste an der Y-Achse gespiegelt werden. Zunächst hatten wir die Flip funktion benutzt, jedoch sind wir dann auf die
-  Invertierung der TransformX-Achse umgestiegen da somit auch alle anderen Komponenten gespiegelt werden. Hier mussten auch
+  Invertierung der TransformX-Achse umgestiegen, da somit auch alle anderen Komponenten gespiegelt werden. Hier mussten auch
   viele Anpassungen gemacht werden, als wir den Movement- und Aiming-Button hinzugefügt haben. 
   
 #### 2D-Map
