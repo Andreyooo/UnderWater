@@ -20,6 +20,11 @@ Wir haben bisher Layer1 und einige Elemente aus Layer2 implementiert.
 ##### Layer1:
 
 - 3 Fraktionen mit je einer Einheit.
-  Als erstes haben wir eine einzelne Einheit erstellt. Dazu haben wir uns ein kostenloses SpriteSheet aus dem AssetStore heruntergeladen,
-  welches uns auch Animationen ermöglicht.
+  Als erstes haben wir eine einzelne Einheit erstellt. Dazu haben wir uns ein kostenloses Gloomy Sprite-Sheet aus dem AssetStore
+  heruntergeladen, welches uns auch Animationen ermöglicht.
   ![](./images/BaseHuman.PNG)
+  
+  Diese dient als Platzhalter, bis wir diese für die einzelnen Fraktionen noch etwas anpassen.
+  
+
+  
