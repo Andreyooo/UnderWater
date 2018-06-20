@@ -12,7 +12,7 @@ Wir haben bisher Layer1 und einige Elemente aus Layer2 implementiert.
   
   
   ![](./images/BaseHuman.PNG)
- 
+  ![](./images/Animation.PNG)
  
   Diese dient als Platzhalter, bis wir sie für die einzelnen Fraktionen noch etwas anpassen.
   
