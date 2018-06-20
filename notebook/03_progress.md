@@ -30,13 +30,13 @@ Wir haben bisher Layer1 und einige Elemente aus Layer2 implementiert.
   
 #### Player Movement:
 
-Das Player Movement hatten wir zu beginn sehr einfach implementiert:
-![](./images/Movement.PNG)
+ Das Player Movement hatten wir zu beginn sehr einfach implementiert:
+ ![](./images/Movement.PNG)
 
-Das hat für die erste Zeit gereicht, jedoch haben wir gemerkt dass es einige Probleme gab, 
-die Bewegung hat sich merkwürdig angefühlt und das erklimmen von hohen Klippen war 
-"zu einfach", außerdem haben wir informationen benötigt wie zum Beispiel ob wir gerade 
-"grounded" sind um Mehrfachsprünge zu verhindern,  Sprunganimationen einzuführen etc.
+ Das hat für die erste Zeit gereicht, jedoch haben wir gemerkt dass es einige Probleme gab, 
+ die Bewegung hat sich merkwürdig angefühlt und das erklimmen von hohen Klippen war 
+ "zu einfach", außerdem haben wir informationen benötigt wie zum Beispiel ob wir gerade 
+ "grounded" sind um Mehrfachsprünge zu verhindern,  Sprunganimationen einzuführen etc.
  Daher haben wir das Movement-Script nach einem recht ausführlichen Unity Tutorial aufgebaut 
  und es ist etwas komplizierter als erwartet geworden.
  
@@ -58,6 +58,7 @@ die Bewegung hat sich merkwürdig angefühlt und das erklimmen von hohen Klippen
  Zum Schluss wird die neue Position berechnet und angewandt.
  ![](./images/Movement3.PNG)
  
+ ### Layer 2:
  
  ####  Audio:
  Das hinzufügen von Hintergrundsounds und Soundeffekten ging recht einfach.
