@@ -6,13 +6,27 @@ Wir haben bisher Layer1 und einige Elemente aus Layer2 implementiert.
 
 ### Layer1:
 
-- 3 Fraktionen mit je einer Einheit.
-  Als erstes haben wir eine einzelne Einheit erstellt. Dazu haben wir uns ein kostenloses Gloomy Sprite-Sheet aus dem AssetStore
-  heruntergeladen, welches uns auch Animationen ermöglicht.
+#### Die Einheit:
+  Als erstes haben wir eine einzelne Einheit erstellt. Dazu haben wir uns ein kostenloses Sprite-Sheet aus dem
+  AssetStore heruntergeladen, welches uns auch Animationen ermöglicht.
   ![](./images/BaseHuman.PNG)
  
  
-  Diese dient als Platzhalter, bis wir diese für die einzelnen Fraktionen noch etwas anpassen.
+  Diese dient als Platzhalter, bis wir sie für die einzelnen Fraktionen noch etwas anpassen.
+  
+#### Ziel- und Schießsystem:
+  Für das Ziel und Schießsystem haben wir unsere Einheit durch ein neues Bild erweitert, welches in Illustrator nachgebaut
+  wurde. Die Hände wurden entfernt und an die einzelnen Waffen angefügt.
+  ![](./images/Aiming.PNG) ![](./images/Bow.png)
+  
+  Desweiteren mussten wir hier viele kleinerer Komponenten beachten wie: Rotation, Charackterspiegelelung und Feurposition des
+  Projektils.
+  
+  Als nächstes brauchten wir eine Animation für das Aufladen des Projektilschusses. Da wir Online keine passende Hilfe gefunden 
+  haben, haben wir in Illustrator zwei Bilder erstellt. Eine leere Hülle und ein Bild welches beim Aufladen gleichmäßig
+  gescaled wird. Dadurch ergibt sich ein Aufladeffekt.
+  ![](./images/LoadingBulletOutLine.png)
+  ![](./images/LoadingBullet.png) 
   
   
 #### Player Movement:
