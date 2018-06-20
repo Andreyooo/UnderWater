@@ -41,6 +41,14 @@ Wir haben bisher Layer1 und einige Elemente aus Layer2 implementiert.
   Wir haben eine provisorische Map im Asset Store gefunden, die wir mit Collidern ausgestattett haben, damit wir unser Spiel
   testen können. Diese wird noch überarbeitet, da sie für unser Gameplay zu wenig Deckung bietet.
   
+#### GameManager
+  Den GameManager haben wir eingebaut, nachdem das Ziel-Waffensystem und der Player bereits erstellt waren. Dieser instanziert
+  die Player. Hier war das bisher Aufwendigste die Player nacheinander spielen zulassen. Nach jedem Schuss ist die Runde
+  einer Einheit beendet. Wir mussten den Turnmanager so programmieren, dass er wartet, bis das Projektil zerstört ist, damit 
+  keine gleich sterbende Einheit dran ist, die dann nicht mehr agieren kann. Außerdem mussten wir die Einheiten richtig aus
+  dem Spiel nehmen. Damit eine korrekt Reihenfolge gewährleistet ist. Viele andere Scripts wurden erweitert, damit wir die
+  Player passiv stellen können, wenn sie nicht an der Reihe sind.
+  
 #### Player Movement:
 
  Das Player Movement hatten wir zu beginn sehr einfach implementiert:
