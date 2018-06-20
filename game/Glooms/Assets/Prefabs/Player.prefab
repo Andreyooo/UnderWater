@@ -451,7 +451,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 114215451164709628}
-  bulletPrefab: {fileID: 1977473097257162, guid: 4d4921510c4cc6441a139acd401a42a4,
+  bulletPrefab: {fileID: 1230638250690040, guid: f294a02105ecf4a4abff99d2cb766594,
     type: 2}
   chargingBar: {fileID: 1502858361489632}
   chargingBarOutline: {fileID: 1982152408669454}

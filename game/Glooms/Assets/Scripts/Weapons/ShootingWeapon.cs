@@ -26,12 +26,14 @@ public class ShootingWeapon : MonoBehaviour {
     private bool rotationEnabled = true;
     private bool canShoot = true;
 
+    private Vector3 bazookaFirepoint = new Vector3(2.3f, 1.4f, 0);
 
     void Awake()
     {
         weaponSR = GetComponent<SpriteRenderer>();
         chargingBarSR = chargingBar.GetComponent<SpriteRenderer>();
         chargingBarOutlineSR = chargingBarOutline.GetComponent<SpriteRenderer>();
+        firepoint.position = bazookaFirepoint;
     }
 
     void Update()
