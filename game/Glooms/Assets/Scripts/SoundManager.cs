@@ -10,6 +10,7 @@ public class SoundManager : MonoBehaviour
     public static float lowPitchRange = .95f;              //The lowest a sound effect will be randomly pitched.
     public static float highPitchRange = 1.05f;            //The highest a sound effect will be randomly pitched.
 
+    public static AudioClip rocket, explosion;
     public static AudioClip arrowShotSound, arrowHitSound, ouchSound1, ouchSound2, ouchSound3, ouchSound4, jumpSound, deathSound, hmpfSound1, hmpfSound2, hmpfSound3, hmpfSound4;
     //Viking Sounds
     public static AudioClip arghSound1, arghSound2, arghSound3, arghSound4, vikingJumpSound1, vikingJumpSound2, vikingDeathSound;
@@ -31,6 +32,8 @@ public class SoundManager : MonoBehaviour
         //Set SoundManager to DontDestroyOnLoad so that it won't be destroyed when reloading our scene.
         DontDestroyOnLoad(gameObject);
 
+        rocket = Resources.Load<AudioClip>("rocket");
+        explosion = Resources.Load<AudioClip>("explosion");
 
         arrowShotSound = Resources.Load<AudioClip>("PfeilSchuss");
         arrowHitSound = Resources.Load<AudioClip>("PfeilTreffer");
@@ -105,6 +108,12 @@ public class SoundManager : MonoBehaviour
                 break;
             case "Viking Death":
                 efxSource.PlayOneShot(vikingDeathSound);
+                break;
+            case "explosion":
+                efxSource.PlayOneShot(explosion);
+                break;
+            case "rocket":
+                efxSource.PlayOneShot(rocket);
                 break;
         }
     }

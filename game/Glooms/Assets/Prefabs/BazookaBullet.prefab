@@ -22,8 +22,8 @@ GameObject:
   - component: {fileID: 212981174218692326}
   - component: {fileID: 50587171261306020}
   - component: {fileID: 96927029295316048}
-  - component: {fileID: 114332243193985664}
   - component: {fileID: 60259542404633272}
+  - component: {fileID: 114148606316310332}
   m_Layer: 0
   m_Name: BazookaBullet
   m_TagString: Untagged
@@ -55,7 +55,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 2
   m_LinearDrag: 0.5
   m_AngularDrag: 0.05
   m_GravityScale: 0.6
@@ -212,7 +212,7 @@ TrailRenderer:
     generateLightingData: 0
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
---- !u!114 &114332243193985664
+--- !u!114 &114148606316310332
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
