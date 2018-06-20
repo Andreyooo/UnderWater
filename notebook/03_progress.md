@@ -44,14 +44,14 @@ die Bewegung hat sich merkwürdig angefühlt und das erklimmen von hohen Klippen
  Die wichtigste Funktion für die Bewegung  ist die Movement Funktion in dem Physics Object:
  ![](./images/Movement1.PNG)
  
- hierbei wird zuerst geschaut ob die mögliche Bewegung groß genug ist um gemacht zu 
- werden. 
- Wenn ja wird mit rb2d.Cast() geschaut ob es während dieser Bewegung zu 
- hits kommen wird. Falls es hits gibt werden diese in einer Hitbufferliste
- zwischengespeichert.
- Mithilfe dieser sehen wir dann auch ob wir "grounded" sind,
- in dem Fall ob wir mit einem Objekt colliden ,dass 
+ hierbei wird zuerst geschaut ob die mögliche Bewegung groß 
+ genug ist um gemacht zu werden. Wenn ja wird mit rb2d.Cast() 
+ geschaut ob es während dieser Bewegung zu hits kommen wird. 
+ Falls es hits gibt werden diese in einer Hitbufferliste
+ zwischengespeichert. Mithilfe dieser sehen wir dann auch ob wir 
+ "grounded" sind, also ob wir mit einem Objekt colliden ,dass 
  eine gewisse Steigung nicht übersteigt.
+ 
  ![](./images/Movement2.PNG)
  
  
