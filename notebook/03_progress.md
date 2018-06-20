@@ -17,6 +17,9 @@ __Weiteres entnehmen Sie bitte dem Übungsblatt!__
 
 Wir haben bisher Layer1 und einige Elemente aus Layer2 implementiert.
 
-Layer1:
+##### Layer1:
 
-##### 3 Fraktionen mit je einer Einheit.
+- 3 Fraktionen mit je einer Einheit.
+  Als erstes haben wir eine einzelne Einheit erstellt. Dazu haben wir uns ein kostenloses SpriteSheet aus dem AssetStore heruntergeladen,
+  welches uns auch Animationen ermöglicht.
+  ![](./images/BaseHuman)
