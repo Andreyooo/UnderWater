@@ -12,3 +12,11 @@
 __Weiteres entnehmen Sie bitte dem Übungsblatt!__
 
 ![](./images/dummyimg4.png)
+
+#### Zwischenbericht
+
+Wir haben bisher Layer1 und einige Elemente aus Layer2 implementiert.
+
+Layer1:
+
+#3 Fraktionen mit je einer Einheit.
