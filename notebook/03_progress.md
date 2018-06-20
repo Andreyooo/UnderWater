@@ -26,12 +26,20 @@ Wir haben bisher Layer1 und einige Elemente aus Layer2 implementiert.
   
   Als nächstes brauchten wir eine Animation für das Aufladen des Projektilschusses. Da wir Online keine passende Hilfe gefunden 
   haben, haben wir in Illustrator zwei Bilder erstellt. Eine leere Hülle und ein Bild welches beim Aufladen gleichmäßig
-  gescaled wird. Dadurch ergibt sich ein Aufladeffekt.
+  gestreckt wird. Dadurch ergibt sich ein Aufladeffekt.
   
   
   ![](./images/LoadingBulletOutLine.png)
   ![](./images/LoadingBullet.png) 
   
+  Hier habem sich sehr viele Komplikationen bemerkbar gemacht. Manchmal hat sich der Player nicht richtig gedreht. Die Waffe
+  musste an der Y-Achse gespiegelt werden. Zunächst hatten wir die Flip funktion benutzt, jedoch sind wir dann auf die
+  Invertierung der TransformX-Achse umgestiegen da somit auch alle anderen Komponenten gespiegelt werden. Hier mussten auch
+  viele Anpassungen gemacht werden, als wir den Movement- und Aiming-Button hinzugefügt haben. 
+  
+#### 2D-Map
+  Wir haben eine provisorische Map im Asset Store gefunden, die wir mit Collidern ausgestattett haben, damit wir unser Spiel
+  testen können. Diese wird noch überarbeitet, da sie für unser Gameplay zu wenig Deckung bietet.
   
 #### Player Movement:
 
