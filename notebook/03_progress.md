@@ -19,4 +19,4 @@ Wir haben bisher Layer1 und einige Elemente aus Layer2 implementiert.
 
 Layer1:
 
-# 3 Fraktionen mit je einer Einheit.
+##### 3 Fraktionen mit je einer Einheit.
