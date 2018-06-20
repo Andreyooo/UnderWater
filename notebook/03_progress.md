@@ -55,6 +55,7 @@ die Bewegung hat sich merkwürdig angefühlt und das erklimmen von hohen Klippen
  Zum Schluss wird die neue Position berechnet und angewandt.
  ![](./images/Movement3.PNG)
  
+ 
  #####  Audio:
  Das hinzufügen von Hintergrundsounds und Soundeffekten ging recht einfach.
  Dabei haben wir uns am Anfang an das Soundcontroller Script, welches wir für unser erstes
