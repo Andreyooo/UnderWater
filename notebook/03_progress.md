@@ -27,6 +27,8 @@ Wir haben bisher Layer1 und einige Elemente aus Layer2 implementiert.
   Als nächstes brauchten wir eine Animation für das Aufladen des Projektilschusses. Da wir Online keine passende Hilfe gefunden 
   haben, haben wir in Illustrator zwei Bilder erstellt. Eine leere Hülle und ein Bild welches beim Aufladen gleichmäßig
   gescaled wird. Dadurch ergibt sich ein Aufladeffekt.
+  
+  
   ![](./images/LoadingBulletOutLine.png)
   ![](./images/LoadingBullet.png) 
   
