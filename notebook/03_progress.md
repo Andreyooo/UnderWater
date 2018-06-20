@@ -17,7 +17,7 @@ __Weiteres entnehmen Sie bitte dem Übungsblatt!__
 
 Wir haben bisher Layer1 und einige Elemente aus Layer2 implementiert.
 
-##### Layer1:
+### Layer1:
 
 - 3 Fraktionen mit je einer Einheit.
   Als erstes haben wir eine einzelne Einheit erstellt. Dazu haben wir uns ein kostenloses Gloomy Sprite-Sheet aus dem AssetStore
@@ -28,7 +28,7 @@ Wir haben bisher Layer1 und einige Elemente aus Layer2 implementiert.
   Diese dient als Platzhalter, bis wir diese für die einzelnen Fraktionen noch etwas anpassen.
   
   
-##### Player Movement:
+#### Player Movement:
 
 Das Player Movement hatten wir zu beginn sehr einfach implementiert:
 ![](./images/Movement.PNG)
@@ -59,7 +59,7 @@ die Bewegung hat sich merkwürdig angefühlt und das erklimmen von hohen Klippen
  ![](./images/Movement3.PNG)
  
  
- #####  Audio:
+ ####  Audio:
  Das hinzufügen von Hintergrundsounds und Soundeffekten ging recht einfach.
  Dabei haben wir uns am Anfang an das Soundcontroller Script, 
  welches wir für unser erstes Breakout Spiel erstellt  hatten. 
