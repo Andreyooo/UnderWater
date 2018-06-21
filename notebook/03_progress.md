@@ -15,6 +15,7 @@ Wir haben bisher Layer1 und einige Elemente aus Layer2 implementiert.
   ![](./images/Animation.PNG)
  
   Diese dient als Platzhalter, bis wir sie für die einzelnen Fraktionen noch etwas anpassen.
+
   &nbsp;
   
 #### Ziel- und Schießsystem:
@@ -37,6 +38,7 @@ Wir haben bisher Layer1 und einige Elemente aus Layer2 implementiert.
   musste an der Y-Achse gespiegelt werden. Zunächst hatten wir die Flip funktion benutzt, jedoch sind wir dann auf die
   Invertierung der TransformX-Achse umgestiegen, da somit auch alle anderen Komponenten gespiegelt werden. Hier mussten auch
   viele Anpassungen gemacht werden, als wir den Movement- und Aiming-Button hinzugefügt haben. 
+
   &nbsp;
   
 #### 2D-Map
@@ -45,6 +47,7 @@ Wir haben bisher Layer1 und einige Elemente aus Layer2 implementiert.
   Die jetzige Map verwenden wir jedoch nur vorrübergehend, da sie zu klein und insgesamt zu flach ist. 
   Sie wäre für eine längere Runde, die sich über mehrere Minuten erstreckt, ungeeignet.
   ![](./images/Map.PNG)
+
   &nbsp;
   
 #### GameManager
@@ -54,6 +57,7 @@ Wir haben bisher Layer1 und einige Elemente aus Layer2 implementiert.
   keine gleich sterbende Einheit dran ist, die dann nicht mehr agieren kann. Außerdem mussten wir die Einheiten richtig aus
   dem Spiel nehmen, damit eine korrekt Reihenfolge gewährleistet ist. Viele andere Scripts wurden erweitert, damit wir die
   Player passiv stellen können, wenn sie nicht an der Reihe sind.
+
   &nbsp;
   
 #### Player Movement:
@@ -85,6 +89,7 @@ Wir haben bisher Layer1 und einige Elemente aus Layer2 implementiert.
  
  Zum Schluss wird die neue Position berechnet und angewandt.
  ![](./images/Movement3.PNG)
+
  &nbsp;
 
  ### Layer 2:
@@ -101,14 +106,15 @@ Wir haben bisher Layer1 und einige Elemente aus Layer2 implementiert.
  zufälligen verschiedenen Sounds wechselt und dabei auch eine kleine 
  Varianz in die höhe vom Pitch bringt.
  ![](./images/Webeng.PNG)
+
  &nbsp;
 
  #### Voice Acting:
  Die Stimmen der einzelnen Fraktionen haben wir selbst eingesprochen. 
  In feinster Tonstudio-Qualität(AudaCity Studios) werden verschiedene Sounds bei unterschiedlichen Situationen wie Treffern, Sprüngen oder Tode abgespielt. 
  Dabei haben wir versucht die Fraktionen stimmlich voneinander zu differenzieren. 
- &nbsp;
 
+ &nbsp;
 
 ### Fazit:
 Im Laufe der Entwicklung hatten wir mit den unterschiedlichsten Problemen zu tun. Zum einen gab es nach relativ kurzer Zeit viele Abhängigkeiten unter den einzelnen Gameobjekten,
@@ -122,8 +128,7 @@ Das Spiel wird dadurch natürlich auch dynamischer, da der Gloomy über eine deu
 Entscheidet man sich für eine kleine Sprunghöhe, dann muss die Map größtenteils eine Ebene bleiben, 
 mit Steigungen und Senkungen oder man muss sich andere Methoden überlegen, 
 um große Höhen erreichbar zu machen, sodass man nicht in die Lage kommt, 
-frühzeitig in einem Abhang festzustecken. &nbsp;
-Zeitlich betrachtet sind wir deutlich im Verzug in Betracht des Entwicklungsplans den wir zu Beginn des Semesters entwickelt hatten. Verschiedenste Faktoren(die natürlich alle außerhalb unseres Einflusses lagen) haben dazu geführt, dass es zwischendurch zu paar entwicklungsarmen Wochen kam. Vor allem in den ersten Wochen haben wir sehr viel Zeit liegen lassen. Wir sind dennoch zuversichtlich, dass wir das Spiel in den letzten
+frühzeitig in einem Abhang festzustecken. Zeitlich betrachtet sind wir deutlich im Verzug in Betracht des Entwicklungsplans den wir zu Beginn des Semesters entwickelt hatten. Verschiedenste Faktoren(die natürlich alle außerhalb unseres Einflusses lagen) haben dazu geführt, dass es zwischendurch zu paar entwicklungsarmen Wochen kam. Vor allem in den ersten Wochen haben wir sehr viel Zeit liegen lassen. Wir sind dennoch zuversichtlich, dass wir das Spiel in den letzten
 Wochen nocheinmal deutlich erweitern, um dann mit einem brachialen Steam-Release in die Semesterferien zustarten.
 
   
