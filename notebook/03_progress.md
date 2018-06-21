@@ -38,15 +38,18 @@ Wir haben bisher Layer1 und einige Elemente aus Layer2 implementiert.
   viele Anpassungen gemacht werden, als wir den Movement- und Aiming-Button hinzugefügt haben. 
   
 #### 2D-Map
-  Wir haben eine provisorische Map im Asset Store gefunden, die wir mit Collidern ausgestattett haben, damit wir unser Spiel
-  testen können. Diese wird noch überarbeitet, da sie für unser Gameplay zu wenig Deckung bietet.
+  Für unsere erste Map haben wir uns ein PNG aus dem Internet runtergeladen, welches aus mehreren Layern besteht. 
+  So haben wir die vordersten Berge als Spiel-Terrain benutzt, in dem wir dem Layer einen Collider hinzugefügt haben.
+  Die jetzige Map verwenden wir jedoch nur vorrübergehend, da sie zu klein und insgesamt zu flach ist. 
+  Daher wäre sie für eine längere Runde, die sich über mehrere Minuten erstreckt, ungeeignet.
+  ![](./images/Map.PNG)
   
 #### GameManager
   Den GameManager haben wir eingebaut, nachdem das Ziel-Waffensystem und der Player bereits erstellt waren. Dieser instanziert
   die Player. Hier war das bisher Aufwendigste die Player nacheinander spielen zulassen. Nach jedem Schuss ist die Runde
   einer Einheit beendet. Wir mussten den Turnmanager so programmieren, dass er wartet, bis das Projektil zerstört ist, damit 
   keine gleich sterbende Einheit dran ist, die dann nicht mehr agieren kann. Außerdem mussten wir die Einheiten richtig aus
-  dem Spiel nehmen. Damit eine korrekt Reihenfolge gewährleistet ist. Viele andere Scripts wurden erweitert, damit wir die
+  dem Spiel nehmen, damit eine korrekt Reihenfolge gewährleistet ist. Viele andere Scripts wurden erweitert, damit wir die
   Player passiv stellen können, wenn sie nicht an der Reihe sind.
   
 #### Player Movement:
@@ -81,7 +84,7 @@ Wir haben bisher Layer1 und einige Elemente aus Layer2 implementiert.
  
  ### Layer 2:
  
- ####  Audio:
+ #### Audio:
  Das hinzufügen von Hintergrundsounds und Soundeffekten ging recht einfach.
  Dabei haben wir uns am Anfang an das Soundcontroller Script, 
  welches wir für unser erstes Breakout Spiel erstellt  hatten. 
@@ -94,10 +97,22 @@ Wir haben bisher Layer1 und einige Elemente aus Layer2 implementiert.
  Varianz in die höhe vom Pitch bringt.
  ![](./images/Webeng.PNG)
  
- ##### Voice Acting:
- Die Stimmen der einzelnen Fraktionen haben wir selbst eingesprochen. Dabei haben wir
- hauptsächlich Auda City für die Aufnahmen benutzt. 
-
+ #### Voice Acting:
+ Die Stimmen der einzelnen Fraktionen haben wir selbst eingesprochen. 
+ In feinster Tonstudio-Qualität(AudaCity Studios) werden verschiedene Sounds bei unterschiedlichen Situationen wie Treffern, Sprüngen oder Tode abgespielt. 
+ Dabei haben wir versucht die Fraktionen stimmlich voneinander zu differenzieren. 
  
 
+###Fazit
+Im Laufe der Entwicklung hatten wir mit unterschiedlichen Problemen zu tun. Zum einen gab es nach relativ kurzer Zeit viele Abhängigkeiten unter den einzelnen Gameobjekten,
+wodurch bei neuen Features immer wieder Dateien angepasst bzw. aktualisiert werden mussten. 
+Bei scheinbar kleinen Änderungen wie z.B. dem Hinzufügen von zwei Aktions-Buttons(Bewegung & Angriff), 
+musste der GameManager komplett umgeschrieben werden. Zusätzlich kamen über die Zeit immer wieder Fragen auf, die das Game-Design des Spiels betrafen und über die wir uns nicht ausreichend Gedanken gemacht hatten. Beispielsweise bei der Entscheidung wie hoch der Charakter springen kann. Die Sprunghöhe hat ein relativ großen Einfluss auf die Design-Möglichkeiten der Map und des Gameplays. Kann der Charakter hoch springen und Abhänge leichter erreichen? 
+Dann können wir auch Maps mit ausgefallenerem Terrain verwenden, wie z.B. die hier:
+![](./images/Map2.PNG)
+Das Spiel wird dadurch natürlich auch dynamischer, da der Gloomy über eine deutlich höhere Mobilität verfügt.
+Entscheidet man sich für eine kleine Sprunghöhe, dann muss die Map größtenteils eine Ebene bleiben, 
+mit Steigungen und Senkungen oder man muss sich andere Methoden überlegen, 
+um große Höhen erreichbar zu machen, sodass man nicht in die Lage kommt, 
+frühzeitig in einem Abhang festzustecken.
   
