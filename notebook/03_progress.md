@@ -128,7 +128,6 @@ Das Spiel wird dadurch natürlich auch dynamischer, da der Gloomy über eine deu
 Entscheidet man sich für eine kleine Sprunghöhe, dann muss die Map größtenteils eine Ebene bleiben, 
 mit Steigungen und Senkungen oder man muss sich andere Methoden überlegen, 
 um große Höhen erreichbar zu machen, sodass man nicht in die Lage kommt, 
-frühzeitig in einem Abhang festzustecken. Zeitlich betrachtet sind wir deutlich im Verzug in Betracht des Entwicklungsplans den wir zu Beginn des Semesters entwickelt hatten. Verschiedenste Faktoren(die natürlich alle außerhalb unseres Einflusses lagen) haben dazu geführt, dass es zwischendurch zu paar entwicklungsarmen Wochen kam. Vor allem in den ersten Wochen haben wir sehr viel Zeit liegen lassen. Wir sind dennoch zuversichtlich, dass wir das Spiel in den letzten
-Wochen nocheinmal deutlich erweitern, um dann mit einem brachialen Steam-Release in die Semesterferien zustarten.
-
+frühzeitig in einem Abhang festzustecken. Zeitlich betrachtet sind wir deutlich im Verzug und bei weitem nicht so wie weit, wie wir es uns im Entwicklungsplan zu Beginn des Semesters vorgenommen hatten. Verschiedenste Faktoren(die natürlich alle außerhalb unseres Einflusses lagen) haben dazu geführt, dass es zwischendurch zu paar entwicklungsarmen Wochen kam. Vor allem in den ersten Wochen haben wir sehr viel Zeit liegen lassen. Wir sind dennoch zuversichtlich, dass wir das Spiel in den letzten
+Wochen nocheinmal deutlich erweitern und wir ein cooles Endprodukt erhalten(welches alles andere in den Schatten stellt...).
   
