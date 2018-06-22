@@ -175,9 +175,10 @@ using System.Collections;
         Instantiate(deadRightHand, transform.position, Quaternion.identity);
         StartCoroutine("ShakeCamera");
 
-        Invoke("DeactivatePlayer", 11);
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
         gameObject.GetComponent<PolygonCollider2D>().enabled = false;
+        Invoke("DeactivatePlayer", 11);
+
 
         //Destroy(blood, 2f);
 

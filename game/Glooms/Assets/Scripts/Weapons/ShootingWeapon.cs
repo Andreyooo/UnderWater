@@ -11,6 +11,10 @@ public class ShootingWeapon : MonoBehaviour {
     public GameObject chargingBarOutline;
     public Transform firepoint;
 
+    private Weapon weapon;
+    private int currentWeapon;
+    private List<Weapon> loadOut = new List<Weapon>();
+
     private float bulletSpeed = 22;
     private float lifeTime = 10;
     private float chargeLevel = 0;
@@ -26,14 +30,12 @@ public class ShootingWeapon : MonoBehaviour {
     private bool rotationEnabled = true;
     private bool canShoot = true;
 
-    private Vector3 bazookaFirepoint = new Vector3(2.3f, 1.4f, 0);
-
     void Awake()
     {
         weaponSR = GetComponent<SpriteRenderer>();
+        SetLoadOut();
         chargingBarSR = chargingBar.GetComponent<SpriteRenderer>();
         chargingBarOutlineSR = chargingBarOutline.GetComponent<SpriteRenderer>();
-        firepoint.position = bazookaFirepoint;
     }
 
     void Update()
@@ -44,6 +46,7 @@ public class ShootingWeapon : MonoBehaviour {
             if (rotationEnabled)
             {
                 Rotate();
+                WeaponSwitching();
             }
 
             //charging Bulletpower
@@ -51,6 +54,7 @@ public class ShootingWeapon : MonoBehaviour {
             {
                 if (chargeLevel < chargeLimit)
                 {
+                    rotationEnabled = false;
                     chargingBarSR.enabled = true;
                     chargingBarOutlineSR.enabled = true;
 
@@ -58,7 +62,6 @@ public class ShootingWeapon : MonoBehaviour {
                     chargingBar.transform.localScale = new Vector3(chargeLevel, chargeLevel, 1);
                     byte greenValue = (byte)(235 - colorChangingRangeGreen * Mathf.Pow(chargeLevel, 7));
                     chargingBarSR.color = new Color32(235, greenValue, 0, 255);
-                    rotationEnabled = false;
                 }
                 else
                 {
@@ -88,23 +91,22 @@ public class ShootingWeapon : MonoBehaviour {
         chargingBarOutlineSR.enabled = false;
         chargingBarSR.color = new Color32(235, 235, 0, 255);
         chargingBar.transform.localScale = new Vector3(0, 0, 1);
+        CheckLoadOut();
         Shoot();
         chargeLevel = 0;
         rotationEnabled = true;
         SoundManager.PlaySound("arrowShot");
-
     }
 
     //Shoot Bullets
     private void Shoot()
     {
-        GameObject bullet = Instantiate(bulletPrefab);
-        bullet.transform.position = firepoint.transform.position;
-        bullet.transform.rotation = gameObject.transform.rotation;
-        bullet.GetComponent<Rigidbody2D>().AddForce(firepoint.forward * bulletSpeed * chargeLevel, ForceMode2D.Impulse);
-        bullet.GetComponent<BulletScript>().DestroyProjectileAfterTime(lifeTime);
-        //GameManager.instance.HasFired(bullet);
-        StartCoroutine(GameManager.instance.HasFired(bullet));
+        Projectile projectile = Instantiate(weapon.projectile);
+        projectile.transform.position = firepoint.position;
+        projectile.transform.rotation = gameObject.transform.rotation;
+        projectile.GetComponent<Rigidbody2D>().AddForce(firepoint.forward * bulletSpeed * chargeLevel, ForceMode2D.Impulse);
+        projectile.GetComponent<ArrowScript>().DestroyProjectileAfterTime(lifeTime);
+        StartCoroutine(GameManager.instance.HasFired(projectile));
     }
 
     //Weapon Rotation
@@ -115,24 +117,48 @@ public class ShootingWeapon : MonoBehaviour {
         float rotation_z = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
         if ((rotation_z > 90f && rotation_z <= 180 || rotation_z < -90 && rotation_z > -180) && player.flipped == false)
         {
-            FlipWeapon();
-            //player.FlipX(true);
-            //this.FlipY(true);
+            player.Flip();
         }
         if (rotation_z <= 90f && rotation_z >= -90 && player.flipped == true)
         {
-            FlipWeapon();
-            //player.FlipX(false);
-            //this.FlipY(false);
+            player.Flip();
         }
         transform.rotation = Quaternion.Euler(0f, 0f, rotation_z);
     }
 
+    //Weapon Switcing
+    private void WeaponSwitching()
+    {
+        if (Input.GetKeyDown("e"))
+        {
+            if (!(currentWeapon+1 > loadOut.Count-1))
+            {
+                SetWeapon(currentWeapon + 1);
+            } else
+            {
+                SetWeapon(0);
+            }
+        }
+        if (Input.GetKeyDown("q"))
+        {
+            if (!(currentWeapon-1 < 0))
+            {
+                SetWeapon(currentWeapon - 1);
+            }
+            else
+            {
+                SetWeapon(loadOut.Count-1);
+            }
+        }
+    }
+
+    //Sets player Active for Aiming Mode
     public void SetActive(bool bo)
     {
         active = bo;
         if (bo == true)
         {
+            //CheckLoadOut();
             weaponSR.enabled = true;
         } else
         {
@@ -140,13 +166,41 @@ public class ShootingWeapon : MonoBehaviour {
         }
     }
 
-    //flipping Weapon
-    public void FlipWeapon()
+    //Sets Weapon
+    private void SetWeapon(int i)
+    {
+        weapon = loadOut[i];
+        currentWeapon = i;
+        weaponSR.sprite = weapon.GetComponent<SpriteRenderer>().sprite;
+    }
+
+    //Adds Weapons and sets first added Weapon as Default.
+    private void SetLoadOut()
+    {
+        loadOut.Add(Resources.Load<Weapon>("Prefabs/Bow"));
+        SetWeapon(0);
+    }
+
+    //Checks for Weapons with 0 Ammo to remove them from LoadOut.
+    private void CheckLoadOut()
+    {
+        foreach (Weapon wep in loadOut)
+        {
+            if (wep.ammo <= 0)
+            {
+                loadOut.Remove(wep);
+                currentWeapon--;
+            }
+        }
+    }
+
+    //flipping Weapon VERALTET************************
+    /*public void FlipWeapon()
     {
         player.Flip();
         Vector3 newScale = transform.localScale;
         newScale.x *= -1;
         newScale.y *= -1;
         transform.localScale = newScale;
-    }
+    }*/
 }

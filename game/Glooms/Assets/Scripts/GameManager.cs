@@ -26,7 +26,6 @@ public class GameManager : MonoBehaviour {
             Destroy(gameObject);
             }
         }
-        //DontDestroyOnLoad(gameObject);
     }
 
     // Use this for initialization
@@ -38,13 +37,13 @@ public class GameManager : MonoBehaviour {
             aPlayer.transform.position = new Vector3(xPos[i], 4, 1);
             players.Add(aPlayer);
             if (i == 2)
-                aPlayer.GetComponentInChildren<ShootingWeapon>().FlipWeapon();
+                aPlayer.GetComponent<PlayerController>().Flip();
         }
 		currentShots = shotsPerTurn;
         SwitchPlayer();
 	}
 
-	public IEnumerator HasFired(GameObject projectile){
+	public IEnumerator HasFired(Projectile projectile){
 		currentShots--;
         if (currentShots <= 0){
             players[currentPlayer].GetComponent<PlayerController>().SetPassive();
@@ -58,7 +57,7 @@ public class GameManager : MonoBehaviour {
 
     public void SwitchPlayer()
     {
-        for (int j = 0; j < players.Count - 1; j++)
+        for (int j = 0; j < players.Count; j++)
         {
             if (!players[j].GetComponent<PolygonCollider2D>().enabled)
             {

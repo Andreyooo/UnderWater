@@ -18,6 +18,7 @@ public class PlayerController : PhysicsObject
     private ShootingWeapon shootingWeaponScript;
     private SpriteRenderer spriteRenderer;
     private Animator animator;
+    private Transform canvasTransform;
 
     // Use this for initialization
     void Awake()
@@ -25,6 +26,7 @@ public class PlayerController : PhysicsObject
         shootingWeaponScript = gameObject.GetComponentInChildren<ShootingWeapon>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
+        canvasTransform = transform.Find("Canvas");
         movementButton = GameObject.Find("Movement Button").GetComponent<Button>();
         movementButton.onClick.AddListener((UnityEngine.Events.UnityAction)this.MovingModeActive);
         weaponButton = GameObject.Find("Weapon Button").GetComponent<Button>();
@@ -93,8 +95,7 @@ public class PlayerController : PhysicsObject
 
         if (flipSprite)
         {
-            shootingWeaponScript.FlipWeapon();
-            //spriteRenderer.flipX = !spriteRenderer.flipX;
+            Flip();
         }
 
         targetVelocity = move * maxSpeed;
@@ -104,10 +105,14 @@ public class PlayerController : PhysicsObject
     public void Flip()
     {
         flipped = !flipped;
-        Debug.Log("PlayerFlip = " + flipped);
         Vector3 newScale = transform.localScale;
         newScale.x *= -1;
         transform.localScale = newScale;
+        canvasTransform.localScale = newScale;
+        newScale = shootingWeaponScript.transform.localScale;
+        newScale.x *= -1;
+        newScale.y *= -1;
+        shootingWeaponScript.transform.localScale = newScale;
     }
 
     //Set To Aiming Mode
@@ -149,11 +154,11 @@ public class PlayerController : PhysicsObject
         passiveMode = false;
     }
 
-    //Flip Character
-    public void FlipX(bool bo)
+    //Flip Character VERALTET******************
+    /*public void FlipX(bool bo)
     {
         spriteRenderer.flipX = bo;
-    }
+    }*/
 
     public void SetJumped(bool bo)
     {
