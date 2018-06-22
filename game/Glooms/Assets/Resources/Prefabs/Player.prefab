@@ -50,7 +50,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4597184999921452}
   m_Layer: 0
-  m_Name: Firepoint
+  m_Name: FirepointBazookaRocket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -116,6 +116,21 @@ GameObject:
   - component: {fileID: 212570411723111658}
   m_Layer: 0
   m_Name: ChargingBar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1508032422346090
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4867342376422176}
+  m_Layer: 0
+  m_Name: FirepointArrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -218,6 +233,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0.001, z: 0}
   m_LocalScale: {x: 0.225, y: 0.225, z: 0}
   m_Children:
+  - {fileID: 4867342376422176}
   - {fileID: 4597184999921452}
   - {fileID: 4399714055186414}
   m_Father: {fileID: 4349893724543506}
@@ -267,7 +283,7 @@ Transform:
   - {fileID: 4846193398247524}
   - {fileID: 4784072900962016}
   m_Father: {fileID: 4274243608263042}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4496709984206810
 Transform:
@@ -288,12 +304,12 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1261820639810012}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 1, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 1.0000001, y: 0.00000020747798, z: 0}
+  m_LocalScale: {x: 0, y: 1, z: 1.0000006}
   m_Children: []
   m_Father: {fileID: 4274243608263042}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!4 &4782515265030772
 Transform:
@@ -334,6 +350,19 @@ Transform:
   m_Father: {fileID: 4399714055186414}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4867342376422176
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1508032422346090}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 1, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4274243608263042}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!50 &50156198650401188
 Rigidbody2D:
   serializedVersion: 4
@@ -455,8 +484,7 @@ MonoBehaviour:
     type: 2}
   chargingBar: {fileID: 1502858361489632}
   chargingBarOutline: {fileID: 1982152408669454}
-  weapon: {fileID: 114947723435960720, guid: 6d29a6e1a4dd43a46ab5de71807d4068, type: 2}
-  firepoint: {fileID: 4597184999921452}
+  firepoint: {fileID: 4867342376422176}
 --- !u!114 &114578487983567950
 MonoBehaviour:
   m_ObjectHideFlags: 1

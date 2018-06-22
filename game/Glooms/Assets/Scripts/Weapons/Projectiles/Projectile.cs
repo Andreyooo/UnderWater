@@ -4,5 +4,5 @@ using UnityEngine;
 
 public abstract class Projectile : MonoBehaviour {
     public int damage;
-    public Vector3 position;
+    public string firepoint;
 }

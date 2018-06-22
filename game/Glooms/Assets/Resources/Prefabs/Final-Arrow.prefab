@@ -217,7 +217,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
-  position: {x: 0.5, y: 0, z: 1}
+  firepoint: FirepointArrow
 --- !u!212 &212856070322201404
 SpriteRenderer:
   m_ObjectHideFlags: 1

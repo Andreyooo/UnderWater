@@ -9,7 +9,6 @@ public class ShootingWeapon : MonoBehaviour {
     public GameObject bulletPrefab;
     public GameObject chargingBar;
     public GameObject chargingBarOutline;
-    public Transform firepoint;
 
     private Weapon weapon;
     private int currentWeapon;
@@ -102,9 +101,10 @@ public class ShootingWeapon : MonoBehaviour {
     private void Shoot()
     {
         Projectile projectile = Instantiate(weapon.projectile);
-        projectile.transform.position = firepoint.position;
+        Transform newFirepoint = transform.Find(projectile.firepoint);
+        projectile.transform.position = newFirepoint.position;
         projectile.transform.rotation = gameObject.transform.rotation;
-        projectile.GetComponent<Rigidbody2D>().AddForce(firepoint.forward * bulletSpeed * chargeLevel, ForceMode2D.Impulse);
+        projectile.GetComponent<Rigidbody2D>().AddForce(newFirepoint.forward * bulletSpeed * chargeLevel, ForceMode2D.Impulse);
         projectile.GetComponent<ArrowScript>().DestroyProjectileAfterTime(lifeTime);
         StartCoroutine(GameManager.instance.HasFired(projectile));
     }
