@@ -579,7 +579,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 90fab29ac4664a04f9a3e42425ddcedc, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.65
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -2421,7 +2421,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5.262195
+  orthographic size: 4.9054065
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
