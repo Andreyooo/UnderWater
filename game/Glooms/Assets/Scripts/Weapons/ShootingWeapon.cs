@@ -6,9 +6,10 @@ using UnityEngine.EventSystems;
 
 public class ShootingWeapon : MonoBehaviour {
     public PlayerController player;
-    public GameObject bulletPrefab;
     public GameObject chargingBar;
     public GameObject chargingBarOutline;
+    public AudioClip weaponSwitchSound1;
+    public AudioClip weaponSwitchSound2;
 
     private Weapon weapon;
     private int currentWeapon;
@@ -94,18 +95,17 @@ public class ShootingWeapon : MonoBehaviour {
         Shoot();
         chargeLevel = 0;
         rotationEnabled = true;
-        SoundManager.PlaySound("arrowShot");
     }
 
     //Shoot Bullets
     private void Shoot()
     {
         Projectile projectile = Instantiate(weapon.projectile);
-        Transform newFirepoint = transform.Find(projectile.firepoint);
-        projectile.transform.position = newFirepoint.position;
+        projectile.fpnt = transform.Find(projectile.firepoint);
+        projectile.transform.position = projectile.fpnt.position;
         projectile.transform.rotation = gameObject.transform.rotation;
-        projectile.GetComponent<Rigidbody2D>().AddForce(newFirepoint.forward * bulletSpeed * chargeLevel, ForceMode2D.Impulse);
-        projectile.GetComponent<ArrowScript>().DestroyProjectileAfterTime(lifeTime);
+        projectile.GetComponent<Rigidbody2D>().AddForce(projectile.fpnt.forward * projectile.bulletSpeed * chargeLevel, ForceMode2D.Impulse);
+        weapon.Fired();
         StartCoroutine(GameManager.instance.HasFired(projectile));
     }
 
@@ -131,6 +131,7 @@ public class ShootingWeapon : MonoBehaviour {
     {
         if (Input.GetKeyDown("e"))
         {
+            SoundManager.PlayAudioClip(weaponSwitchSound1);
             if (!(currentWeapon+1 > loadOut.Count-1))
             {
                 SetWeapon(currentWeapon + 1);
@@ -141,6 +142,7 @@ public class ShootingWeapon : MonoBehaviour {
         }
         if (Input.GetKeyDown("q"))
         {
+            SoundManager.PlayAudioClip(weaponSwitchSound2);
             if (!(currentWeapon-1 < 0))
             {
                 SetWeapon(currentWeapon - 1);
@@ -177,7 +179,8 @@ public class ShootingWeapon : MonoBehaviour {
     //Adds Weapons and sets first added Weapon as Default.
     private void SetLoadOut()
     {
-        loadOut.Add(Resources.Load<Weapon>("Prefabs/Bow"));
+        loadOut.Add(Resources.Load<Weapon>("Prefabs/Weapons/Bow"));
+        loadOut.Add(Resources.Load<Weapon>("Prefabs/Weapons/Bazooka"));
         SetWeapon(0);
     }
 

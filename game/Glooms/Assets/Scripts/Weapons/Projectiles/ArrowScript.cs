@@ -22,31 +22,17 @@ public class ArrowScript : Projectile {
         }
     }
 
-    //Destroys bullet after time
-    public void DestroyProjectileAfterTime(float delay)
-    {
-        Invoke("ExecuteProjectileDestruction", delay);
-    }
-
-    private void ExecuteProjectileDestruction()
-    {
-        GameManager.instance.projectileDestroyed = true;
-        Destroy(gameObject);
-    }
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        SoundManager.PlaySound("arrowHit");
+        SoundManager.PlayAudioClip(hitSound);
         inAir = false;
         rb2D.isKinematic = true;
         rb2D.velocity = Vector2.zero;
-        //Debug.Log(collision.gameObject.name);
         DestroyProjectileAfterTime(1);
         if (collision.gameObject.name == "Player(Clone)")
         {
             var hit = collision.gameObject;
             var health = hit.GetComponent<PlayerHealth>();
-
             if (health != null)
             {
                 health.TakeDamage(damage);
