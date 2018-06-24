@@ -5,7 +5,7 @@ using UnityEngine;
 public class BackgroundMenu : MonoBehaviour {
 
 	public Sprite[] frames; 
-	private float fps = 10;
+	private float fps = 14;
 
 	private float index = 0;
 
