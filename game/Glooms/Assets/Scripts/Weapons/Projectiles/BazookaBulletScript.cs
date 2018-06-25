@@ -19,16 +19,23 @@ public class BazookaBulletScript : Projectile {
         {
             accelerationBoost *= -1;
             accelerationDecrease *= -1;
+            Debug.Log("adjusted");
             adjusted = true;
         }
 
-        if (accelerationBoost > 0)
+        if (accelerationBoost > 0 && adjusted == false)
         {
             rb2D.AddForce(fpnt.forward * accelerationBoost * rb2D.velocity.x/4, ForceMode2D.Impulse);
             accelerationBoost -= accelerationDecrease;
             accelerationDecrease += 0.002f;
-        } 
-        Debug.Log(rb2D.velocity);
+        }
+        if (accelerationBoost < 0 && adjusted == true)
+        {
+            rb2D.AddForce(fpnt.forward * accelerationBoost * rb2D.velocity.x / 4, ForceMode2D.Impulse);
+            accelerationBoost -= accelerationDecrease;
+            accelerationDecrease -= 0.002f;
+        }
+
         Vector2 v = rb2D.velocity;
         float angle = Mathf.Atan2(v.y, v.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
