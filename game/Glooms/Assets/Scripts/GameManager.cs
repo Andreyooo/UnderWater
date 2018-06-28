@@ -61,8 +61,8 @@ public class GameManager : MonoBehaviour {
         {
             if (!players[j].GetComponent<PolygonCollider2D>().enabled)
             {
-                Debug.Log("Player " + j + " aus der SpielerListe gelöscht");
                 players.RemoveAt(j);
+                Debug.Log("Player " + j + " aus der SpielerListe gelöscht");
                 if (currentPlayer>=j)
                 {
                     currentPlayer--;

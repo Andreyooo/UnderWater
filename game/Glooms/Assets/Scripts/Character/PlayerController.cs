@@ -50,6 +50,7 @@ public class PlayerController : PhysicsObject
             animator.SetTrigger("Idle");
         }
     }
+
     private void Moving()
     {
         //Animation
@@ -92,7 +93,6 @@ public class PlayerController : PhysicsObject
 
         //Flip player when moving
         bool flipSprite = (flipped ? (move.x > 0.01f) : (move.x < -0.01f));
-
         if (flipSprite)
         {
             Flip();

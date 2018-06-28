@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BazookaBulletScript : Projectile {
+    public GameObject explosionPrefab;
+
     private Rigidbody2D rb2D;
     private bool adjusted = false;
     private float accelerationBoost = 0.3f;
@@ -43,17 +45,10 @@ public class BazookaBulletScript : Projectile {
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        GameObject explosion = Instantiate(explosionPrefab);
+        explosion.transform.position = transform.position;
+        explosion.GetComponent<BazookaExplosionScript>().damage = damage;
         SoundManager.PlayAudioClip(hitSound);
         DestroyProjectileAfterTime(0);
-        if (collision.gameObject.name == "Player(Clone)")
-        {
-            var hit = collision.gameObject;
-            var health = hit.GetComponent<PlayerHealth>();
-            if (health != null)
-            {
-                health.TakeDamage(damage);
-            }
-        }
-
     }
 }

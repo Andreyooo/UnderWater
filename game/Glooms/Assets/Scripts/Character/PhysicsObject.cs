@@ -91,11 +91,12 @@ public class PhysicsObject : MonoBehaviour
 
             for (int i = 0; i < hitBufferList.Count; i++)
             {
+                grounded = true;
                 Vector2 currentNormal = hitBufferList[i].normal;
                 if (currentNormal.y > minGroundNormalY)
                 {
                     PController.SetJumped(false);
-                    grounded = true;
+                    //grounded = true;
                     if (yMovement)
                     {
                         groundNormal = currentNormal;

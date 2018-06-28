@@ -370,7 +370,7 @@ Rigidbody2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1777682727503648}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
@@ -462,7 +462,7 @@ MonoBehaviour:
   movementButton: {fileID: 0}
   weaponButton: {fileID: 0}
   maxSpeed: 2
-  jumpTakeOffSpeed: 5
+  jumpTakeOffSpeed: 6
   aimingMode: 0
   movingMode: 0
   passiveMode: 1

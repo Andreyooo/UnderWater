@@ -20,7 +20,7 @@ public abstract class Projectile : MonoBehaviour {
 
     public void DestroyProjectileAfterTime(float delay)
     {
-        Invoke("ExecuteProjectileDestruction", delay);
+        Invoke("ExecuteProjectileDestruction", delay + 0.1f);
     }
 
     private void ExecuteProjectileDestruction()
