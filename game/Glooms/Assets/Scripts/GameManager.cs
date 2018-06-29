@@ -71,7 +71,10 @@ public class GameManager : MonoBehaviour {
             }
         }
 
-        previousPlayer = players[currentPlayer];
+        if (currentPlayer >= 0)
+        {
+            previousPlayer = players[currentPlayer];
+        }  
         currentPlayer++;
         currentShots = shotsPerTurn;
         if (currentPlayer > players.Count - 1)

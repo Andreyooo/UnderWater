@@ -15,8 +15,8 @@ public class ShootingWeapon : MonoBehaviour {
     private int currentWeapon;
     private List<Weapon> loadOut = new List<Weapon>();
 
-    private float bulletSpeed = 22;
-    private float lifeTime = 10;
+    //private float bulletSpeed = 22;
+    //private float lifeTime = 10;
     private float chargeLevel = 0;
     private float chargeSpeed = 0.7f;
     private float chargeLimit = 1;
@@ -26,7 +26,7 @@ public class ShootingWeapon : MonoBehaviour {
     private SpriteRenderer chargingBarSR;
     private SpriteRenderer chargingBarOutlineSR;
     private bool active = false;
-    private bool directionRight = true;
+    //private bool directionRight = true;
     private bool rotationEnabled = true;
     private bool canShoot = true;
 

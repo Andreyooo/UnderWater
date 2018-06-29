@@ -16,7 +16,7 @@ public class PlayerController : PhysicsObject
     public bool flipped = false;
 
     private ShootingWeapon shootingWeaponScript;
-    private SpriteRenderer spriteRenderer;
+    //private SpriteRenderer spriteRenderer;
     private Animator animator;
     private Transform canvasTransform;
 
@@ -24,7 +24,7 @@ public class PlayerController : PhysicsObject
     void Awake()
     {
         shootingWeaponScript = gameObject.GetComponentInChildren<ShootingWeapon>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        //spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         canvasTransform = transform.Find("Canvas");
         movementButton = GameObject.Find("Movement Button").GetComponent<Button>();

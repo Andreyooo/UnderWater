@@ -20,10 +20,17 @@ public abstract class Projectile : MonoBehaviour {
 
     public void DestroyProjectileAfterTime(float delay)
     {
-        Invoke("ExecuteProjectileDestruction", delay + 0.1f);
+        Invoke("ExecuteProjectileDestruction", delay);
     }
 
     private void ExecuteProjectileDestruction()
+    {
+        Invoke("ProjectileDestroyed", 0.1f);
+        gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        gameObject.GetComponent<PolygonCollider2D>().enabled = false;
+    }
+
+    private void ProjectileDestroyed()
     {
         GameManager.instance.projectileDestroyed = true;
         Destroy(gameObject);
