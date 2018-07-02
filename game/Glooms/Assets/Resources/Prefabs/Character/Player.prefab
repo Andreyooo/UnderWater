@@ -105,6 +105,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1486727536316800
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4700108566345264}
+  m_Layer: 0
+  m_Name: FirepointGrenade
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1502858361489632
 GameObject:
   m_ObjectHideFlags: 1
@@ -235,6 +250,7 @@ Transform:
   m_Children:
   - {fileID: 4867342376422176}
   - {fileID: 4597184999921452}
+  - {fileID: 4700108566345264}
   - {fileID: 4399714055186414}
   m_Father: {fileID: 4349893724543506}
   m_RootOrder: 0
@@ -283,7 +299,7 @@ Transform:
   - {fileID: 4846193398247524}
   - {fileID: 4784072900962016}
   m_Father: {fileID: 4274243608263042}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4496709984206810
 Transform:
@@ -310,6 +326,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4274243608263042}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!4 &4700108566345264
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1486727536316800}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 2, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4274243608263042}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!4 &4782515265030772
 Transform:
@@ -374,7 +403,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 5
   m_LinearDrag: 1
   m_AngularDrag: 0.1
   m_GravityScale: 1
@@ -461,6 +490,7 @@ MonoBehaviour:
   gravityModifier: 1
   movementButton: {fileID: 0}
   weaponButton: {fileID: 0}
+  bouncyness: {fileID: 0}
   maxSpeed: 2
   jumpTakeOffSpeed: 6
   aimingMode: 0

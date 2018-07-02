@@ -181,6 +181,7 @@ public class ShootingWeapon : MonoBehaviour {
     {
         loadOut.Add(Resources.Load<Weapon>("Prefabs/Weapons/Bow"));
         loadOut.Add(Resources.Load<Weapon>("Prefabs/Weapons/Bazooka"));
+        loadOut.Add(Resources.Load<Weapon>("Prefabs/Weapons/Grenade(Weapon)"));
         SetWeapon(0);
     }
 

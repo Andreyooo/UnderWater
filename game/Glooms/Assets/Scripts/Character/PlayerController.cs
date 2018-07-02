@@ -7,6 +7,7 @@ public class PlayerController : PhysicsObject
 {
     public Button movementButton;
     public Button weaponButton;
+    public PhysicsMaterial2D bouncyness;
     public float maxSpeed = 2f;
     public float jumpTakeOffSpeed = 5;
     public bool aimingMode = false;
@@ -145,12 +146,14 @@ public class PlayerController : PhysicsObject
         movingMode = false;
         aimingMode = false;
         passiveMode = true;
+        //rb2d.sharedMaterial = bouncyness;
         transform.Find("ShootingWeapon").gameObject.GetComponent<ShootingWeapon>().SetActive(false);
     }
 
     //Player is Activ
     public void SetActive()
     {
+        //rb2d.sharedMaterial = null;
         passiveMode = false;
     }
 

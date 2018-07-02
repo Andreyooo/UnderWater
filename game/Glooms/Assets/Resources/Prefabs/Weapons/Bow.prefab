@@ -54,7 +54,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile: {fileID: 114990763099016410, guid: cf7d8117cb2a1774ba3b0926cffd6c79,
     type: 2}
-  ammo: 1000
+  ammo: 998
 --- !u!212 &212202355752348990
 SpriteRenderer:
   m_ObjectHideFlags: 1
