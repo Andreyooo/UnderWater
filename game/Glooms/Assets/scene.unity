@@ -2111,8 +2111,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1129560845}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 138.9, z: -56.55177}
-  m_LocalScale: {x: 56.55177, y: 56.55177, z: 56.55177}
+  m_LocalPosition: {x: -15, y: 68, z: -56.55177}
+  m_LocalScale: {x: 28.839851, y: 28.839851, z: 28.839851}
   m_Children: []
   m_Father: {fileID: 1741906980}
   m_RootOrder: 2
@@ -2576,7 +2576,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5.384447
+  orthographic size: 5.080742
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -3359,6 +3359,8 @@ MonoBehaviour:
   playerPrefab: {fileID: 1777682727503648, guid: e8f2e58f340d1d3438dc2a6b2227a4fd,
     type: 2}
   players: []
+  win: {fileID: 1129560845}
+  winTheme: {fileID: 8300000, guid: 039757995bbb41f4ebc935f9c7de1a55, type: 3}
 --- !u!1 &1892642427
 GameObject:
   m_ObjectHideFlags: 0
