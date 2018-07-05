@@ -15,6 +15,10 @@ public class GameManager : MonoBehaviour {
     public GameObject playerPrefab;
     public List<GameObject> players;
 
+    //win
+    public GameObject win;
+    public AudioClip winTheme;
+
     void Awake () {
         if (instance == null)
         {
@@ -72,6 +76,13 @@ public class GameManager : MonoBehaviour {
             if(players.Count <= 1){
                 
             }
+        }
+
+        if (players.Count <= 1)
+        {
+            win.SetActive(true);
+            SoundManager.PlayAudioClip(winTheme);
+            return;
         }
 
         if (currentPlayer >= 0)
