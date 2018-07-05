@@ -23,3 +23,4 @@ Desweiteren haben wir eine Zeitbeschränkung für die Bewegung der Spieler pro Z
 Der Spieler hat nun 3 Sekunden Zeit, sich nach dem Drücken des Move-Buttons zu bewegen.
 
 Das UI hat nun eine Gewinnbenachrichtung, die aufgerufen wird, sobald nur noch ein Spieler am Leben ist.
+
