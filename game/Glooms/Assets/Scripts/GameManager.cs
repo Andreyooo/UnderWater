@@ -69,6 +69,9 @@ public class GameManager : MonoBehaviour {
                 }
                 j--;
             }
+            if(players.Count <= 1){
+                
+            }
         }
 
         if (currentPlayer >= 0)

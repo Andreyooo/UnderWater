@@ -24,3 +24,9 @@ Der Spieler hat nun 3 Sekunden Zeit, sich nach dem Drücken des Move-Buttons zu 
 
 Das UI hat nun eine Gewinnbenachrichtung, die aufgerufen wird, sobald nur noch ein Spieler am Leben ist.
 
+Zusätzlich haben wir ein Start-Menü eingebaut, mit einem leicht animierten Hintergrund und dazu bombastische Musik, die bereits für Stimmung vor dem Spiel sorgt. Auf dem Bild ist bereits Atlantis zusehen, der Ort auf dem die Schlacht sich abspielt.
+
+![](./images/atlantisMenu.PNG)
+
+
+
