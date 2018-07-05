@@ -16,6 +16,8 @@ public class PlayerController : PhysicsObject
     public bool jumped;
     public bool flipped = false;
 
+    public bool canMove = true;
+
     private ShootingWeapon shootingWeaponScript;
     //private SpriteRenderer spriteRenderer;
     private Animator animator;
@@ -131,13 +133,18 @@ public class PlayerController : PhysicsObject
     public void MovingModeActive()
     {
 
-        if (!passiveMode)
+        if (!passiveMode && canMove)
         {
             aimingMode = false;
             movingMode = true;
             transform.Find("ShootingWeapon").gameObject.GetComponent<ShootingWeapon>().SetActive(false);
-
+            Invoke("moveCounter", 5);
         }
+    }
+
+    public void moveCounter (){
+        canMove = false;
+        movingMode = false;
     }
 
     //Player is Passive
@@ -146,6 +153,7 @@ public class PlayerController : PhysicsObject
         movingMode = false;
         aimingMode = false;
         passiveMode = true;
+        canMove = true;
         //rb2d.sharedMaterial = bouncyness;
         transform.Find("ShootingWeapon").gameObject.GetComponent<ShootingWeapon>().SetActive(false);
     }
