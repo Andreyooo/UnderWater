@@ -6,9 +6,6 @@ public class GrenadeScript : Projectile {
     public GameObject explosionPrefab;
 
     private Rigidbody2D rb2D;
-    private bool adjusted = false;
-    private float accelerationBoost = 0.3f;
-    private float accelerationDecrease = 0.001f;
     private bool triggered = false;
 
     private void OnCollisionEnter2D(Collision2D collision)
