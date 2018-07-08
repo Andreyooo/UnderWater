@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerController : PhysicsObject
 {
+    public MovementTimerScript movementTimer;
     public Button movementButton;
     public Button weaponButton;
     public PhysicsMaterial2D bouncyness;
@@ -17,6 +18,7 @@ public class PlayerController : PhysicsObject
     public bool passiveMode;
     public bool jumped;
     public bool flipped = false;
+
 
     public bool canMove = true;
 
@@ -33,6 +35,7 @@ public class PlayerController : PhysicsObject
         animator = GetComponent<Animator>();
         canvasTransform = transform.Find("Canvas");
         movementButton = GameObject.Find("Movement Button").GetComponent<Button>();
+        movementTimer = GameObject.Find("Movement Timer").GetComponent<MovementTimerScript>();
         movementButton.onClick.AddListener((UnityEngine.Events.UnityAction)this.MovingModeActive);
         weaponButton = GameObject.Find("Weapon Button").GetComponent<Button>();
         weaponButton.onClick.AddListener((UnityEngine.Events.UnityAction)this.AimingModeActive);
@@ -50,7 +53,8 @@ public class PlayerController : PhysicsObject
             {
                 animator.SetTrigger("Aim");
             }
-        } else
+        }
+        else
         {
             animator.SetTrigger("Idle");
         }
@@ -87,7 +91,7 @@ public class PlayerController : PhysicsObject
             jumped = true;
             SoundManager.PlaySound(gameObject.GetComponent<PlayerHealth>().playerJumpSound);
             velocity.y = jumpTakeOffSpeed;
-        }   
+        }
         else if (Input.GetButtonUp("Jump"))
         {
             if (velocity.y > 0)
@@ -127,7 +131,9 @@ public class PlayerController : PhysicsObject
         {
             movingMode = false;
             aimingMode = true;
+            canMove = false;
             transform.Find("ShootingWeapon").gameObject.GetComponent<ShootingWeapon>().SetActive(true);
+            deactivateCounter();
         }
     }
 
@@ -141,10 +147,18 @@ public class PlayerController : PhysicsObject
             movingMode = true;
             transform.Find("ShootingWeapon").gameObject.GetComponent<ShootingWeapon>().SetActive(false);
             Invoke("moveCounter", 5);
+            movementTimer.SetActive();
+            Invoke("deactivateCounter", 5);
         }
     }
 
-    public void moveCounter (){
+    public void deactivateCounter()
+    {
+        movementTimer.SetPassive();
+    }
+
+    public void moveCounter()
+    {
         canMove = false;
         movingMode = false;
     }
@@ -167,7 +181,6 @@ public class PlayerController : PhysicsObject
     {
         //rb2d.sharedMaterial = null;
         passiveMode = false;
-        Debug.Log("test");
         playerArrow.GetComponent<SpriteRenderer>().enabled = true;
     }
     //Flip Character VERALTET******************
