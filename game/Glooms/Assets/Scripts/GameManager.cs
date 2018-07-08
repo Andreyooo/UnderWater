@@ -101,5 +101,6 @@ public class GameManager : MonoBehaviour {
             previousPlayer.GetComponent<PlayerController>().SetPassive();
         }
         players[currentPlayer].GetComponent<PlayerController>().SetActive();
+        
     }
 }
