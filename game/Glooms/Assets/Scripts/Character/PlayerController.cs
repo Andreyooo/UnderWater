@@ -41,6 +41,7 @@ public class PlayerController : PhysicsObject
         weaponButton.onClick.AddListener((UnityEngine.Events.UnityAction)this.AimingModeActive);
     }
 
+    //Update Method
     protected override void HandlePlayer()
     {
         if (!passiveMode)
@@ -52,6 +53,12 @@ public class PlayerController : PhysicsObject
             if (aimingMode)
             {
                 animator.SetTrigger("Aim");
+            } else
+            {
+                if (!canMove && !inAir)
+                {
+                    animator.SetTrigger("Idle");
+                }
             }
         }
         else
@@ -133,7 +140,7 @@ public class PlayerController : PhysicsObject
             aimingMode = true;
             canMove = false;
             transform.Find("ShootingWeapon").gameObject.GetComponent<ShootingWeapon>().SetActive(true);
-            deactivateCounter();
+            DeactivateCounter();
         }
     }
 
@@ -146,21 +153,21 @@ public class PlayerController : PhysicsObject
             aimingMode = false;
             movingMode = true;
             transform.Find("ShootingWeapon").gameObject.GetComponent<ShootingWeapon>().SetActive(false);
-            Invoke("moveCounter", 5);
+            Invoke("MoveCounter", 5);
             movementTimer.SetActive();
-            Invoke("deactivateCounter", 5);
         }
     }
 
-    public void deactivateCounter()
+    public void DeactivateCounter()
     {
         movementTimer.SetPassive();
     }
 
-    public void moveCounter()
+    public void MoveCounter()
     {
         canMove = false;
         movingMode = false;
+        DeactivateCounter();
     }
 
     //Player is Passive
