@@ -13,6 +13,8 @@ public class ShootingWeapon : MonoBehaviour {
 
     public bool canShoot = true;
 
+    private CameraManager cam;
+
     private Weapon weapon;
     private int currentWeapon;
     private List<Weapon> loadOut = new List<Weapon>();
@@ -108,6 +110,8 @@ public class ShootingWeapon : MonoBehaviour {
         projectile.GetComponent<Rigidbody2D>().AddForce(projectile.fpnt.forward * projectile.bulletSpeed * chargeLevel, ForceMode2D.Impulse);
         weapon.Fired();
         StartCoroutine(GameManager.instance.HasFired(projectile));
+        cam = GameObject.Find("Main Camera").GetComponent<CameraManager>();
+        cam.proj = projectile;
     }
 
     //Weapon Rotation
