@@ -11,7 +11,6 @@ public abstract class Projectile : MonoBehaviour {
     public AudioClip hitSound;
     [SerializeField]
     private float lifeTime;
-
     private void Start()
     {
         SoundManager.PlayAudioClip(releaseSound);
@@ -35,4 +34,5 @@ public abstract class Projectile : MonoBehaviour {
         GameManager.instance.projectileDestroyed = true;
         Destroy(gameObject);
     }
+
 }

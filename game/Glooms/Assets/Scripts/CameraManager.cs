@@ -6,20 +6,24 @@ using UnityEngine;
 public class CameraManager : MonoBehaviour {
 //Invoked when a button is pressed.
 
-	public GameObject cam;
-    public void SetParent(GameObject newParent)
-    {
-        //Makes the GameObject "newParent" the parent of the GameObject "player".
-        cam.transform.parent = newParent.transform;
-
-        //Display the parent's name in the console.
-        Debug.Log("Cam's Parent: " + cam.transform.parent.name);
-
+    public Projectile proj = null;
+    private void Start() {
     }
 
-    public void DetachFromParent()
-    {
-        // Detaches the transform from its parent.
-        transform.parent = null;
+    private void Update(){
+        if(proj != null){
+            CameraFollow(proj);
+        }
+        else{
+            ResetCamera();
+        }
+    }
+
+    private void CameraFollow(Projectile projectile){
+        gameObject.transform.position = projectile.transform.position + new Vector3(0,0,-5);
+    }
+
+    private void ResetCamera(){
+        gameObject.transform.position = new Vector3(0,0,-99);
     }
 }
