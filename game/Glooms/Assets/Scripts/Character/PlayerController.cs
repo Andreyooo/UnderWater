@@ -18,9 +18,11 @@ public class PlayerController : PhysicsObject
     public bool passiveMode;
     public bool jumped;
     public bool flipped = false;
-
-
     public bool canMove = true;
+
+    private bool movedThisTurn = false;
+
+
 
     private ShootingWeapon shootingWeaponScript;
     //private SpriteRenderer spriteRenderer;
@@ -114,6 +116,11 @@ public class PlayerController : PhysicsObject
             Flip();
         }
 
+        if (movementTimer.timeLeft <= 0)
+        {
+            DisableMoving();
+        }
+
         targetVelocity = move * maxSpeed;
     }
 
@@ -138,9 +145,11 @@ public class PlayerController : PhysicsObject
         {
             movingMode = false;
             aimingMode = true;
-            canMove = false;
             transform.Find("ShootingWeapon").gameObject.GetComponent<ShootingWeapon>().SetActive(true);
-            DeactivateCounter();
+            if (movedThisTurn)
+            {
+                DisableMoving();
+            }
         }
     }
 
@@ -148,44 +157,45 @@ public class PlayerController : PhysicsObject
     public void MovingModeActive()
     {
 
-        if (!passiveMode && canMove)
+        if (!passiveMode && canMove && !movedThisTurn)
         {
             aimingMode = false;
             movingMode = true;
-            transform.Find("ShootingWeapon").gameObject.GetComponent<ShootingWeapon>().SetActive(false);
-            Invoke("MoveCounter", 5);
+            movedThisTurn = true;
+            shootingWeaponScript.SetActive(false);
             movementTimer.SetActive();
         }
     }
 
-    public void DeactivateCounter()
-    {
-        movementTimer.SetPassive();
-    }
-
-    public void MoveCounter()
+    //When moved this turn, disable moving
+    public void DisableMoving()
     {
         canMove = false;
         movingMode = false;
-        DeactivateCounter();
+        movementTimer.SetPassive();
     }
 
     //Player is Passive
     public void SetPassive()
     {
+        //entering passiveMode
         movingMode = false;
         aimingMode = false;
         passiveMode = true;
+
+        //movementReset
+        movedThisTurn = false;
+        canMove = true;
+
+        //disablingShootingWeapon
         shootingWeaponScript.SetActive(false);
         shootingWeaponScript.canShoot = true;
         playerArrow.GetComponent<SpriteRenderer>().enabled = false;
-
     }
 
     //Player is Activ
     public void SetActive()
     {
-        //rb2d.sharedMaterial = null;
         passiveMode = false;
         playerArrow.GetComponent<SpriteRenderer>().enabled = true;
     }

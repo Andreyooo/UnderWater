@@ -561,6 +561,7 @@ MonoBehaviour:
   chargingBarOutline: {fileID: 1942916570599076}
   weaponSwitchSound1: {fileID: 8300000, guid: bc2d568b981e8a041a553e1d70881263, type: 3}
   weaponSwitchSound2: {fileID: 8300000, guid: bc2d568b981e8a041a553e1d70881263, type: 3}
+  canShoot: 1
 --- !u!114 &114790767746349298
 MonoBehaviour:
   m_ObjectHideFlags: 1

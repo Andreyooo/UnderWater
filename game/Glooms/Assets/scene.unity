@@ -3531,6 +3531,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxTime: 5
+  timeLeft: 0
 --- !u!114 &1818665238
 MonoBehaviour:
   m_ObjectHideFlags: 0

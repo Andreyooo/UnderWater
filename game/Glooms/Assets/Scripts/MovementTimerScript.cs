@@ -7,7 +7,7 @@ public class MovementTimerScript : MonoBehaviour {
 
 	Image timerBar;
 	public float maxTime = 5f;
-	float timeLeft;
+	public float timeLeft;
 	// Use this for initialization
 	void Start () {
 		timerBar = GetComponent<Image>();
