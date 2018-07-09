@@ -9,15 +9,18 @@ public class GameManager : MonoBehaviour {
     public int shotsPerTurn = 1;
     public bool projectileDestroyed = false;
 	private int currentShots;
+    private GameObject previousPlayer = null;
 
     public int currentPlayer = 0;
-	private GameObject previousPlayer = null;
     public GameObject playerPrefab;
     public List<GameObject> players;
 
     //win
     public GameObject win;
     public AudioClip winTheme;
+
+    //FX
+    public AudioClip switchPlayerSound;
 
     void Awake () {
         if (instance == null)
@@ -101,6 +104,6 @@ public class GameManager : MonoBehaviour {
             previousPlayer.GetComponent<PlayerController>().SetPassive();
         }
         players[currentPlayer].GetComponent<PlayerController>().SetActive();
-        
+        SoundManager.PlayAudioClip(switchPlayerSound);
     }
 }

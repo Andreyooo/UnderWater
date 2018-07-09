@@ -5,6 +5,8 @@ using UnityEngine;
 public class ArrowScript : Projectile {
     private Rigidbody2D rb2D;
     private bool inAir = true;
+    [SerializeField]
+    private float destroyDelay;
 
     private void Awake()
     {
@@ -28,7 +30,7 @@ public class ArrowScript : Projectile {
         inAir = false;
         rb2D.isKinematic = true;
         rb2D.velocity = Vector2.zero;
-        DestroyProjectileAfterTime(1);
+        DestroyProjectileAfterTime(destroyDelay);
         if (collision.gameObject.name == "Player(Clone)")
         {
             var hit = collision.gameObject;

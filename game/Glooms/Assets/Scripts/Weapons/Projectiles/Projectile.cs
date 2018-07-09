@@ -11,6 +11,8 @@ public abstract class Projectile : MonoBehaviour {
     public AudioClip hitSound;
     [SerializeField]
     private float lifeTime;
+    [SerializeField]
+    private float afterLifeTime;
     private void Start()
     {
         SoundManager.PlayAudioClip(releaseSound);
@@ -24,9 +26,10 @@ public abstract class Projectile : MonoBehaviour {
 
     private void ExecuteProjectileDestruction()
     {
-        Invoke("ProjectileDestroyed", 0.1f);
+        Invoke("ProjectileDestroyed", afterLifeTime);
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
         gameObject.GetComponent<PolygonCollider2D>().enabled = false;
+        gameObject.GetComponent<Rigidbody2D>().Sleep();
     }
 
     private void ProjectileDestroyed()

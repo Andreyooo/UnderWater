@@ -13,12 +13,12 @@ public class GrenadeScript : Projectile {
         if (!triggered)
         {
             triggered = true;
-            Invoke("explode", 3);
+            Invoke("Explode", 3);
         }
         SoundManager.PlayAudioClip(hitSound);
     }
 
-    private void explode()
+    private void Explode()
     {
         GameObject explosion = Instantiate(explosionPrefab);
         Debug.Log("Explosion erstellt");
