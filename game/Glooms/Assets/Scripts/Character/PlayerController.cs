@@ -176,9 +176,8 @@ public class PlayerController : PhysicsObject
         movingMode = false;
         aimingMode = false;
         passiveMode = true;
-        canMove = true;
-        //rb2d.sharedMaterial = bouncyness;
-        transform.Find("ShootingWeapon").gameObject.GetComponent<ShootingWeapon>().SetActive(false);
+        shootingWeaponScript.SetActive(false);
+        shootingWeaponScript.canShoot = true;
         playerArrow.GetComponent<SpriteRenderer>().enabled = false;
 
     }
@@ -190,11 +189,6 @@ public class PlayerController : PhysicsObject
         passiveMode = false;
         playerArrow.GetComponent<SpriteRenderer>().enabled = true;
     }
-    //Flip Character VERALTET******************
-    /*public void FlipX(bool bo)
-    {
-        spriteRenderer.flipX = bo;
-    }*/
 
     public void SetJumped(bool bo)
     {

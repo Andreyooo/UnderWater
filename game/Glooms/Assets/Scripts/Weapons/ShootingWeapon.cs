@@ -11,6 +11,8 @@ public class ShootingWeapon : MonoBehaviour {
     public AudioClip weaponSwitchSound1;
     public AudioClip weaponSwitchSound2;
 
+    public bool canShoot = true;
+
     private Weapon weapon;
     private int currentWeapon;
     private List<Weapon> loadOut = new List<Weapon>();
@@ -28,7 +30,6 @@ public class ShootingWeapon : MonoBehaviour {
     private bool active = false;
     //private bool directionRight = true;
     private bool rotationEnabled = true;
-    private bool canShoot = true;
 
     void Awake()
     {
