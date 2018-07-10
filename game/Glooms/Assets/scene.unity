@@ -249,16 +249,16 @@ RectTransform:
   m_GameObject: {fileID: 122623513}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.9, y: 0.9, z: 0}
+  m_LocalScale: {x: 0.9000001, y: 0.9000001, z: 0}
   m_Children:
   - {fileID: 138923758}
   - {fileID: 1589254501}
   m_Father: {fileID: 1741906980}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1, y: -229.00002}
+  m_AnchoredPosition: {x: -34.000008, y: -286.00003}
   m_SizeDelta: {x: 130.1, y: 65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!82 &122623515
@@ -1405,7 +1405,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -304.94995, y: -229.00002}
+  m_AnchoredPosition: {x: -339.94995, y: -286}
   m_SizeDelta: {x: 130.1, y: 65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &663480974
@@ -2339,7 +2339,7 @@ Transform:
   m_LocalScale: {x: 28.839851, y: 28.839851, z: 28.839851}
   m_Children: []
   m_Father: {fileID: 1741906980}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1129560847
 SpriteRenderer:
@@ -2492,7 +2492,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -151, y: -229}
+  m_AnchoredPosition: {x: -186, y: -286}
   m_SizeDelta: {x: 130.1, y: 65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1243988254
@@ -2845,6 +2845,7 @@ MonoBehaviour:
   proj: {fileID: 0}
   mapButton: {fileID: 0}
   player: {fileID: 0}
+  transPlayer: 0
 --- !u!1 &1589254500
 GameObject:
   m_ObjectHideFlags: 0
@@ -3565,8 +3566,8 @@ RectTransform:
   m_Children:
   - {fileID: 663480973}
   - {fileID: 1243988253}
-  - {fileID: 1129560846}
   - {fileID: 122623514}
+  - {fileID: 1129560846}
   m_Father: {fileID: 1317778019}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

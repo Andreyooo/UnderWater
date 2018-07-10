@@ -136,7 +136,7 @@ MonoBehaviour:
   fpnt: {fileID: 0}
   releaseSound: {fileID: 8300000, guid: 9cb0d3485cac44b458e8b2cd21bb95fd, type: 3}
   hitSound: {fileID: 8300000, guid: f8df7d12b82014c429725fe955b5f6bf, type: 3}
-  lifeTime: 10
+  lifeTime: 8
   afterLifeTime: 2.6
   explosionPrefab: {fileID: 1817297672605926, guid: a03263f4af4f68249bf7e9ddc5f23bf6,
     type: 2}

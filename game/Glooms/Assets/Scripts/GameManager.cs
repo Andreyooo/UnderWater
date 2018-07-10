@@ -84,13 +84,6 @@ public class GameManager : MonoBehaviour {
             }
         }
 
-        if (players.Count <= 1)
-        {
-            win.SetActive(true);
-            SoundManager.PlayAudioClip(winTheme);
-            return;
-        }
-
         if (currentPlayer >= 0)
         {
             previousPlayer = players[currentPlayer];
@@ -111,5 +104,12 @@ public class GameManager : MonoBehaviour {
         cam = GameObject.Find("Main Camera").GetComponent<CameraManager>();
         cam.player = players[currentPlayer];
         cam.transPlayer = true;
+
+        if (players.Count <= 1)
+        {
+            win.SetActive(true);
+            SoundManager.PlayAudioClip(winTheme);
+            return;
+        }
     }
 }
