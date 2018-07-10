@@ -428,7 +428,7 @@ Rigidbody2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1740410104751858}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
@@ -619,7 +619,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37b11d3b83db9804cb96f84ab5bb6e19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minGroundNormalY: 0.65
+  minGroundNormalY: 0.3
   gravityModifier: 1
   movementTimer: {fileID: 0}
   movementButton: {fileID: 0}
@@ -645,7 +645,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab5d8ff22c8a9114ab1d9fb82bf9ae75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minGroundNormalY: 0.65
+  minGroundNormalY: 0.3
   gravityModifier: 1
 --- !u!114 &114874733317015324
 MonoBehaviour:
