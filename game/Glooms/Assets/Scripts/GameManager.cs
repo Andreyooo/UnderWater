@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour {
 	private int currentShots;
     private GameObject previousPlayer = null;
 
+    private CameraManager cam;
     public int currentPlayer = 0;
     public GameObject playerPrefab;
     public List<GameObject> players;
@@ -105,5 +106,7 @@ public class GameManager : MonoBehaviour {
         }
         players[currentPlayer].GetComponent<PlayerController>().SetActive();
         SoundManager.PlayAudioClip(switchPlayerSound);
+        cam = GameObject.Find("Main Camera").GetComponent<CameraManager>();
+        cam.player = players[currentPlayer];
     }
 }
