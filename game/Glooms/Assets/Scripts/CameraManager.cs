@@ -34,7 +34,7 @@ public class CameraManager : MonoBehaviour
         maxX = 16f;
         minY = -10f;
         maxY = 10f;
-        smooth = 0.125f;
+        smooth = 0.1f;
         transPlayer = false;
     }
 
@@ -48,10 +48,12 @@ public class CameraManager : MonoBehaviour
         {
             if (!fullscreen)
             {
-                if(transPlayer){
+                if (transPlayer)
+                {
                     transitionPlayer(player);
                 }
-                else{
+                else
+                {
                     FollowPlayer(player);
                 }
             }
@@ -76,15 +78,10 @@ public class CameraManager : MonoBehaviour
         Vector3 finalPos = gameObject.transform.position;
         newPos = projectile.transform.position;
 
-        if (newPos.x > minX && newPos.x < maxX)
-        {
-            finalPos.x = newPos.x;
-        }
-        if (newPos.y > minY && newPos.y < maxY)
-        {
-            finalPos.y = newPos.y;
-        }
+        finalPos.x = Mathf.Clamp(newPos.x, minX, maxX);
+        finalPos.y = Mathf.Clamp(newPos.y, minY, maxY);
         finalPos.z = -5f;
+
 
         gameObject.transform.position = finalPos;
         gameObject.GetComponent<Camera>().orthographicSize = originalZoom - 9;
@@ -95,39 +92,32 @@ public class CameraManager : MonoBehaviour
         player = play;
         Vector3 finalPos = gameObject.transform.position;
         newPos = player.transform.position;
-
-        if (newPos.x > minX && newPos.x < maxX)
-        {
-            finalPos.x = newPos.x;
-        }
-        if (newPos.y > minY && newPos.y < maxY)
-        {
-            finalPos.y = newPos.y;
-        }
+        
+        finalPos.x = Mathf.Clamp(newPos.x, minX, maxX);
+        finalPos.y = Mathf.Clamp(newPos.y, minY, maxY);
         finalPos.z = -5f;
 
         gameObject.transform.position = finalPos;
         gameObject.GetComponent<Camera>().orthographicSize = originalZoom - 9;
     }
 
-    private void transitionPlayer(GameObject play){
+    private void transitionPlayer(GameObject play)
+    {
         player = play;
         Vector3 finalPos = gameObject.transform.position;
         newPos = player.transform.position;
 
-        if (newPos.x > minX && newPos.x < maxX)
-        {
-            finalPos.x = newPos.x;
-        }
-        if (newPos.y > minY && newPos.y < maxY)
-        {
-            finalPos.y = newPos.y;
-        }
+        finalPos.x = Mathf.Clamp(newPos.x, minX, maxX);
+        finalPos.y = Mathf.Clamp(newPos.y, minY, maxY);
         finalPos.z = -5f;
 
         Vector3 smoothedPosition = Vector3.Lerp(gameObject.transform.position, finalPos, smooth);
         gameObject.transform.position = smoothedPosition;
-        if(gameObject.transform.position == finalPos) transPlayer = false;
+        if (gameObject.transform.position == finalPos)
+        {
+            transPlayer = false;
+            Debug.Log("transPlayer set to false!");
+        }
         gameObject.GetComponent<Camera>().orthographicSize = originalZoom - 9;
 
     }
