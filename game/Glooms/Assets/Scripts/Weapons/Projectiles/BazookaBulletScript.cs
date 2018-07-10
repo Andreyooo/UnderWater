@@ -29,13 +29,13 @@ public class BazookaBulletScript : Projectile {
         {
             rb2D.AddForce(fpnt.forward * accelerationBoost * rb2D.velocity.x/4, ForceMode2D.Impulse);
             accelerationBoost -= accelerationDecrease;
-            accelerationDecrease += 0.002f;
+            accelerationDecrease += 0.0015f;
         }
         if (accelerationBoost < 0 && adjusted == true)
         {
             rb2D.AddForce(fpnt.forward * accelerationBoost * rb2D.velocity.x / 4, ForceMode2D.Impulse);
             accelerationBoost -= accelerationDecrease;
-            accelerationDecrease -= 0.002f;
+            accelerationDecrease -= 0.0015f;
         }
 
         Vector2 v = rb2D.velocity;
