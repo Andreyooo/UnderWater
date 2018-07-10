@@ -6,6 +6,14 @@ TagManager:
   tags:
   - Button
   - FxTemporaire
+  - Enemy
+  - ExplosionFX
+  - ground
+  - Obstacle
+  - Bullet
+  - HealthBar
+  - BombPickup
+  - Destroying
   layers:
   - Default
   - TransparentFX

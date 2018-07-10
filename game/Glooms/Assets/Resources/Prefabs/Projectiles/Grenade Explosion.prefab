@@ -112,7 +112,7 @@ GameObject:
   - component: {fileID: 114642504315662800}
   m_Layer: 0
   m_Name: Grenade Explosion
-  m_TagString: FxTemporaire
+  m_TagString: Destroying
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
