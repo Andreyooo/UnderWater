@@ -72,11 +72,13 @@ public class CameraManager : MonoBehaviour
 
     private void FollowProjectile(Projectile projectile)
     {
+        float currentZoom = gameObject.GetComponent<Camera>().orthographicSize;
         fullscreen = false;
         player = null;
 
         Vector3 finalPos = gameObject.transform.position;
         newPos = projectile.transform.position;
+        float smoothedZoom = Mathf.Lerp(currentZoom, originalZoom-9, smooth);
 
         finalPos.x = Mathf.Clamp(newPos.x, minX, maxX);
         finalPos.y = Mathf.Clamp(newPos.y, minY, maxY);
@@ -84,7 +86,8 @@ public class CameraManager : MonoBehaviour
 
 
         gameObject.transform.position = finalPos;
-        gameObject.GetComponent<Camera>().orthographicSize = originalZoom - 9;
+        //gameObject.GetComponent<Camera>().orthographicSize = smoothedZoom;
+        gameObject.GetComponent<Camera>().orthographicSize = originalZoom-9;
     }
 
     private void FollowPlayer(GameObject play)
@@ -103,6 +106,7 @@ public class CameraManager : MonoBehaviour
 
     private void transitionPlayer(GameObject play)
     {
+        float currentZoom = gameObject.GetComponent<Camera>().orthographicSize;
         player = play;
         Vector3 finalPos = gameObject.transform.position;
         newPos = player.transform.position;
@@ -112,18 +116,25 @@ public class CameraManager : MonoBehaviour
         finalPos.z = -5f;
 
         Vector3 smoothedPosition = Vector3.Lerp(gameObject.transform.position, finalPos, smooth);
+        float smoothedZoom = Mathf.Lerp(currentZoom, originalZoom-9, smooth);
+
         gameObject.transform.position = smoothedPosition;
-        if (gameObject.transform.position == finalPos)
+        if (gameObject.transform.position.x == finalPos.x)
         {
             transPlayer = false;
             Debug.Log("transPlayer set to false!");
         }
-        gameObject.GetComponent<Camera>().orthographicSize = originalZoom - 9;
-
+        gameObject.GetComponent<Camera>().orthographicSize = smoothedZoom;
+        
     }
     private void ResetCamera()
     {
-        gameObject.transform.position = originalCamPos;
-        gameObject.GetComponent<Camera>().orthographicSize = originalZoom;
+        float currentZoom = gameObject.GetComponent<Camera>().orthographicSize;
+        Vector3 smoothedPosition = Vector3.Lerp(gameObject.transform.position, originalCamPos, smooth);
+       // gameObject.transform.position = originalCamPos;
+        float smoothedZoom = Mathf.Lerp(currentZoom, originalZoom, smooth);
+       // gameObject.GetComponent<Camera>().orthographicSize = originalZoom;
+        gameObject.transform.position = smoothedPosition;
+        gameObject.GetComponent<Camera>().orthographicSize = smoothedZoom;
     }
 }
