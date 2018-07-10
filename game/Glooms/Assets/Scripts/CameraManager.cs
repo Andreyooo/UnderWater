@@ -46,33 +46,55 @@ public class CameraManager : MonoBehaviour
             }
             else
             {
-               ResetCamera();
+                ResetCamera();
             }
         }
     }
 
-   
-    private void FullScreenToggle(){
+
+    private void FullScreenToggle()
+    {
         fullscreen = !fullscreen;
     }
     private void FollowProjectile(Projectile projectile)
     {
         fullscreen = false;
         player = null;
-        newPos = projectile.transform.position + new Vector3(0, 0, -5);
-         if(newPos.x > minX && newPos.x <maxX && newPos.y>minY && newPos.y<maxY) {
-             gameObject.transform.position = newPos;
-         }
+
+        Vector3 finalPos = gameObject.transform.position;
+        newPos = projectile.transform.position;
+
+        if (newPos.x > minX && newPos.x < maxX)
+        {
+            finalPos.x = newPos.x;
+        }
+        if (newPos.y > minY && newPos.y < maxY)
+        {
+            finalPos.y = newPos.y;
+        }
+        finalPos.z = -5f;
+
+        gameObject.transform.position = finalPos;
         gameObject.GetComponent<Camera>().orthographicSize = originalZoom - 9;
     }
 
     private void FollowPlayer(GameObject play)
     {
         player = play;
-        newPos = player.transform.position + new Vector3(0, 0, -5);
-        if(newPos.x > minX && newPos.x <maxX && newPos.y>minY && newPos.y<maxY) {
-             gameObject.transform.position = newPos;
-         }
+        Vector3 finalPos = gameObject.transform.position;
+        newPos = player.transform.position;
+
+        if (newPos.x > minX && newPos.x < maxX)
+        {
+            finalPos.x = newPos.x;
+        }
+        if (newPos.y > minY && newPos.y < maxY)
+        {
+            finalPos.y = newPos.y;
+        }
+        finalPos.z = -5f;
+        
+        gameObject.transform.position = finalPos;
         gameObject.GetComponent<Camera>().orthographicSize = originalZoom - 9;
     }
 
