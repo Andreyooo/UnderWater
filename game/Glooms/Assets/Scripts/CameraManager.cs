@@ -12,12 +12,16 @@ public class CameraManager : MonoBehaviour
     private Vector3 originalCamPos;
     private Vector3 newPos;
 
+    private float smooth;
+
     private float originalZoom;
     private float minX;
     private float maxX;
     private float minY;
     private float maxY;
     private bool fullscreen;
+
+    public bool transPlayer;
 
     private void Start()
     {
@@ -30,6 +34,8 @@ public class CameraManager : MonoBehaviour
         maxX = 16f;
         minY = -10f;
         maxY = 10f;
+        smooth = 0.125f;
+        transPlayer = false;
     }
 
     private void FixedUpdate()
@@ -42,7 +48,12 @@ public class CameraManager : MonoBehaviour
         {
             if (!fullscreen)
             {
-                FollowPlayer(player);
+                if(transPlayer){
+                    transitionPlayer(player);
+                }
+                else{
+                    FollowPlayer(player);
+                }
             }
             else
             {
@@ -56,6 +67,7 @@ public class CameraManager : MonoBehaviour
     {
         fullscreen = !fullscreen;
     }
+
     private void FollowProjectile(Projectile projectile)
     {
         fullscreen = false;
@@ -93,11 +105,32 @@ public class CameraManager : MonoBehaviour
             finalPos.y = newPos.y;
         }
         finalPos.z = -5f;
-        
+
         gameObject.transform.position = finalPos;
         gameObject.GetComponent<Camera>().orthographicSize = originalZoom - 9;
     }
 
+    private void transitionPlayer(GameObject play){
+        player = play;
+        Vector3 finalPos = gameObject.transform.position;
+        newPos = player.transform.position;
+
+        if (newPos.x > minX && newPos.x < maxX)
+        {
+            finalPos.x = newPos.x;
+        }
+        if (newPos.y > minY && newPos.y < maxY)
+        {
+            finalPos.y = newPos.y;
+        }
+        finalPos.z = -5f;
+
+        Vector3 smoothedPosition = Vector3.Lerp(gameObject.transform.position, finalPos, smooth);
+        gameObject.transform.position = smoothedPosition;
+        if(gameObject.transform.position == finalPos) transPlayer = false;
+        gameObject.GetComponent<Camera>().orthographicSize = originalZoom - 9;
+
+    }
     private void ResetCamera()
     {
         gameObject.transform.position = originalCamPos;

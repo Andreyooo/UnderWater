@@ -108,5 +108,6 @@ public class GameManager : MonoBehaviour {
         SoundManager.PlayAudioClip(switchPlayerSound);
         cam = GameObject.Find("Main Camera").GetComponent<CameraManager>();
         cam.player = players[currentPlayer];
+        cam.transPlayer = true;
     }
 }
