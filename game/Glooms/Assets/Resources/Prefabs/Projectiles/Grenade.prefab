@@ -130,7 +130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2bbef9534b533e4185151f191cf5618, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
+  damage: 5
   bulletSpeed: 20
   firepoint: FirepointGrenade
   fpnt: {fileID: 0}

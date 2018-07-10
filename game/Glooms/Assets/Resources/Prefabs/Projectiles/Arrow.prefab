@@ -216,8 +216,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fc76360ff183da46a2712a03eacc35c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
-  bulletSpeed: 21
+  damage: 7
+  bulletSpeed: 30
   firepoint: FirepointArrow
   fpnt: {fileID: 0}
   releaseSound: {fileID: 8300000, guid: e6236201531035942af42ecb5fb95156, type: 3}

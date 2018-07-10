@@ -38,14 +38,16 @@ public class GameManager : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        float[] xPos = { -4.4f, -1, 5.4f };
+        float[] xPos = { -24f, -1, 23f };
         for(int i=0; i < 3; i++)
         {
             GameObject aPlayer = Instantiate(playerPrefab);
-            aPlayer.transform.position = new Vector3(xPos[i], 4, 1);
+            aPlayer.transform.position = new Vector3(xPos[i], 10, 1);
             players.Add(aPlayer);
             if (i == 2)
+            {
                 aPlayer.GetComponent<PlayerController>().Flip();
+            }
         }
 		currentShots = shotsPerTurn;
         SwitchPlayer();
