@@ -51,7 +51,7 @@ __größter Gaming-Erfolg:__ &nbsp; War Co-Leader bei einem internationalen Warf
 
 &nbsp;
 
-### Sahyoun A. (26) -  "Beim Killen geht um die Message"
+### Sahyoun A. (26) -  "Beim Killen geht es um die Message"
 
 __Genres__
 * Ballerspiele
@@ -64,7 +64,7 @@ __Top 3__
 * CSGO
 * PubG
 
-__größter Gaming-Erfolg:__ &nbsp; Ist im Besitz von über 220 LoL-Skins
+__größter Gaming-Erfolg:__ &nbsp; Ist im Besitz von über 220 League of Legends-Skins
 
 &nbsp;
 
@@ -91,7 +91,6 @@ Sahyoun - "epic Game", "Ruckler sind cool", "Optionen fehlen"
 
 Anschließend wurde eine ca. 15 minütige Runde gespielt mit folgendem Ergebnis. 
 
-&nbsp;
 
 __Platzierungen:__
 1. Sahyoun
@@ -154,8 +153,8 @@ __Sahyoun__
 
 #### "Was hat euch vom Spiel am besten gefallen?"
 
-__Onur__ - der Multiplayer Aspekt
+__Onur__ - Der Multiplayer Aspekt
 
 __Eduard__ - Die Mischung aus Grafik und Sound
 
-__Sahyoun__ - Siegen fühlt sich gut an, motiviert weiterzuspielen
+__Sahyoun__ - Das Siegen fühlt sich gut an, motiviert weiterzuspielen
