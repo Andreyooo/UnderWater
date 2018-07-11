@@ -3,6 +3,7 @@
 
 #### getestete Alpha-Version
 Bis kurz vor den Tests haben wir unser Spiel nochmals erweitert.
+
 Neurungen:
 * Kamera wurde hinzugefügt (Zoom, Charakter-/Projektil-Fokus)
 * Map wurde vergrößert bzw. hochskaliert
@@ -65,7 +66,9 @@ __Top 3__
 * PubG
 
 __größter Gaming-Erfolg:__ &nbsp; Ist im Besitz von über 220 LoL-Skins
+
 &nbsp;
+
 #### Erwartungen ans Spiel
 
 Onur - "Nicht sehr viele, ich kenn euch schon eine lange Zeit..."
@@ -88,13 +91,13 @@ Sahyoun - "epic Game", "Ruckler sind cool", "Optionen fehlen"
 
 
 Anschließend wurde eine ca. 15 minütige Runde gespielt mit folgendem Ergebnis. 
+
 &nbsp;
+
 __Platzierungen:__
 1. Sahyoun
 2. Onur
 3. Eduard
-
-&nbsp;
 
 #### Feedback während des Spielens:
 __Onur__
@@ -149,6 +152,9 @@ __Sahyoun__
 &nbsp;
 
 #### "Was hat euch vom Spiel am besten gefallen?"
+
 __Onur__ - der Multiplayer Aspekt
+
 __Eduard__ - Die Mischung aus Grafik und Sound
+
 __Sahyoun__ - Siegen fühlt sich gut an, motiviert weiterzuspielen
