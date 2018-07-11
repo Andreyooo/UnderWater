@@ -88,6 +88,7 @@ Eduard - "stabiler Gesamteindruck"
 
 Sahyoun - "epic Game", "Ruckler sind cool", "Optionen fehlen"
 
+&nbsp;
 
 Anschließend wurde eine ca. 15 minütige Runde gespielt mit folgendem Ergebnis. 
 
@@ -126,10 +127,10 @@ __Sahyoun__
 
 &nbsp;
 
-### Feedback nach dem Testen (Haupt-Kritikpunkte)
+### Feedback nach dem Spielen (Haupt-Kritikpunkte)
 __Onur__
 * Hinzufügen von neutralen Umgebungselementen (Explosionsfässer, etc.)
-	* mehr Taktik
+	* bietet mehr Taktik und Abwechslung
 * Zielhilfe hinzufügen, unklar in welche Richtung das Projektil genau fliegt
 * Hinzufügen von einem Teleportier-Item
 * Personalisierungsoptionen
@@ -138,7 +139,7 @@ __Onur__
 
 __Eduard__
 * Reaktionsmöglichkeiten fehlen
-	* bsp.: Wenn man umzingelt ist
+	* bsp.: wenn man umzingelt ist
 * Mehr Mobilität einbauen
 * Idee: Alle planen ihre Aktionen vorher und die Aktionen werden anschließend zeitgleich ausgeführt
 
@@ -151,7 +152,7 @@ __Sahyoun__
 
 &nbsp;
 
-#### "Was hat euch vom Spiel am besten gefallen?"
+### "Was hat euch vom Spiel am besten gefallen?"
 
 __Onur__ - Der Multiplayer Aspekt
 
