@@ -1,10 +1,10 @@
 
-## Playtesting-Auswertung
+# Playtesting-Auswertung
 
-#### getestete Alpha-Version
+### Getestete Alpha-Version
 Bis kurz vor den Tests haben wir unser Spiel nochmals erweitert.
 
-Neurungen:
+#### Neurungen
 * Kamera wurde hinzugefügt (Zoom, Charakter-/Projektil-Fokus)
 * Map wurde vergrößert bzw. hochskaliert
 * Waffenschaden wurde angepasst, balanciert
@@ -13,15 +13,14 @@ Neurungen:
 
 &nbsp;
 
-### Die Tester
+## Die Tester
 Bla bla bla  6 Leute eingeladen, nur 4 gekommen...  Wir haben uns bewusst für richtige Gamer entschieden, die jedoch unterschiedliche
 
 Jeder der Probanten wurde begrüßt und 
 
 &nbsp;
 
-### Onur C. (24) -  "Japan hat mich an den Eiern"
-
+### Onur C. (24) - "Japan hat mich an den Eiern"
 __Genres__
 * JRPG
 * Beat Em Ups
@@ -69,7 +68,7 @@ __größter Gaming-Erfolg:__ &nbsp; Ist im Besitz von über 220 LoL-Skins
 
 &nbsp;
 
-#### Erwartungen ans Spiel
+### Erwartungen ans Spiel
 
 Onur - "Nicht sehr viele, ich kenn euch schon eine lange Zeit..."
 
@@ -79,9 +78,9 @@ Sahyoun - "Soll einen Reiz haben es weiterzuspielen. Nicht zu kompliziert."
 
 &nbsp;
 
-### Das Testing
+## Das Testing
 
-__Eindrücke des Menüs:__
+### Eindrücke des Menüs
 
 Onur - "Menü ist stimmig"
 
@@ -99,7 +98,9 @@ __Platzierungen:__
 2. Onur
 3. Eduard
 
-#### Feedback während des Spielens:
+&nbsp;
+
+### Feedback während des Spielens
 __Onur__
 * "Stage(Map) ist kacke"
 	* mehrere Ebenen wären nett
@@ -126,7 +127,7 @@ __Sahyoun__
 
 &nbsp;
 
-#### Feedback nach dem Testen (Haupt-Kritikpunkte):
+### Feedback nach dem Testen (Haupt-Kritikpunkte)
 __Onur__
 * Hinzufügen von neutralen Umgebungselementen (Explosionsfässer, etc.)
 	* mehr Taktik
