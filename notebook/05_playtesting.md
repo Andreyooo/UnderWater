@@ -9,6 +9,7 @@ Neurungen:
 * Waffenschaden wurde angepasst, balanciert
 * Movement-Progressbar, zeigt verbleibende Zeit zum Bewegen
 * UI-Pfeil, zeigt wer dran ist
+
 &nbsp;
 
 ### Die Tester
@@ -16,8 +17,7 @@ Bla bla bla  6 Leute eingeladen, nur 4 gekommen...  Wir haben uns bewusst für r
 
 Jeder der Probanten wurde begrüßt und 
 
-
-
+&nbsp;
 
 ### Onur C. (24) -  "Japan hat mich an den Eiern"
 
@@ -32,7 +32,9 @@ __Top 3__
 * Smash-Brothers
 
 __größter Gaming-Erfolg:__ &nbsp; Hat alle 721 Pokémon in Pokémon Sonne und Mond gefangen
+
  &nbsp;
+ 
 ### Eduard D. (22) -  "Nichts geht über Nier Automata"
 
 __Genres__
@@ -46,7 +48,9 @@ __Top 3__
 * Smash-Brothers
 
 __größter Gaming-Erfolg:__ &nbsp; War Co-Leader bei einem internationalen Warframe-Clan mit über 300 aktiven Mitgliedern
+
 &nbsp;
+
 ### Sahyoun A. (26) -  "Beim Killen geht um die Message"
 
 __Genres__
@@ -69,12 +73,17 @@ Onur - "Nicht sehr viele, ich kenn euch schon eine lange Zeit..."
 Eduard - "Richtiges Action-Spektakel, vergleichbar mit Nier Automata"
 
 Sahyoun - "Soll einen Reiz haben es weiterzuspielen. Nicht zu kompliziert."
+
 &nbsp;
+
 ### Das Testing
 
 __Eindrücke des Menüs:__
+
 Onur - "Menü ist stimmig"
+
 Eduard - "stabiler Gesamteindruck"
+
 Sahyoun - "epic Game", "Ruckler sind cool", "Optionen fehlen"
 
 
@@ -84,7 +93,9 @@ __Platzierungen:__
 1. Sahyoun
 2. Onur
 3. Eduard
+
 &nbsp;
+
 #### Feedback während des Spielens:
 __Onur__
 * "Stage(Map) ist kacke"
@@ -92,6 +103,8 @@ __Onur__
 * Spawns sind nicht fair, sollten frei wählbar sein
 * Charaktere sollten mehrere Leben haben
 * "Grundidee nicht schlecht, aber noch nicht polished"
+
+&nbsp;
 
 __Eduard__
 * Wenn die Map rausgezoomt ist und man schießt, ist der Aufladebalken zu klein
@@ -101,11 +114,15 @@ __Eduard__
 * Granaten-Physik ist gut
 * hat laut eigenen Aussagen nur aufgrund eines Bugs verloren
 
+&nbsp;
+
 __Sahyoun__
 * Spiel ist simpel gehalten (einsteigerfreundlich)
 * Trennung der Fraktionen fehlt
 * Atlantis fehlt (Atlantis wird im Menü geteasert)
+
 &nbsp;
+
 #### Feedback nach dem Testen (Haupt-Kritikpunkte):
 __Onur__
 * Hinzufügen von neutralen Umgebungselementen (Explosionsfässer, etc.)
@@ -114,17 +131,23 @@ __Onur__
 * Hinzufügen von einem Teleportier-Item
 * Personalisierungsoptionen
 
+&nbsp;
+
 __Eduard__
 * Reaktionsmöglichkeiten fehlen
 	* bsp.: Wenn man umzingelt ist
 * Mehr Mobilität einbauen
 * Idee: Alle planen ihre Aktionen vorher und die Aktionen werden anschließend zeitgleich ausgeführt
 
+&nbsp;
+
 __Sahyoun__
 * zufällige Spawns einbauen für Variation
 * Umgebungsvariationen (Sound + Visuell)
 * Atlantis bzw. "Under Water"-Thematik umsetzen
+
 &nbsp;
+
 #### "Was hat euch vom Spiel am besten gefallen?"
 __Onur__ - der Multiplayer Aspekt
 __Eduard__ - Die Mischung aus Grafik und Sound
