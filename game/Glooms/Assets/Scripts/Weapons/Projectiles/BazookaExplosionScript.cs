@@ -15,6 +15,7 @@ public class BazookaExplosionScript : MonoBehaviour {
     {
         if (collision.gameObject.name == "Player(Clone)" && !over)
         {
+            Debug.Log("Hello");
             Invoke("ExplosionHappened", 0.001f);
             var hit = collision.gameObject;
             var health = hit.GetComponent<PlayerHealth>();

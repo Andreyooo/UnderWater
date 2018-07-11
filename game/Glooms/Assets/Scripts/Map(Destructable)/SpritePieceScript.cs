@@ -10,6 +10,5 @@ public class SpritePieceScript : MonoBehaviour {
         {
             Destroy(gameObject);
         }
-        Debug.Log("Test");
     }
 }

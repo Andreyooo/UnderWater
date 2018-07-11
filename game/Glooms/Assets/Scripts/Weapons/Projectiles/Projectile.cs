@@ -21,7 +21,13 @@ public abstract class Projectile : MonoBehaviour {
 
     public void DestroyProjectileAfterTime(float delay)
     {
-        Invoke("ExecuteProjectileDestruction", delay);
+        if (delay == 0)
+        {
+            ExecuteProjectileDestruction();
+        } else
+        {
+            Invoke("ExecuteProjectileDestruction", delay);
+        }
     }
 
     private void ExecuteProjectileDestruction()
@@ -30,6 +36,7 @@ public abstract class Projectile : MonoBehaviour {
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
         gameObject.GetComponent<PolygonCollider2D>().enabled = false;
         gameObject.GetComponent<Rigidbody2D>().Sleep();
+        gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
     }
 
     private void ProjectileDestroyed()

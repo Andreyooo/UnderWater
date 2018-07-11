@@ -112,6 +112,7 @@ public class Explodable : MonoBehaviour
                 p.layer = LayerMask.NameToLayer(fragmentLayer);
                 p.GetComponent<Renderer>().sortingLayerName = sortingLayerName;
                 p.GetComponent<Renderer>().sortingOrder = orderInLayer;
+                p.GetComponent<Rigidbody2D>().collisionDetectionMode = CollisionDetectionMode2D.Continuous;
                 p.AddComponent<SpritePieceScript>();
 
                 //p.GetComponent<Rigidbody2D>().isKinematic = true;

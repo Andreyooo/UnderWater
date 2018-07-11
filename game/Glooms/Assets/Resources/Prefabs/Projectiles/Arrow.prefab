@@ -217,7 +217,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 7
-  bulletSpeed: 30
+  bulletSpeed: 25
   firepoint: FirepointArrow
   fpnt: {fileID: 0}
   releaseSound: {fileID: 8300000, guid: e6236201531035942af42ecb5fb95156, type: 3}

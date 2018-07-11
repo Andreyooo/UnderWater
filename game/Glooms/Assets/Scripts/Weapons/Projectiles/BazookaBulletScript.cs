@@ -9,6 +9,7 @@ public class BazookaBulletScript : Projectile {
     private bool adjusted = false;
     private float accelerationBoost = 0.3f;
     private float accelerationDecrease = 0.001f;
+    private bool exploded = false;
 
     private void Awake()
     {
@@ -45,10 +46,14 @@ public class BazookaBulletScript : Projectile {
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        GameObject explosion = Instantiate(explosionPrefab);
-        explosion.transform.position = transform.position;
-        explosion.GetComponent<BazookaExplosionScript>().damage = damage;
-        SoundManager.PlayAudioClip(hitSound);
-        DestroyProjectileAfterTime(0);
+        if (!exploded)
+        {
+            exploded = true;
+            GameObject explosion = Instantiate(explosionPrefab);
+            explosion.transform.position = transform.position;
+            explosion.GetComponent<BazookaExplosionScript>().damage = damage;
+            SoundManager.PlayAudioClip(hitSound);
+            DestroyProjectileAfterTime(0);
+        }
     }
 }

@@ -55,7 +55,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1.35
+  m_Mass: 1.25
   m_LinearDrag: 0.5
   m_AngularDrag: 0.05
   m_GravityScale: 0.6
@@ -220,14 +220,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 3
-  bulletSpeed: 23
+  bulletSpeed: 21
   firepoint: FirepointBazookaBullet
   fpnt: {fileID: 0}
   releaseSound: {fileID: 8300000, guid: 00d3c2e0fed15c7489230f4b1448d45d, type: 3}
   hitSound: {fileID: 8300000, guid: 8bc55460a2a49fb48ad5f673ad002945, type: 3}
   lifeTime: 7
   afterLifeTime: 2.6
-  explosionPrefab: {fileID: 139366, guid: b185c1a9cf067374586d095111b15bd1, type: 2}
+  explosionPrefab: {fileID: 1708866285726236, guid: 8cf47d4decae68645b53a8e80cbd872f,
+    type: 2}
 --- !u!212 &212673806713333608
 SpriteRenderer:
   m_ObjectHideFlags: 1
