@@ -1,4 +1,3 @@
-
 # Playtesting-Auswertung
 
 ### Getestete Alpha-Version
@@ -15,9 +14,13 @@ Bis kurz vor den Tests haben wir unser Spiel nochmals erweitert.
 
 ## Die Tester
 ![](./images/PlaytestingBilder/IMG_5262.JPG)
-Bla bla bla  6 Leute eingeladen, nur 4 gekommen...  Wir haben uns bewusst für richtige Gamer entschieden, die jedoch unterschiedliche
+Eduard D.(l), Sahyoun A.(m), Onur C.(r)
 
-Jeder der Probanten wurde begrüßt und 
+&nbsp;
+
+Bei unseren Testern haben wir uns für erfahrene Gamer aus unterschiedlichen Richtungen entschieden, da Feedback von "Gaming-Experten" uns am meisten vorranbringt und dies auch die Zielgruppe des Spiels ist. 
+Jeder der Probanten wurde begrüßt und anschließend befragt, um ein Gamer-Profil zu erstellen. 
+Während des Testings wurde für ausreichend Verpflegung gesorgt.
 
 &nbsp;
 
@@ -33,6 +36,8 @@ __Top 3__
 * Smash-Brothers
 
 __größter Gaming-Erfolg:__ &nbsp; Hat alle 721 Pokémon in Pokémon Sonne und Mond gefangen
+
+__Ein gutes Spiel...__ - hat eine Story, die mich packt
 
  &nbsp;
  
@@ -50,6 +55,8 @@ __Top 3__
 
 __größter Gaming-Erfolg:__ &nbsp; War Co-Leader bei einem internationalen Warframe-Clan mit über 300 aktiven Mitgliedern
 
+__Ein gutes Spiel...__ - hat Charakter und Atmosphäre
+
 &nbsp;
 
 ### Sahyoun A. (26) -  "Beim Killen geht es um die Message"
@@ -66,6 +73,8 @@ __Top 3__
 * PubG
 
 __größter Gaming-Erfolg:__ &nbsp; Ist im Besitz von über 220 League of Legends-Skins
+
+__Ein gutes Spiel...__ - ist fesselnd und motiviert mich
 
 &nbsp;
 
@@ -95,7 +104,7 @@ Sahyoun - "epic Game", "Ruckler sind cool", "Optionen fehlen"
 Anschließend wurde eine ca. 15 minütige Runde gespielt mit folgendem Ergebnis. 
 
 
-__Platzierungen:__
+### Platzierungen
 1. Sahyoun
 2. Onur
 3. Eduard
@@ -112,6 +121,7 @@ __Onur__
 * Spawns sind nicht fair, sollten frei wählbar sein
 * Charaktere sollten mehrere Leben haben
 * "Grundidee nicht schlecht, aber noch nicht polished"
+* Musik passt nicht wirklich
 
 &nbsp;
 
@@ -164,3 +174,6 @@ __Onur__ - Der Multiplayer Aspekt
 __Eduard__ - Die Mischung aus Grafik und Sound
 
 __Sahyoun__ - Das Siegen fühlt sich gut an, motiviert weiterzuspielen
+
+### Fazit
+Das Testing verlief erfolgreich. Wir konnten eine gute Testing Atmosphäre erzeugen, wodurch jeder seine Tester-Rolle auch ernst nehmen und mithilfe seiner Gaming-Erfahrung konstruktives Feedback geben konnte. Beim Spielen kam auch eine leichte kompetetive Stimmung auf, so wurden nachdem Spiel Wortgefechte ausgetauscht und der Gewinner war auch sichtlich erfreut über seinen Sieg. Es wurde auch nachdem Testing hier und da Feedback gegeben, auch Dinge, die einem während des Testings nicht in den Sinn kamen. Das Feedback werden wir aufjedenfall für den weiteren Entwicklungs-Verlauf berücksichtigen.
