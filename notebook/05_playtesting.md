@@ -175,5 +175,7 @@ __Eduard__ - Die Mischung aus Grafik und Sound
 
 __Sahyoun__ - Das Siegen fühlt sich gut an, motiviert weiterzuspielen
 
-### Fazit
+&nbsp;
+
+## Fazit
 Das Testing verlief erfolgreich. Wir konnten eine gute Testing Atmosphäre erzeugen, wodurch jeder seine Tester-Rolle auch ernst nehmen und mithilfe seiner Gaming-Erfahrung konstruktives Feedback geben konnte. Beim Spielen kam auch eine leichte kompetetive Stimmung auf, so wurden nachdem Spiel Wortgefechte ausgetauscht und der Gewinner war auch sichtlich erfreut über seinen Sieg. Es wurde auch nachdem Testing hier und da Feedback gegeben, auch Dinge, die einem während des Testings nicht in den Sinn kamen. Das Feedback werden wir aufjedenfall für den weiteren Entwicklungs-Verlauf berücksichtigen.
