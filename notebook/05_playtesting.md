@@ -14,6 +14,7 @@ Bis kurz vor den Tests haben wir unser Spiel nochmals erweitert.
 &nbsp;
 
 ## Die Tester
+![](./images/PlaytestingBilder/IMG_5262.JPG)
 Bla bla bla  6 Leute eingeladen, nur 4 gekommen...  Wir haben uns bewusst für richtige Gamer entschieden, die jedoch unterschiedliche
 
 Jeder der Probanten wurde begrüßt und 
@@ -80,6 +81,7 @@ Sahyoun - "Soll einen Reiz haben es weiterzuspielen. Nicht zu kompliziert."
 
 ## Das Testing
 
+![](./images/PlaytestingBilder/IMG_5250.JPG)
 ### Eindrücke des Menüs
 
 Onur - "Menü ist stimmig"
@@ -101,6 +103,9 @@ __Platzierungen:__
 &nbsp;
 
 ### Feedback während des Spielens
+
+![](./images/PlaytestingBilder/IMG_5256.JPG)
+
 __Onur__
 * "Stage(Map) ist kacke"
 	* mehrere Ebenen wären nett
