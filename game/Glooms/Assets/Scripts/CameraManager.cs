@@ -139,5 +139,6 @@ public class CameraManager : MonoBehaviour
        // gameObject.GetComponent<Camera>().orthographicSize = originalZoom;
         gameObject.transform.position = smoothedPosition;
         gameObject.GetComponent<Camera>().orthographicSize = smoothedZoom;
+        transPlayer = true;
     }
 }

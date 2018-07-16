@@ -7,12 +7,20 @@ using System.Collections;
 public class PlayerStats : MonoBehaviour {
 	public int maxHealth = 25;
 	float currentHealth = 0;
+
+    public int maxExp = 3;
     public int experience = 0;
     public int turnExperience = 0;
+    public int level = 1;
 
     public bool finishedTurn;
 
-    public GameObject ExpGainPrefab;
+    public GameObject expGain;
+    public GameObject levelUp;
+    public GameObject level2Aura;
+    private ParticleSystem expGainPS;
+    private ParticleSystem levelUpPS;
+    private ParticleSystem level2AuraPS;
 
     //Sounds
     private int soundVar;
@@ -21,10 +29,21 @@ public class PlayerStats : MonoBehaviour {
     private string playerDeathSound;
     public AudioClip expGainSound;
 
+    //UI
 	public SimpleHealthBar healthBar;
+    public SimpleHealthBar expBar;
+
+    //etc
     public GameObject blood, deadHead, deadBody, deadLeftLeg, deadLeftHand, deadRightLeg, deadRightHand;
 
-	void Start ()
+    private void Awake ()
+    {
+        expGainPS = expGain.GetComponent<ParticleSystem>();
+        levelUpPS = levelUp.GetComponent<ParticleSystem>();
+        level2AuraPS = level2Aura.GetComponent<ParticleSystem>();
+    }
+
+    void Start ()
 	{
 		// Set the current health to max values.
 		currentHealth = maxHealth;
@@ -50,6 +69,7 @@ public class PlayerStats : MonoBehaviour {
         }
 
         healthBar.UpdateBar( currentHealth, maxHealth );
+        expBar.UpdateBar(experience, maxExp);
 	}
 
     //-------------------------Health-Functions------------------------
@@ -106,7 +126,6 @@ public class PlayerStats : MonoBehaviour {
     {
         finishedTurn = false;
         turnExperience += exp;
-        Debug.Log("TurnExperience: " + turnExperience);
     }
 
     public IEnumerator AddExperience()
@@ -118,16 +137,56 @@ public class PlayerStats : MonoBehaviour {
             SoundManager.PlayAudioClip(expGainSound);
             experience++;
             turnExperience--;
-            GameObject expAnimation = Instantiate(ExpGainPrefab);
-            expAnimation.transform.position = animationPosition;
-            yield return new WaitUntil(() => !expAnimation.GetComponent<ParticleSystem>().IsAlive());
+            expGainPS.Play();
+            expBar.UpdateBar(experience, maxExp);
+            yield return new WaitUntil(() => !expGainPS.IsAlive());
+
+            //LevelUP
+            if (experience == maxExp)
+            {
+                level++;
+                experience = 0;
+                maxExp++;
+                levelUpPS.Play();
+                yield return new WaitUntil(() => !levelUpPS.IsAlive());
+                if (level == 2)
+                {
+                    level2AuraPS.Play();
+                }
+
+                if (level == 3)
+                {
+                    //todo
+                }
+                expBar.UpdateBar(experience, maxExp);
+                yield return new WaitForSeconds(2);
+            }
         }
 
         //Let´s the camera switch to the next Player
-        Invoke("Test", 1);
+        Invoke("EndTurn", 1);
     }
 
-    private void Test()
+    /*private IEnumerator LevelUp()
+    {
+        level++;
+        experience = 0;
+        maxExp++;
+        levelUpPS.Play();
+        yield return new WaitUntil(() => !levelUpPS.IsAlive());
+        if (level == 2)
+        {
+            level2AuraPS.Play();
+        }
+        
+        if (level == 3)
+        {
+            //todo
+        }
+        expBar.UpdateBar(experience, maxExp);
+    }*/
+
+    private void EndTurn()
     {
         finishedTurn = true;
     }
