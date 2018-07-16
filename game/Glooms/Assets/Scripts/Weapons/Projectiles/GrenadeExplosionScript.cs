@@ -5,6 +5,7 @@ using UnityEngine;
 public class GrenadeExplosionScript : MonoBehaviour {
     public float delay = 0;
     public int damage;
+    public int expGain;
     public AudioClip expl;
     private bool over = false;
 
@@ -18,12 +19,13 @@ public class GrenadeExplosionScript : MonoBehaviour {
     {
         if (collision.gameObject.name == "Player(Clone)" && !over)
         {
-            Invoke("ExplosionHappened", 0.001f);
+            Invoke("ExplosionHappened", 0.05f);
             var hit = collision.gameObject;
-            var health = hit.GetComponent<PlayerHealth>();
-            if (health != null)
+            var playerStats = hit.GetComponent<PlayerStats>();
+            if (playerStats != null)
             {
-                health.TakeDamage(damage);
+                playerStats.TakeDamage(damage);
+                GameManager.instance.CurrentPlayerGetsExp(expGain);
             }
         }
     }

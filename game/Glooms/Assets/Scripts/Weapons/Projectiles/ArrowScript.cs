@@ -5,6 +5,7 @@ using UnityEngine;
 public class ArrowScript : Projectile {
     private Rigidbody2D rb2D;
     private bool inAir = true;
+    private bool hit = false;
     [SerializeField]
     private float destroyDelay;
 
@@ -26,20 +27,24 @@ public class ArrowScript : Projectile {
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        SoundManager.PlayAudioClip(hitSound);
-        inAir = false;
-        rb2D.isKinematic = true;
-        rb2D.velocity = Vector2.zero;
-        DestroyProjectileAfterTime(destroyDelay);
-        if (collision.gameObject.name == "Player(Clone)")
+        if(!hit)
         {
-            var hit = collision.gameObject;
-            var health = hit.GetComponent<PlayerHealth>();
-            if (health != null)
+            hit = true;
+            SoundManager.PlayAudioClip(hitSound);
+            inAir = false;
+            rb2D.isKinematic = true;
+            rb2D.velocity = Vector2.zero;
+            DestroyProjectileAfterTime(destroyDelay);
+            if (collision.gameObject.name == "Player(Clone)")
             {
-                health.TakeDamage(damage);
+                var hit = collision.gameObject;
+                var playerStats = hit.GetComponent<PlayerStats>();
+                if (playerStats != null)
+                {
+                    playerStats.TakeDamage(damage);
+                    GameManager.instance.CurrentPlayerGetsExp(expGain);
+                }
             }
         }
-
     }
 }

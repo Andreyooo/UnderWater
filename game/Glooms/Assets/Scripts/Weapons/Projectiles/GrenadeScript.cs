@@ -21,21 +21,8 @@ public class GrenadeScript : Projectile {
     private void Explode()
     {
         GameObject explosion = Instantiate(explosionPrefab);
-        Debug.Log("Explosion erstellt");
         explosion.transform.position = transform.position;
         explosion.GetComponent<GrenadeExplosionScript>().damage = damage;
         DestroyProjectileAfterTime(0);
-
-
-        /*Vector2 explosionPos = new Vector2(transform.position.x, transform.position.y);
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 100 / 100);
-
-        for (int i = 0; i < colliders.Length; i++)
-        {
-            // TODO: two calls for getcomponent is bad
-            DestructibleSprite destructibleSpriteScript = colliders[i].GetComponent<DestructibleSprite>();
-            if (destructibleSpriteScript)
-                destructibleSpriteScript.ApplyDamage(explosionPos, 100);
-        }*/
     }
 }

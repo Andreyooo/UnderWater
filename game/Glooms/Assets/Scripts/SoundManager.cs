@@ -123,6 +123,10 @@ public class SoundManager : MonoBehaviour
         efxSource.PlayOneShot(sound);
     }
 
+    public static void StopAudioClip()
+    {
+        efxSource.Stop();
+    }
 
     //RandomizeSfx chooses randomly between various audio clips and slightly changes their pitch.
     public static AudioClip RandomizeSfx(params AudioClip[] clips)

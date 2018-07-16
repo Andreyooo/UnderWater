@@ -8,10 +8,11 @@ public class ShootingWeapon : MonoBehaviour {
     public PlayerController player;
     public GameObject chargingBar;
     public GameObject chargingBarOutline;
+    public GameObject crosshair;
+
     public AudioClip weaponSwitchSound1;
     public AudioClip weaponSwitchSound2;
-
-    public bool canShoot = true;
+    public AudioClip chargeSound;
 
     private CameraManager cam;
 
@@ -19,26 +20,28 @@ public class ShootingWeapon : MonoBehaviour {
     private int currentWeapon;
     private List<Weapon> loadOut = new List<Weapon>();
 
-    //private float bulletSpeed = 22;
-    //private float lifeTime = 10;
     private float chargeLevel = 0;
-    private float chargeSpeed = 0.7f;
+    private float chargeSpeed = 0.5f;
     private float chargeLimit = 1;
-    private float colorChangingRangeGreen = 200;
+    private float colorChangingRangeGreen = 150;
 
     private SpriteRenderer weaponSR;
     private SpriteRenderer chargingBarSR;
     private SpriteRenderer chargingBarOutlineSR;
+    private SpriteRenderer crosshairSR;
+
     private bool active = false;
-    //private bool directionRight = true;
     private bool rotationEnabled = true;
+    public bool canShoot = true;
 
     void Awake()
     {
         weaponSR = GetComponent<SpriteRenderer>();
-        SetLoadOut();
         chargingBarSR = chargingBar.GetComponent<SpriteRenderer>();
         chargingBarOutlineSR = chargingBarOutline.GetComponent<SpriteRenderer>();
+        crosshairSR = crosshair.GetComponent<SpriteRenderer>();
+
+        SetLoadOut();
     }
 
     void Update()
@@ -52,18 +55,23 @@ public class ShootingWeapon : MonoBehaviour {
                 WeaponSwitching();
             }
 
+            if (Input.GetButtonDown("Fire1") && canShoot && !EventSystem.current.IsPointerOverGameObject())
+            {
+                crosshairSR.enabled = false;
+                rotationEnabled = false;
+                chargingBarSR.enabled = true;
+                chargingBarOutlineSR.enabled = true;
+                SoundManager.PlayAudioClip(chargeSound);
+            }
+
             //charging Bulletpower
             if (Input.GetButton("Fire1") && canShoot && !EventSystem.current.IsPointerOverGameObject())
             {
                 if (chargeLevel < chargeLimit)
                 {
-                    rotationEnabled = false;
-                    chargingBarSR.enabled = true;
-                    chargingBarOutlineSR.enabled = true;
-
                     chargeLevel += Time.deltaTime * chargeSpeed;
                     chargingBar.transform.localScale = new Vector3(chargeLevel, chargeLevel, 1);
-                    byte greenValue = (byte)(235 - colorChangingRangeGreen * Mathf.Pow(chargeLevel, 7));
+                    byte greenValue = (byte)(235 - colorChangingRangeGreen * Mathf.Pow(chargeLevel, 3));
                     chargingBarSR.color = new Color32(235, greenValue, 0, 255);
                 }
                 else
@@ -75,6 +83,7 @@ public class ShootingWeapon : MonoBehaviour {
 
             if (Input.GetButtonUp("Fire1") && !EventSystem.current.IsPointerOverGameObject())
             {
+                SoundManager.StopAudioClip();
                 if (canShoot)
                 {
                     ReleaseProjectile();
@@ -162,15 +171,12 @@ public class ShootingWeapon : MonoBehaviour {
     //Sets player Active for Aiming Mode
     public void SetActive(bool bo)
     {
+        //weapon mode
         active = bo;
-        if (bo == true)
-        {
-            //CheckLoadOut();
-            weaponSR.enabled = true;
-        } else
-        {
-            weaponSR.enabled = false;
-        }
+
+        //SpriteRendererComponents
+        weaponSR.enabled = bo;
+        crosshairSR.enabled = bo;
     }
 
     //Sets Weapon
@@ -202,14 +208,4 @@ public class ShootingWeapon : MonoBehaviour {
             }
         }
     }
-
-    //flipping Weapon VERALTET************************
-    /*public void FlipWeapon()
-    {
-        player.Flip();
-        Vector3 newScale = transform.localScale;
-        newScale.x *= -1;
-        newScale.y *= -1;
-        transform.localScale = newScale;
-    }*/
 }

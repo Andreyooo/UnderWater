@@ -5,23 +5,20 @@ using UnityEngine;
 public class BazookaExplosionScript : MonoBehaviour {
     public float delay = 0;
     public int damage;
+    public int expGain;
     private bool over = false;
 
-	// Use this for initialization
-	void Start () {
-        Destroy(gameObject, gameObject.GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).length + delay);
-    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.name == "Player(Clone)" && !over)
         {
-            Debug.Log("Hello");
-            Invoke("ExplosionHappened", 0.001f);
+            Invoke("ExplosionHappened", 0.05f);
             var hit = collision.gameObject;
-            var health = hit.GetComponent<PlayerHealth>();
-            if (health != null)
+            var playerStats = hit.GetComponent<PlayerStats>();
+            if (playerStats != null)
             {
-                health.TakeDamage(damage);
+                playerStats.TakeDamage(damage);
+                GameManager.instance.CurrentPlayerGetsExp(expGain);
             }
         }
     }

@@ -48,13 +48,16 @@ public class CameraManager : MonoBehaviour
         {
             if (!fullscreen)
             {
-                if (transPlayer)
+                if (player != null)
                 {
-                    transitionPlayer(player);
-                }
-                else
-                {
-                    FollowPlayer(player);
+                    if (transPlayer)
+                    {
+                        TransitionPlayer(player);
+                    }
+                    else
+                    {
+                        FollowPlayer(player);
+                    }
                 }
             }
             else
@@ -104,7 +107,7 @@ public class CameraManager : MonoBehaviour
         gameObject.GetComponent<Camera>().orthographicSize = originalZoom - 9;
     }
 
-    private void transitionPlayer(GameObject play)
+    private void TransitionPlayer(GameObject play)
     {
         float currentZoom = gameObject.GetComponent<Camera>().orthographicSize;
         player = play;
@@ -119,14 +122,14 @@ public class CameraManager : MonoBehaviour
         float smoothedZoom = Mathf.Lerp(currentZoom, originalZoom-9, smooth);
 
         gameObject.transform.position = smoothedPosition;
-        if (gameObject.transform.position.x == finalPos.x)
+        if (Mathf.Abs(gameObject.transform.position.x - finalPos.x) < 0.01)
         {
-            transPlayer = false;
+            transPlayer = false; 
             Debug.Log("transPlayer set to false!");
         }
         gameObject.GetComponent<Camera>().orthographicSize = smoothedZoom;
-        
     }
+
     private void ResetCamera()
     {
         float currentZoom = gameObject.GetComponent<Camera>().orthographicSize;

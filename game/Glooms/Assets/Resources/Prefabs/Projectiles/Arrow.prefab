@@ -217,12 +217,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 7
-  bulletSpeed: 25
+  expGain: 1
+  bulletSpeed: 35
   firepoint: FirepointArrow
   fpnt: {fileID: 0}
   releaseSound: {fileID: 8300000, guid: e6236201531035942af42ecb5fb95156, type: 3}
   hitSound: {fileID: 8300000, guid: 1dc51109d86250e428ca426d02c1646d, type: 3}
-  lifeTime: 7
+  lifeTime: 10
   afterLifeTime: 0.1
   destroyDelay: 2.25
 --- !u!212 &212856070322201404

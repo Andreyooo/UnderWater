@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerController : PhysicsObject
-{
+public class PlayerController : PhysicsObject {
     public MovementTimerScript movementTimer;
     public Button movementButton;
     public Button weaponButton;
@@ -25,7 +24,6 @@ public class PlayerController : PhysicsObject
 
 
     private ShootingWeapon shootingWeaponScript;
-    //private SpriteRenderer spriteRenderer;
     private Animator animator;
     private Transform canvasTransform;
 
@@ -33,7 +31,6 @@ public class PlayerController : PhysicsObject
     void Awake()
     {
         shootingWeaponScript = gameObject.GetComponentInChildren<ShootingWeapon>();
-        //spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         canvasTransform = transform.Find("Canvas");
         movementButton = GameObject.Find("Movement Button").GetComponent<Button>();
@@ -98,7 +95,7 @@ public class PlayerController : PhysicsObject
         if (Input.GetButtonDown("Jump") && grounded)
         {
             jumped = true;
-            SoundManager.PlaySound(gameObject.GetComponent<PlayerHealth>().playerJumpSound);
+            gameObject.GetComponent<PlayerStats>().PlayJumpSound();
             velocity.y = jumpTakeOffSpeed;
         }
         else if (Input.GetButtonUp("Jump"))
@@ -145,7 +142,7 @@ public class PlayerController : PhysicsObject
         {
             movingMode = false;
             aimingMode = true;
-            transform.Find("ShootingWeapon").gameObject.GetComponent<ShootingWeapon>().SetActive(true);
+            shootingWeaponScript.SetActive(true);
             if (movedThisTurn)
             {
                 DisableMoving();

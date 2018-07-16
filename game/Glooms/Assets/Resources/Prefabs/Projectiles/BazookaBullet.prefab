@@ -123,8 +123,8 @@ TrailRenderer:
   m_ReflectionProbeUsage: 0
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 0a5858e7315e5874bb389607a6c0dd15, type: 2}
-  - {fileID: 2100000, guid: 046f0d7d28c6e2043ad43633efb43bbc, type: 2}
+  - {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: c8b458df896f71044a3afb9f876d3812, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -220,12 +220,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 3
+  expGain: 0
   bulletSpeed: 21
   firepoint: FirepointBazookaBullet
   fpnt: {fileID: 0}
   releaseSound: {fileID: 8300000, guid: 00d3c2e0fed15c7489230f4b1448d45d, type: 3}
   hitSound: {fileID: 8300000, guid: 8bc55460a2a49fb48ad5f673ad002945, type: 3}
-  lifeTime: 7
+  lifeTime: 10
   afterLifeTime: 2.6
   explosionPrefab: {fileID: 1708866285726236, guid: 8cf47d4decae68645b53a8e80cbd872f,
     type: 2}

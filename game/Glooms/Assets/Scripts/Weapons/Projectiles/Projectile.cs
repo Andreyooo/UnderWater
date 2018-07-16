@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class Projectile : MonoBehaviour {
     public int damage;
+    public int expGain;
     public float bulletSpeed;
     public string firepoint;
     public Transform fpnt;

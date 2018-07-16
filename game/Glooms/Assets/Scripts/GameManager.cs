@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour {
     private GameObject previousPlayer = null;
 
     private CameraManager cam;
-    public int currentPlayer = 0;
+    private int currentPlayer = 1;
     public GameObject playerPrefab;
     public List<GameObject> players;
 
@@ -38,6 +38,8 @@ public class GameManager : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        cam = GameObject.Find("Main Camera").GetComponent<CameraManager>();
+
         float[] xPos = { -24f, -1, 23f };
         for(int i=0; i < 3; i++)
         {
@@ -49,9 +51,18 @@ public class GameManager : MonoBehaviour {
                 aPlayer.GetComponent<PlayerController>().Flip();
             }
         }
-		currentShots = shotsPerTurn;
-        SwitchPlayer();
+        SetupGame();
 	}
+
+    private void SetupGame()
+    {
+        currentShots = shotsPerTurn;
+
+        //StartingPlayer
+        players[currentPlayer].GetComponent<PlayerController>().SetActive();
+        cam.player = players[currentPlayer];
+        cam.transPlayer = true;
+    }
 
 	public IEnumerator HasFired(Projectile projectile){
 		currentShots--;
@@ -61,11 +72,11 @@ public class GameManager : MonoBehaviour {
             yield return new WaitUntil(() => projectileDestroyed);
             Debug.Log("Stop Waiting");
             projectileDestroyed = false;
-            SwitchPlayer();
+            StartCoroutine(FinishPlayerTurn());
         }
 	}
 
-    public void SwitchPlayer()
+    private void SwitchPlayer()
     {
         for (int j = 0; j < players.Count; j++)
         {
@@ -86,7 +97,7 @@ public class GameManager : MonoBehaviour {
 
         if (currentPlayer >= 0)
         {
-            previousPlayer = players[currentPlayer];
+            previousPlayer = GetCurrentPlayer();
         }  
         currentPlayer++;
         currentShots = shotsPerTurn;
@@ -99,10 +110,9 @@ public class GameManager : MonoBehaviour {
         {
             previousPlayer.GetComponent<PlayerController>().SetPassive();
         }
-        players[currentPlayer].GetComponent<PlayerController>().SetActive();
+        GetCurrentPlayer().GetComponent<PlayerController>().SetActive();
         SoundManager.PlayAudioClip(switchPlayerSound);
-        cam = GameObject.Find("Main Camera").GetComponent<CameraManager>();
-        cam.player = players[currentPlayer];
+        cam.player = GetCurrentPlayer();
         cam.transPlayer = true;
 
         if (players.Count <= 1)
@@ -111,5 +121,34 @@ public class GameManager : MonoBehaviour {
             SoundManager.PlayAudioClip(winTheme);
             return;
         }
+    }
+
+    private IEnumerator FinishPlayerTurn()
+    {
+        if (players[currentPlayer].GetComponent<PolygonCollider2D>().enabled)
+        {
+            cam.player = GetCurrentPlayer();
+            cam.transPlayer = true;
+            yield return new WaitUntil(() => !cam.transPlayer);
+
+            PlayerStats CurrentPlayerStats = GetCurrentPlayer().GetComponent<PlayerStats>();
+            if (CurrentPlayerStats.turnExperience > 0)
+            {
+                StartCoroutine(CurrentPlayerStats.AddExperience());
+                yield return new WaitUntil(() => CurrentPlayerStats.finishedTurn);
+                Debug.Log("Experience: " + CurrentPlayerStats.experience);
+            }
+        }
+        SwitchPlayer();
+    }
+
+    public void CurrentPlayerGetsExp(int exp)
+    {
+        GetCurrentPlayer().GetComponent<PlayerStats>().ExpGain(exp);
+    }
+
+    public GameObject GetCurrentPlayer()
+    {
+        return players[currentPlayer];
     }
 }
