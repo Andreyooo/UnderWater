@@ -44,6 +44,10 @@ public class BazookaBulletScript : Projectile {
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
 
+    private void OnTriggerEnter2D(Collider2D collider){
+         DestroyProjectileAfterTime(0);
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (!exploded)

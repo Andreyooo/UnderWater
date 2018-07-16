@@ -8,6 +8,10 @@ public class GrenadeScript : Projectile {
     private Rigidbody2D rb2D;
     private bool triggered = false;
 
+    private void OnTriggerEnter2D(Collider2D collider){
+         DestroyProjectileAfterTime(0);
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (!triggered)
