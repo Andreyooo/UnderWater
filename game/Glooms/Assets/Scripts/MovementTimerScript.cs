@@ -21,7 +21,7 @@ public class MovementTimerScript : MonoBehaviour {
 			timeLeft -= Time.deltaTime;
 			timerBar.fillAmount = timeLeft/maxTime;
 		}
-        Debug.Log(playerMoving);
+      //  Debug.Log(playerMoving);
     }
 
 	public void SetActive () {
