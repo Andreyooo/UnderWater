@@ -446,7 +446,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1740410104751858}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.68, y: 5, z: 1}
+  m_LocalPosition: {x: 1.68, y: -2.7, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 0}
   m_Children:
   - {fileID: 4631746437726422}
@@ -530,7 +530,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1211915246600008}
   m_LocalRotation: {x: -0.6427876, y: 0, z: 0, w: 0.7660445}
-  m_LocalPosition: {x: 0, y: -0.24, z: 0}
+  m_LocalPosition: {x: 0, y: -0.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4475794473654952}
@@ -558,13 +558,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1407012092631876}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.2, z: 0}
-  m_LocalScale: {x: 0.7, y: 1, z: 0.6}
+  m_LocalRotation: {x: -0.3420201, y: 0, z: 0, w: 0.9396927}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.5, y: 1, z: 0.6}
   m_Children: []
   m_Father: {fileID: 4352788951246736}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -40, y: 0, z: 0}
 --- !u!4 &4494937072629078
 Transform:
   m_ObjectHideFlags: 1
@@ -1143,7 +1143,6 @@ MonoBehaviour:
   movementTimer: {fileID: 0}
   movementButton: {fileID: 0}
   weaponButton: {fileID: 0}
-  bouncyness: {fileID: 0}
   playerArrow: {fileID: 1265309881013464}
   maxSpeed: 2
   jumpTakeOffSpeed: 6
@@ -19330,7 +19329,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 0.6666667, b: 0.23529412, a: 0.7058824}
-      maxColor: {r: 0.03875936, g: 0.6320754, b: 0.5804502, a: 0.4862745}
+      maxColor: {r: 1, g: 1, b: 0, a: 0.59607846}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
