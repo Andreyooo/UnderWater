@@ -7,7 +7,6 @@ public class PlayerController : PhysicsObject {
     public MovementTimerScript movementTimer;
     public Button movementButton;
     public Button weaponButton;
-    public PhysicsMaterial2D bouncyness;
 
     public GameObject playerArrow;
     public float maxSpeed = 2f;
@@ -18,8 +17,6 @@ public class PlayerController : PhysicsObject {
     public bool jumped;
     public bool flipped = false;
     public bool canMove = true;
-
-    private bool movedThisTurn = false;
 
 
 
@@ -91,6 +88,7 @@ public class PlayerController : PhysicsObject {
         Vector2 move = Vector2.zero;
         move.x = Input.GetAxis("Horizontal");
 
+
         //Jump
         if (Input.GetButtonDown("Jump") && grounded)
         {
@@ -113,6 +111,16 @@ public class PlayerController : PhysicsObject {
             Flip();
         }
 
+        if (move.x != 0)
+        {
+            movementTimer.playerMoving = true;
+        }
+        else
+        {
+            movementTimer.playerMoving = false;
+        }
+
+        //MovementLeftCheck
         if (movementTimer.timeLeft <= 0)
         {
             DisableMoving();
@@ -141,24 +149,19 @@ public class PlayerController : PhysicsObject {
         if (!passiveMode)
         {
             movingMode = false;
+            movementTimer.playerMoving = false;
             aimingMode = true;
             shootingWeaponScript.SetActive(true);
-            if (movedThisTurn)
-            {
-                DisableMoving();
-            }
         }
     }
 
     //Set To Moving Mode
     public void MovingModeActive()
     {
-
-        if (!passiveMode && canMove && !movedThisTurn)
+        if (!passiveMode && canMove)
         {
             aimingMode = false;
             movingMode = true;
-            movedThisTurn = true;
             shootingWeaponScript.SetActive(false);
             movementTimer.SetActive();
         }
@@ -167,9 +170,9 @@ public class PlayerController : PhysicsObject {
     //When moved this turn, disable moving
     public void DisableMoving()
     {
+        movementTimer.SetPassive();
         canMove = false;
         movingMode = false;
-        movementTimer.SetPassive();
     }
 
     //Player is Passive
@@ -181,7 +184,7 @@ public class PlayerController : PhysicsObject {
         passiveMode = true;
 
         //movementReset
-        movedThisTurn = false;
+        movementTimer.SetPassive();
         canMove = true;
 
         //disablingShootingWeapon

@@ -118,7 +118,11 @@ public class PlayerStats : MonoBehaviour {
         //Deactivate Player
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
         gameObject.GetComponent<PolygonCollider2D>().enabled = false;
-        Invoke("DeactivatePlayer", 11);
+        gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
+        level2Aura.SetActive(false);
+        expBar.gameObject.SetActive(false);
+
+        Invoke("DeactivatePlayer", 30);
     }
 
     //---------------------------RPG-Functions-------------------------
@@ -167,25 +171,6 @@ public class PlayerStats : MonoBehaviour {
         //Let´s the camera switch to the next Player
         Invoke("EndTurn", 1);
     }
-
-    /*private IEnumerator LevelUp()
-    {
-        level++;
-        experience = 0;
-        maxExp++;
-        levelUpPS.Play();
-        yield return new WaitUntil(() => !levelUpPS.IsAlive());
-        if (level == 2)
-        {
-            level2AuraPS.Play();
-        }
-        
-        if (level == 3)
-        {
-            //todo
-        }
-        expBar.UpdateBar(experience, maxExp);
-    }*/
 
     private void EndTurn()
     {
