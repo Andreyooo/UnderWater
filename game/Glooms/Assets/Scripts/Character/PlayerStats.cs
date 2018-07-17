@@ -152,6 +152,7 @@ public class PlayerStats : MonoBehaviour {
                 if (level == 2)
                 {
                     level2AuraPS.Play();
+                    level2Aura.GetComponent<AudioSource>().Play();
                 }
 
                 if (level == 3)
