@@ -1185,6 +1185,7 @@ MonoBehaviour:
   expGain: {fileID: 1123646559579560}
   levelUp: {fileID: 1211915246600008}
   level2Aura: {fileID: 1337454591361966}
+  levelUpSound: {fileID: 8300000, guid: 574699d2bf9b88b429293f8ed4e4510d, type: 3}
   expGainSound: {fileID: 8300000, guid: 102570e17833cc14dab1879456ed739b, type: 3}
   healthBar: {fileID: 114118074459934366}
   expBar: {fileID: 114790767746349298}

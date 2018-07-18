@@ -19,6 +19,7 @@ public class BazookaBulletScript : Projectile {
     private void Update()
     {
         if (fpnt.forward.x < 0 && !adjusted)
+
         {
             accelerationBoost *= -1;
             accelerationDecrease *= -1;

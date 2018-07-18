@@ -123,8 +123,8 @@ TrailRenderer:
   m_ReflectionProbeUsage: 0
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
   - {fileID: 2100000, guid: c8b458df896f71044a3afb9f876d3812, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -144,10 +144,10 @@ TrailRenderer:
   m_SortingLayerID: -1953543871
   m_SortingLayer: 3
   m_SortingOrder: 2
-  m_Time: 0.8
+  m_Time: 0.6
   m_Parameters:
     serializedVersion: 2
-    widthMultiplier: 0.4
+    widthMultiplier: 0.34
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -161,8 +161,8 @@ TrailRenderer:
         inWeight: 0.33333334
         outWeight: 0.16298321
       - serializedVersion: 3
-        time: 0.99450684
-        value: 0.23275757
+        time: 0.947876
+        value: 0.12766266
         inSlope: 0.54572237
         outSlope: 0.54572237
         tangentMode: 0
@@ -221,7 +221,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 3
   expGain: 0
-  bulletSpeed: 21
+  bulletSpeed: 26
   firepoint: FirepointBazookaBullet
   fpnt: {fileID: 0}
   releaseSound: {fileID: 8300000, guid: 00d3c2e0fed15c7489230f4b1448d45d, type: 3}

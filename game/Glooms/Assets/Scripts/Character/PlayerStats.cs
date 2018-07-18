@@ -18,6 +18,7 @@ public class PlayerStats : MonoBehaviour {
     public GameObject expGain;
     public GameObject levelUp;
     public GameObject level2Aura;
+    public AudioClip levelUpSound;
     private ParticleSystem expGainPS;
     private ParticleSystem levelUpPS;
     private ParticleSystem level2AuraPS;
@@ -152,6 +153,7 @@ public class PlayerStats : MonoBehaviour {
                 experience = 0;
                 maxExp++;
                 levelUpPS.Play();
+                SoundManager.PlayAudioClip(levelUpSound);
                 yield return new WaitUntil(() => !levelUpPS.IsAlive());
                 if (level == 2)
                 {
