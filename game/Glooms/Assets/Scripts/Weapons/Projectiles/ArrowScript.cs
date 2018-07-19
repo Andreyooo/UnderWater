@@ -39,7 +39,7 @@ public class ArrowScript : Projectile {
             rb2D.isKinematic = true;
             rb2D.velocity = Vector2.zero;
             DestroyProjectileAfterTime(destroyDelay);
-            if (collision.gameObject.name == "Player(Clone)")
+            if (collision.gameObject.tag == "Player")
             {
                 var hit = collision.gameObject;
                 var playerStats = hit.GetComponent<PlayerStats>();

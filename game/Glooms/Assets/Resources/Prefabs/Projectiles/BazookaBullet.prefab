@@ -221,7 +221,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 3
   expGain: 0
-  bulletSpeed: 26
+  bulletSpeed: 24
   firepoint: FirepointBazookaBullet
   fpnt: {fileID: 0}
   releaseSound: {fileID: 8300000, guid: 00d3c2e0fed15c7489230f4b1448d45d, type: 3}

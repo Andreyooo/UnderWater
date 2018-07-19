@@ -17,7 +17,7 @@ public class GrenadeExplosionScript : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.name == "Player(Clone)" && !over)
+        if (collision.gameObject.tag == "Player" && !over)
         {
             Invoke("ExplosionHappened", 0.05f);
             var hit = collision.gameObject;
