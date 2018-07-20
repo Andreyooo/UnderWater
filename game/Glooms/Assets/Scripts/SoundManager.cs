@@ -105,7 +105,7 @@ public class SoundManager : MonoBehaviour
                 break;
             case "Viking Jump":
                 efxSource.PlayOneShot(RandomizeSfx(vikingJump));
-                break;
+                break;  
             case "Viking Death":
                 efxSource.PlayOneShot(vikingDeathSound);
                 break;
@@ -121,6 +121,17 @@ public class SoundManager : MonoBehaviour
     public static void PlayAudioClip(AudioClip sound)
     {
         efxSource.PlayOneShot(sound);
+    }
+
+    public void PlayMusic(AudioClip music)
+    {
+        musicSource.clip = music;
+        musicSource.Play();
+    }
+
+    public void LoopMusic(bool bo)
+    {
+        musicSource.loop = bo;
     }
 
     public static void StopAudioClip()

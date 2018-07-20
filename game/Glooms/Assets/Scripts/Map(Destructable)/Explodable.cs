@@ -114,6 +114,7 @@ public class Explodable : MonoBehaviour
                 p.GetComponent<Renderer>().sortingOrder = orderInLayer;
                 p.GetComponent<Rigidbody2D>().collisionDetectionMode = CollisionDetectionMode2D.Continuous;
                 p.AddComponent<SpritePieceScript>();
+                p.tag = "Ground";
 
                 //p.GetComponent<Rigidbody2D>().isKinematic = true;
             }

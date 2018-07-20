@@ -26,7 +26,7 @@ public class ArrowScript : Projectile {
     }
 
     private void OnTriggerEnter2D(Collider2D collider){
-         DestroyProjectileAfterTime(0);
+         DestroyProjectileAfterTime(2.5f);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

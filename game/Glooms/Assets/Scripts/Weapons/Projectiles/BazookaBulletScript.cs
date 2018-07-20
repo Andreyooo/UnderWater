@@ -18,7 +18,7 @@ public class BazookaBulletScript : Projectile {
 
     private void Update()
     {
-        if (fpnt.forward.x < 0 && !adjusted)
+        /*if (fpnt.forward.x < 0 && !adjusted)
 
         {
             accelerationBoost *= -1;
@@ -38,7 +38,7 @@ public class BazookaBulletScript : Projectile {
             rb2D.AddForce(fpnt.forward * accelerationBoost * rb2D.velocity.x / 4, ForceMode2D.Impulse);
             accelerationBoost -= accelerationDecrease;
             accelerationDecrease -= 0.0015f;
-        }
+        } */
 
         Vector2 v = rb2D.velocity;
         float angle = Mathf.Atan2(v.y, v.x) * Mathf.Rad2Deg;

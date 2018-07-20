@@ -6,17 +6,26 @@ public class GameManager : MonoBehaviour {
 
     public static GameManager instance = null;
 
+    //Stuff
     public int shotsPerTurn = 1;
-    public bool projectileDestroyed = false;
 	private int currentShots;
-    private GameObject previousPlayer = null;
+    public bool projectileDestroyed = false;
+    public bool playersSpawned = false;
 
+    //Camera
     private CameraManager cam;
-    private int currentPlayer = 1;
-    public GameObject playerPrefab;
-    public List<GameObject> players;
 
-    //win
+    //Players
+    public GameObject playerPrefab;
+    public GameObject nerdPrefab;
+    public GameObject vikingPrefab;
+
+    public List<GameObject> players;
+    private GameObject previousPlayer = null;
+    private int currentPlayer = 1;
+
+
+    //Win
     public GameObject win;
     public AudioClip winTheme;
 
@@ -40,21 +49,28 @@ public class GameManager : MonoBehaviour {
     void Start () {
         cam = GameObject.Find("Main Camera").GetComponent<CameraManager>();
 
-        float[] xPos = { -24f, -1, 23f };
+        /*float[] xPos = { -24f, -1, 23f };
         for(int i=0; i < 3; i++)
         {
             GameObject aPlayer = Instantiate(playerPrefab);
             aPlayer.transform.position = new Vector3(xPos[i], 10, 1);
             players.Add(aPlayer);
-            if (i == 2)
+            if (aPlayer.transform.position.x > 0)
             {
                 aPlayer.GetComponent<PlayerController>().Flip();
             }
         }
-        SetupGame();
+        StartGame();*/
+        StartCoroutine(SetupGame());
 	}
 
-    private void SetupGame()
+    private IEnumerator SetupGame()
+    {
+        yield return new WaitUntil(() => playersSpawned);
+        //StartGame();
+    }
+
+    private void StartGame()
     {
         currentShots = shotsPerTurn;
 

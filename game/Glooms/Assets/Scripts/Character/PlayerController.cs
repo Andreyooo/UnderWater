@@ -9,15 +9,23 @@ public class PlayerController : PhysicsObject {
     public Button weaponButton;
 
     public GameObject playerArrow;
+    public GameObject Parachute;
+
+    //Parachute Simulation Stuff
+    private float rotationDegree = 0.025f;
+    private float tempRotation;
+    private float airMove = 0.1f;
+    private float x = 1;
+
     public float maxSpeed = 2f;
     public float jumpTakeOffSpeed = 5;
     public bool aimingMode = false;
     public bool movingMode = false;
     public bool passiveMode;
+    public bool spawning;
     public bool jumped;
     public bool flipped = false;
     public bool canMove = true;
-
 
 
     private ShootingWeapon shootingWeaponScript;
@@ -27,6 +35,8 @@ public class PlayerController : PhysicsObject {
     // Use this for initialization
     void Awake()
     {
+        spawning = true;
+        tempRotation = rotationDegree;
         shootingWeaponScript = gameObject.GetComponentInChildren<ShootingWeapon>();
         animator = GetComponent<Animator>();
         canvasTransform = transform.Find("Canvas");
@@ -58,8 +68,55 @@ public class PlayerController : PhysicsObject {
             }
         }
         else
-        {
-            animator.SetTrigger("Idle");
+        {   
+            //SpawnPhase
+            if (spawning)
+            {
+                spawning = !grounded;
+                animator.SetTrigger("Offground");
+                Vector3 rotationPoint = transform.position;
+                rotationPoint.y += 5;
+                transform.RotateAround(rotationPoint, tempRotation);
+                if (transform.rotation.z < -0.3f)
+                {
+                    if (tempRotation > 0)
+                    {
+                        tempRotation = 0;
+                    }
+                    airMove = -0.1f;
+                }
+                if (transform.rotation.z < 0)
+                {
+                    x = -1;
+                } else
+                {
+                    x = 1;
+                }
+                if (transform.rotation.z > 0.3f)
+                {
+                    if (tempRotation < 0)
+                    {
+                        tempRotation = 0;
+                    }
+                    airMove = 0.1f;
+                }
+                tempRotation += x * Random.Range(0, Time.deltaTime / 20);
+
+                Vector3 newPos = transform.position;
+                newPos.x += Random.Range(0.5f, 1) * Random.Range(0, transform.rotation.z/1.5f);
+                newPos.y -= Time.deltaTime*1.5f;
+                transform.position = newPos;
+                if (grounded)
+                {
+                    gravityModifier = 1f;
+                    Parachute.SetActive(false);
+                    transform.rotation = Quaternion.identity;
+                }
+
+            } else
+            {
+                animator.SetTrigger("Idle");
+            }
         }
     }
 
@@ -104,6 +161,7 @@ public class PlayerController : PhysicsObject {
             }
         }
 
+
         //Flip player when moving
         bool flipSprite = (flipped ? (move.x > 0.01f) : (move.x < -0.01f));
         if (flipSprite)
@@ -127,6 +185,16 @@ public class PlayerController : PhysicsObject {
         }
 
         targetVelocity = move * maxSpeed;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log(collision.gameObject);
+        if (collision.gameObject.tag == "Ground")
+        {
+            Debug.Log("grounded");
+            grounded = true;
+        }
     }
 
     //Flip

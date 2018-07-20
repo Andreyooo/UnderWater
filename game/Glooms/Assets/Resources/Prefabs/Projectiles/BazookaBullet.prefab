@@ -56,8 +56,8 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1.25
-  m_LinearDrag: 0.5
-  m_AngularDrag: 0.05
+  m_LinearDrag: 0.35
+  m_AngularDrag: 20
   m_GravityScale: 0.6
   m_Material: {fileID: 0}
   m_Interpolate: 0
@@ -221,7 +221,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 3
   expGain: 0
-  bulletSpeed: 24
+  bulletSpeed: 39
   firepoint: FirepointBazookaBullet
   fpnt: {fileID: 0}
   releaseSound: {fileID: 8300000, guid: 00d3c2e0fed15c7489230f4b1448d45d, type: 3}
