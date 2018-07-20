@@ -15,6 +15,7 @@ public class PlayerSpawning : MonoBehaviour {
 
     private List<GameObject> players;
     private bool started = false;
+    private CameraManager cam;
 
     public bool playerSpawning = false;
 
@@ -23,6 +24,7 @@ public class PlayerSpawning : MonoBehaviour {
     // Use this for initialization
     void Start () {
         Cursor.visible = false;
+        cam = GameObject.Find("Main Camera").GetComponent<CameraManager>();
         soundmanager.PlayMusic(part1);
 	}
 	
@@ -36,6 +38,8 @@ public class PlayerSpawning : MonoBehaviour {
             GameObject newPlayer = Instantiate(vikingPrefab);
             newPlayer.transform.position = mousePos;
             GameManager.instance.players.Add(newPlayer);
+            cam.player = newPlayer;
+            cam.transPlayer = true;
         }
         if (GameManager.instance.players.Count == 9)
         {

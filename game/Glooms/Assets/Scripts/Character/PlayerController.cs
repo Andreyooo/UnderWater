@@ -12,7 +12,7 @@ public class PlayerController : PhysicsObject {
     public GameObject Parachute;
 
     //Parachute Simulation Stuff
-    private float rotationDegree = 0.025f;
+    private float rotationDegree = 0.8f;
     private float tempRotation;
     private float airMove = 0.1f;
     private float x = 1;
@@ -76,7 +76,7 @@ public class PlayerController : PhysicsObject {
                 animator.SetTrigger("Offground");
                 Vector3 rotationPoint = transform.position;
                 rotationPoint.y += 5;
-                transform.RotateAround(rotationPoint, tempRotation);
+                transform.Rotate(new Vector3(0, 0, -tempRotation));
                 if (transform.rotation.z < -0.3f)
                 {
                     if (tempRotation > 0)
@@ -92,6 +92,7 @@ public class PlayerController : PhysicsObject {
                 {
                     x = 1;
                 }
+                Debug.Log(transform.rotation.z);
                 if (transform.rotation.z > 0.3f)
                 {
                     if (tempRotation < 0)
@@ -100,11 +101,12 @@ public class PlayerController : PhysicsObject {
                     }
                     airMove = 0.1f;
                 }
-                tempRotation += x * Random.Range(0, Time.deltaTime / 20);
+                tempRotation += x * Random.Range(0, Time.deltaTime);
 
                 Vector3 newPos = transform.position;
                 newPos.x += Random.Range(0.5f, 1) * Random.Range(0, transform.rotation.z/1.5f);
-                newPos.y -= Time.deltaTime*1.5f;
+                newPos.y -= Time.deltaTime*2f;
+                newPos.z = 1;
                 transform.position = newPos;
                 if (grounded)
                 {
