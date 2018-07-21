@@ -39,6 +39,7 @@ public class PlayerSpawning : MonoBehaviour {
             newPlayer.transform.position = mousePos;
             GameManager.instance.players.Add(newPlayer);
             cam.player = newPlayer;
+            cam.fullscreen = false;
             cam.transPlayer = true;
         }
         if (GameManager.instance.players.Count == 9)

@@ -31,6 +31,7 @@ public class PlayerController : PhysicsObject {
     private ShootingWeapon shootingWeaponScript;
     private Animator animator;
     private Transform canvasTransform;
+    private CameraManager cam;
 
     // Use this for initialization
     void Awake()
@@ -45,6 +46,8 @@ public class PlayerController : PhysicsObject {
         movementButton.onClick.AddListener((UnityEngine.Events.UnityAction)this.MovingModeActive);
         weaponButton = GameObject.Find("Weapon Button").GetComponent<Button>();
         weaponButton.onClick.AddListener((UnityEngine.Events.UnityAction)this.AimingModeActive);
+        cam = GameObject.Find("Main Camera").GetComponent<CameraManager>();
+
     }
 
     //Update Method
@@ -113,13 +116,17 @@ public class PlayerController : PhysicsObject {
                     gravityModifier = 1f;
                     Parachute.SetActive(false);
                     transform.rotation = Quaternion.identity;
-                }
-
+                    Invoke("fullscreenOn", 0.2f);
+                }               
             } else
             {
                 animator.SetTrigger("Idle");
             }
         }
+    }
+
+    private void fullscreenOn(){
+        cam.fullscreen = true;
     }
 
     private void Moving()

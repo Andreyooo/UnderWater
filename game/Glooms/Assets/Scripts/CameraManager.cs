@@ -19,8 +19,8 @@ public class CameraManager : MonoBehaviour
     private float maxX;
     private float minY;
     private float maxY;
-    private bool fullscreen;
 
+    public bool fullscreen;
     public bool transPlayer;
 
     private void Start()
