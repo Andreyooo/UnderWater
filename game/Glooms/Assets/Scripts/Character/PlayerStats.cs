@@ -40,6 +40,7 @@ public class PlayerStats : MonoBehaviour {
 
     private void Awake ()
     {
+        //SoundManager.PlayAudioClip(EngageSound);
         expGainPS = expGain.GetComponent<ParticleSystem>();
         levelUpPS = levelUp.GetComponent<ParticleSystem>();
         level2AuraPS = level2Aura.GetComponent<ParticleSystem>();

@@ -14,6 +14,9 @@ public class GameManager : MonoBehaviour {
     //Camera
     private CameraManager cam;
 
+    //Announcer
+    private GameObject announcer;
+
     //Players
     public GameObject playerPrefab;
     public GameObject nerdPrefab;
@@ -57,6 +60,7 @@ public class GameManager : MonoBehaviour {
     // Use this for initialization
     void Start () {
         cam = GameObject.Find("Main Camera").GetComponent<CameraManager>();
+        announcer = GameObject.Find("Announcer");
         StartCoroutine(SetupGame());
 	}
 
@@ -64,6 +68,7 @@ public class GameManager : MonoBehaviour {
     {
         yield return new WaitUntil(() => playersSpawned);
         Cursor.visible = true;
+        announcer.SetActive(false);
         PreparePlayers();
         SwitchPlayer();
     }
@@ -73,14 +78,29 @@ public class GameManager : MonoBehaviour {
         if (fractions[currentFraction] == vikings)
         {
             currentPlayer = fractions[currentFraction][vikingIndex];
+            vikingIndex++;
+            if(vikingIndex > vikings.Count-1)
+            {
+                vikingIndex = 0;
+            }
         }
         if (fractions[currentFraction] == nerds)
         {
             currentPlayer = fractions[currentFraction][nerdIndex];
+            nerdIndex++;
+            if (nerdIndex > nerds.Count - 1)
+            {
+                nerdIndex = 0;
+            }
         }
         if (fractions[currentFraction] == bandits)
         {
             currentPlayer = fractions[currentFraction][banditIndex];
+            banditIndex++;
+            if (banditIndex > bandits.Count - 1)
+            {
+                banditIndex = 0;
+            }
         }
         currentPlayer.GetComponent<PlayerController>().SetActive();
         SoundManager.PlayAudioClip(switchPlayerSound);
@@ -113,7 +133,6 @@ public class GameManager : MonoBehaviour {
             {
                 StartCoroutine(CurrentPlayerStats.AddExperience());
                 yield return new WaitUntil(() => CurrentPlayerStats.finishedTurn);
-                Debug.Log("Experience: " + CurrentPlayerStats.experience);
             }
         }
         CheckLivingPlayers();
@@ -122,21 +141,96 @@ public class GameManager : MonoBehaviour {
 
     private void CheckLivingPlayers()
     {
-        foreach (List<GameObject> fraction in fractions)
+        for (int i = 0; i < fractions.Count; i++)
+        {
+            for (int j = 0; j < fractions[i].Count; j++)
+            {
+                if (!fractions[i][j].GetComponent<PolygonCollider2D>().enabled)
+                {
+                    if (fractions[i] == vikings)
+                    {
+                        if (fractions[i].IndexOf(fractions[i][j]) < vikingIndex)
+                        {
+                            vikingIndex--;
+                        }
+                    }
+                    if (fractions[i] == nerds)
+                    {
+                        if (fractions[i].IndexOf(fractions[i][j]) < nerdIndex)
+                        {
+                            nerdIndex--;
+                        }
+                    }
+                    if (fractions[i] == bandits)
+                    {
+                        if (fractions[i].IndexOf(fractions[i][j]) < banditIndex)
+                        {
+                            banditIndex--;
+                        }
+                    }
+                    Debug.Log(fractions[i][j].GetComponent<PlayerStats>().fraction + " aus der SpielerListe gelöscht");
+                    fractions[i].Remove(fractions[i][j]);
+                }
+            }
+            if (fractions[i].Count == 0)
+            {
+                Debug.Log("Check");
+                if (fractions.IndexOf(fractions[i]) <= currentFraction)
+                {
+                    currentFraction--;
+                }
+                fractions.Remove(fractions[i]);
+            }
+        }
+
+
+
+
+        /*foreach (List<GameObject> fraction in fractions)
         {
             foreach (GameObject player in fraction)
             {
                 if (!player.GetComponent<PolygonCollider2D>().enabled)
                 {
+                    if (fraction == vikings)
+                    {
+                        if (fraction.IndexOf(player) < vikingIndex)
+                        {
+                            vikingIndex--;
+                        }
+                    }
+                    if (fraction == nerds)
+                    {
+                        if (fraction.IndexOf(player) < nerdIndex)
+                        {
+                            nerdIndex--;
+                        }
+                    }
+                    if (fraction == bandits)
+                    {
+                        if (fraction.IndexOf(player) < banditIndex)
+                        {
+                            banditIndex--;
+                        }
+                    }
                     fraction.Remove(player);
                     Debug.Log(player.GetComponent<PlayerStats>().fraction + " aus der SpielerListe gelöscht");
                 }
             }
             if (fraction.Count == 0)
             {
-                //if (fractions.IndexOf(fraction) <
+                Debug.Log("Check");
+                if (fractions.IndexOf(fraction) <= currentFraction)
+                {
+                    currentFraction--;
+                }
                 fractions.Remove(fraction);
             }
+        }*/
+        currentFraction++;
+        if (currentFraction > fractions.Count-1)
+        {
+            currentFraction = 0;
         }
         if (fractions.Count <= 1)
         {

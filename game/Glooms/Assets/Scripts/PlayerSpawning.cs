@@ -46,7 +46,7 @@ public class PlayerSpawning : MonoBehaviour {
             mousePos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 1));
             mousePos.y = 10;
             if (playerSpawnOrder[0].Equals("Viking")) {
-                newPlayer = Instantiate(vikingPrefab);s
+                newPlayer = Instantiate(vikingPrefab);
                 newPlayer.GetComponent<PlayerStats>().fraction = "Viking";
                 GameManager.instance.vikings.Add(newPlayer);
             }
@@ -80,7 +80,6 @@ public class PlayerSpawning : MonoBehaviour {
     {
         yield return new WaitUntil(() => player.GetComponent<PlayerController>().grounded);
         GameManager.instance.playersSpawned = true;
-        Debug.Log(GameObject.Find("SpawnSpot"));
         GameObject.Find("SpawnSpot").SetActive(false);
         this.enabled = false;
     }
