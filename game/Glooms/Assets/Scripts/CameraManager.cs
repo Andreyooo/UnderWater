@@ -125,7 +125,6 @@ public class CameraManager : MonoBehaviour
         if (Mathf.Abs(gameObject.transform.position.x - finalPos.x) < 0.01)
         {
             transPlayer = false; 
-            Debug.Log("transPlayer set to false!");
         }
         gameObject.GetComponent<Camera>().orthographicSize = smoothedZoom;
     }

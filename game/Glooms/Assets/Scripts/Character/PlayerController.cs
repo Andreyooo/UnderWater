@@ -29,6 +29,7 @@ public class PlayerController : PhysicsObject {
 
 
     private ShootingWeapon shootingWeaponScript;
+    private PlayerSpawning playSpawn;
     private Animator animator;
     private Transform canvasTransform;
     private CameraManager cam;
@@ -47,7 +48,7 @@ public class PlayerController : PhysicsObject {
         weaponButton = GameObject.Find("Weapon Button").GetComponent<Button>();
         weaponButton.onClick.AddListener((UnityEngine.Events.UnityAction)this.AimingModeActive);
         cam = GameObject.Find("Main Camera").GetComponent<CameraManager>();
-
+        playSpawn = GameManager.instance.GetComponent<PlayerSpawning>();
     }
 
     //Update Method
@@ -95,7 +96,6 @@ public class PlayerController : PhysicsObject {
                 {
                     x = 1;
                 }
-                Debug.Log(transform.rotation.z);
                 if (transform.rotation.z > 0.3f)
                 {
                     if (tempRotation < 0)
@@ -111,12 +111,18 @@ public class PlayerController : PhysicsObject {
                 newPos.y -= Time.deltaTime*2f;
                 newPos.z = 1;
                 transform.position = newPos;
+                //End SpawnPhase for Player
                 if (grounded)
                 {
                     gravityModifier = 1f;
                     Parachute.SetActive(false);
                     transform.rotation = Quaternion.identity;
-                    Invoke("fullscreenOn", 0.2f);
+                    Invoke("FullscreenOn", 0.2f);
+                    playSpawn.playerInAir = false;
+                    if (transform.position.x > 0)
+                    {
+                        Flip();
+                    }
                 }               
             } else
             {
@@ -125,8 +131,9 @@ public class PlayerController : PhysicsObject {
         }
     }
 
-    private void fullscreenOn(){
+    private void FullscreenOn(){
         cam.fullscreen = true;
+        playSpawn.AnnounceCurrentPlayer();
     }
 
     private void Moving()
@@ -198,10 +205,8 @@ public class PlayerController : PhysicsObject {
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log(collision.gameObject);
         if (collision.gameObject.tag == "Ground")
         {
-            Debug.Log("grounded");
             grounded = true;
         }
     }

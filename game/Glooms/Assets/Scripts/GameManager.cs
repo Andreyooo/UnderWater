@@ -7,8 +7,7 @@ public class GameManager : MonoBehaviour {
     public static GameManager instance = null;
 
     //Stuff
-    public int shotsPerTurn = 1;
-	private int currentShots;
+	private int currentShots = 1;
     public bool projectileDestroyed = false;
     public bool playersSpawned = false;
 
@@ -20,9 +19,19 @@ public class GameManager : MonoBehaviour {
     public GameObject nerdPrefab;
     public GameObject vikingPrefab;
 
-    public List<GameObject> players;
+    public List<GameObject> vikings;
+    private int vikingIndex = 0;
+    public List<GameObject> nerds;
+    private int nerdIndex = 0;
+    public List<GameObject> bandits;
+    private int banditIndex = 0;
+    private List<List<GameObject>> fractions = new List<List<GameObject>>();
+    public List<string> playerTurnOrder;
+
     private GameObject previousPlayer = null;
-    private int currentPlayer = 1;
+    private GameObject currentPlayer;
+    private int currentPlayerIndex = 0;
+    private int currentFraction = 0;
 
 
     //Win
@@ -48,42 +57,41 @@ public class GameManager : MonoBehaviour {
     // Use this for initialization
     void Start () {
         cam = GameObject.Find("Main Camera").GetComponent<CameraManager>();
-
-        /*float[] xPos = { -24f, -1, 23f };
-        for(int i=0; i < 3; i++)
-        {
-            GameObject aPlayer = Instantiate(playerPrefab);
-            aPlayer.transform.position = new Vector3(xPos[i], 10, 1);
-            players.Add(aPlayer);
-            if (aPlayer.transform.position.x > 0)
-            {
-                aPlayer.GetComponent<PlayerController>().Flip();
-            }
-        }
-        StartGame();*/
         StartCoroutine(SetupGame());
 	}
 
     private IEnumerator SetupGame()
     {
         yield return new WaitUntil(() => playersSpawned);
-        //StartGame();
+        Cursor.visible = true;
+        PreparePlayers();
+        SwitchPlayer();
     }
 
-    private void StartGame()
+    private void SwitchPlayer()
     {
-        currentShots = shotsPerTurn;
-
-        //StartingPlayer
-        players[currentPlayer].GetComponent<PlayerController>().SetActive();
-        cam.player = players[currentPlayer];
+        if (fractions[currentFraction] == vikings)
+        {
+            currentPlayer = fractions[currentFraction][vikingIndex];
+        }
+        if (fractions[currentFraction] == nerds)
+        {
+            currentPlayer = fractions[currentFraction][nerdIndex];
+        }
+        if (fractions[currentFraction] == bandits)
+        {
+            currentPlayer = fractions[currentFraction][banditIndex];
+        }
+        currentPlayer.GetComponent<PlayerController>().SetActive();
+        SoundManager.PlayAudioClip(switchPlayerSound);
+        cam.player = currentPlayer;
         cam.transPlayer = true;
     }
 
 	public IEnumerator HasFired(Projectile projectile){
 		currentShots--;
         if (currentShots <= 0){
-            players[currentPlayer].GetComponent<PlayerController>().SetPassive();
+            currentPlayer.GetComponent<PlayerController>().SetPassive();
             Debug.Log("Start Waiting");
             yield return new WaitUntil(() => projectileDestroyed);
             Debug.Log("Stop Waiting");
@@ -92,62 +100,15 @@ public class GameManager : MonoBehaviour {
         }
 	}
 
-    private void SwitchPlayer()
-    {
-        for (int j = 0; j < players.Count; j++)
-        {
-            if (!players[j].GetComponent<PolygonCollider2D>().enabled)
-            {
-                players.RemoveAt(j);
-                Debug.Log("Player " + j + " aus der SpielerListe gelöscht");
-                if (currentPlayer>=j)
-                {
-                    currentPlayer--;
-                }
-                j--;
-            }
-            if(players.Count <= 1){
-                
-            }
-        }
-
-        if (currentPlayer >= 0)
-        {
-            previousPlayer = GetCurrentPlayer();
-        }  
-        currentPlayer++;
-        currentShots = shotsPerTurn;
-        if (currentPlayer > players.Count - 1)
-        {
-            currentPlayer = 0;
-        }
-        Debug.Log("Spieler " + currentPlayer + " ist dran");
-        if (previousPlayer != null && previousPlayer.activeSelf)
-        {
-            previousPlayer.GetComponent<PlayerController>().SetPassive();
-        }
-        GetCurrentPlayer().GetComponent<PlayerController>().SetActive();
-        SoundManager.PlayAudioClip(switchPlayerSound);
-        cam.player = GetCurrentPlayer();
-        cam.transPlayer = true;
-
-        if (players.Count <= 1)
-        {
-            win.SetActive(true);
-            SoundManager.PlayAudioClip(winTheme);
-            return;
-        }
-    }
-
     private IEnumerator FinishPlayerTurn()
     {
-        if (players[currentPlayer].GetComponent<PolygonCollider2D>().enabled)
+        if (currentPlayer.GetComponent<PolygonCollider2D>().enabled)
         {
-            cam.player = GetCurrentPlayer();
+            cam.player = currentPlayer;
             cam.transPlayer = true;
             yield return new WaitUntil(() => !cam.transPlayer);
 
-            PlayerStats CurrentPlayerStats = GetCurrentPlayer().GetComponent<PlayerStats>();
+            PlayerStats CurrentPlayerStats = currentPlayer.GetComponent<PlayerStats>();
             if (CurrentPlayerStats.turnExperience > 0)
             {
                 StartCoroutine(CurrentPlayerStats.AddExperience());
@@ -155,16 +116,80 @@ public class GameManager : MonoBehaviour {
                 Debug.Log("Experience: " + CurrentPlayerStats.experience);
             }
         }
+        CheckLivingPlayers();
         SwitchPlayer();
+    }
+
+    private void CheckLivingPlayers()
+    {
+        foreach (List<GameObject> fraction in fractions)
+        {
+            foreach (GameObject player in fraction)
+            {
+                if (!player.GetComponent<PolygonCollider2D>().enabled)
+                {
+                    fraction.Remove(player);
+                    Debug.Log(player.GetComponent<PlayerStats>().fraction + " aus der SpielerListe gelöscht");
+                }
+            }
+            if (fraction.Count == 0)
+            {
+                //if (fractions.IndexOf(fraction) <
+                fractions.Remove(fraction);
+            }
+        }
+        if (fractions.Count <= 1)
+        {
+            win.SetActive(true);
+            SoundManager.PlayAudioClip(winTheme);
+            return;
+        }
+    }
+
+    public void PreparePlayers()
+    {
+        RandomizeList(vikings);
+        RandomizeList(nerds);
+        RandomizeList(bandits);
+        //PlayerOrder
+        foreach (string fraction in playerTurnOrder)
+        {
+            if (fraction.Equals("Viking"))
+            {
+                fractions.Add(vikings);
+            }
+            if (fraction.Equals("Nerd"))
+            {
+                fractions.Add(nerds);
+            }
+            if (fraction.Equals("Bandit"))
+            {
+                fractions.Add(bandits);
+            }
+        }
+
+        foreach (List<GameObject> fraction in fractions)
+        {
+            foreach (GameObject player in fraction)
+            {
+                player.GetComponent<Rigidbody2D>().isKinematic = true;
+            }
+        }
     }
 
     public void CurrentPlayerGetsExp(int exp)
     {
-        GetCurrentPlayer().GetComponent<PlayerStats>().ExpGain(exp);
+        currentPlayer.GetComponent<PlayerStats>().ExpGain(exp);
     }
 
-    public GameObject GetCurrentPlayer()
+    private void RandomizeList(List<GameObject> list)
     {
-        return players[currentPlayer];
+        for (int i = 0; i < list.Count; i++)
+        {
+            GameObject temp = list[i];
+            int randomIndex = Random.Range(i, list.Count);
+            list[i] = list[randomIndex];
+            list[randomIndex] = temp;
+        }
     }
 }

@@ -10,7 +10,7 @@ public class PhysicsObject : MonoBehaviour
     private PlayerController PController;
 
     protected Vector2 targetVelocity;
-    protected bool grounded;
+    public bool grounded;
     protected bool inAir = true;
     protected Vector2 groundNormal;
     protected Rigidbody2D rb2d;

@@ -7,6 +7,7 @@ using System.Collections;
 public class PlayerStats : MonoBehaviour {
 	public int maxHealth = 25;
 	float currentHealth = 0;
+    public string fraction;
 
     public int maxExp = 3;
     public int experience = 0;
