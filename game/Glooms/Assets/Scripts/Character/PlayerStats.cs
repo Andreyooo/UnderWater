@@ -13,8 +13,8 @@ public class PlayerStats : MonoBehaviour {
     public int experience = 0;
     public int turnExperience = 0;
     public int level = 1;
-    public int shieldRegen = 0;
-    public int maxShield = 0;
+    public int shieldRegen = 5;
+    public int maxShield = 10;
     public int currentShield = 0;
     public int healthRegen = 0;
 
@@ -82,7 +82,7 @@ public class PlayerStats : MonoBehaviour {
             currentShield = maxShield;
 
         // Update the Simple Health Bar with the new Shield values.
-        shieldBar.UpdateBar( currentShield, maxShield );
+        shieldBar.UpdateBar( currentShield, maxHealth );
     }
 
     public void TakeDamage ( int damage )
