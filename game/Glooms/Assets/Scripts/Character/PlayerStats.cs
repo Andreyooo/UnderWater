@@ -13,7 +13,7 @@ public class PlayerStats : MonoBehaviour {
     public int experience = 0;
     public int turnExperience = 0;
     public int level = 1;
-    private int shieldRegen = ;
+    private int shieldRegen = 0;
     private int maxShield = 0;
     private int currentShield = 0;
     private int healthRegen = 0;
@@ -151,7 +151,7 @@ public class PlayerStats : MonoBehaviour {
                     maxHealth += 10;
                     currentHealth += 10;
                     healthBar.UpdateBar(currentHealth, maxHealth);
-                    GameManager.instance.LevelUp();
+                    StartCoroutine(GameManager.instance.LevelUp());
                     level2AuraPS.Play();
                     level2Aura.GetComponent<AudioSource>().Play();
                 }
@@ -161,7 +161,7 @@ public class PlayerStats : MonoBehaviour {
                     maxHealth += 10;
                     currentHealth += 10;
                     healthBar.UpdateBar(currentHealth, maxHealth);
-                    GameManager.instance.LevelUp();
+                    StartCoroutine(GameManager.instance.LevelUp());
                 }
                 expBar.UpdateBar(experience, maxExp);
                 yield return new WaitForSeconds(2);

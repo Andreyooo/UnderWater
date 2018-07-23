@@ -223,6 +223,8 @@ MonoBehaviour:
   expGain: 0
   bulletSpeed: 39
   firepoint: FirepointBazookaBullet
+  poison: 0
+  poisonTurns: 0
   fpnt: {fileID: 0}
   releaseSound: {fileID: 8300000, guid: 00d3c2e0fed15c7489230f4b1448d45d, type: 3}
   hitSound: {fileID: 8300000, guid: 8bc55460a2a49fb48ad5f673ad002945, type: 3}

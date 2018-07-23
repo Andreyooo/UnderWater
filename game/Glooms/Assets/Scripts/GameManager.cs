@@ -28,9 +28,7 @@ public class GameManager : MonoBehaviour {
     private List<List<GameObject>> fractions = new List<List<GameObject>>();
     public List<string> playerTurnOrder;
 
-    private GameObject previousPlayer = null;
     private GameObject currentPlayer;
-    private int currentPlayerIndex = 0;
     private int currentFraction = 0;
 
     //Cards(Buttons)

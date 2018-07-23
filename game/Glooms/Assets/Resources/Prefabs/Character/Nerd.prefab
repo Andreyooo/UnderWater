@@ -976,7 +976,10 @@ MonoBehaviour:
   experience: 0
   turnExperience: 0
   level: 1
-  poison: 0
+  poisonDamage: 5
+  poisonDamageTurns: 3
+  poisoned: 0
+  poisonedTurns: 0
   finishedTurn: 0
   expGain: {fileID: 1312404737000360}
   levelUp: {fileID: 1465734431783304}

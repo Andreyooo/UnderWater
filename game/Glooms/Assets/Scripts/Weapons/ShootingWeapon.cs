@@ -117,7 +117,10 @@ public class ShootingWeapon : MonoBehaviour {
         projectile.fpnt = transform.Find(projectile.firepoint);
         projectile.transform.position = projectile.fpnt.position;
         projectile.transform.rotation = gameObject.transform.rotation;
-        if(playerStats.poisonDamage > 0) projectile.poison = playerStats.poisonDamage;
+        if (playerStats.poisonDamage > 0)
+        {
+            projectile.poison = playerStats.poisonDamage;
+        }
         projectile.GetComponent<Rigidbody2D>().AddForce(projectile.fpnt.forward * projectile.bulletSpeed * chargeLevel, ForceMode2D.Impulse);
         weapon.Fired();
         StartCoroutine(GameManager.instance.HasFired(projectile));

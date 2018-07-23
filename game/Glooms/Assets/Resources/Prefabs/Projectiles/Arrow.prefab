@@ -217,9 +217,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 7
-  expGain: 7
+  expGain: 3
   bulletSpeed: 24
   firepoint: FirepointArrow
+  poison: 0
+  poisonTurns: 0
   fpnt: {fileID: 0}
   releaseSound: {fileID: 8300000, guid: e6236201531035942af42ecb5fb95156, type: 3}
   hitSound: {fileID: 8300000, guid: 1dc51109d86250e428ca426d02c1646d, type: 3}

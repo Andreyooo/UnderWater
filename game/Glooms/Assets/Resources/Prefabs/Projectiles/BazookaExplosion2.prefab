@@ -321,7 +321,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   delay: 0
   damage: 0
-  expGain: 1
+  expGain: 3
 --- !u!114 &114833965317665696
 MonoBehaviour:
   m_ObjectHideFlags: 1
