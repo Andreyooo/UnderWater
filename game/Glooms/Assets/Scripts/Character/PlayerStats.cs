@@ -13,10 +13,10 @@ public class PlayerStats : MonoBehaviour {
     public int experience = 0;
     public int turnExperience = 0;
     public int level = 1;
-    public int shieldRegen = 5;
-    public int maxShield = 10;
-    public int currentShield = 0;
-    public int healthRegen = 0;
+    private int shieldRegen = 5;
+    private int maxShield = 10;
+    private int currentShield = 0;
+    private int healthRegen = 10;
 
     public bool finishedTurn;
 
@@ -55,35 +55,11 @@ public class PlayerStats : MonoBehaviour {
 		// Set the current health to max values.
 		currentHealth = maxHealth;
         healthBar.UpdateBar( currentHealth, maxHealth );
+        shieldBar.UpdateBar(currentShield, maxHealth);
         expBar.UpdateBar(experience, maxExp);
 	}
 
     //-------------------------Health/Shield-Functions------------------------
-    public void HealPlayer ()
-    {
-        // Increase the current health by healthRegen-Value
-        currentHealth += healthRegen;
-
-        // If the current health is greater than max, then set it to max.
-        if( currentHealth > maxHealth )
-            currentHealth = maxHealth;
-
-        // Update the Simple Health Bar with the new Health values.
-        healthBar.UpdateBar( currentHealth, maxHealth );
-    }
-
-    public void RegenShield ()
-    {
-        // Increase the current shield by shieldRegen-Value
-        currentShield += shieldRegen;
-
-        // If the current shield is greater than max, then set it to max.
-        if( currentShield > maxShield )
-            currentShield = maxShield;
-
-        // Update the Simple Health Bar with the new Shield values.
-        shieldBar.UpdateBar( currentShield, maxHealth );
-    }
 
     public void TakeDamage ( int damage )
 	{
@@ -197,6 +173,33 @@ public class PlayerStats : MonoBehaviour {
     public void Utilities(){
         HealPlayer();
         RegenShield();
+    }
+
+    public void HealPlayer ()
+    {
+        // Increase the current health by healthRegen-Value
+        currentHealth += healthRegen;
+
+        // If the current health is greater than max, then set it to max.
+        if( currentHealth > maxHealth )
+            currentHealth = maxHealth;
+
+        // Update the Simple Health Bar with the new Health values.
+        healthBar.UpdateBar( currentHealth, maxHealth );
+    }
+
+    public void RegenShield ()
+    {
+        // Increase the current shield by shieldRegen-Value
+        currentShield += shieldRegen;
+
+        // If the current shield is greater than max, then set it to max.
+        if( currentShield > maxShield )
+            currentShield = maxShield;
+
+        // Update the Simple Health Bar with the new Shield values.
+        shieldBar.UpdateBar(currentShield, maxHealth );
+        Debug.Log("Shield Regen: " + shieldRegen + "  /  Current Shield: " + currentShield);
     }
 
 	IEnumerator ShakeCamera ()

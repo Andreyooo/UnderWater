@@ -125,6 +125,11 @@ public class SimpleHealthBar : MonoBehaviour
 		// Store the values so that other functions used can reference the maxValue.
 		_maxValue = maxValue;
 
+
+		if(barImage.fillAmount < targetFill){
+			targetFill - barImage.fillAmount
+			for(float i = targetFill; barImage.fillAmount < i; i--){}
+		}
 		// Then just apply the target fill amount.
 		barImage.fillAmount = targetFill;
 
