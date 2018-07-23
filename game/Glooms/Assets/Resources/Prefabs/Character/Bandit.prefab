@@ -1102,6 +1102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 114451591861749860}
+  playerStats: {fileID: 114866600365470066}
   chargingBar: {fileID: 1858626119011910}
   chargingBarOutline: {fileID: 1780791195524322}
   crosshair: {fileID: 1035119460839386}
@@ -1133,7 +1134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.75, g: 0.7735294, b: 1, a: 1}
+  m_Color: {r: 0.49803922, g: 0.57254905, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1319,10 +1320,7 @@ MonoBehaviour:
   experience: 0
   turnExperience: 0
   level: 1
-  shieldRegen: 0
-  maxShield: 0
-  currentShield: 0
-  healthRegen: 0
+  poison: 0
   finishedTurn: 0
   expGain: {fileID: 1199797792068520}
   levelUp: {fileID: 1112368405817292}

@@ -7,6 +7,8 @@ public abstract class Projectile : MonoBehaviour {
     public int expGain;
     public float bulletSpeed;
     public string firepoint;
+    public int poison = 0;
+    public int poisonTurns = 0;
     public Transform fpnt;
     public AudioClip releaseSound;
     public AudioClip hitSound;
@@ -15,6 +17,7 @@ public abstract class Projectile : MonoBehaviour {
     [SerializeField]
     private float afterLifeTime;
     private void Start()
+    
     {
         SoundManager.PlayAudioClip(releaseSound);
         DestroyProjectileAfterTime(lifeTime);
@@ -45,5 +48,7 @@ public abstract class Projectile : MonoBehaviour {
         GameManager.instance.projectileDestroyed = true;
         Destroy(gameObject);
     }
+
+    
 
 }

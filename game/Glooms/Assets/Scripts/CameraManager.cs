@@ -104,7 +104,7 @@ public class CameraManager : MonoBehaviour
         finalPos.z = -5f;
 
         gameObject.transform.position = finalPos;
-        gameObject.GetComponent<Camera>().orthographicSize = originalZoom - 9;
+        gameObject.GetComponent<Camera>().orthographicSize = originalZoom - 8;
     }
 
     private void TransitionPlayer(GameObject play)
@@ -119,7 +119,7 @@ public class CameraManager : MonoBehaviour
         finalPos.z = -5f;
 
         Vector3 smoothedPosition = Vector3.Lerp(gameObject.transform.position, finalPos, smooth);
-        float smoothedZoom = Mathf.Lerp(currentZoom, originalZoom-9, smooth);
+        float smoothedZoom = Mathf.Lerp(currentZoom, originalZoom - 8, smooth);
 
         gameObject.transform.position = smoothedPosition;
         if (Mathf.Abs(gameObject.transform.position.x - finalPos.x) < 0.01)

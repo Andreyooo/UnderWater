@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 
 public class ShootingWeapon : MonoBehaviour {
     public PlayerController player;
+    public PlayerStats playerStats;
     public GameObject chargingBar;
     public GameObject chargingBarOutline;
     public GameObject crosshair;
@@ -111,11 +112,12 @@ public class ShootingWeapon : MonoBehaviour {
 
     //Shoot Bullets
     private void Shoot()
-    {
+    {   
         Projectile projectile = Instantiate(weapon.projectile);
         projectile.fpnt = transform.Find(projectile.firepoint);
         projectile.transform.position = projectile.fpnt.position;
         projectile.transform.rotation = gameObject.transform.rotation;
+        if(playerStats.poisonDamage > 0) projectile.poison = playerStats.poisonDamage;
         projectile.GetComponent<Rigidbody2D>().AddForce(projectile.fpnt.forward * projectile.bulletSpeed * chargeLevel, ForceMode2D.Impulse);
         weapon.Fired();
         StartCoroutine(GameManager.instance.HasFired(projectile));
