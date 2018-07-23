@@ -13,10 +13,10 @@ public class SoundManager : MonoBehaviour
     public static AudioClip rocket, explosion;
     public static AudioClip arrowShotSound, arrowHitSound, ouchSound1, ouchSound2, ouchSound3, ouchSound4, jumpSound, deathSound, hmpfSound1, hmpfSound2, hmpfSound3, hmpfSound4;
     //Viking Sounds
-    public static AudioClip arghSound1, arghSound2, arghSound3, arghSound4, vikingJumpSound1, vikingJumpSound2, vikingDeathSound;
+    public static AudioClip vikingHitSound1, vikingHitSound2, vikingHitSound3, vikingHitSound4, vikingJumpSound1, vikingJumpSound2, vikingDeathSound;
     public static AudioClip[] ouch;
     public static AudioClip[] hmpf;
-    public static AudioClip[] argh;
+    public static AudioClip[] vikingHit;
     public static AudioClip[] vikingJump;
     void Awake()
     {
@@ -49,17 +49,17 @@ public class SoundManager : MonoBehaviour
         hmpfSound4 = Resources.Load<AudioClip>("hmpf4");
         deathSound = Resources.Load<AudioClip>("death");
         //vikings
-        arghSound1 = Resources.Load<AudioClip>("argh1");
-        arghSound2 = Resources.Load<AudioClip>("argh2");
-        arghSound3 = Resources.Load<AudioClip>("argh3");
-        arghSound4 = Resources.Load<AudioClip>("argh4");
+        vikingHitSound1 = Resources.Load<AudioClip>("Viking Hit1");
+        vikingHitSound2 = Resources.Load<AudioClip>("Viking Hit2");
+        vikingHitSound3 = Resources.Load<AudioClip>("Viking Hit3");
+        vikingHitSound4 = Resources.Load<AudioClip>("Viking Hit4");
         vikingJumpSound1 = Resources.Load<AudioClip>("Viking Jump1");
         vikingJumpSound2 = Resources.Load<AudioClip>("Viking Jump2");
         vikingDeathSound = Resources.Load<AudioClip>("Viking Death");
  
         ouch = new AudioClip[] { ouchSound1, ouchSound2, ouchSound3, ouchSound4 };
         hmpf = new AudioClip[] { hmpfSound1, hmpfSound2, hmpfSound3, hmpfSound4 };
-        argh = new AudioClip[] { arghSound1, arghSound2, arghSound3, arghSound4 };
+        vikingHit = new AudioClip[] { vikingHitSound1, vikingHitSound2, vikingHitSound3, vikingHitSound4 };
         vikingJump = new AudioClip[] { vikingJumpSound1, vikingJumpSound2 };
         jumpSound = Resources.Load<AudioClip>("Jump");
 
@@ -100,8 +100,8 @@ public class SoundManager : MonoBehaviour
                 efxSource.PlayOneShot(deathSound);
                 break;
             //vikings
-            case "argh":
-                efxSource.PlayOneShot(RandomizeSfx(argh));
+            case "Viking Hit":
+                efxSource.PlayOneShot(RandomizeSfx(vikingHit));
                 break;
             case "Viking Jump":
                 efxSource.PlayOneShot(RandomizeSfx(vikingJump));

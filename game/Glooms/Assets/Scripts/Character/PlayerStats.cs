@@ -25,10 +25,9 @@ public class PlayerStats : MonoBehaviour {
     private ParticleSystem level2AuraPS;
 
     //Sounds
-    private int soundVar;
-    private string playerHitSound;
-    private string playerJumpSound;
-    private string playerDeathSound;
+    public string playerHitSound;
+    public string playerJumpSound;
+    public string playerDeathSound;
     public AudioClip expGainSound;
 
     //UI
@@ -40,7 +39,7 @@ public class PlayerStats : MonoBehaviour {
 
     private void Awake ()
     {
-        //SoundManager.PlayAudioClip(EngageSound);
+        SoundManager.PlaySound(playerJumpSound);
         expGainPS = expGain.GetComponent<ParticleSystem>();
         levelUpPS = levelUp.GetComponent<ParticleSystem>();
         level2AuraPS = level2Aura.GetComponent<ParticleSystem>();
@@ -50,27 +49,6 @@ public class PlayerStats : MonoBehaviour {
 	{
 		// Set the current health to max values.
 		currentHealth = maxHealth;
-
-        soundVar = Random.Range(0, 3);
-        if (soundVar == 0)
-        {
-            playerHitSound = "ouch";
-            playerJumpSound = "jump";
-            playerDeathSound = "death";
-        }
-        if (soundVar == 1)
-        {
-            playerHitSound = "hmpf";
-            playerJumpSound = "jump";
-            playerDeathSound = "death";
-        }
-        if (soundVar == 2)
-        {
-            playerHitSound = "argh";
-            playerJumpSound = "Viking Jump";
-            playerDeathSound = "Viking Death";
-        }
-
         healthBar.UpdateBar( currentHealth, maxHealth );
         expBar.UpdateBar(experience, maxExp);
 	}

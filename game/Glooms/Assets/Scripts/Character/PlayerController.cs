@@ -12,7 +12,7 @@ public class PlayerController : PhysicsObject {
     public GameObject Parachute;
 
     //Parachute Simulation Stuff
-    private float rotationDegree = 0.8f;
+    private float rotationDegree = 1.1f;
     private float tempRotation;
     private float airMove = 0.1f;
     private float x = 1;
@@ -81,7 +81,7 @@ public class PlayerController : PhysicsObject {
                 Vector3 rotationPoint = transform.position;
                 rotationPoint.y += 5;
                 transform.Rotate(new Vector3(0, 0, -tempRotation));
-                if (transform.rotation.z < -0.3f)
+                if (transform.rotation.z < -0.5f)
                 {
                     if (tempRotation > 0)
                     {
@@ -96,7 +96,7 @@ public class PlayerController : PhysicsObject {
                 {
                     x = 1;
                 }
-                if (transform.rotation.z > 0.3f)
+                if (transform.rotation.z > 0.5f)
                 {
                     if (tempRotation < 0)
                     {
@@ -104,11 +104,11 @@ public class PlayerController : PhysicsObject {
                     }
                     airMove = 0.1f;
                 }
-                tempRotation += x * Random.Range(0, Time.deltaTime);
+                tempRotation += x * Random.Range(0, Time.deltaTime*2);
 
                 Vector3 newPos = transform.position;
                 newPos.x += Random.Range(0.5f, 1) * Random.Range(0, transform.rotation.z/1.5f);
-                newPos.y -= Time.deltaTime*2f;
+                newPos.y -= Time.deltaTime*3f;
                 newPos.z = 1;
                 transform.position = newPos;
                 //End SpawnPhase for Player
@@ -119,6 +119,7 @@ public class PlayerController : PhysicsObject {
                     transform.rotation = Quaternion.identity;
                     Invoke("FullscreenOn", 0.2f);
                     playSpawn.playerInAir = false;
+                    animator.SetTrigger("Idle");
                     if (transform.position.x > 0)
                     {
                         Flip();

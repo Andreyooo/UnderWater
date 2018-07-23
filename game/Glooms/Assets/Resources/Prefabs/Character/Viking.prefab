@@ -1066,6 +1066,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minGroundNormalY: 0.1
   gravityModifier: 0
+  grounded: 0
 --- !u!114 &114428072027145400
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1183,6 +1184,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minGroundNormalY: 0.1
   gravityModifier: 0
+  grounded: 0
   movementTimer: {fileID: 0}
   movementButton: {fileID: 0}
   weaponButton: {fileID: 0}
@@ -1209,6 +1211,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 25
+  fraction: 
   maxExp: 3
   experience: 0
   turnExperience: 0
@@ -1218,6 +1221,9 @@ MonoBehaviour:
   levelUp: {fileID: 1266653751769186}
   level2Aura: {fileID: 1163469646811868}
   levelUpSound: {fileID: 8300000, guid: 574699d2bf9b88b429293f8ed4e4510d, type: 3}
+  playerHitSound: Viking Hit
+  playerJumpSound: Viking Jump
+  playerDeathSound: Viking Death
   expGainSound: {fileID: 8300000, guid: 102570e17833cc14dab1879456ed739b, type: 3}
   healthBar: {fileID: 114136156908204868}
   expBar: {fileID: 114428072027145400}

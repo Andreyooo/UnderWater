@@ -18,10 +18,6 @@ public class GameManager : MonoBehaviour {
     private GameObject announcer;
 
     //Players
-    public GameObject playerPrefab;
-    public GameObject nerdPrefab;
-    public GameObject vikingPrefab;
-
     public List<GameObject> vikings;
     private int vikingIndex = 0;
     public List<GameObject> nerds;
@@ -104,6 +100,7 @@ public class GameManager : MonoBehaviour {
         }
         currentPlayer.GetComponent<PlayerController>().SetActive();
         SoundManager.PlayAudioClip(switchPlayerSound);
+        cam.fullscreen = false;
         cam.player = currentPlayer;
         cam.transPlayer = true;
     }

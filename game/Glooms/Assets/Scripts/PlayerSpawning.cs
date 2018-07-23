@@ -79,6 +79,11 @@ public class PlayerSpawning : MonoBehaviour {
     private IEnumerator EndSpawnPhase(GameObject player)
     {
         yield return new WaitUntil(() => player.GetComponent<PlayerController>().grounded);
+        Invoke("EndSpawn", 1f);
+    }
+
+    private void EndSpawn()
+    {
         GameManager.instance.playersSpawned = true;
         GameObject.Find("SpawnSpot").SetActive(false);
         this.enabled = false;
