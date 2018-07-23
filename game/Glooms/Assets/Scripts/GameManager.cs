@@ -43,6 +43,7 @@ public class GameManager : MonoBehaviour {
 
     //FX
     public AudioClip switchPlayerSound;
+    public AudioClip lockInSound;
 
     void Awake () {
         if (instance == null)
@@ -60,9 +61,8 @@ public class GameManager : MonoBehaviour {
     // Use this for initialization
     void Start () {
         cam = GameObject.Find("Main Camera").GetComponent<CameraManager>();
-        //level3Card1 = GameObject.Find("Level3Card1").GetComponent<Button>();
-        //level3Card1.onClick.AddListener((UnityEngine.Events.UnityAction)this.AimingModeActive);
-        //level3Card2 = GameObject.Find("Level3Card2").GetComponent<Button>();
+        level3Card1.onClick.AddListener((UnityEngine.Events.UnityAction)this.Level3Card1);
+        level3Card2.onClick.AddListener((UnityEngine.Events.UnityAction)this.Level3Card2);
         announcer = GameObject.Find("Announcer");
         StartCoroutine(SetupGame());
 	}
@@ -249,7 +249,7 @@ public class GameManager : MonoBehaviour {
     }
 
     //LevelUpPercs
-    public void LevelUp()
+    public IEnumerator LevelUp()
     {
         PlayerStats playerStats = currentPlayer.GetComponent<PlayerStats>();
         Debug.Log(playerStats.level);
@@ -257,12 +257,37 @@ public class GameManager : MonoBehaviour {
         {
             level3Card1.gameObject.SetActive(true);
             level3Card2.gameObject.SetActive(true);
-            Debug.Log(level3Card1.enabled);
+
+            Image level3Card1Image = level3Card1.GetComponent<Image>();
+            Image level3Card2Image = level3Card2.GetComponent<Image>();
+
+            level3Card1Image.canvasRenderer.SetAlpha(0f);
+            level3Card2Image.canvasRenderer.SetAlpha(0f);
+
+            level3Card1Image.CrossFadeAlpha(1f, 0.5f, false);
+            level3Card2Image.CrossFadeAlpha(1f, 0.5f, false);
+
+            yield return new WaitForSeconds(0.5f);
+            level3Card1.enabled = true;
+            level3Card2.enabled = true;
+
+
         }
         if (playerStats.level == 3)
         {
-            level3Card1.enabled = true;
-            level3Card2.enabled = true;
+            //level3Card1.gameObject.SetActive(true);
+            //level3Card2.gameObject.SetActive(true);
         }
+    }
+
+    private void Level3Card1()
+    {
+        SoundManager.PlayAudioClip(lockInSound);
+        
+    }
+
+    private void Level3Card2()
+    {
+        SoundManager.PlayAudioClip(lockInSound);
     }
 }

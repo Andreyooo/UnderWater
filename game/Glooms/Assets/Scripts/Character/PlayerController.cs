@@ -116,7 +116,7 @@ public class PlayerController : PhysicsObject {
                 //End SpawnPhase for Player
                 if (grounded)
                 {
-                    gravityModifier = 1f;
+                    gravityModifier = 2f;
                     Parachute.SetActive(false);
                     transform.rotation = Quaternion.identity;
                     Invoke("FullscreenOn", 0.2f);
