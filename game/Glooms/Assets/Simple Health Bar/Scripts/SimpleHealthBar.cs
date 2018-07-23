@@ -126,10 +126,22 @@ public class SimpleHealthBar : MonoBehaviour
 		_maxValue = maxValue;
 
 
-		if(barImage.fillAmount < targetFill){
-			targetFill - barImage.fillAmount
-			for(float i = targetFill; barImage.fillAmount < i; i--){}
+		/* if(barImage.fillAmount < targetFill){
+			float smooth = targetFill - barImage.fillAmount;
+			smooth = smooth / 10;
+			while(barImage.fillAmount != targetFill){
+				if(barImage.fillAmount-smooth <= targetFill) barImage.fillAmount = targetFill;
+				barImage.fillAmount -= smooth;
+			}
 		}
+		else{
+			float smooth = targetFill + barImage.fillAmount;
+			smooth = smooth / 10;
+			while(barImage.fillAmount != targetFill){
+				if(barImage.fillAmount+smooth >= targetFill) barImage.fillAmount = targetFill;
+				barImage.fillAmount += smooth;
+			}
+		} */
 		// Then just apply the target fill amount.
 		barImage.fillAmount = targetFill;
 
