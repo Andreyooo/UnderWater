@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
 
@@ -32,6 +33,9 @@ public class GameManager : MonoBehaviour {
     private int currentPlayerIndex = 0;
     private int currentFraction = 0;
 
+    //Cards(Buttons)
+    public Button level3Card1;
+    public Button level3Card2;
 
     //Win
     public GameObject win;
@@ -56,6 +60,9 @@ public class GameManager : MonoBehaviour {
     // Use this for initialization
     void Start () {
         cam = GameObject.Find("Main Camera").GetComponent<CameraManager>();
+        //level3Card1 = GameObject.Find("Level3Card1").GetComponent<Button>();
+        //level3Card1.onClick.AddListener((UnityEngine.Events.UnityAction)this.AimingModeActive);
+        //level3Card2 = GameObject.Find("Level3Card2").GetComponent<Button>();
         announcer = GameObject.Find("Announcer");
         StartCoroutine(SetupGame());
 	}
@@ -238,6 +245,24 @@ public class GameManager : MonoBehaviour {
             int randomIndex = Random.Range(i, list.Count);
             list[i] = list[randomIndex];
             list[randomIndex] = temp;
+        }
+    }
+
+    //LevelUpPercs
+    public void LevelUp()
+    {
+        PlayerStats playerStats = currentPlayer.GetComponent<PlayerStats>();
+        Debug.Log(playerStats.level);
+        if (playerStats.level == 2)
+        {
+            level3Card1.gameObject.SetActive(true);
+            level3Card2.gameObject.SetActive(true);
+            Debug.Log(level3Card1.enabled);
+        }
+        if (playerStats.level == 3)
+        {
+            level3Card1.enabled = true;
+            level3Card2.enabled = true;
         }
     }
 }

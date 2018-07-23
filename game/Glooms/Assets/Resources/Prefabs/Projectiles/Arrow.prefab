@@ -217,7 +217,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 7
-  expGain: 3
+  expGain: 7
   bulletSpeed: 24
   firepoint: FirepointArrow
   fpnt: {fileID: 0}

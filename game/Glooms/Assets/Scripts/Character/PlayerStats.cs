@@ -20,6 +20,7 @@ public class PlayerStats : MonoBehaviour {
 
     public bool finishedTurn;
 
+    //ExpStuff
     public GameObject expGain;
     public GameObject levelUp;
     public GameObject level2Aura;
@@ -94,6 +95,7 @@ public class PlayerStats : MonoBehaviour {
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
         gameObject.GetComponent<PolygonCollider2D>().enabled = false;
         gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
+        transform.Find("Canvas").gameObject.SetActive(false);
         level2Aura.SetActive(false);
         expBar.gameObject.SetActive(false);
 
@@ -134,6 +136,7 @@ public class PlayerStats : MonoBehaviour {
                     maxHealth += 10;
                     currentHealth += 10;
                     healthBar.UpdateBar(currentHealth, maxHealth);
+                    GameManager.instance.LevelUp();
                     level2AuraPS.Play();
                     level2Aura.GetComponent<AudioSource>().Play();
                 }
@@ -143,7 +146,7 @@ public class PlayerStats : MonoBehaviour {
                     maxHealth += 10;
                     currentHealth += 10;
                     healthBar.UpdateBar(currentHealth, maxHealth);
-                    //todo
+                    GameManager.instance.LevelUp();
                 }
                 expBar.UpdateBar(experience, maxExp);
                 yield return new WaitForSeconds(2);
