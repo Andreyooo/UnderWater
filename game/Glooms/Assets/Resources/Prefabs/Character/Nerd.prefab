@@ -976,6 +976,7 @@ MonoBehaviour:
   experience: 0
   turnExperience: 0
   level: 1
+  poison: 0
   finishedTurn: 0
   expGain: {fileID: 1312404737000360}
   levelUp: {fileID: 1465734431783304}
@@ -1097,7 +1098,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.75, g: 0.7735294, b: 1, a: 1}
+  m_Color: {r: 0.49803922, g: 0.5739904, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1281,6 +1282,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 114192713854912918}
+  playerStats: {fileID: 114017095241426284}
   chargingBar: {fileID: 1665866824402716}
   chargingBarOutline: {fileID: 1255077500026324}
   crosshair: {fileID: 1654455866980042}

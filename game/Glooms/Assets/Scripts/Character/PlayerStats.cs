@@ -13,10 +13,14 @@ public class PlayerStats : MonoBehaviour {
     public int experience = 0;
     public int turnExperience = 0;
     public int level = 1;
-    private int shieldRegen = 5;
-    private int maxShield = 10;
+    private int shieldRegen = ;
+    private int maxShield = 0;
     private int currentShield = 0;
-    private int healthRegen = 10;
+    private int healthRegen = 0;
+    public int poisonDamage = 5;
+    public int poisonDamageTurns = 3;
+    public int poisoned = 0;
+    public int poisonedTurns = 0;
 
     public bool finishedTurn;
 
@@ -64,6 +68,17 @@ public class PlayerStats : MonoBehaviour {
 
     public void TakeDamage ( int damage )
 	{
+        if(currentShield > 0){
+            currentShield -= damage;
+            if(currentShield > 0){
+                damage = 0;
+            }
+            else{
+                damage = -currentShield;
+                currentShield = 0;
+            }
+            shieldBar.UpdateBar(currentShield, maxHealth);
+        }
 		currentHealth -= damage;
         if (currentHealth > 0) SoundManager.PlaySound(playerHitSound);
         if ( currentHealth <= 0 )
@@ -176,6 +191,7 @@ public class PlayerStats : MonoBehaviour {
     public void Utilities(){
         HealPlayer();
         RegenShield();
+        Invoke("TakePoisonDamge", 1f);
     }
 
     public void HealPlayer ()
@@ -202,7 +218,20 @@ public class PlayerStats : MonoBehaviour {
 
         // Update the Simple Health Bar with the new Shield values.
         shieldBar.UpdateBar(currentShield, maxHealth );
-        Debug.Log("Shield Regen: " + shieldRegen + "  /  Current Shield: " + currentShield);
+    }
+
+    public void TakePoisonDamge(){
+        if(poisonDamageTurns > 0){
+            currentHealth -= poisoned;
+            healthBar.UpdateBar(currentHealth, maxHealth);
+            poisonedTurns--;
+            
+        }
+    }
+
+    public void Poisoned(int poisonDmg, int  poisonDmgTurns){
+        poisoned = poisonDmg;
+        poisonedTurns = poisonDmgTurns;
     }
 
 	IEnumerator ShakeCamera ()
