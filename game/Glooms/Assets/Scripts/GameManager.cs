@@ -66,10 +66,10 @@ public class GameManager : MonoBehaviour {
         Cursor.visible = true;
         announcer.SetActive(false);
         PreparePlayers();
-        SwitchPlayer();
+        StartCoroutine(SwitchPlayer());
     }
 
-    private void SwitchPlayer()
+    private IEnumerator SwitchPlayer()
     {
         if (fractions[currentFraction] == vikings)
         {
@@ -98,14 +98,15 @@ public class GameManager : MonoBehaviour {
                 banditIndex = 0;
             }
         }
-        currentPlayer.GetComponent<PlayerController>().SetActive();
         SoundManager.PlayAudioClip(switchPlayerSound);
         cam.fullscreen = false;
         cam.player = currentPlayer;
         cam.transPlayer = true;
+        yield return new WaitUntil(() => !cam.transPlayer);
+        currentPlayer.GetComponent<PlayerController>().SetActive();
     }
 
-	public IEnumerator HasFired(Projectile projectile){
+    public IEnumerator HasFired(Projectile projectile){
 		currentShots--;
         if (currentShots <= 0){
             currentPlayer.GetComponent<PlayerController>().SetPassive();
@@ -133,7 +134,7 @@ public class GameManager : MonoBehaviour {
             }
         }
         CheckLivingPlayers();
-        SwitchPlayer();
+        StartCoroutine(SwitchPlayer());
     }
 
     private void CheckLivingPlayers()
@@ -180,50 +181,6 @@ public class GameManager : MonoBehaviour {
             }
         }
 
-
-
-
-        /*foreach (List<GameObject> fraction in fractions)
-        {
-            foreach (GameObject player in fraction)
-            {
-                if (!player.GetComponent<PolygonCollider2D>().enabled)
-                {
-                    if (fraction == vikings)
-                    {
-                        if (fraction.IndexOf(player) < vikingIndex)
-                        {
-                            vikingIndex--;
-                        }
-                    }
-                    if (fraction == nerds)
-                    {
-                        if (fraction.IndexOf(player) < nerdIndex)
-                        {
-                            nerdIndex--;
-                        }
-                    }
-                    if (fraction == bandits)
-                    {
-                        if (fraction.IndexOf(player) < banditIndex)
-                        {
-                            banditIndex--;
-                        }
-                    }
-                    fraction.Remove(player);
-                    Debug.Log(player.GetComponent<PlayerStats>().fraction + " aus der SpielerListe gelöscht");
-                }
-            }
-            if (fraction.Count == 0)
-            {
-                Debug.Log("Check");
-                if (fractions.IndexOf(fraction) <= currentFraction)
-                {
-                    currentFraction--;
-                }
-                fractions.Remove(fraction);
-            }
-        }*/
         currentFraction++;
         if (currentFraction > fractions.Count-1)
         {
