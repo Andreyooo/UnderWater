@@ -1275,7 +1275,7 @@ MonoBehaviour:
   playerDeathSound: Viking Death
   expGainSound: {fileID: 8300000, guid: 102570e17833cc14dab1879456ed739b, type: 3}
   healthBar: {fileID: 114136156908204868}
-  shieldBar: {fileID: 0}
+  shieldBar: {fileID: 114825278338369694}
   expBar: {fileID: 114428072027145400}
   blood: {fileID: 1319144548630846, guid: 4d167a25f8374144297f717afd63c5ed, type: 2}
   deadHead: {fileID: 1903056644159274, guid: 9ad42b590eb36ee47a83cecd9128d76f, type: 2}

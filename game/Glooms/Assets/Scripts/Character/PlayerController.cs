@@ -33,6 +33,7 @@ public class PlayerController : PhysicsObject {
     private Animator animator;
     private Transform canvasTransform;
     private CameraManager cam;
+    private PlayerStats stats;
 
     // Use this for initialization
     void Awake()
@@ -49,6 +50,7 @@ public class PlayerController : PhysicsObject {
         weaponButton.onClick.AddListener((UnityEngine.Events.UnityAction)this.AimingModeActive);
         cam = GameObject.Find("Main Camera").GetComponent<CameraManager>();
         playSpawn = GameManager.instance.GetComponent<PlayerSpawning>();
+        stats = gameObject.GetComponent<PlayerStats>();
     }
 
     //Update Method
@@ -167,7 +169,7 @@ public class PlayerController : PhysicsObject {
         if (Input.GetButtonDown("Jump") && grounded)
         {
             jumped = true;
-            gameObject.GetComponent<PlayerStats>().PlayJumpSound();
+            stats.PlayJumpSound();
             velocity.y = jumpTakeOffSpeed;
         }
         else if (Input.GetButtonUp("Jump"))
@@ -279,6 +281,7 @@ public class PlayerController : PhysicsObject {
     //Player is Activ
     public void SetActive()
     {
+        stats.Utilities();
         passiveMode = false;
         playerArrow.GetComponent<SpriteRenderer>().enabled = true;
     }
