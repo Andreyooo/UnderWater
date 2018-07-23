@@ -13,6 +13,10 @@ public class PlayerStats : MonoBehaviour {
     public int experience = 0;
     public int turnExperience = 0;
     public int level = 1;
+    public int shieldRegen = 0;
+    public int maxShield = 0;
+    public int currentShield = 0;
+    public int healthRegen = 0;
 
     public bool finishedTurn;
 
@@ -32,6 +36,7 @@ public class PlayerStats : MonoBehaviour {
 
     //UI
 	public SimpleHealthBar healthBar;
+    public SimpleHealthBar shieldBar;
     public SimpleHealthBar expBar;
 
     //etc
@@ -53,11 +58,11 @@ public class PlayerStats : MonoBehaviour {
         expBar.UpdateBar(experience, maxExp);
 	}
 
-    //-------------------------Health-Functions------------------------
+    //-------------------------Health/Shield-Functions------------------------
     public void HealPlayer ()
     {
-        // Increase the current health by 25%.
-        currentHealth += ( maxHealth / 4 );
+        // Increase the current health by healthRegen-Value
+        currentHealth += healthRegen;
 
         // If the current health is greater than max, then set it to max.
         if( currentHealth > maxHealth )
@@ -65,6 +70,19 @@ public class PlayerStats : MonoBehaviour {
 
         // Update the Simple Health Bar with the new Health values.
         healthBar.UpdateBar( currentHealth, maxHealth );
+    }
+
+    public void RegenShield ()
+    {
+        // Increase the current shield by shieldRegen-Value
+        currentShield += shieldRegen;
+
+        // If the current shield is greater than max, then set it to max.
+        if( currentShield > maxShield )
+            currentShield = maxShield;
+
+        // Update the Simple Health Bar with the new Shield values.
+        shieldBar.UpdateBar( currentShield, maxShield );
     }
 
     public void TakeDamage ( int damage )
@@ -137,12 +155,18 @@ public class PlayerStats : MonoBehaviour {
                 yield return new WaitUntil(() => !levelUpPS.IsAlive());
                 if (level == 2)
                 {
+                    maxHealth += 10;
+                    currentHealth += 10;
+                    healthBar.UpdateBar(currentHealth, maxHealth);
                     level2AuraPS.Play();
                     level2Aura.GetComponent<AudioSource>().Play();
                 }
 
                 if (level == 3)
                 {
+                    maxHealth += 10;
+                    currentHealth += 10;
+                    healthBar.UpdateBar(currentHealth, maxHealth);
                     //todo
                 }
                 expBar.UpdateBar(experience, maxExp);
@@ -168,6 +192,11 @@ public class PlayerStats : MonoBehaviour {
     public void PlayJumpSound()
     {
         SoundManager.PlaySound(playerJumpSound);
+    }
+
+    public void Utilities(){
+        HealPlayer();
+        RegenShield();
     }
 
 	IEnumerator ShakeCamera ()
