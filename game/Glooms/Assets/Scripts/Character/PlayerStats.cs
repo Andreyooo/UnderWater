@@ -207,7 +207,7 @@ public class PlayerStats : MonoBehaviour
     {
         HealPlayer();
         RegenShield();
-        Invoke("TakePoisonDamge", 1f);
+        Invoke("TakePoisonDamge", 1.7f);
     }
 
     public void HealPlayer()
