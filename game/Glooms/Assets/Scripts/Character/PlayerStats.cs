@@ -8,29 +8,35 @@ public class PlayerStats : MonoBehaviour
 {
     public int maxHealth = 25;
     float currentHealth = 0;
-    public string fraction;
 
-    public int maxExp = 3;
-    public int experience = 0;
-    public int turnExperience = 0;
-    public int level = 1;
+    public string fraction;
+    public string classPath = "";
+
+
     private int shieldRegen = 0;
     private int maxShield = 0;
     private int currentShield = 0;
     private int healthRegen = 2;
-    public int poisonDamage = 5;
+    public float damageMultiplier = 1;
+    public float damageTakenMultiplier = 1;
+    public int poisonDamage = 0;
     public int poisonDamageTurns = 3;
     public int poisoned = 0;
     public int poisonedTurns = 0;
     public float critChance = 0.5f;
     public int critMultiplier = 3;
-    public int lifesteal = 0;
+    public float lifesteal = 0;
 
     public bool finishedTurn;
     private bool playerHealed = false;
     public bool poisonDamageTaken = false;
 
     //ExpStuff
+    public int maxExp = 3;
+    public int experience = 0;
+    public int turnExperience = 0;
+    public int level = 1;
+    private bool maxLevel = false;
     public GameObject expGain;
     public GameObject levelUp;
     public GameObject level2Aura;
@@ -83,6 +89,8 @@ public class PlayerStats : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        damage = Mathf.RoundToInt(damage * damageTakenMultiplier);
+        Debug.Log("Damage Taken: " + damage);
         if (currentShield > 0)
         {
             currentShield -= damage;
@@ -144,50 +152,67 @@ public class PlayerStats : MonoBehaviour
 
     public IEnumerator AddExperience()
     {
-        Vector3 animationPosition = gameObject.transform.position;
-        animationPosition.y += 0.8f;
-        while (turnExperience > 0)
+        if (!maxLevel)
         {
-            SoundManager.PlayAudioClip(expGainSound);
-            experience++;
-            turnExperience--;
-            expGainPS.Play();
-            expBar.UpdateBar(experience, maxExp);
-            yield return new WaitUntil(() => !expGainPS.IsAlive());
-
-            //LevelUP
-            if (experience == maxExp)
+            Vector3 animationPosition = gameObject.transform.position;
+            animationPosition.y += 0.8f;
+            while (turnExperience > 0 && !maxLevel)
             {
-                level++;
-                experience = 0;
-                maxExp++;
-                levelUpPS.Play();
-                SoundManager.PlayAudioClip(levelUpSound);
-                yield return new WaitUntil(() => !levelUpPS.IsAlive());
-                if (level == 2)
-                {
-                    maxHealth += 10;
-                    currentHealth += 10;
-                    healthBar.UpdateBar(currentHealth, maxHealth);
-                    StartCoroutine(GameManager.instance.LevelUp());
-                    yield return new WaitUntil(() => GameManager.instance.percChosen);
-                    level2AuraPS.Play();
-                    level2Aura.GetComponent<AudioSource>().Play();
-                }
-
-                if (level == 3)
-                {
-                    maxHealth += 10;
-                    currentHealth += 10;
-                    healthBar.UpdateBar(currentHealth, maxHealth);
-                    StartCoroutine(GameManager.instance.LevelUp());
-                    yield return new WaitUntil(() => GameManager.instance.percChosen);
-                }
+                SoundManager.PlayAudioClip(expGainSound);
+                experience++;
+                turnExperience--;
+                expGainPS.Play();
                 expBar.UpdateBar(experience, maxExp);
-                yield return new WaitForSeconds(2);
+                yield return new WaitUntil(() => !expGainPS.IsAlive());
+
+                //LevelUP
+                if (experience == maxExp)
+                {
+                    level++;
+                    experience = 0;
+                    maxExp++;
+                    levelUpPS.Play();
+                    SoundManager.PlayAudioClip(levelUpSound);
+                    yield return new WaitUntil(() => !levelUpPS.IsAlive());
+                    if (level == 2)
+                    {
+                        maxHealth += 10;
+                        currentHealth += 10;
+                        healthBar.UpdateBar(currentHealth, maxHealth);
+                        StartCoroutine(GameManager.instance.LevelUp());
+                        yield return new WaitUntil(() => GameManager.instance.percChosen);
+                        ParticleSystem.MainModule settings = level2AuraPS.main;
+                        if (classPath == "Striker")
+                        {
+                            Debug.Log("Red");
+                            settings.startColor = new Color(255, 40, 0, 152);
+                        }
+                        if (classPath == "Guardian")
+                        {
+                            settings.startColor = new Color(0, 86, 255, 152);
+                        }
+                        if (classPath == "Hunter")
+                        {
+                            settings.startColor = new Color(255, 255, 0, 152);
+                        }
+                        level2AuraPS.Play();
+                        level2Aura.GetComponent<AudioSource>().Play();
+                    }
+
+                    if (level == 3)
+                    {
+                        maxHealth += 10;
+                        currentHealth += 10;
+                        healthBar.UpdateBar(currentHealth, maxHealth);
+                        StartCoroutine(GameManager.instance.LevelUp());
+                        maxLevel = true;
+                        yield return new WaitUntil(() => GameManager.instance.percChosen);
+                    }
+                    expBar.UpdateBar(experience, maxExp);
+                    yield return new WaitForSeconds(2);
+                }
             }
         }
-
         //Let´s the camera switch to the next Player
         Invoke("EndTurn", 1);
     }
@@ -233,6 +258,7 @@ public class PlayerStats : MonoBehaviour
             healthBar.UpdateBar(currentHealth, maxHealth);
         }
         yield return new WaitUntil(() => !heal.IsAlive());
+        yield return new WaitForSeconds(0.2f);
         playerHealed = true;
     }
 
@@ -264,6 +290,7 @@ public class PlayerStats : MonoBehaviour
             poisonedImg.SetActive(false);
         }
         yield return new WaitUntil(() => !poisonPS.IsAlive());
+        yield return new WaitForSeconds(0.2f);
         poisonDamageTaken = true;
     }
 

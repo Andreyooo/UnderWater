@@ -25,6 +25,8 @@ public abstract class Projectile : MonoBehaviour {
         {
             SoundManager.PlayAudioClip(releaseSound);
         }
+        damage = Mathf.RoundToInt(damage * GameManager.instance.currentPlayer.GetComponent<PlayerStats>().damageMultiplier);
+        Debug.Log("Projectile " + damage);
         DestroyProjectileAfterTime(lifeTime);
     }
 

@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour {
     private List<List<GameObject>> fractions = new List<List<GameObject>>();
     public List<string> playerTurnOrder;
 
-    private GameObject currentPlayer;
+    public GameObject currentPlayer;
     private int currentFraction = 0;
 
     //Cards(Buttons)
@@ -281,82 +281,79 @@ public class GameManager : MonoBehaviour {
     public IEnumerator LevelUp()
     {
         PlayerStats playerStats = currentPlayer.GetComponent<PlayerStats>();
-        redPath.gameObject.SetActive(true);
-        bluePath.gameObject.SetActive(true);
-        yellowPath.gameObject.SetActive(true);
+        if (playerStats.level == 2)
+        {
+            redPath.gameObject.SetActive(true);
+            bluePath.gameObject.SetActive(true);
+            yellowPath.gameObject.SetActive(true);
 
-        redPathImage.canvasRenderer.SetAlpha(0f);
-        bluePathImage.canvasRenderer.SetAlpha(0f);
-        yellowPathImage.canvasRenderer.SetAlpha(0f);
+            redPathImage.canvasRenderer.SetAlpha(0f);
+            bluePathImage.canvasRenderer.SetAlpha(0f);
+            yellowPathImage.canvasRenderer.SetAlpha(0f);
 
-        redPathImage.CrossFadeAlpha(1f, 0.2f, false);
-        bluePathImage.CrossFadeAlpha(1f, 0.2f, false);
-        yellowPathImage.CrossFadeAlpha(1f, 0.2f, false);
+            redPathImage.CrossFadeAlpha(1f, 0.2f, false);
+            bluePathImage.CrossFadeAlpha(1f, 0.2f, false);
+            yellowPathImage.CrossFadeAlpha(1f, 0.2f, false);
 
-        yield return new WaitForSeconds(0.2f);
-        redPath.enabled = true;
-        bluePath.enabled = true;
-        yellowPath.enabled = true;
+            yield return new WaitForSeconds(0.2f);
+            redPath.enabled = true;
+            bluePath.enabled = true;
+            yellowPath.enabled = true;
+        }
+        if (playerStats.level == 3)
+        {
+            /*firstCard.gameObject.SetActive(true);
+            secondCard.gameObject.SetActive(true);
+
+            firstCardImage.canvasRenderer.SetAlpha(0f);
+            secondCardImage.canvasRenderer.SetAlpha(0f);
+
+            firstCardImage.CrossFadeAlpha(1f, 0.2f, false);
+            secondCardImage.CrossFadeAlpha(1f, 0.2f, false);
+
+            yield return new WaitForSeconds(0.2f);
+            firstCard.enabled = true;
+            secondCard.enabled = true;*/
+        }
     }
 
     private IEnumerator RedPath()
     {
-        SoundManager.PlayAudioClip(buttonClickSound);
+        PlayerStats playerStats = currentPlayer.GetComponent<PlayerStats>();
+        SoundManager.PlayAudioClip(lockInSound);
         StartCoroutine(DisablePaths());
         yield return new WaitForSeconds(0.11f);
 
-        firstCard.gameObject.SetActive(true);
-        secondCard.gameObject.SetActive(true);
-
-        firstCardImage.canvasRenderer.SetAlpha(0f);
-        secondCardImage.canvasRenderer.SetAlpha(0f);
-
-        firstCardImage.CrossFadeAlpha(1f, 0.2f, false);
-        secondCardImage.CrossFadeAlpha(1f, 0.2f, false);
-
-        yield return new WaitForSeconds(0.2f);
-        firstCard.enabled = true;
-        secondCard.enabled = true;
+        playerStats.classPath = "Striker";
+        playerStats.damageMultiplier = 1.25f;
+        playerStats.damageTakenMultiplier = 1.1f;
+        percChosen = true;
     }
 
     private IEnumerator BluePath()
     {
-        SoundManager.PlayAudioClip(buttonClickSound);
+        PlayerStats playerStats = currentPlayer.GetComponent<PlayerStats>();
+        SoundManager.PlayAudioClip(lockInSound);
         StartCoroutine(DisablePaths());
         yield return new WaitForSeconds(0.11f);
 
-        firstCard.gameObject.SetActive(true);
-        secondCard.gameObject.SetActive(true);
-
-        firstCardImage.canvasRenderer.SetAlpha(0f);
-        secondCardImage.canvasRenderer.SetAlpha(0f);
-
-        firstCardImage.CrossFadeAlpha(1f, 0.2f, false);
-        secondCardImage.CrossFadeAlpha(1f, 0.2f, false);
-
-        yield return new WaitForSeconds(0.2f);
-        firstCard.enabled = true;
-        secondCard.enabled = true;
+        playerStats.classPath = "Guardian";
+        //Todo
+        percChosen = true;
     }
 
     private IEnumerator YellowPath()
     {
-        SoundManager.PlayAudioClip(buttonClickSound);
+        PlayerStats playerStats = currentPlayer.GetComponent<PlayerStats>();
+        SoundManager.PlayAudioClip(lockInSound);
         StartCoroutine(DisablePaths());
         yield return new WaitForSeconds(0.11f);
 
-        firstCard.gameObject.SetActive(true);
-        secondCard.gameObject.SetActive(true);
-
-        firstCardImage.canvasRenderer.SetAlpha(0f);
-        secondCardImage.canvasRenderer.SetAlpha(0f);
-
-        firstCardImage.CrossFadeAlpha(1f, 0.2f, false);
-        secondCardImage.CrossFadeAlpha(1f, 0.2f, false);
-
-        yield return new WaitForSeconds(0.2f);
-        firstCard.enabled = true;
-        secondCard.enabled = true;
+        playerStats.classPath = "Hunter";
+        playerStats.lifesteal = 0.15f;
+        playerStats.critChance = 0.1f;
+        playerStats.critMultiplier = 2;
+        percChosen = true;
     }
 
     private IEnumerator FirstCard()
