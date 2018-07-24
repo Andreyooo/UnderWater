@@ -32,24 +32,24 @@ public class GameManager : MonoBehaviour {
     private int currentFraction = 0;
 
     //Cards(Buttons)
-    public Button level2FirstCard;
-    public Button level2SecondCard;
-    public Button level2ThirdCard;
-    public Button level3FirstCard;
-    public Button level3SecondCard;
+    public Button redPath;
+    public Button bluePath;
+    public Button yellowPath;
+    public Button firstCard;
+    public Button secondCard;
 
-    public Sprite Level3RedCard1;
-    public Sprite Level3RedCard2;
-    public Sprite Level3BlueCard1;
-    public Sprite Level3BlueCard2;
-    public Sprite Level3YellowCard1;
-    public Sprite Level3YellowCard2;
+    public Sprite redCard1;
+    public Sprite redCard2;
+    public Sprite blueCard1;
+    public Sprite blueCard2;
+    public Sprite yellowCard1;
+    public Sprite yellowCard2;
 
-    private Image level2FirstCardImage;
-    private Image level2SecondCardImage;
-    private Image level2ThirdCardImage;
-    private Image level3FirstCardImage;
-    private Image level3SecondCardImage;
+    private Image redPathImage;
+    private Image bluePathImage;
+    private Image yellowPathImage;
+    private Image firstCardImage;
+    private Image secondCardImage;
 
     public bool percChosen = false;
 
@@ -76,10 +76,17 @@ public class GameManager : MonoBehaviour {
         announcer = GameObject.Find("Announcer").GetComponent<Text>();
 
         //Cards
-        level3FirstCardImage = level3FirstCard.GetComponent<Image>();
-        level3SecondCardImage = level3SecondCard.GetComponent<Image>();
-        level3FirstCard.onClick.AddListener((UnityEngine.Events.UnityAction)this.Level3FirstCard);
-        level3SecondCard.onClick.AddListener((UnityEngine.Events.UnityAction)this.Level3SecondCard);
+        redPathImage = redPath.GetComponent<Image>();
+        bluePathImage = bluePath.GetComponent<Image>();
+        yellowPathImage = yellowPath.GetComponent<Image>();
+        firstCardImage = firstCard.GetComponent<Image>();
+        secondCardImage = secondCard.GetComponent<Image>();
+
+        //redPath.onClick.AddListener((UnityEngine.Events.UnityAction)this.RedPath);
+        //bluePath.onClick.AddListener((UnityEngine.Events.UnityAction)this.BluePath);
+        //yellowPath.onClick.AddListener((UnityEngine.Events.UnityAction)this.YellowPath);
+        firstCard.onClick.AddListener((UnityEngine.Events.UnityAction)this.FirstCard);
+        secondCard.onClick.AddListener((UnityEngine.Events.UnityAction)this.SecondCard);
     }
 
     // Use this for initialization
@@ -273,48 +280,76 @@ public class GameManager : MonoBehaviour {
     public IEnumerator LevelUp()
     {
         PlayerStats playerStats = currentPlayer.GetComponent<PlayerStats>();
-        if (currentPlayer.GetComponent<PlayerStats>().skillPath == "Red")
-        {
-            level3FirstCardImage.sprite = Level3RedCard1;
-            level3SecondCardImage.sprite = Level3RedCard2;
-        }
+        firstCard.gameObject.SetActive(true);
+        secondCard.gameObject.SetActive(true);
 
-        if (currentPlayer.GetComponent<PlayerStats>().skillPath == "Blue")
-        {
-            level3FirstCardImage.sprite = Level3BlueCard1;
-            level3SecondCardImage.sprite = Level3BlueCard2;
-        }
+        firstCardImage.canvasRenderer.SetAlpha(0f);
+        secondCardImage.canvasRenderer.SetAlpha(0f);
 
-        if (currentPlayer.GetComponent<PlayerStats>().skillPath == "Yellow")
-        {
-            level3FirstCardImage.sprite = Level3YellowCard1;
-            level3SecondCardImage.sprite = Level3YellowCard2;
-        }
-        level3FirstCard.gameObject.SetActive(true);
-        level3SecondCard.gameObject.SetActive(true);
-
-        level3FirstCardImage.canvasRenderer.SetAlpha(0f);
-        level3SecondCardImage.canvasRenderer.SetAlpha(0f);
-
-        level3FirstCardImage.CrossFadeAlpha(1f, 0.2f, false);
-        level3SecondCardImage.CrossFadeAlpha(1f, 0.2f, false);
+        firstCardImage.CrossFadeAlpha(1f, 0.2f, false);
+        secondCardImage.CrossFadeAlpha(1f, 0.2f, false);
 
         yield return new WaitForSeconds(0.2f);
-        level3FirstCard.enabled = true;
-        level3SecondCard.enabled = true;
-        }
+        firstCard.enabled = true;
+        secondCard.enabled = true; 
     }
 
-    //Level3 First Card
-    private void Level3FirstCard()
+    private IEnumerator RedPath()
+    {
+        firstCard.gameObject.SetActive(true);
+        secondCard.gameObject.SetActive(true);
+
+        firstCardImage.canvasRenderer.SetAlpha(0f);
+        secondCardImage.canvasRenderer.SetAlpha(0f);
+
+        firstCardImage.CrossFadeAlpha(1f, 0.2f, false);
+        secondCardImage.CrossFadeAlpha(1f, 0.2f, false);
+
+        yield return new WaitForSeconds(0.2f);
+        firstCard.enabled = true;
+        secondCard.enabled = true;
+    }
+
+    private IEnumerator BluePath()
+    {
+        firstCard.gameObject.SetActive(true);
+        secondCard.gameObject.SetActive(true);
+
+        firstCardImage.canvasRenderer.SetAlpha(0f);
+        secondCardImage.canvasRenderer.SetAlpha(0f);
+
+        firstCardImage.CrossFadeAlpha(1f, 0.2f, false);
+        secondCardImage.CrossFadeAlpha(1f, 0.2f, false);
+
+        yield return new WaitForSeconds(0.2f);
+        firstCard.enabled = true;
+        secondCard.enabled = true;
+    }
+
+    private IEnumerator YellowPath()
+    {
+        firstCard.gameObject.SetActive(true);
+        secondCard.gameObject.SetActive(true);
+
+        firstCardImage.canvasRenderer.SetAlpha(0f);
+        secondCardImage.canvasRenderer.SetAlpha(0f);
+
+        firstCardImage.CrossFadeAlpha(1f, 0.2f, false);
+        secondCardImage.CrossFadeAlpha(1f, 0.2f, false);
+
+        yield return new WaitForSeconds(0.2f);
+        firstCard.enabled = true;
+        secondCard.enabled = true;
+    }
+
+    private void FirstCard()
     {
         SoundManager.PlayAudioClip(lockInSound);
         StartCoroutine(DisableLevel3Cards());
         currentPlayer.GetComponent<PlayerStats>().spreadShot = true;
     }
 
-    //Level3 Second Card
-    private void Level3SecondCard()
+    private void SecondCard()
     {
         SoundManager.PlayAudioClip(lockInSound);
         StartCoroutine(DisableLevel3Cards());
@@ -323,13 +358,13 @@ public class GameManager : MonoBehaviour {
 
     private IEnumerator DisableLevel3Cards()
     {
-        level3FirstCard.enabled = false;
-        level3SecondCard.enabled = false;
-        level3FirstCardImage.CrossFadeAlpha(0f, 0.12f, false);
-        level3SecondCardImage.CrossFadeAlpha(0f, 0.12f, false);
+        firstCard.enabled = false;
+        secondCard.enabled = false;
+        firstCardImage.CrossFadeAlpha(0f, 0.12f, false);
+        secondCardImage.CrossFadeAlpha(0f, 0.12f, false);
         yield return new WaitForSeconds(0.12f);
-        level3FirstCard.gameObject.SetActive(false);
-        level3SecondCard.gameObject.SetActive(false);
+        firstCard.gameObject.SetActive(false);
+        secondCard.gameObject.SetActive(false);
         percChosen = true;
     }
 }
