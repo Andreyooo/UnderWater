@@ -9,6 +9,8 @@ public abstract class Projectile : MonoBehaviour {
     public string firepoint;
     public int poison = 0;
     public int poisonTurns = 0;
+    public int lifesteal = 0;
+    public int critMultiplier = 1;
     public bool mainProjectile = true;
     public Transform fpnt;
     public AudioClip releaseSound;
@@ -55,6 +57,6 @@ public abstract class Projectile : MonoBehaviour {
         Destroy(gameObject);
     }
 
-    
+
 
 }

@@ -22,6 +22,9 @@ public class PlayerStats : MonoBehaviour
     public int poisonDamageTurns = 3;
     public int poisoned = 0;
     public int poisonedTurns = 0;
+    public float critChance = 0.5f;
+    public int critMultiplier = 3;
+    public int lifesteal = 0;
 
     public bool finishedTurn;
     private bool playerHealed = false;
@@ -207,19 +210,19 @@ public class PlayerStats : MonoBehaviour
 
     public IEnumerator Utilities()
     {
-        StartCoroutine(HealPlayer());
+        StartCoroutine(HealPlayer(healthRegen));
         RegenShield();
         yield return new WaitUntil(() => playerHealed);
         playerHealed = false;
         StartCoroutine(TakePoisonDamge());
     }
 
-    public IEnumerator HealPlayer()
+    public IEnumerator HealPlayer(int amount)
     {
-        if (currentHealth < maxHealth && healthRegen > 0)
+        if (currentHealth < maxHealth && amount > 0)
         {
             // Increase the current health by healthRegen-Value
-            currentHealth += healthRegen;
+            currentHealth += amount;
 
             // If the current health is greater than max, then set it to max.
             if (currentHealth > maxHealth) currentHealth = maxHealth;
@@ -274,6 +277,15 @@ public class PlayerStats : MonoBehaviour
             poisonedTurns = poisonDmgTurns;
             poisonedImg.SetActive(true);
         }
+    }
+
+    public void Lifesteal(int amount){
+        HealPlayer(amount);
+    }
+
+    public bool calculateCrit(){
+        float randValue = Random.value;
+        return randValue < critChance;
     }
 
     IEnumerator ShakeCamera()

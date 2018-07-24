@@ -114,6 +114,9 @@ public class ShootingWeapon : MonoBehaviour {
     private void Shoot()
     {   if (!playerStats.spreadShot && !playerStats.doubleShot)
         {
+            if(playerStats.calculateCrit()){
+                
+            }
             Projectile projectile = Instantiate(weapon.projectile);
             projectile.fpnt = transform.Find(projectile.firepoint);
             projectile.transform.position = projectile.fpnt.position;
