@@ -199,7 +199,7 @@ public class PlayerStats : MonoBehaviour {
     public void Utilities(){
         HealPlayer();
         RegenShield();
-        Invoke("TakePoisonDamge", 1f);
+        Invoke("TakePoisonDamge", 0.3f);
     }
 
     public void HealPlayer ()
@@ -245,7 +245,7 @@ public class PlayerStats : MonoBehaviour {
     public void Poisoned(int poisonDmg, int  poisonDmgTurns){
         poisonPS.Play();
         SoundManager.PlayAudioClip(bubbling);
-        poisoned = poisonDmg;
+        if(poisonDmg > poisoned) poisoned = poisonDmg;
         poisonedTurns = poisonDmgTurns;
         poisonedImg.SetActive(true);
     }
