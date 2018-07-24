@@ -32,8 +32,22 @@ public class GameManager : MonoBehaviour {
     private int currentFraction = 0;
 
     //Cards(Buttons)
+    public Button level2FirstCard;
+    public Button level2SecondCard;
+    public Button level2ThirdCard;
     public Button level3FirstCard;
     public Button level3SecondCard;
+
+    public Sprite Level3RedCard1;
+    public Sprite Level3RedCard2;
+    public Sprite Level3BlueCard1;
+    public Sprite Level3BlueCard2;
+    public Sprite Level3YellowCard1;
+    public Sprite Level3YellowCard2;
+
+    private Image level2FirstCardImage;
+    private Image level2SecondCardImage;
+    private Image level2ThirdCardImage;
     private Image level3FirstCardImage;
     private Image level3SecondCardImage;
 
@@ -259,26 +273,35 @@ public class GameManager : MonoBehaviour {
     public IEnumerator LevelUp()
     {
         PlayerStats playerStats = currentPlayer.GetComponent<PlayerStats>();
-        Debug.Log(playerStats.level);
-        if (playerStats.level == 2)
+        if (currentPlayer.GetComponent<PlayerStats>().skillPath == "Red")
         {
-            level3FirstCard.gameObject.SetActive(true);
-            level3SecondCard.gameObject.SetActive(true);
-
-            level3FirstCardImage.canvasRenderer.SetAlpha(0f);
-            level3SecondCardImage.canvasRenderer.SetAlpha(0f);
-
-            level3FirstCardImage.CrossFadeAlpha(1f, 0.2f, false);
-            level3SecondCardImage.CrossFadeAlpha(1f, 0.2f, false);
-
-            yield return new WaitForSeconds(0.2f);
-            level3FirstCard.enabled = true;
-            level3SecondCard.enabled = true;
+            level3FirstCardImage.sprite = Level3RedCard1;
+            level3SecondCardImage.sprite = Level3RedCard2;
         }
-        if (playerStats.level == 3)
+
+        if (currentPlayer.GetComponent<PlayerStats>().skillPath == "Blue")
         {
-            //level3Card1.gameObject.SetActive(true);
-            //level3Card2.gameObject.SetActive(true);
+            level3FirstCardImage.sprite = Level3BlueCard1;
+            level3SecondCardImage.sprite = Level3BlueCard2;
+        }
+
+        if (currentPlayer.GetComponent<PlayerStats>().skillPath == "Yellow")
+        {
+            level3FirstCardImage.sprite = Level3YellowCard1;
+            level3SecondCardImage.sprite = Level3YellowCard2;
+        }
+        level3FirstCard.gameObject.SetActive(true);
+        level3SecondCard.gameObject.SetActive(true);
+
+        level3FirstCardImage.canvasRenderer.SetAlpha(0f);
+        level3SecondCardImage.canvasRenderer.SetAlpha(0f);
+
+        level3FirstCardImage.CrossFadeAlpha(1f, 0.2f, false);
+        level3SecondCardImage.CrossFadeAlpha(1f, 0.2f, false);
+
+        yield return new WaitForSeconds(0.2f);
+        level3FirstCard.enabled = true;
+        level3SecondCard.enabled = true;
         }
     }
 

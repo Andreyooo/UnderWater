@@ -167,6 +167,10 @@ public class ShootingWeapon : MonoBehaviour {
         projectile2.mainProjectile = false;
         projectile3.mainProjectile = false;
 
+        projectile1.damage = Mathf.RoundToInt(projectile1.damage * 0.66f);
+        projectile2.damage = Mathf.RoundToInt(projectile2.damage * 0.66f);
+        projectile3.damage = Mathf.RoundToInt(projectile3.damage * 0.66f);
+
         projectile1.GetComponent<Rigidbody2D>().AddForce(projectile1.fpnt.forward * projectile1.bulletSpeed * chargeLevel, ForceMode2D.Impulse);
         projectile2.fpnt.forward = Quaternion.Euler(0, 0, -5) * projectile2.fpnt.forward;
         projectile2.GetComponent<Rigidbody2D>().AddForce(projectile2.fpnt.forward * projectile2.bulletSpeed * chargeLevel, ForceMode2D.Impulse);
