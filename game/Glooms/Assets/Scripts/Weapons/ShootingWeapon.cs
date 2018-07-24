@@ -112,20 +112,102 @@ public class ShootingWeapon : MonoBehaviour {
 
     //Shoot Bullets
     private void Shoot()
-    {   
-        Projectile projectile = Instantiate(weapon.projectile);
-        projectile.fpnt = transform.Find(projectile.firepoint);
-        projectile.transform.position = projectile.fpnt.position;
-        projectile.transform.rotation = gameObject.transform.rotation;
-        if (playerStats.poisonDamage > 0)
+    {   if (!playerStats.spreadShot && !playerStats.doubleShot)
         {
+            Projectile projectile = Instantiate(weapon.projectile);
+            projectile.fpnt = transform.Find(projectile.firepoint);
+            projectile.transform.position = projectile.fpnt.position;
+            projectile.transform.rotation = gameObject.transform.rotation;
             projectile.poison = playerStats.poisonDamage;
+            projectile.GetComponent<Rigidbody2D>().AddForce(projectile.fpnt.forward * projectile.bulletSpeed * chargeLevel, ForceMode2D.Impulse);
+            weapon.Fired();
+            StartCoroutine(GameManager.instance.HasFired(projectile));
+            cam = GameObject.Find("Main Camera").GetComponent<CameraManager>();
+            cam.proj = projectile;
+        } else
+        {
+            if (playerStats.spreadShot)
+            {
+                SpreadShot();
+            }
+            if (playerStats.doubleShot)
+            {
+                StartCoroutine(DoubleShot());
+            }
         }
-        projectile.GetComponent<Rigidbody2D>().AddForce(projectile.fpnt.forward * projectile.bulletSpeed * chargeLevel, ForceMode2D.Impulse);
+    }
+
+    //Level3 SpreadShotSkill
+    private void SpreadShot()
+    {
+        Projectile projectile1 = Instantiate(weapon.projectile);
+        Projectile projectile2 = Instantiate(weapon.projectile);
+        Projectile projectile3 = Instantiate(weapon.projectile);
+
+        projectile1.fpnt = transform.Find(projectile1.firepoint);
+        projectile2.fpnt = transform.Find(projectile2.firepoint);
+        projectile3.fpnt = transform.Find(projectile3.firepoint);
+
+        Physics2D.IgnoreCollision(projectile1.GetComponent<Collider2D>(), projectile2.GetComponent<Collider2D>());
+        Physics2D.IgnoreCollision(projectile1.GetComponent<Collider2D>(), projectile3.GetComponent<Collider2D>());
+        Physics2D.IgnoreCollision(projectile2.GetComponent<Collider2D>(), projectile3.GetComponent<Collider2D>());
+
+        projectile1.transform.position = projectile1.fpnt.position;
+        projectile2.transform.position = projectile2.fpnt.position;
+        projectile3.transform.position = projectile3.fpnt.position;
+
+        projectile1.transform.rotation = gameObject.transform.rotation;
+        projectile2.transform.rotation = gameObject.transform.rotation;
+        projectile3.transform.rotation = gameObject.transform.rotation;
+
+        projectile1.poison = playerStats.poisonDamage;
+        projectile2.poison = playerStats.poisonDamage;
+        projectile3.poison = playerStats.poisonDamage;
+
+        projectile2.mainProjectile = false;
+        projectile3.mainProjectile = false;
+
+        projectile1.GetComponent<Rigidbody2D>().AddForce(projectile1.fpnt.forward * projectile1.bulletSpeed * chargeLevel, ForceMode2D.Impulse);
+        projectile2.fpnt.forward = Quaternion.Euler(0, 0, -5) * projectile2.fpnt.forward;
+        projectile2.GetComponent<Rigidbody2D>().AddForce(projectile2.fpnt.forward * projectile2.bulletSpeed * chargeLevel, ForceMode2D.Impulse);
+        projectile3.fpnt.forward = Quaternion.Euler(0, 0, 10) * projectile3.fpnt.forward;
+        projectile3.GetComponent<Rigidbody2D>().AddForce(projectile3.fpnt.forward * projectile3.bulletSpeed * chargeLevel, ForceMode2D.Impulse);
+
         weapon.Fired();
-        StartCoroutine(GameManager.instance.HasFired(projectile));
+        StartCoroutine(GameManager.instance.HasFired(projectile1));
         cam = GameObject.Find("Main Camera").GetComponent<CameraManager>();
-        cam.proj = projectile;
+        cam.proj = projectile1;
+    }
+
+    private IEnumerator EnableProjectileCollidor(Projectile proj, float delayTime)
+    {
+        yield return new WaitForSeconds(delayTime);
+        proj.GetComponent<Collider2D>().enabled = true;
+    }
+
+    //Level3 DoubleShotSkill
+    private IEnumerator DoubleShot()
+    {
+        float currentChargelevel = chargeLevel;
+        Projectile projectile1 = Instantiate(weapon.projectile);
+        projectile1.fpnt = transform.Find(projectile1.firepoint);
+        projectile1.transform.position = projectile1.fpnt.position;
+        projectile1.transform.rotation = gameObject.transform.rotation;
+        projectile1.poison = playerStats.poisonDamage;
+        projectile1.mainProjectile = false;
+        projectile1.GetComponent<Rigidbody2D>().AddForce(projectile1.fpnt.forward * projectile1.bulletSpeed * currentChargelevel, ForceMode2D.Impulse);
+        weapon.Fired();
+
+        yield return new WaitForSeconds(0.3f);
+        Projectile projectile2 = Instantiate(weapon.projectile);
+        projectile2.fpnt = transform.Find(projectile2.firepoint);
+        projectile2.transform.position = projectile2.fpnt.position;
+        projectile2.transform.rotation = gameObject.transform.rotation;
+        projectile2.poison = playerStats.poisonDamage;
+        projectile2.GetComponent<Rigidbody2D>().AddForce(projectile2.fpnt.forward * projectile2.bulletSpeed * currentChargelevel, ForceMode2D.Impulse);
+        StartCoroutine(GameManager.instance.HasFired(projectile2));
+        cam = GameObject.Find("Main Camera").GetComponent<CameraManager>();
+        cam.proj = projectile2;
     }
 
     //Weapon Rotation

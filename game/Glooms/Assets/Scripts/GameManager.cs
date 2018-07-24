@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour {
     private CameraManager cam;
 
     //Announcer
-    private GameObject announcer;
+    public Text announcer;
 
     //Players
     public List<GameObject> vikings;
@@ -32,8 +32,12 @@ public class GameManager : MonoBehaviour {
     private int currentFraction = 0;
 
     //Cards(Buttons)
-    public Button level3Card1;
-    public Button level3Card2;
+    public Button level3FirstCard;
+    public Button level3SecondCard;
+    private Image level3FirstCardImage;
+    private Image level3SecondCardImage;
+
+    public bool percChosen = false;
 
     //Win
     public GameObject win;
@@ -54,14 +58,18 @@ public class GameManager : MonoBehaviour {
             Destroy(gameObject);
             }
         }
+        cam = GameObject.Find("Main Camera").GetComponent<CameraManager>();
+        announcer = GameObject.Find("Announcer").GetComponent<Text>();
+
+        //Cards
+        level3FirstCardImage = level3FirstCard.GetComponent<Image>();
+        level3SecondCardImage = level3SecondCard.GetComponent<Image>();
+        level3FirstCard.onClick.AddListener((UnityEngine.Events.UnityAction)this.Level3FirstCard);
+        level3SecondCard.onClick.AddListener((UnityEngine.Events.UnityAction)this.Level3SecondCard);
     }
 
     // Use this for initialization
     void Start () {
-        cam = GameObject.Find("Main Camera").GetComponent<CameraManager>();
-        level3Card1.onClick.AddListener((UnityEngine.Events.UnityAction)this.Level3Card1);
-        level3Card2.onClick.AddListener((UnityEngine.Events.UnityAction)this.Level3Card2);
-        announcer = GameObject.Find("Announcer");
         StartCoroutine(SetupGame());
 	}
 
@@ -69,7 +77,7 @@ public class GameManager : MonoBehaviour {
     {
         yield return new WaitUntil(() => playersSpawned);
         Cursor.visible = true;
-        announcer.SetActive(false);
+        announcer.gameObject.SetActive(false);
         PreparePlayers();
         StartCoroutine(SwitchPlayer());
     }
@@ -109,6 +117,7 @@ public class GameManager : MonoBehaviour {
         cam.transPlayer = true;
         yield return new WaitUntil(() => !cam.transPlayer);
         currentPlayer.GetComponent<PlayerController>().SetActive();
+        percChosen = false;
     }
 
     public IEnumerator HasFired(Projectile projectile){
@@ -253,23 +262,18 @@ public class GameManager : MonoBehaviour {
         Debug.Log(playerStats.level);
         if (playerStats.level == 2)
         {
-            level3Card1.gameObject.SetActive(true);
-            level3Card2.gameObject.SetActive(true);
+            level3FirstCard.gameObject.SetActive(true);
+            level3SecondCard.gameObject.SetActive(true);
 
-            Image level3Card1Image = level3Card1.GetComponent<Image>();
-            Image level3Card2Image = level3Card2.GetComponent<Image>();
+            level3FirstCardImage.canvasRenderer.SetAlpha(0f);
+            level3SecondCardImage.canvasRenderer.SetAlpha(0f);
 
-            level3Card1Image.canvasRenderer.SetAlpha(0f);
-            level3Card2Image.canvasRenderer.SetAlpha(0f);
+            level3FirstCardImage.CrossFadeAlpha(1f, 0.2f, false);
+            level3SecondCardImage.CrossFadeAlpha(1f, 0.2f, false);
 
-            level3Card1Image.CrossFadeAlpha(1f, 0.5f, false);
-            level3Card2Image.CrossFadeAlpha(1f, 0.5f, false);
-
-            yield return new WaitForSeconds(0.5f);
-            level3Card1.enabled = true;
-            level3Card2.enabled = true;
-
-
+            yield return new WaitForSeconds(0.2f);
+            level3FirstCard.enabled = true;
+            level3SecondCard.enabled = true;
         }
         if (playerStats.level == 3)
         {
@@ -278,14 +282,31 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    private void Level3Card1()
+    //Level3 First Card
+    private void Level3FirstCard()
     {
         SoundManager.PlayAudioClip(lockInSound);
-        
+        StartCoroutine(DisableLevel3Cards());
+        currentPlayer.GetComponent<PlayerStats>().spreadShot = true;
     }
 
-    private void Level3Card2()
+    //Level3 Second Card
+    private void Level3SecondCard()
     {
         SoundManager.PlayAudioClip(lockInSound);
+        StartCoroutine(DisableLevel3Cards());
+        currentPlayer.GetComponent<PlayerStats>().doubleShot = true;
+    }
+
+    private IEnumerator DisableLevel3Cards()
+    {
+        level3FirstCard.enabled = false;
+        level3SecondCard.enabled = false;
+        level3FirstCardImage.CrossFadeAlpha(0f, 0.12f, false);
+        level3SecondCardImage.CrossFadeAlpha(0f, 0.12f, false);
+        yield return new WaitForSeconds(0.12f);
+        level3FirstCard.gameObject.SetActive(false);
+        level3SecondCard.gameObject.SetActive(false);
+        percChosen = true;
     }
 }

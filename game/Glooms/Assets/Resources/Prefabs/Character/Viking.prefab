@@ -1270,7 +1270,9 @@ MonoBehaviour:
   expGain: {fileID: 1695507818904166}
   levelUp: {fileID: 1266653751769186}
   level2Aura: {fileID: 1163469646811868}
-  levelUpSound: {fileID: 8300000, guid: 574699d2bf9b88b429293f8ed4e4510d, type: 3}
+  levelUpSound: {fileID: 8300000, guid: 69fcf7d1313eb544eb19849e23984d8d, type: 3}
+  spreadShot: 1
+  doubleShot: 0
   playerHitSound: Viking Hit
   playerJumpSound: Viking Jump
   playerDeathSound: Viking Death

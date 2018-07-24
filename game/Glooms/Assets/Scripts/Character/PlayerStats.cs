@@ -33,6 +33,9 @@ public class PlayerStats : MonoBehaviour {
     private ParticleSystem levelUpPS;
     private ParticleSystem level2AuraPS;
 
+    public bool spreadShot = false;
+    public bool doubleShot = false;
+
     //Sounds
     public string playerHitSound;
     public string playerJumpSound;
@@ -152,6 +155,7 @@ public class PlayerStats : MonoBehaviour {
                     currentHealth += 10;
                     healthBar.UpdateBar(currentHealth, maxHealth);
                     StartCoroutine(GameManager.instance.LevelUp());
+                    yield return new WaitUntil(() => GameManager.instance.percChosen);
                     level2AuraPS.Play();
                     level2Aura.GetComponent<AudioSource>().Play();
                 }
@@ -162,6 +166,7 @@ public class PlayerStats : MonoBehaviour {
                     currentHealth += 10;
                     healthBar.UpdateBar(currentHealth, maxHealth);
                     StartCoroutine(GameManager.instance.LevelUp());
+                    yield return new WaitUntil(() => GameManager.instance.percChosen);
                 }
                 expBar.UpdateBar(experience, maxExp);
                 yield return new WaitForSeconds(2);

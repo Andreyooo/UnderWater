@@ -21,12 +21,19 @@ public class BazookaBulletScript : Projectile {
     }
 
     private void OnTriggerEnter2D(Collider2D collider){
-         DestroyProjectileAfterTime(0);
+        Debug.Log(collider.gameObject.tag);
+        if (collider.gameObject.tag !="Explosion" && collider.gameObject.tag != "Destroying")
+        {
+            DestroyProjectileAfterTime(0);
+        } else
+        {
+            Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), collider.gameObject.GetComponent<Collider2D>());
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (!exploded)
+        if (!exploded)  
         {
             exploded = true;
             GameObject explosion = Instantiate(explosionPrefab);

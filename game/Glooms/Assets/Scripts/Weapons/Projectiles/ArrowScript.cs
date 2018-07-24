@@ -38,6 +38,7 @@ public class ArrowScript : Projectile {
             inAir = false;
             rb2D.isKinematic = true;
             rb2D.velocity = Vector2.zero;
+            gameObject.GetComponent<Collider2D>().enabled = false;
             DestroyProjectileAfterTime(destroyDelay);
             if (collision.gameObject.tag == "Player")
             {
@@ -47,7 +48,7 @@ public class ArrowScript : Projectile {
                 {
                     playerStats.TakeDamage(damage);
                     playerStats.Poisoned(poison, poisonTurns);
-                    //GameManager.instance.CurrentPlayerGetsExp(expGain);
+                    GameManager.instance.CurrentPlayerGetsExp(expGain);
                 }
             }
         }

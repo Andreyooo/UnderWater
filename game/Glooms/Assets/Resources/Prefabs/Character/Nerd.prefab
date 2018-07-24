@@ -984,7 +984,9 @@ MonoBehaviour:
   expGain: {fileID: 1312404737000360}
   levelUp: {fileID: 1465734431783304}
   level2Aura: {fileID: 1360842261601804}
-  levelUpSound: {fileID: 8300000, guid: 574699d2bf9b88b429293f8ed4e4510d, type: 3}
+  levelUpSound: {fileID: 8300000, guid: 69fcf7d1313eb544eb19849e23984d8d, type: 3}
+  spreadShot: 1
+  doubleShot: 0
   playerHitSound: hmpf
   playerJumpSound: jump
   playerDeathSound: Death

@@ -9,7 +9,6 @@ public class PlayerSpawning : MonoBehaviour {
     public GameObject vikingPrefab;
     public GameObject nerdPrefab;
     public GameObject banditPrefab;
-    private Text announcer;
     private GameObject newPlayer;
     private List<string> playerSpawnOrder = new List<string>{ "Viking", "Nerd", "Bandit"};
 
@@ -29,7 +28,6 @@ public class PlayerSpawning : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        announcer = GameObject.Find("Announcer").GetComponent<Text>();
         Cursor.visible = false;
         cam = GameObject.Find("Main Camera").GetComponent<CameraManager>();
         soundmanager.PlayMusic(part1);
@@ -93,7 +91,7 @@ public class PlayerSpawning : MonoBehaviour {
     {
         if (playerSpawnOrder.Count != 0)
         {
-            announcer.text = playerSpawnOrder[0] + " is Spawning";
+            GameManager.instance.announcer.text = playerSpawnOrder[0] + " is Spawning";
         }
     }
 
@@ -115,10 +113,6 @@ public class PlayerSpawning : MonoBehaviour {
         playerSpawnOrder.Add(playerSpawnOrder[0]);
         playerSpawnOrder.Add(playerSpawnOrder[1]);
         playerSpawnOrder.Add(playerSpawnOrder[2]); */
-        for (int i = 0; i < GameManager.instance.playerTurnOrder.Count; i++)
-        {
-            Debug.Log(GameManager.instance.playerTurnOrder[i]);
-        }
     }
 
     private IEnumerator ActionMusic()

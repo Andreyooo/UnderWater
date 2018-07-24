@@ -9,6 +9,7 @@ public abstract class Projectile : MonoBehaviour {
     public string firepoint;
     public int poison = 0;
     public int poisonTurns = 0;
+    public bool mainProjectile = true;
     public Transform fpnt;
     public AudioClip releaseSound;
     public AudioClip hitSound;
@@ -17,9 +18,11 @@ public abstract class Projectile : MonoBehaviour {
     [SerializeField]
     private float afterLifeTime;
     private void Start()
-    
     {
-        SoundManager.PlayAudioClip(releaseSound);
+        if (mainProjectile)
+        {
+            SoundManager.PlayAudioClip(releaseSound);
+        }
         DestroyProjectileAfterTime(lifeTime);
     }
 
@@ -45,7 +48,10 @@ public abstract class Projectile : MonoBehaviour {
 
     private void ProjectileDestroyed()
     {
-        GameManager.instance.projectileDestroyed = true;
+        if (mainProjectile)
+        {
+            GameManager.instance.projectileDestroyed = true;
+        }
         Destroy(gameObject);
     }
 
