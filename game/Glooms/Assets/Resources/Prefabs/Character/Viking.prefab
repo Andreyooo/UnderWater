@@ -302,7 +302,6 @@ GameObject:
   - component: {fileID: 4744902723338442}
   - component: {fileID: 198447704383065508}
   - component: {fileID: 199859567003946420}
-  - component: {fileID: 114473923529209356}
   m_Layer: 0
   m_Name: CFX2_EnemyDeathSkull
   m_TagString: Untagged
@@ -480,6 +479,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1749955980356876
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 224734564301459544}
+  - component: {fileID: 222621144561299546}
+  - component: {fileID: 114840248664014924}
+  m_Layer: 5
+  m_Name: Poisoned
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
 --- !u!1 &1807283136953890
 GameObject:
   m_ObjectHideFlags: 1
@@ -1343,18 +1359,6 @@ MonoBehaviour:
   weaponSwitchSound2: {fileID: 8300000, guid: bc2d568b981e8a041a553e1d70881263, type: 3}
   chargeSound: {fileID: 8300000, guid: 4a3ba0a82b7ea7a45acae91826fd32b0, type: 3}
   canShoot: 1
---- !u!114 &114473923529209356
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1449936516962422}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fd2e8874f60266498a388d7229a1bac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnlyDeactivate: 0
 --- !u!114 &114517236639181016
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1475,6 +1479,8 @@ MonoBehaviour:
   levelUp: {fileID: 1266653751769186}
   level2Aura: {fileID: 1163469646811868}
   levelUpSound: {fileID: 8300000, guid: 69fcf7d1313eb544eb19849e23984d8d, type: 3}
+  poisonPS: {fileID: 198447704383065508}
+  bubbling: {fileID: 8300000, guid: 8cf173f0b533663438ce8d0dbbb56d43, type: 3}
   spreadShot: 1
   doubleShot: 0
   playerHitSound: Viking Hit
@@ -1484,6 +1490,7 @@ MonoBehaviour:
   healthBar: {fileID: 114136156908204868}
   shieldBar: {fileID: 114825278338369694}
   expBar: {fileID: 114428072027145400}
+  poisonedImg: {fileID: 1749955980356876}
   blood: {fileID: 1319144548630846, guid: 4d167a25f8374144297f717afd63c5ed, type: 2}
   deadHead: {fileID: 1903056644159274, guid: 9ad42b590eb36ee47a83cecd9128d76f, type: 2}
   deadBody: {fileID: 1931134669790892, guid: 36c50ac8b365bb849badbf358a76c652, type: 2}
@@ -1568,6 +1575,33 @@ MonoBehaviour:
   delay: 0
   finalIntensity: 0
   autodestruct: 1
+--- !u!114 &114840248664014924
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1749955980356876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 2100000, guid: 219882489a1df4042823f03b5b903103, type: 2}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
 --- !u!198 &198036525012940646
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -6180,7 +6214,7 @@ ParticleSystem:
   stopAction: 0
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -15065,7 +15099,7 @@ ParticleSystem:
   stopAction: 0
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -19518,7 +19552,7 @@ ParticleSystem:
   stopAction: 0
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -23971,7 +24005,7 @@ ParticleSystem:
   stopAction: 0
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -51890,6 +51924,12 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!222 &222621144561299546
+CanvasRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1749955980356876}
 --- !u!222 &222734200359345316
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -51965,6 +52005,7 @@ RectTransform:
   - {fileID: 224119651140895198}
   - {fileID: 224716688595975806}
   - {fileID: 224931326127114886}
+  - {fileID: 224734564301459544}
   m_Father: {fileID: 224674320910745068}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -52010,6 +52051,24 @@ RectTransform:
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: -0.1231}
   m_SizeDelta: {x: 0, y: -0.0336}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!224 &224734564301459544
+RectTransform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1749955980356876}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0}
+  m_Children: []
+  m_Father: {fileID: 224372420808285420}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -0.2571, y: 0.1421}
+  m_SizeDelta: {x: 0.1808, y: 0.1538}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224931326127114886
 RectTransform:

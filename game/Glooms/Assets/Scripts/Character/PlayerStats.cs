@@ -32,6 +32,8 @@ public class PlayerStats : MonoBehaviour {
     private ParticleSystem expGainPS;
     private ParticleSystem levelUpPS;
     private ParticleSystem level2AuraPS;
+    public ParticleSystem poisonPS;
+    public AudioClip bubbling;
 
     public bool spreadShot = false;
     public bool doubleShot = false;
@@ -46,6 +48,7 @@ public class PlayerStats : MonoBehaviour {
 	public SimpleHealthBar healthBar;
     public SimpleHealthBar shieldBar;
     public SimpleHealthBar expBar;
+    public GameObject poisonedImg;
 
     //etc
     public GameObject blood, deadHead, deadBody, deadLeftLeg, deadLeftHand, deadRightLeg, deadRightHand;
@@ -226,17 +229,25 @@ public class PlayerStats : MonoBehaviour {
     }
 
     public void TakePoisonDamge(){
-        if(poisonDamageTurns > 0){
+        if(poisonDamageTurns > 0 && poisoned > 0){
+            poisonPS.Play();
+            SoundManager.PlayAudioClip(bubbling);
             currentHealth -= poisoned;
             healthBar.UpdateBar(currentHealth, maxHealth);
             poisonedTurns--;
             
         }
+        if(poisonDamageTurns == 0 || poisoned == 0){
+            poisonedImg.SetActive(false);
+        }
     }
 
     public void Poisoned(int poisonDmg, int  poisonDmgTurns){
+        poisonPS.Play();
+        SoundManager.PlayAudioClip(bubbling);
         poisoned = poisonDmg;
         poisonedTurns = poisonDmgTurns;
+        poisonedImg.SetActive(true);
     }
 
 	IEnumerator ShakeCamera ()
