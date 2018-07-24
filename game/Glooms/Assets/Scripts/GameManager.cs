@@ -60,6 +60,7 @@ public class GameManager : MonoBehaviour {
     //FX
     public AudioClip switchPlayerSound;
     public AudioClip lockInSound;
+    public AudioClip buttonClickSound;
 
     void Awake () {
         if (instance == null)
@@ -82,11 +83,11 @@ public class GameManager : MonoBehaviour {
         firstCardImage = firstCard.GetComponent<Image>();
         secondCardImage = secondCard.GetComponent<Image>();
 
-        //redPath.onClick.AddListener((UnityEngine.Events.UnityAction)this.RedPath);
-        //bluePath.onClick.AddListener((UnityEngine.Events.UnityAction)this.BluePath);
-        //yellowPath.onClick.AddListener((UnityEngine.Events.UnityAction)this.YellowPath);
-        firstCard.onClick.AddListener((UnityEngine.Events.UnityAction)this.FirstCard);
-        secondCard.onClick.AddListener((UnityEngine.Events.UnityAction)this.SecondCard);
+        redPath.onClick.AddListener((UnityEngine.Events.UnityAction)this.Red);
+        bluePath.onClick.AddListener((UnityEngine.Events.UnityAction)this.Blue);
+        yellowPath.onClick.AddListener((UnityEngine.Events.UnityAction)this.Yellow);
+        firstCard.onClick.AddListener((UnityEngine.Events.UnityAction)this.First);
+        secondCard.onClick.AddListener((UnityEngine.Events.UnityAction)this.Second);
     }
 
     // Use this for initialization
@@ -280,22 +281,30 @@ public class GameManager : MonoBehaviour {
     public IEnumerator LevelUp()
     {
         PlayerStats playerStats = currentPlayer.GetComponent<PlayerStats>();
-        firstCard.gameObject.SetActive(true);
-        secondCard.gameObject.SetActive(true);
+        redPath.gameObject.SetActive(true);
+        bluePath.gameObject.SetActive(true);
+        yellowPath.gameObject.SetActive(true);
 
-        firstCardImage.canvasRenderer.SetAlpha(0f);
-        secondCardImage.canvasRenderer.SetAlpha(0f);
+        redPathImage.canvasRenderer.SetAlpha(0f);
+        bluePathImage.canvasRenderer.SetAlpha(0f);
+        yellowPathImage.canvasRenderer.SetAlpha(0f);
 
-        firstCardImage.CrossFadeAlpha(1f, 0.2f, false);
-        secondCardImage.CrossFadeAlpha(1f, 0.2f, false);
+        redPathImage.CrossFadeAlpha(1f, 0.2f, false);
+        bluePathImage.CrossFadeAlpha(1f, 0.2f, false);
+        yellowPathImage.CrossFadeAlpha(1f, 0.2f, false);
 
         yield return new WaitForSeconds(0.2f);
-        firstCard.enabled = true;
-        secondCard.enabled = true; 
+        redPath.enabled = true;
+        bluePath.enabled = true;
+        yellowPath.enabled = true;
     }
 
     private IEnumerator RedPath()
     {
+        SoundManager.PlayAudioClip(buttonClickSound);
+        StartCoroutine(DisablePaths());
+        yield return new WaitForSeconds(0.11f);
+
         firstCard.gameObject.SetActive(true);
         secondCard.gameObject.SetActive(true);
 
@@ -312,6 +321,10 @@ public class GameManager : MonoBehaviour {
 
     private IEnumerator BluePath()
     {
+        SoundManager.PlayAudioClip(buttonClickSound);
+        StartCoroutine(DisablePaths());
+        yield return new WaitForSeconds(0.11f);
+
         firstCard.gameObject.SetActive(true);
         secondCard.gameObject.SetActive(true);
 
@@ -328,6 +341,10 @@ public class GameManager : MonoBehaviour {
 
     private IEnumerator YellowPath()
     {
+        SoundManager.PlayAudioClip(buttonClickSound);
+        StartCoroutine(DisablePaths());
+        yield return new WaitForSeconds(0.11f);
+
         firstCard.gameObject.SetActive(true);
         secondCard.gameObject.SetActive(true);
 
@@ -342,29 +359,73 @@ public class GameManager : MonoBehaviour {
         secondCard.enabled = true;
     }
 
-    private void FirstCard()
+    private IEnumerator FirstCard()
     {
         SoundManager.PlayAudioClip(lockInSound);
-        StartCoroutine(DisableLevel3Cards());
+        StartCoroutine(DisableCards());
+        yield return new WaitForSeconds(0.11f);
         currentPlayer.GetComponent<PlayerStats>().spreadShot = true;
     }
 
-    private void SecondCard()
+    private IEnumerator SecondCard()
     {
         SoundManager.PlayAudioClip(lockInSound);
-        StartCoroutine(DisableLevel3Cards());
+        StartCoroutine(DisableCards());
+        yield return new WaitForSeconds(0.11f);
         currentPlayer.GetComponent<PlayerStats>().doubleShot = true;
     }
 
-    private IEnumerator DisableLevel3Cards()
+    private IEnumerator DisablePaths()
+    {
+        redPath.enabled = false;
+        bluePath.enabled = false;
+        yellowPath.enabled = false;
+
+        redPathImage.CrossFadeAlpha(0f, 0.10f, false);
+        bluePathImage.CrossFadeAlpha(0f, 0.10f, false);
+        yellowPathImage.CrossFadeAlpha(0f, 0.10f, false);
+        yield return new WaitForSeconds(0.10f);
+        redPath.gameObject.SetActive(false);
+        bluePath.gameObject.SetActive(false);
+        yellowPath.gameObject.SetActive(false);
+    }
+
+    private IEnumerator DisableCards()
     {
         firstCard.enabled = false;
         secondCard.enabled = false;
-        firstCardImage.CrossFadeAlpha(0f, 0.12f, false);
-        secondCardImage.CrossFadeAlpha(0f, 0.12f, false);
-        yield return new WaitForSeconds(0.12f);
+
+        firstCardImage.CrossFadeAlpha(0f, 0.10f, false);
+        secondCardImage.CrossFadeAlpha(0f, 0.10f, false);
+        yield return new WaitForSeconds(0.10f);
         firstCard.gameObject.SetActive(false);
         secondCard.gameObject.SetActive(false);
         percChosen = true;
+    }
+
+    //Wrappers
+    private void Red()
+    {
+        StartCoroutine(RedPath());
+    }
+
+    private void Blue()
+    {
+        StartCoroutine(BluePath());
+    }
+
+    private void Yellow()
+    {
+        StartCoroutine(YellowPath());
+    }
+
+    private void First()
+    {
+        StartCoroutine(FirstCard());
+    }
+
+    private void Second()
+    {
+        StartCoroutine(SecondCard());
     }
 }
