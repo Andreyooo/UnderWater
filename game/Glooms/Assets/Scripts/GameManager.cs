@@ -138,7 +138,7 @@ public class GameManager : MonoBehaviour {
         cam.player = currentPlayer;
         cam.transPlayer = true;
         yield return new WaitUntil(() => !cam.transPlayer);
-        currentPlayer.GetComponent<PlayerController>().SetActive();
+        StartCoroutine(currentPlayer.GetComponent<PlayerController>().SetActive());
         percChosen = false;
     }
 

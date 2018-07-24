@@ -24,6 +24,8 @@ public class PlayerStats : MonoBehaviour
     public int poisonedTurns = 0;
 
     public bool finishedTurn;
+    private bool playerHealed = false;
+    public bool poisonDamageTaken = false;
 
     //ExpStuff
     public GameObject expGain;
@@ -203,14 +205,16 @@ public class PlayerStats : MonoBehaviour
         SoundManager.PlaySound(playerJumpSound);
     }
 
-    public void Utilities()
+    public IEnumerator Utilities()
     {
-        HealPlayer();
+        StartCoroutine(HealPlayer());
         RegenShield();
-        Invoke("TakePoisonDamge", 1.7f);
+        yield return new WaitUntil(() => playerHealed);
+        playerHealed = false;
+        StartCoroutine(TakePoisonDamge());
     }
 
-    public void HealPlayer()
+    public IEnumerator HealPlayer()
     {
         if (currentHealth < maxHealth && healthRegen > 0)
         {
@@ -225,6 +229,8 @@ public class PlayerStats : MonoBehaviour
             // Update the Simple Health Bar with the new Health values.
             healthBar.UpdateBar(currentHealth, maxHealth);
         }
+        yield return new WaitUntil(() => !heal.IsAlive());
+        playerHealed = true;
     }
 
     public void RegenShield()
@@ -240,7 +246,7 @@ public class PlayerStats : MonoBehaviour
         shieldBar.UpdateBar(currentShield, maxHealth);
     }
 
-    public void TakePoisonDamge()
+    public IEnumerator TakePoisonDamge()
     {
         if (poisonDamageTurns > 0 && poisoned > 0)
         {
@@ -249,21 +255,25 @@ public class PlayerStats : MonoBehaviour
             currentHealth -= poisoned;
             healthBar.UpdateBar(currentHealth, maxHealth);
             poisonedTurns--;
-
         }
         if (poisonDamageTurns == 0 || poisoned == 0)
         {
             poisonedImg.SetActive(false);
         }
+        yield return new WaitUntil(() => !poisonPS.IsAlive());
+        poisonDamageTaken = true;
     }
 
     public void Poisoned(int poisonDmg, int poisonDmgTurns)
     {
-        poisonPS.Play();
-        SoundManager.PlayAudioClip(bubbling);
-        if (poisonDmg > poisoned) poisoned = poisonDmg;
-        poisonedTurns = poisonDmgTurns;
-        poisonedImg.SetActive(true);
+        if (poisonDmg > 0)
+        {
+            poisonPS.Play();
+            SoundManager.PlayAudioClip(bubbling);
+            if (poisonDmg > poisoned) poisoned = poisonDmg;
+            poisonedTurns = poisonDmgTurns;
+            poisonedImg.SetActive(true);
+        }
     }
 
     IEnumerator ShakeCamera()

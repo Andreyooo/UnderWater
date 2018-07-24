@@ -279,9 +279,11 @@ public class PlayerController : PhysicsObject {
     }
 
     //Player is Activ
-    public void SetActive()
+    public IEnumerator SetActive()
     {
-        stats.Utilities();
+        StartCoroutine(stats.Utilities());
+        yield return new WaitUntil(() => stats.poisonDamageTaken);
+        stats.poisonDamageTaken = false;
         passiveMode = false;
         playerArrow.GetComponent<SpriteRenderer>().enabled = true;
     }
