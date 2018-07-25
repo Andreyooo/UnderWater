@@ -27,13 +27,15 @@ public class ShootingWeapon : MonoBehaviour {
     private float colorChangingRangeGreen = 150;
 
     private SpriteRenderer weaponSR;
+    public SpriteRenderer jumpSR;
     private SpriteRenderer chargingBarSR;
     private SpriteRenderer chargingBarOutlineSR;
     private SpriteRenderer crosshairSR;
 
     private bool active = false;
-    private bool critActive = true;
+    private bool critActive = false;
     private bool rotationEnabled = true;
+    public bool powerJumpMode;
     public bool canShoot = true;
     private bool critAnimationPlayed = false;
 
@@ -51,49 +53,56 @@ public class ShootingWeapon : MonoBehaviour {
     {
         if (active)
         {
-            //rotate when not in shooting mode
-            if (rotationEnabled)
+            if (powerJumpMode)
             {
                 Rotate();
-                WeaponSwitching();
-            }
-
-            if (Input.GetButtonDown("Fire1") && canShoot && !EventSystem.current.IsPointerOverGameObject())
+                PowerJump();
+            } else
             {
-                crosshairSR.enabled = false;
-                rotationEnabled = false;
-                chargingBarSR.enabled = true;
-                chargingBarOutlineSR.enabled = true;
-                SoundManager.PlayAudioClip(chargeSound);
-            }
+                //rotate when not in shooting mode
+                if (rotationEnabled)
+                {
+                    Rotate();
+                    WeaponSwitching();
+                }
 
-            //charging Bulletpower
-            if (Input.GetButton("Fire1") && canShoot && !EventSystem.current.IsPointerOverGameObject())
-            {
-                if (chargeLevel < chargeLimit)
+                if (Input.GetButtonDown("Fire1") && canShoot && !EventSystem.current.IsPointerOverGameObject())
                 {
-                    chargeLevel += Time.deltaTime * chargeSpeed;
-                    chargingBar.transform.localScale = new Vector3(chargeLevel, chargeLevel, 1);
-                    byte greenValue = (byte)(235 - colorChangingRangeGreen * Mathf.Pow(chargeLevel, 3));
-                    chargingBarSR.color = new Color32(235, greenValue, 0, 255);
+                    crosshairSR.enabled = false;
+                    rotationEnabled = false;
+                    chargingBarSR.enabled = true;
+                    chargingBarOutlineSR.enabled = true;
+                    SoundManager.PlayAudioClip(chargeSound);
                 }
-                else
-                {
-                    ReleaseProjectile();
-                    canShoot = false;
-                }
-            }
 
-            if (Input.GetButtonUp("Fire1") && !EventSystem.current.IsPointerOverGameObject())
-            {
-                SoundManager.StopAudioClip();
-                if (canShoot)
+                //charging Bulletpower
+                if (Input.GetButton("Fire1") && canShoot && !EventSystem.current.IsPointerOverGameObject())
                 {
-                    ReleaseProjectile();
+                    if (chargeLevel < chargeLimit)
+                    {
+                        chargeLevel += Time.deltaTime * chargeSpeed;
+                        chargingBar.transform.localScale = new Vector3(chargeLevel, chargeLevel, 1);
+                        byte greenValue = (byte)(235 - colorChangingRangeGreen * Mathf.Pow(chargeLevel, 3));
+                        chargingBarSR.color = new Color32(235, greenValue, 0, 255);
+                    }
+                    else
+                    {
+                        ReleaseProjectile();
+                        canShoot = false;
+                    }
                 }
-                else
+
+                if (Input.GetButtonUp("Fire1") && !EventSystem.current.IsPointerOverGameObject())
                 {
-                    canShoot = true;
+                    SoundManager.StopAudioClip();
+                    if (canShoot)
+                    {
+                        ReleaseProjectile();
+                    }
+                    else
+                    {
+                        canShoot = true;
+                    }
                 }
             }
         }
@@ -111,9 +120,16 @@ public class ShootingWeapon : MonoBehaviour {
         chargeLevel = 0;
     }
 
+    //Powerjump
+    public void PowerJump()
+    {
+        
+    }
+
     //Shoot Bullets
     private IEnumerator Shoot()
     {
+        active = false;
         float currentChargelevel = chargeLevel;
         if (!playerStats.spreadShot && !playerStats.doubleShot)
         {
@@ -282,7 +298,13 @@ public class ShootingWeapon : MonoBehaviour {
         active = bo;
 
         //SpriteRendererComponents
-        weaponSR.enabled = bo;
+        if (!powerJumpMode)
+        {
+            weaponSR.enabled = bo;
+        } else
+        {
+            weaponSR.enabled = false;
+        }
         crosshairSR.enabled = bo;
     }
 

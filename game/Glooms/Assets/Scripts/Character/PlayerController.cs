@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class PlayerController : PhysicsObject {
     public MovementTimerScript movementTimer;
     public Button movementButton;
+    public Button powerJumpButton;
     public Button weaponButton;
 
     public GameObject playerArrow;
@@ -46,6 +47,8 @@ public class PlayerController : PhysicsObject {
         movementButton = GameObject.Find("Movement Button").GetComponent<Button>();
         movementTimer = GameObject.Find("Movement Timer").GetComponent<MovementTimerScript>();
         movementButton.onClick.AddListener((UnityEngine.Events.UnityAction)this.MovingModeActive);
+        powerJumpButton = GameObject.Find("Powerjump Button").GetComponent<Button>();
+        powerJumpButton.onClick.AddListener((UnityEngine.Events.UnityAction)this.PowerJumpModeActive);
         weaponButton = GameObject.Find("Weapon Button").GetComponent<Button>();
         weaponButton.onClick.AddListener((UnityEngine.Events.UnityAction)this.AimingModeActive);
         cam = GameObject.Find("Main Camera").GetComponent<CameraManager>();
@@ -236,6 +239,7 @@ public class PlayerController : PhysicsObject {
             movingMode = false;
             movementTimer.playerMoving = false;
             aimingMode = true;
+            shootingWeaponScript.powerJumpMode = false;
             shootingWeaponScript.SetActive(true);
         }
     }
@@ -247,8 +251,20 @@ public class PlayerController : PhysicsObject {
         {
             aimingMode = false;
             movingMode = true;
+            shootingWeaponScript.powerJumpMode = false;
             shootingWeaponScript.SetActive(false);
             movementTimer.SetActive();
+        }
+    }
+
+    public void PowerJumpModeActive()
+    {
+        if (!passiveMode)
+        {
+            aimingMode = false;
+            movingMode = false;
+            shootingWeaponScript.powerJumpMode = true;
+            shootingWeaponScript.SetActive(true);
         }
     }
 
@@ -266,6 +282,7 @@ public class PlayerController : PhysicsObject {
         //entering passiveMode
         movingMode = false;
         aimingMode = false;
+        shootingWeaponScript.powerJumpMode = false;
         passiveMode = true;
 
         //movementReset
