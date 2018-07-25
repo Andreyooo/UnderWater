@@ -7,8 +7,9 @@ public abstract class Projectile : MonoBehaviour {
     public int expGain;
     public float bulletSpeed;
     public string firepoint;
-    public int poison = 0;
-    public int poisonTurns = 0;
+    public int poison;
+    public int poisonTurns = 3;
+    public bool poisonActive = false;
     public int lifesteal = 0;
     public int critMultiplier = 1;
     public bool mainProjectile = true;
@@ -26,6 +27,7 @@ public abstract class Projectile : MonoBehaviour {
             SoundManager.PlayAudioClip(releaseSound);
         }
         damage = Mathf.RoundToInt(damage * GameManager.instance.currentPlayer.GetComponent<PlayerStats>().damageMultiplier);
+        poison = Mathf.RoundToInt(damage * 0.4f);
         Debug.Log("Projectile " + damage);
         DestroyProjectileAfterTime(lifeTime);
     }
@@ -59,6 +61,8 @@ public abstract class Projectile : MonoBehaviour {
         Destroy(gameObject);
     }
 
-
-
+    public void PlayReleaseSound()
+    {
+        SoundManager.PlayAudioClip(releaseSound);
+    }
 }

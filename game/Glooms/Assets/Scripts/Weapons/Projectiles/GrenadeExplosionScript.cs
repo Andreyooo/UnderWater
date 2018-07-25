@@ -7,6 +7,9 @@ public class GrenadeExplosionScript : MonoBehaviour {
     public int damage;
     public int expGain;
     public AudioClip expl;
+    public int poison;
+    public int poisonTurns = 3;
+    public bool poisonActive = false;
     private bool over = false;
 
     // Use this for initialization
@@ -25,7 +28,15 @@ public class GrenadeExplosionScript : MonoBehaviour {
             if (playerStats != null)
             {
                 playerStats.TakeDamage(damage);
-                GameManager.instance.CurrentPlayerGetsExp(expGain);
+                if (poisonActive)
+                {
+                    playerStats.Poisoned(poison, poisonTurns);
+                }
+                if (hit != GameManager.instance.currentPlayer)
+                {
+                    GameManager.instance.CurrentPlayerGetsExp(expGain);
+                }
+                GameManager.instance.CurrentPlayerStealsLife(Mathf.RoundToInt(damage * playerStats.lifesteal));
             }
         }
     }

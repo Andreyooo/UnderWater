@@ -134,6 +134,7 @@ public class GameManager : MonoBehaviour {
             }
         }
         SoundManager.PlayAudioClip(switchPlayerSound);
+        Debug.Log("LifeSteal: " + currentPlayer.GetComponent<PlayerStats>().lifesteal);
         cam.fullscreen = false;
         cam.player = currentPlayer;
         cam.transPlayer = true;
@@ -163,6 +164,13 @@ public class GameManager : MonoBehaviour {
             yield return new WaitUntil(() => !cam.transPlayer);
 
             PlayerStats CurrentPlayerStats = currentPlayer.GetComponent<PlayerStats>();
+            if (CurrentPlayerStats.lifesteal > 0 && CurrentPlayerStats.lifeStealedThisTurn > 0)
+            {
+                CurrentPlayerStats.Lifesteal();
+                yield return new WaitUntil(() => CurrentPlayerStats.playerHealed);
+                CurrentPlayerStats.playerHealed = false;
+            }
+
             if (CurrentPlayerStats.turnExperience > 0)
             {
                 StartCoroutine(CurrentPlayerStats.AddExperience());
@@ -266,6 +274,12 @@ public class GameManager : MonoBehaviour {
         currentPlayer.GetComponent<PlayerStats>().ExpGain(exp);
     }
 
+    public void CurrentPlayerStealsLife(int life)
+    {
+        currentPlayer.GetComponent<PlayerStats>().lifeStealedThisTurn += life;
+        Debug.Log("LifeSteal to turn Added: " + life);
+    }
+
     private void RandomizeList(List<GameObject> list)
     {
         for (int i = 0; i < list.Count; i++)
@@ -277,7 +291,7 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    //LevelUpPercs
+    //LevelUp-Cards=======================================================================
     public IEnumerator LevelUp()
     {
         PlayerStats playerStats = currentPlayer.GetComponent<PlayerStats>();
@@ -302,7 +316,22 @@ public class GameManager : MonoBehaviour {
         }
         if (playerStats.level == 3)
         {
-            /*firstCard.gameObject.SetActive(true);
+            if (playerStats.classPath == "Striker")
+            {
+                firstCardImage.sprite = redCard1;
+                secondCardImage.sprite = redCard2;
+            }
+            if (playerStats.classPath == "Guardian")
+            {
+                firstCardImage.sprite = blueCard1;
+                secondCardImage.sprite = blueCard2;
+            }
+            if (playerStats.classPath == "Hunter")
+            {
+                firstCardImage.sprite = yellowCard1;
+                secondCardImage.sprite = yellowCard2;
+            }
+            firstCard.gameObject.SetActive(true);
             secondCard.gameObject.SetActive(true);
 
             firstCardImage.canvasRenderer.SetAlpha(0f);
@@ -313,7 +342,7 @@ public class GameManager : MonoBehaviour {
 
             yield return new WaitForSeconds(0.2f);
             firstCard.enabled = true;
-            secondCard.enabled = true;*/
+            secondCard.enabled = true;
         }
     }
 
@@ -346,30 +375,57 @@ public class GameManager : MonoBehaviour {
     {
         PlayerStats playerStats = currentPlayer.GetComponent<PlayerStats>();
         SoundManager.PlayAudioClip(lockInSound);
-        StartCoroutine(DisablePaths());
-        yield return new WaitForSeconds(0.11f);
-
         playerStats.classPath = "Hunter";
         playerStats.lifesteal = 0.15f;
         playerStats.critChance = 0.1f;
         playerStats.critMultiplier = 2;
         percChosen = true;
+        StartCoroutine(DisablePaths());
+        yield return new WaitForSeconds(0.11f);
     }
 
     private IEnumerator FirstCard()
     {
+        PlayerStats playerStats = currentPlayer.GetComponent<PlayerStats>();
+        if (playerStats.classPath == "Striker")
+        {
+            playerStats.spreadShot = true;
+        }
+        if (playerStats.classPath == "Guardian")
+        {
+            //Todo
+        }
+        if (playerStats.classPath == "Hunter")
+        {
+            playerStats.poisonActive = true;
+        }
         SoundManager.PlayAudioClip(lockInSound);
         StartCoroutine(DisableCards());
         yield return new WaitForSeconds(0.11f);
-        currentPlayer.GetComponent<PlayerStats>().spreadShot = true;
+        percChosen = true;
     }
 
     private IEnumerator SecondCard()
     {
+        PlayerStats playerStats = currentPlayer.GetComponent<PlayerStats>();
+        if (playerStats.classPath == "Striker")
+        {
+            playerStats.doubleShot = true;
+        }
+        if (playerStats.classPath == "Guardian")
+        {
+            //Todo
+        }
+        if (playerStats.classPath == "Hunter")
+        {
+            playerStats.lifesteal += 0.15f;
+            playerStats.critChance += 0.25f;
+            playerStats.critMultiplier = 4;
+        }
         SoundManager.PlayAudioClip(lockInSound);
         StartCoroutine(DisableCards());
         yield return new WaitForSeconds(0.11f);
-        currentPlayer.GetComponent<PlayerStats>().doubleShot = true;
+        percChosen = true;
     }
 
     private IEnumerator DisablePaths()

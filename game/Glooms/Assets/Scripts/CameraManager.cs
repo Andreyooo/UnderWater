@@ -11,7 +11,7 @@ public class CameraManager : MonoBehaviour
     public GameObject player = null;
     private Vector3 originalCamPos;
     private Vector3 newPos;
-
+    private int zoomCorrector = 12;
     private float smooth;
 
     private float originalZoom;
@@ -81,7 +81,7 @@ public class CameraManager : MonoBehaviour
 
         Vector3 finalPos = gameObject.transform.position;
         newPos = projectile.transform.position;
-        float smoothedZoom = Mathf.Lerp(currentZoom, originalZoom-9, smooth);
+        float smoothedZoom = Mathf.Lerp(currentZoom, originalZoom - zoomCorrector, smooth);
 
         finalPos.x = Mathf.Clamp(newPos.x, minX, maxX);
         finalPos.y = Mathf.Clamp(newPos.y, minY, maxY);
@@ -90,7 +90,7 @@ public class CameraManager : MonoBehaviour
 
         gameObject.transform.position = finalPos;
         //gameObject.GetComponent<Camera>().orthographicSize = smoothedZoom;
-        gameObject.GetComponent<Camera>().orthographicSize = originalZoom-9;
+        gameObject.GetComponent<Camera>().orthographicSize = originalZoom - zoomCorrector;
     }
 
     private void FollowPlayer(GameObject play)
@@ -104,7 +104,7 @@ public class CameraManager : MonoBehaviour
         finalPos.z = -5f;
 
         gameObject.transform.position = finalPos;
-        gameObject.GetComponent<Camera>().orthographicSize = originalZoom - 8;
+        gameObject.GetComponent<Camera>().orthographicSize = originalZoom - zoomCorrector;
     }
 
     private void TransitionPlayer(GameObject play)
@@ -119,7 +119,7 @@ public class CameraManager : MonoBehaviour
         finalPos.z = -5f;
 
         Vector3 smoothedPosition = Vector3.Lerp(gameObject.transform.position, finalPos, smooth);
-        float smoothedZoom = Mathf.Lerp(currentZoom, originalZoom - 8, smooth);
+        float smoothedZoom = Mathf.Lerp(currentZoom, originalZoom - zoomCorrector, smooth);
 
         gameObject.transform.position = smoothedPosition;
         if (Mathf.Abs(gameObject.transform.position.x - finalPos.x) < 0.01)

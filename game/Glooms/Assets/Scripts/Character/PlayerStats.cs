@@ -12,23 +12,27 @@ public class PlayerStats : MonoBehaviour
     public string fraction;
     public string classPath = "";
 
+    //StrikerPath
+    public float damageMultiplier = 1;
+    public float damageTakenMultiplier = 1;
 
+    //GuardianPath
     private int shieldRegen = 0;
     private int maxShield = 0;
     private int currentShield = 0;
-    private int healthRegen = 2;
-    public float damageMultiplier = 1;
-    public float damageTakenMultiplier = 1;
-    public int poisonDamage = 0;
-    public int poisonDamageTurns = 3;
+    private int healthRegen = 0;
+
+    //HunterPath
+    public float critChance = 0;
+    public int critMultiplier = 1;
+    public float lifesteal = 0;
+    public int lifeStealedThisTurn = 0;
     public int poisoned = 0;
     public int poisonedTurns = 0;
-    public float critChance = 0.5f;
-    public int critMultiplier = 3;
-    public float lifesteal = 0;
+    public bool poisonActive = false;
 
     public bool finishedTurn;
-    private bool playerHealed = false;
+    public bool playerHealed = false;
     public bool poisonDamageTaken = false;
 
     //ExpStuff
@@ -39,12 +43,20 @@ public class PlayerStats : MonoBehaviour
     private bool maxLevel = false;
     public GameObject expGain;
     public GameObject levelUp;
-    public GameObject level2Aura;
+    public GameObject level2AuraRed;
+    public GameObject level2AuraBlue;
+    public GameObject level2AuraYellow;
+    public GameObject level3Aura;
     public AudioClip levelUpSound;
     private ParticleSystem expGainPS;
     private ParticleSystem levelUpPS;
-    private ParticleSystem level2AuraPS;
+    private ParticleSystem level2AuraRedPS;
+    private ParticleSystem level2AuraBluePS;
+    private ParticleSystem level2AuraYellowPS;
+    private ParticleSystem level3AuraPS;
 
+    public ParticleSystem crit;
+    public AudioClip critSound;
     public ParticleSystem poisonPS;
     public AudioClip bubbling;
     public ParticleSystem heal;
@@ -73,7 +85,10 @@ public class PlayerStats : MonoBehaviour
         SoundManager.PlaySound(playerJumpSound);
         expGainPS = expGain.GetComponent<ParticleSystem>();
         levelUpPS = levelUp.GetComponent<ParticleSystem>();
-        level2AuraPS = level2Aura.GetComponent<ParticleSystem>();
+        level2AuraRedPS = level2AuraRed.GetComponent<ParticleSystem>();
+        level2AuraBluePS = level2AuraBlue.GetComponent<ParticleSystem>();
+        level2AuraYellowPS = level2AuraYellow.GetComponent<ParticleSystem>();
+        level3AuraPS = level3Aura.GetComponent<ParticleSystem>();
     }
 
     void Start()
@@ -130,15 +145,19 @@ public class PlayerStats : MonoBehaviour
         Instantiate(deadRightLeg, transform.position, Quaternion.identity);
         Instantiate(deadLeftHand, transform.position, Quaternion.identity);
         Instantiate(deadRightHand, transform.position, Quaternion.identity);
-        StartCoroutine("ShakeCamera");
+        //StartCoroutine("ShakeCamera");
 
         //Deactivate Player
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
         gameObject.GetComponent<PolygonCollider2D>().enabled = false;
         gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
         transform.Find("Canvas").gameObject.SetActive(false);
-        level2Aura.SetActive(false);
+        level2AuraRed.SetActive(false);
+        level2AuraBlue.SetActive(false);
+        level2AuraYellow.SetActive(false);
+        level3Aura.SetActive(false);
         expBar.gameObject.SetActive(false);
+        poisonPS.gameObject.SetActive(false);
 
         Invoke("DeactivatePlayer", 30);
     }
@@ -181,22 +200,25 @@ public class PlayerStats : MonoBehaviour
                         healthBar.UpdateBar(currentHealth, maxHealth);
                         StartCoroutine(GameManager.instance.LevelUp());
                         yield return new WaitUntil(() => GameManager.instance.percChosen);
-                        ParticleSystem.MainModule settings = level2AuraPS.main;
+                        GameManager.instance.percChosen = false;
                         if (classPath == "Striker")
                         {
                             Debug.Log("Red");
-                            settings.startColor = new Color(255, 40, 0, 152);
+                            level2AuraRedPS.Play();
+                            level2AuraRed.GetComponent<AudioSource>().Play();
                         }
                         if (classPath == "Guardian")
                         {
-                            settings.startColor = new Color(0, 86, 255, 152);
+                            Debug.Log("Blue");
+                            level2AuraBluePS.Play();
+                            level2AuraBlue.GetComponent<AudioSource>().Play();
                         }
                         if (classPath == "Hunter")
                         {
-                            settings.startColor = new Color(255, 255, 0, 152);
+                            Debug.Log("Yellow");
+                            level2AuraYellowPS.Play();
+                            level2AuraYellow.GetComponent<AudioSource>().Play();
                         }
-                        level2AuraPS.Play();
-                        level2Aura.GetComponent<AudioSource>().Play();
                     }
 
                     if (level == 3)
@@ -207,6 +229,8 @@ public class PlayerStats : MonoBehaviour
                         StartCoroutine(GameManager.instance.LevelUp());
                         maxLevel = true;
                         yield return new WaitUntil(() => GameManager.instance.percChosen);
+                        GameManager.instance.percChosen = false;
+                        level3AuraPS.Play();
                     }
                     expBar.UpdateBar(experience, maxExp);
                     yield return new WaitForSeconds(2);
@@ -277,7 +301,7 @@ public class PlayerStats : MonoBehaviour
 
     public IEnumerator TakePoisonDamge()
     {
-        if (poisonDamageTurns > 0 && poisoned > 0)
+        if (poisonedTurns > 0 && poisoned > 0)
         {
             poisonPS.Play();
             SoundManager.PlayAudioClip(bubbling);
@@ -285,12 +309,20 @@ public class PlayerStats : MonoBehaviour
             healthBar.UpdateBar(currentHealth, maxHealth);
             poisonedTurns--;
         }
-        if (poisonDamageTurns == 0 || poisoned == 0)
+        if (poisonedTurns == 0 || poisoned == 0)
         {
             poisonedImg.SetActive(false);
+            poisoned = 0;
         }
-        yield return new WaitUntil(() => !poisonPS.IsAlive());
-        yield return new WaitForSeconds(0.2f);
+        if (currentHealth <= 0)
+        {
+            poisonedImg.SetActive(false);
+            Death();
+        } else
+        {
+            yield return new WaitUntil(() => !poisonPS.IsAlive());
+            yield return new WaitForSeconds(0.2f);
+        }
         poisonDamageTaken = true;
     }
 
@@ -306,13 +338,14 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
-    public void Lifesteal(int amount){
-        HealPlayer(amount);
+    public void Lifesteal(){
+        StartCoroutine(HealPlayer(lifeStealedThisTurn));
+        lifeStealedThisTurn = 0;
     }
 
-    public bool calculateCrit(){
+    public bool CalculateCrit(){
         float randValue = Random.value;
-        return randValue < critChance;
+        return randValue <= critChance;
     }
 
     IEnumerator ShakeCamera()

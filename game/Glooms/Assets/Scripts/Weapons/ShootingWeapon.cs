@@ -34,6 +34,7 @@ public class ShootingWeapon : MonoBehaviour {
     private bool active = false;
     private bool rotationEnabled = true;
     public bool canShoot = true;
+    private bool critAnimationPlayed = false;
 
     void Awake()
     {
@@ -105,24 +106,35 @@ public class ShootingWeapon : MonoBehaviour {
         chargingBarSR.color = new Color32(235, 235, 0, 255);
         chargingBar.transform.localScale = new Vector3(0, 0, 1);
         CheckLoadOut();
-        Shoot();
+        StartCoroutine(Shoot());
         chargeLevel = 0;
-        rotationEnabled = true;
     }
 
     //Shoot Bullets
-    private void Shoot()
-    {   if (!playerStats.spreadShot && !playerStats.doubleShot)
+    private IEnumerator Shoot()
+    {
+        float currentChargelevel = chargeLevel;
+        if (!playerStats.spreadShot && !playerStats.doubleShot)
         {
-            if(playerStats.calculateCrit()){
-                
+            int tempCritMultiplier = 1;
+            if (playerStats.CalculateCrit())
+            {
+                tempCritMultiplier = playerStats.critMultiplier;
+                Debug.Log("Heavy Crit Incoming!!!");
+                playerStats.crit.transform.position = transform.Find(weapon.projectile.firepoint).position;
+                playerStats.crit.Play();
+                SoundManager.PlayAudioClip(playerStats.critSound);
+                yield return new WaitForSeconds(1.1f);
             }
             Projectile projectile = Instantiate(weapon.projectile);
+            //Crit apply
+            projectile.damage = projectile.damage * tempCritMultiplier;
+            projectile.poisonActive = playerStats.poisonActive;
             projectile.fpnt = transform.Find(projectile.firepoint);
             projectile.transform.position = projectile.fpnt.position;
             projectile.transform.rotation = gameObject.transform.rotation;
-            projectile.poison = playerStats.poisonDamage;
-            projectile.GetComponent<Rigidbody2D>().AddForce(projectile.fpnt.forward * projectile.bulletSpeed * chargeLevel, ForceMode2D.Impulse);
+
+            projectile.GetComponent<Rigidbody2D>().AddForce(projectile.fpnt.forward * projectile.bulletSpeed * currentChargelevel, ForceMode2D.Impulse);
             weapon.Fired();
             StartCoroutine(GameManager.instance.HasFired(projectile));
             cam = GameObject.Find("Main Camera").GetComponent<CameraManager>();
@@ -138,6 +150,7 @@ public class ShootingWeapon : MonoBehaviour {
                 StartCoroutine(DoubleShot());
             }
         }
+        rotationEnabled = true;
     }
 
     //Level3 SpreadShotSkill
@@ -162,10 +175,6 @@ public class ShootingWeapon : MonoBehaviour {
         projectile1.transform.rotation = gameObject.transform.rotation;
         projectile2.transform.rotation = gameObject.transform.rotation;
         projectile3.transform.rotation = gameObject.transform.rotation;
-
-        projectile1.poison = playerStats.poisonDamage;
-        projectile2.poison = playerStats.poisonDamage;
-        projectile3.poison = playerStats.poisonDamage;
 
         projectile2.mainProjectile = false;
         projectile3.mainProjectile = false;
@@ -200,17 +209,17 @@ public class ShootingWeapon : MonoBehaviour {
         projectile1.fpnt = transform.Find(projectile1.firepoint);
         projectile1.transform.position = projectile1.fpnt.position;
         projectile1.transform.rotation = gameObject.transform.rotation;
-        projectile1.poison = playerStats.poisonDamage;
         projectile1.mainProjectile = false;
+        projectile1.PlayReleaseSound();
         projectile1.GetComponent<Rigidbody2D>().AddForce(projectile1.fpnt.forward * projectile1.bulletSpeed * currentChargelevel, ForceMode2D.Impulse);
         weapon.Fired();
 
         yield return new WaitForSeconds(0.3f);
         Projectile projectile2 = Instantiate(weapon.projectile);
+        Physics2D.IgnoreCollision(projectile1.GetComponent<Collider2D>(), projectile2.GetComponent<Collider2D>());
         projectile2.fpnt = transform.Find(projectile2.firepoint);
         projectile2.transform.position = projectile2.fpnt.position;
         projectile2.transform.rotation = gameObject.transform.rotation;
-        projectile2.poison = playerStats.poisonDamage;
         projectile2.GetComponent<Rigidbody2D>().AddForce(projectile2.fpnt.forward * projectile2.bulletSpeed * currentChargelevel, ForceMode2D.Impulse);
         StartCoroutine(GameManager.instance.HasFired(projectile2));
         cam = GameObject.Find("Main Camera").GetComponent<CameraManager>();

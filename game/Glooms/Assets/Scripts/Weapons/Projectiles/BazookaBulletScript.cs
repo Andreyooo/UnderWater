@@ -37,8 +37,11 @@ public class BazookaBulletScript : Projectile {
         {
             exploded = true;
             GameObject explosion = Instantiate(explosionPrefab);
+            BazookaExplosionScript explScript = explosion.GetComponent<BazookaExplosionScript>();
+            explScript.damage = damage;
+            explScript.poison = poison;
+            explScript.poisonActive = poisonActive;
             explosion.transform.position = transform.position;
-            explosion.GetComponent<BazookaExplosionScript>().damage = damage;
             SoundManager.PlayAudioClip(hitSound);
             DestroyProjectileAfterTime(0);
         }

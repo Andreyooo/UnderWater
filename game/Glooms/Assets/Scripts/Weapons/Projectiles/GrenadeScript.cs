@@ -26,7 +26,10 @@ public class GrenadeScript : Projectile {
     {
         GameObject explosion = Instantiate(explosionPrefab);
         explosion.transform.position = transform.position;
-        explosion.GetComponent<GrenadeExplosionScript>().damage = damage;
+        GrenadeExplosionScript grndScript = explosion.GetComponent<GrenadeExplosionScript>();
+        grndScript.damage = damage;
+        grndScript.poison = poison;
+        grndScript.poisonActive = poisonActive;
         DestroyProjectileAfterTime(0);
     }
 }

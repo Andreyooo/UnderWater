@@ -130,10 +130,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2bbef9534b533e4185151f191cf5618, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 5
+  damage: 6
   expGain: 0
   bulletSpeed: 24
   firepoint: FirepointGrenade
+  poison: 0
+  poisonTurns: 0
+  lifesteal: 0
+  critMultiplier: 1
+  mainProjectile: 1
   fpnt: {fileID: 0}
   releaseSound: {fileID: 8300000, guid: 9cb0d3485cac44b458e8b2cd21bb95fd, type: 3}
   hitSound: {fileID: 8300000, guid: f8df7d12b82014c429725fe955b5f6bf, type: 3}

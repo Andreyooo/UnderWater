@@ -47,8 +47,15 @@ public class ArrowScript : Projectile {
                 if (playerStats != null)
                 {
                     playerStats.TakeDamage(damage);
-                    playerStats.Poisoned(poison, poisonTurns);
-                    GameManager.instance.CurrentPlayerGetsExp(expGain);
+                    if (poisonActive)
+                    {
+                        playerStats.Poisoned(poison, poisonTurns);
+                    }
+                    if (hit != GameManager.instance.currentPlayer)
+                    {
+                        GameManager.instance.CurrentPlayerGetsExp(expGain);
+                    }
+                    GameManager.instance.CurrentPlayerStealsLife(Mathf.RoundToInt(damage * playerStats.lifesteal));
                 }
             }
         }
