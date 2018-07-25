@@ -10,6 +10,7 @@ public class BazookaExplosionScript : MonoBehaviour {
     public int poisonTurns = 3;
     public bool poisonActive = false;
     private bool over = false;
+    public bool critActive = false;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -21,6 +22,7 @@ public class BazookaExplosionScript : MonoBehaviour {
             if (playerStats != null)
             {
                 playerStats.TakeDamage(damage);
+                if(critActive) StartCoroutine(GameManager.instance.ShakeCamera());
                 if (poisonActive)
                 {
                     playerStats.Poisoned(poison, poisonTurns);

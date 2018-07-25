@@ -11,7 +11,7 @@ public class CameraManager : MonoBehaviour
     public GameObject player = null;
     private Vector3 originalCamPos;
     private Vector3 newPos;
-    private int zoomCorrector = 12;
+    private int zoomCorrector = 10;
     private float smooth;
 
     private float originalZoom;

@@ -38,6 +38,7 @@ public class BazookaBulletScript : Projectile {
             exploded = true;
             GameObject explosion = Instantiate(explosionPrefab);
             BazookaExplosionScript explScript = explosion.GetComponent<BazookaExplosionScript>();
+            explScript.critActive = critActive;
             explScript.damage = damage;
             explScript.poison = poison;
             explScript.poisonActive = poisonActive;

@@ -11,6 +11,7 @@ public class GrenadeExplosionScript : MonoBehaviour {
     public int poisonTurns = 3;
     public bool poisonActive = false;
     private bool over = false;
+    public bool critActive = false;
 
     // Use this for initialization
     void Start()
@@ -28,6 +29,7 @@ public class GrenadeExplosionScript : MonoBehaviour {
             if (playerStats != null)
             {
                 playerStats.TakeDamage(damage);
+                if(critActive) StartCoroutine(GameManager.instance.ShakeCamera());
                 if (poisonActive)
                 {
                     playerStats.Poisoned(poison, poisonTurns);
