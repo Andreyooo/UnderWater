@@ -37,6 +37,7 @@ public class ShootingWeapon : MonoBehaviour {
     private bool rotationEnabled = true;
     public bool powerJumpMode;
     public bool canShoot = true;
+    public bool canJump = true;
     private bool critAnimationPlayed = false;
 
     void Awake()
@@ -55,7 +56,10 @@ public class ShootingWeapon : MonoBehaviour {
         {
             if (powerJumpMode)
             {
-                Rotate();
+                if (rotationEnabled)
+                {
+                    Rotate();
+                }
                 PowerJump();
             } else
             {
@@ -123,7 +127,62 @@ public class ShootingWeapon : MonoBehaviour {
     //Powerjump
     public void PowerJump()
     {
-        
+        if (Input.GetButtonDown("Fire1") && canJump && !EventSystem.current.IsPointerOverGameObject())
+        {
+            crosshairSR.enabled = false;
+            rotationEnabled = false;
+            chargingBarSR.enabled = true;
+            chargingBarOutlineSR.enabled = true;
+            SoundManager.PlayAudioClip(chargeSound);
+            rotationEnabled = false;
+        }
+
+        //charging Jumppower
+        if (Input.GetButton("Fire1") && canJump && !EventSystem.current.IsPointerOverGameObject())
+        {
+            if (chargeLevel < chargeLimit)
+            {
+                chargeLevel += Time.deltaTime * chargeSpeed;
+                chargingBar.transform.localScale = new Vector3(chargeLevel, chargeLevel, 1);
+                byte greenValue = (byte)(235 - colorChangingRangeGreen * Mathf.Pow(chargeLevel, 3));
+                chargingBarSR.color = new Color32(235, greenValue, 0, 255);
+            }
+            else
+            {
+                Jumping();
+                canJump = false;
+            }
+        }
+
+        if (Input.GetButtonUp("Fire1") && canJump && !EventSystem.current.IsPointerOverGameObject())
+        {
+            SoundManager.StopAudioClip();
+            if (canJump)
+            {
+                Jumping();
+                canJump = false;
+            }
+        }
+    }
+
+    private void Jumping()
+    {
+        chargingBarSR.enabled = false;
+        chargingBarOutlineSR.enabled = false;
+        chargingBarSR.color = new Color32(235, 235, 0, 255);
+        chargingBar.transform.localScale = new Vector3(0, 0, 1);
+        Rigidbody2D playerRB2D = GameManager.instance.currentPlayer.GetComponent<Rigidbody2D>();
+        playerRB2D.isKinematic = false;
+        playerRB2D.mass = 1f;
+        Transform jumpPoint = transform.Find("FirepointArrow");
+        Debug.Log(jumpPoint.forward * 0.00001f * chargeLevel);
+        playerRB2D.AddForce(jumpPoint.forward * 14 * chargeLevel, ForceMode2D.Impulse);
+        player.powerjumped = true;
+        chargeLevel = 0;
+        powerJumpMode = false;
+        rotationEnabled = true;
+        player.canMove = false;
+        active = false;
     }
 
     //Shoot Bullets
@@ -154,6 +213,7 @@ public class ShootingWeapon : MonoBehaviour {
             projectile.transform.position = projectile.fpnt.position;
             projectile.transform.rotation = gameObject.transform.rotation;
 
+            //Debug.Log(projectile.fpnt.forward* projectile.bulletSpeed* currentChargelevel);
             projectile.GetComponent<Rigidbody2D>().AddForce(projectile.fpnt.forward * projectile.bulletSpeed * currentChargelevel, ForceMode2D.Impulse);
             weapon.Fired();
             StartCoroutine(GameManager.instance.HasFired(projectile));

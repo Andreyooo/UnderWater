@@ -1182,7 +1182,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1433073433594040}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.05, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.6, y: 0.6, z: 0}
   m_Children:
   - {fileID: 4652285514407438}
@@ -1927,7 +1927,10 @@ MonoBehaviour:
   weaponSwitchSound1: {fileID: 8300000, guid: bc2d568b981e8a041a553e1d70881263, type: 3}
   weaponSwitchSound2: {fileID: 8300000, guid: bc2d568b981e8a041a553e1d70881263, type: 3}
   chargeSound: {fileID: 8300000, guid: 4a3ba0a82b7ea7a45acae91826fd32b0, type: 3}
+  jumpSR: {fileID: 0}
+  powerJumpMode: 0
   canShoot: 1
+  canJump: 1
 --- !u!114 &114517236639181016
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2010,6 +2013,7 @@ MonoBehaviour:
   grounded: 0
   movementTimer: {fileID: 0}
   movementButton: {fileID: 0}
+  powerJumpButton: {fileID: 0}
   weaponButton: {fileID: 0}
   playerArrow: {fileID: 1904522943951502}
   Parachute: {fileID: 1416867549627632}
@@ -2022,6 +2026,7 @@ MonoBehaviour:
   jumped: 0
   flipped: 0
   canMove: 1
+  powerjumped: 0
 --- !u!114 &114797174945919706
 MonoBehaviour:
   m_ObjectHideFlags: 1

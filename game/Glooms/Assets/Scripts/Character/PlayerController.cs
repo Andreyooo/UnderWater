@@ -27,6 +27,7 @@ public class PlayerController : PhysicsObject {
     public bool jumped;
     public bool flipped = false;
     public bool canMove = true;
+    public bool powerjumped = false;
 
 
     private ShootingWeapon shootingWeaponScript;
@@ -70,9 +71,21 @@ public class PlayerController : PhysicsObject {
                 animator.SetTrigger("Aim");
             } else
             {
+                Debug.Log("Check1");
                 if (!canMove && !inAir)
                 {
                     animator.SetTrigger("Idle");
+                }
+                if (powerjumped)
+                {
+                    Debug.Log("Check2");
+                    animator.SetTrigger("Offground");
+                } else
+                {   
+                    if (shootingWeaponScript.powerJumpMode)
+                    {
+                        animator.SetTrigger("Idle");
+                    }
                 }
             }
         }
@@ -150,6 +163,10 @@ public class PlayerController : PhysicsObject {
             if (Input.GetAxis("Horizontal") != 0)
             {
                 animator.SetTrigger("Walk");
+                if (shootingWeaponScript.canJump)
+                {
+                    shootingWeaponScript.canJump = false;
+                }
             }
             else
             {
@@ -214,6 +231,10 @@ public class PlayerController : PhysicsObject {
         if (collision.gameObject.tag == "Ground")
         {
             grounded = true;
+            rb2d.isKinematic = true;
+            rb2d.mass = 0;
+            rb2d.velocity = new Vector2(0, 0);
+            powerjumped = false;
         }
     }
 
@@ -259,7 +280,7 @@ public class PlayerController : PhysicsObject {
 
     public void PowerJumpModeActive()
     {
-        if (!passiveMode)
+        if (!passiveMode && shootingWeaponScript.canJump)
         {
             aimingMode = false;
             movingMode = false;
@@ -282,12 +303,13 @@ public class PlayerController : PhysicsObject {
         //entering passiveMode
         movingMode = false;
         aimingMode = false;
-        shootingWeaponScript.powerJumpMode = false;
         passiveMode = true;
 
-        //movementReset
+        //movementReset + jumpReset
         movementTimer.SetPassive();
         canMove = true;
+        shootingWeaponScript.powerJumpMode = false;
+        shootingWeaponScript.canJump = true;
 
         //disablingShootingWeapon
         shootingWeaponScript.SetActive(false);

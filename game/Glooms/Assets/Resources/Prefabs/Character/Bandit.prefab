@@ -1024,7 +1024,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1170682249333290}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.5899997, y: -2.017, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.59999996, y: 0.59999996, z: 0}
   m_Children:
   - {fileID: 4500425412243354}
@@ -1889,7 +1889,10 @@ MonoBehaviour:
   weaponSwitchSound1: {fileID: 8300000, guid: bc2d568b981e8a041a553e1d70881263, type: 3}
   weaponSwitchSound2: {fileID: 8300000, guid: bc2d568b981e8a041a553e1d70881263, type: 3}
   chargeSound: {fileID: 8300000, guid: 4a3ba0a82b7ea7a45acae91826fd32b0, type: 3}
+  jumpSR: {fileID: 0}
+  powerJumpMode: 0
   canShoot: 1
+  canJump: 1
 --- !u!114 &114191466829773844
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2059,6 +2062,7 @@ MonoBehaviour:
   grounded: 0
   movementTimer: {fileID: 0}
   movementButton: {fileID: 0}
+  powerJumpButton: {fileID: 0}
   weaponButton: {fileID: 0}
   playerArrow: {fileID: 1411281089380974}
   Parachute: {fileID: 1837144544692124}
@@ -2071,6 +2075,7 @@ MonoBehaviour:
   jumped: 0
   flipped: 0
   canMove: 1
+  powerjumped: 0
 --- !u!114 &114647126068195274
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2111,7 +2116,7 @@ MonoBehaviour:
   classPath: 
   damageMultiplier: 1
   damageTakenMultiplier: 1
-  critChance: 9
+  critChance: 1
   critMultiplier: 1
   lifesteal: 0
   lifeStealedThisTurn: 0
@@ -96679,9 +96684,9 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1953543871
-  m_SortingLayer: 3
-  m_SortingOrder: 1
+  m_SortingLayerID: 977261159
+  m_SortingLayer: 4
+  m_SortingOrder: 0
   m_RenderMode: 0
   m_SortMode: 0
   m_MinParticleSize: 0
