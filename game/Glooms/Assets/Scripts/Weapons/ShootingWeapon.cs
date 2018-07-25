@@ -32,6 +32,7 @@ public class ShootingWeapon : MonoBehaviour {
     private SpriteRenderer crosshairSR;
 
     private bool active = false;
+    private bool critActive = true;
     private bool rotationEnabled = true;
     public bool canShoot = true;
     private bool critAnimationPlayed = false;
@@ -125,12 +126,14 @@ public class ShootingWeapon : MonoBehaviour {
                 playerStats.crit.Play();
                 SoundManager.PlayAudioClip(playerStats.critSound);
                 yield return new WaitForSeconds(1.1f);
+                critActive = true;
             }
             Projectile projectile = Instantiate(weapon.projectile);
             //Crit apply
             projectile.damage = projectile.damage * tempCritMultiplier;
             projectile.poisonActive = playerStats.poisonActive;
-            projectile.critActive = true;
+            projectile.critActive = critActive;
+            //critActive = false;
             projectile.fpnt = transform.Find(projectile.firepoint);
             projectile.transform.position = projectile.fpnt.position;
             projectile.transform.rotation = gameObject.transform.rotation;

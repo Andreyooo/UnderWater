@@ -10,7 +10,7 @@ public abstract class Projectile : MonoBehaviour {
     public int poison;
     public int poisonTurns = 3;
     public bool poisonActive = false;
-    public bool critActive = false;
+    public bool critActive = true;
     public int lifesteal = 0;
     public int critMultiplier = 1;
     public bool mainProjectile = true;

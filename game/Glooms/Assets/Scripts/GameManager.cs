@@ -460,10 +460,10 @@ public class GameManager : MonoBehaviour {
     {
         // Store the original position of the camera.
         Vector2 origPos = Camera.main.transform.position;
-        for (float t = 0.0f; t < 0.1f; t += Time.deltaTime * 2.0f)
+        for (float t = 0.0f; t < 0.1f; t += Time.deltaTime * 0.2f)
         {
             // Create a temporary vector2 with the camera's original position modified by a random distance from the origin.
-            Vector2 tempVec = origPos + Random.insideUnitCircle / 5;
+            Vector2 tempVec = origPos + Random.insideUnitCircle / 2;
 
             // Apply the temporary vector.
             Camera.main.transform.position = tempVec;
