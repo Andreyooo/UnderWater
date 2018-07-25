@@ -2089,7 +2089,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1868278711437792}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6fd2e8874f60266498a388d7229a1bac, type: 3}
   m_Name: 
@@ -2139,7 +2139,7 @@ MonoBehaviour:
   heal: {fileID: 198856961831011568}
   healing: {fileID: 8300000, guid: b2a4938361da76a4cbcc79d92416a805, type: 3}
   spreadShot: 0
-  doubleShot: 1
+  doubleShot: 0
   playerHitSound: ouch
   playerJumpSound: jump
   playerDeathSound: death
