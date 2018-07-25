@@ -130,6 +130,7 @@ public class ShootingWeapon : MonoBehaviour {
             //Crit apply
             projectile.damage = projectile.damage * tempCritMultiplier;
             projectile.poisonActive = playerStats.poisonActive;
+            projectile.critActive = true;
             projectile.fpnt = transform.Find(projectile.firepoint);
             projectile.transform.position = projectile.fpnt.position;
             projectile.transform.rotation = gameObject.transform.rotation;

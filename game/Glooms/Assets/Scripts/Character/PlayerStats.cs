@@ -145,7 +145,6 @@ public class PlayerStats : MonoBehaviour
         Instantiate(deadRightLeg, transform.position, Quaternion.identity);
         Instantiate(deadLeftHand, transform.position, Quaternion.identity);
         Instantiate(deadRightHand, transform.position, Quaternion.identity);
-        //StartCoroutine("ShakeCamera");
 
         //Deactivate Player
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
@@ -305,6 +304,7 @@ public class PlayerStats : MonoBehaviour
         {
             poisonPS.Play();
             SoundManager.PlayAudioClip(bubbling);
+            SoundManager.PlaySound(playerHitSound);
             currentHealth -= poisoned;
             healthBar.UpdateBar(currentHealth, maxHealth);
             poisonedTurns--;
@@ -348,23 +348,5 @@ public class PlayerStats : MonoBehaviour
         return randValue <= critChance;
     }
 
-    IEnumerator ShakeCamera()
-    {
-        // Store the original position of the camera.
-        Vector2 origPos = Camera.main.transform.position;
-        for (float t = 0.0f; t < 0.1f; t += Time.deltaTime * 2.0f)
-        {
-            // Create a temporary vector2 with the camera's original position modified by a random distance from the origin.
-            Vector2 tempVec = origPos + Random.insideUnitCircle / 5;
-
-            // Apply the temporary vector.
-            Camera.main.transform.position = tempVec;
-
-            // Yield until next frame.
-            yield return null;
-        }
-
-        // Return back to the original position.
-        Camera.main.transform.position = origPos;
-    }
+    
 }
