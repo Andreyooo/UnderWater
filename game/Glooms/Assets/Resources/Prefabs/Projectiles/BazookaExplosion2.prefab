@@ -320,7 +320,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 0
-  damage: 0
+  damage: 15
   expGain: 1
   poison: 0
   poisonTurns: 3

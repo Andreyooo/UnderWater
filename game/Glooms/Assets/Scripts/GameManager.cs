@@ -59,6 +59,7 @@ public class GameManager : MonoBehaviour {
 
     //FX
     public AudioClip switchPlayerSound;
+    public AudioClip superSayin;
     public AudioClip lockInSound;
     public AudioClip buttonClickSound;
 
