@@ -159,11 +159,19 @@ public class GameManager : MonoBehaviour {
     {
         if (currentPlayer.GetComponent<PolygonCollider2D>().enabled)
         {
+            PlayerStats CurrentPlayerStats= currentPlayer.GetComponent<PlayerStats>();
             cam.player = currentPlayer;
             cam.transPlayer = true;
             yield return new WaitUntil(() => !cam.transPlayer);
-
-            PlayerStats CurrentPlayerStats = currentPlayer.GetComponent<PlayerStats>();
+            if (CurrentPlayerStats.turnExperience > 0)
+            {
+                SoundManager.PlaySound(CurrentPlayerStats.playerJoySound);
+            }
+            else
+            {
+                SoundManager.PlaySound(CurrentPlayerStats.playerMissSound);
+            }
+            yield return new WaitForSeconds(1.2f);
             if (CurrentPlayerStats.lifesteal > 0 && CurrentPlayerStats.lifeStealedThisTurn > 0)
             {
                 CurrentPlayerStats.Lifesteal();

@@ -323,7 +323,9 @@ public class PlayerController : PhysicsObject {
         StartCoroutine(stats.Utilities());
         yield return new WaitUntil(() => stats.poisonDamageTaken);
         stats.poisonDamageTaken = false;
-        passiveMode = false;
+        SoundManager.PlaySound(stats.playerStartSound);
+        yield return new WaitForSeconds(1.4f);
+        passiveMode = false;     
         playerArrow.GetComponent<SpriteRenderer>().enabled = true;
     }
 
