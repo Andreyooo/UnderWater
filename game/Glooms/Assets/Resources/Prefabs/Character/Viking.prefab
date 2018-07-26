@@ -2075,6 +2075,10 @@ MonoBehaviour:
   playerHitSound: Viking Hit
   playerJumpSound: Viking Jump
   playerDeathSound: Viking Death
+  playerJoySound: Viking Joy
+  playerMissSound: Viking Miss
+  playerStartSound: Viking Start
+  playerLevelUpSound: Viking LevelUp
   expGainSound: {fileID: 8300000, guid: 102570e17833cc14dab1879456ed739b, type: 3}
   healthBar: {fileID: 114136156908204868}
   shieldBar: {fileID: 114825278338369694}

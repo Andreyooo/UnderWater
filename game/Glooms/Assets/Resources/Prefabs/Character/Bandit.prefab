@@ -2116,7 +2116,7 @@ MonoBehaviour:
   classPath: 
   damageMultiplier: 1
   damageTakenMultiplier: 1
-  critChance: 1
+  critChance: 0
   critMultiplier: 1
   lifesteal: 0
   lifeStealedThisTurn: 0
@@ -2146,8 +2146,12 @@ MonoBehaviour:
   spreadShot: 0
   doubleShot: 0
   playerHitSound: ouch
-  playerJumpSound: jump
-  playerDeathSound: death
+  playerJumpSound: Bandit Jump
+  playerDeathSound: Bandit Death
+  playerJoySound: Bandit Joy
+  playerMissSound: Bandit Miss
+  playerStartSound: Bandit Start
+  playerLevelUpSound: Bandit LevelUp
   expGainSound: {fileID: 8300000, guid: 102570e17833cc14dab1879456ed739b, type: 3}
   healthBar: {fileID: 114069212389085394}
   shieldBar: {fileID: 114378704436941252}

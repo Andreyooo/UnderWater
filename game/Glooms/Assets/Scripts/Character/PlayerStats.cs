@@ -69,6 +69,10 @@ public class PlayerStats : MonoBehaviour
     public string playerHitSound;
     public string playerJumpSound;
     public string playerDeathSound;
+    public string playerJoySound;
+    public string playerMissSound;
+    public string playerStartSound;
+    public string playerLevelUpSound;
     public AudioClip expGainSound;
 
     //UI
@@ -186,11 +190,14 @@ public class PlayerStats : MonoBehaviour
                 //LevelUP
                 if (experience == maxExp)
                 {
+                    yield return new WaitForSeconds(0.3f);
                     level++;
                     experience = 0;
                     maxExp++;
                     levelUpPS.Play();
                     SoundManager.PlayAudioClip(levelUpSound);
+                    yield return new WaitForSeconds(0.3f);
+                    SoundManager.PlaySound(playerLevelUpSound);
                     yield return new WaitUntil(() => !levelUpPS.IsAlive());
                     if (level == 2)
                     {
@@ -280,8 +287,11 @@ public class PlayerStats : MonoBehaviour
             // Update the Simple Health Bar with the new Health values.
             healthBar.UpdateBar(currentHealth, maxHealth);
         }
-        yield return new WaitUntil(() => !heal.IsAlive());
-        yield return new WaitForSeconds(0.2f);
+        if (heal.IsAlive())
+        {
+            yield return new WaitUntil(() => !heal.IsAlive());
+            yield return new WaitForSeconds(0.2f);
+        }
         playerHealed = true;
     }
 
@@ -320,8 +330,11 @@ public class PlayerStats : MonoBehaviour
             Death();
         } else
         {
-            yield return new WaitUntil(() => !poisonPS.IsAlive());
-            yield return new WaitForSeconds(0.2f);
+            if (poisonPS.IsAlive())
+            {
+                yield return new WaitUntil(() => !poisonPS.IsAlive());
+                yield return new WaitForSeconds(0.2f);
+            }
         }
         poisonDamageTaken = true;
     }

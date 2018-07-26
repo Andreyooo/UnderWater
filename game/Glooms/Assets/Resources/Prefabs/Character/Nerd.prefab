@@ -1770,8 +1770,12 @@ MonoBehaviour:
   spreadShot: 0
   doubleShot: 0
   playerHitSound: hmpf
-  playerJumpSound: jump
-  playerDeathSound: Death
+  playerJumpSound: Nerd Jump
+  playerDeathSound: Nerd Death
+  playerJoySound: Nerd Joy
+  playerMissSound: Nerd Miss
+  playerStartSound: Nerd Start
+  playerLevelUpSound: Nerd LevelUp
   expGainSound: {fileID: 8300000, guid: 102570e17833cc14dab1879456ed739b, type: 3}
   healthBar: {fileID: 114609248216659142}
   shieldBar: {fileID: 114464462511169200}
