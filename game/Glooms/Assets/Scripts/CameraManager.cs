@@ -30,8 +30,8 @@ public class CameraManager : MonoBehaviour
         mapButton = GameObject.Find("Map Button").GetComponent<Button>();
         mapButton.onClick.AddListener((UnityEngine.Events.UnityAction)this.FullScreenToggle);
         fullscreen = false;
-        minX = -16f;
-        maxX = 16f;
+        minX = -20f;
+        maxX = 20f;
         minY = -10f;
         maxY = 10f;
         smooth = 0.1f;
