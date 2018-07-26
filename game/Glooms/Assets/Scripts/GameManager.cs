@@ -62,6 +62,8 @@ public class GameManager : MonoBehaviour {
     public AudioClip superSayin;
     public AudioClip lockInSound;
     public AudioClip buttonClickSound;
+    public AudioClip gamemusic;
+    public SoundManager sm;
 
     void Awake () {
         if (instance == null)
@@ -93,7 +95,7 @@ public class GameManager : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        StartCoroutine(SetupGame());
+        StartCoroutine(SetupGame());        
 	}
 
     private IEnumerator SetupGame()
@@ -103,6 +105,7 @@ public class GameManager : MonoBehaviour {
         announcer.gameObject.SetActive(false);
         PreparePlayers();
         StartCoroutine(SwitchPlayer());
+        sm.PlayMusic(gamemusic);
     }
 
     public IEnumerator SwitchPlayer()
