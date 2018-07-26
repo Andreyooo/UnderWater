@@ -19,7 +19,7 @@ public class CameraManager : MonoBehaviour
     private float maxX;
     private float minY;
     private float maxY;
-
+    //omniskop.de/blobfish/
     public bool fullscreen;
     public bool transPlayer;
 
@@ -30,8 +30,8 @@ public class CameraManager : MonoBehaviour
         mapButton = GameObject.Find("Map Button").GetComponent<Button>();
         mapButton.onClick.AddListener((UnityEngine.Events.UnityAction)this.FullScreenToggle);
         fullscreen = false;
-        minX = -19f;
-        maxX = 19f;
+        minX = -22f;
+        maxX = 22f;
         minY = -10f;
         maxY = 10f;
         smooth = 0.1f;

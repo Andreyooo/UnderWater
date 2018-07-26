@@ -234,6 +234,10 @@ public class PlayerController : PhysicsObject {
             rb2d.velocity = new Vector2(0, 0);
             powerjumped = false;
         }
+        if (collision.gameObject.tag == "Player")
+        {
+            Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), collision.gameObject.GetComponent<Collider2D>());
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
