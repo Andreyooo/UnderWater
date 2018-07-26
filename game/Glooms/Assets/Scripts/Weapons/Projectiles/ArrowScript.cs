@@ -50,7 +50,7 @@ public class ArrowScript : Projectile {
                     if(critActive) StartCoroutine(GameManager.instance.ShakeCamera());
                     if (poisonActive)
                     {
-                        playerStats.Poisoned(poison, poisonTurns);
+                        playerStats.Poisoned(poison, 3);
                     }
                     if (hit != GameManager.instance.currentPlayer)
                     {

@@ -235,8 +235,10 @@ public class PlayerStats : MonoBehaviour
                         StartCoroutine(GameManager.instance.LevelUp());
                         maxLevel = true;
                         yield return new WaitUntil(() => GameManager.instance.percChosen);
-                        GameManager.instance.percChosen = false;
+                        SoundManager.PlayAudioClip(GameManager.instance.superSayin);
                         level3AuraPS.Play();
+                        yield return new WaitForSeconds(1f);
+                        GameManager.instance.percChosen = false;
                     }
                     expBar.UpdateBar(experience, maxExp);
                     yield return new WaitForSeconds(2);

@@ -2122,7 +2122,7 @@ MonoBehaviour:
   lifeStealedThisTurn: 0
   poisoned: 0
   poisonedTurns: 0
-  poisonActive: 0
+  poisonActive: 1
   finishedTurn: 0
   playerHealed: 0
   poisonDamageTaken: 0
