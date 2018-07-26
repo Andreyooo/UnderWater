@@ -2287,7 +2287,7 @@ MonoBehaviour:
   shieldRegen: 0
   maxShield: 0
   currentShield: 0
-  discharge: 0
+  discharge: 1
   critChance: 0
   critMultiplier: 1
   lifesteal: 0
