@@ -101,6 +101,7 @@ public class GameManager : MonoBehaviour {
     private IEnumerator SetupGame()
     {
         yield return new WaitUntil(() => playersSpawned);
+        noPlayerCollision();
         Cursor.visible = true;
         announcer.gameObject.SetActive(false);
         PreparePlayers();
@@ -191,6 +192,19 @@ public class GameManager : MonoBehaviour {
         }
         CheckLivingPlayers();
         StartCoroutine(SwitchPlayer());
+    }
+
+    public void noPlayerCollision(){
+            for(int i=0;i<fractions.Count;i++){
+                for(int j=0;j<fractions.Count;j++){
+                    for(int k=0;k<fractions.Count;k++){
+                    
+                    
+                    }  
+                }
+            }
+           // Physics2D.IgnoreCollision(fractions[0][0].GetComponent<Collider2D>(),fractions[1][0].GetComponent<Collider2D>());
+
     }
 
     public void CheckLivingPlayers()
