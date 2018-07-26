@@ -13,7 +13,7 @@ public class PlayerController : PhysicsObject {
     public GameObject Parachute;
 
     //Parachute Simulation Stuff
-    private float rotationDegree = 1.1f;
+    private float rotationDegree = 0.9f;
     private float tempRotation;
     private float airMove = 0.1f;
     private float x = 1;
@@ -234,6 +234,27 @@ public class PlayerController : PhysicsObject {
             rb2d.velocity = new Vector2(0, 0);
             powerjumped = false;
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "DeadZone")
+        {
+            rb2d.freezeRotation = true;
+            rb2d.isKinematic = true;
+            rb2d.mass = 0;
+            rb2d.velocity = new Vector2(0, 0);
+            gameObject.GetComponent<PlayerStats>().Death();
+            gameObject.GetComponent<PlayerController>().SetPassive();
+            shootingWeaponScript.enabled = false;
+            Invoke("Exit", 3f);
+        }
+    }
+
+    private void Exit()
+    {
+        GameManager.instance.CheckLivingPlayers();
+        StartCoroutine(GameManager.instance.SwitchPlayer());
     }
 
     //Flip

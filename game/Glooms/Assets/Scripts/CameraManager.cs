@@ -11,7 +11,7 @@ public class CameraManager : MonoBehaviour
     public GameObject player = null;
     private Vector3 originalCamPos;
     private Vector3 newPos;
-    private int zoomCorrector = 10;
+    private int zoomCorrector = 13;
     private float smooth;
 
     private float originalZoom;
@@ -30,8 +30,8 @@ public class CameraManager : MonoBehaviour
         mapButton = GameObject.Find("Map Button").GetComponent<Button>();
         mapButton.onClick.AddListener((UnityEngine.Events.UnityAction)this.FullScreenToggle);
         fullscreen = false;
-        minX = -21f;
-        maxX = 21f;
+        minX = -19f;
+        maxX = 19f;
         minY = -10f;
         maxY = 10f;
         smooth = 0.1f;

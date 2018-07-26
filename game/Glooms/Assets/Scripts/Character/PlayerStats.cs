@@ -164,6 +164,7 @@ public class PlayerStats : MonoBehaviour
         level3Aura.SetActive(false);
         expBar.gameObject.SetActive(false);
         poisonPS.gameObject.SetActive(false);
+        dischargePS.gameObject.SetActive(false);
 
         Invoke("DeactivatePlayer", 30);
     }

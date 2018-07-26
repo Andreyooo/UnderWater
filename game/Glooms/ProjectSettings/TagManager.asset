@@ -16,6 +16,7 @@ TagManager:
   - Destroying
   - Ground
   - Explosion
+  - DeadZone
   layers:
   - Default
   - TransparentFX
