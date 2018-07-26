@@ -65,7 +65,7 @@ public class PlayerSpawning : MonoBehaviour {
             playerSpawnOrder.RemoveAt(0);
 
             //für schnellere Playtests
-            newPlayer.GetComponent<PlayerController>().gravityModifier = 10;
+           // newPlayer.GetComponent<PlayerController>().gravityModifier = 10;
         }
         if (playerSpawnOrder.Count == 0 && !executed)
         {
