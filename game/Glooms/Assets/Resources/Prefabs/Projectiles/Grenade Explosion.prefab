@@ -323,7 +323,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 0
-  damage: 0
+  damage: 24
   expGain: 2
   expl: {fileID: 8300000, guid: b319f7878ad090f4882e2226fa34f859, type: 3}
   poison: 0

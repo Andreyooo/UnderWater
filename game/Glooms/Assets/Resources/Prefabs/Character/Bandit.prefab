@@ -601,7 +601,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1685107042616948
 GameObject:
   m_ObjectHideFlags: 0
@@ -636,7 +636,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1766196742139968
 GameObject:
   m_ObjectHideFlags: 1
@@ -754,7 +754,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1908619456630396
 GameObject:
   m_ObjectHideFlags: 0
@@ -2287,7 +2287,8 @@ MonoBehaviour:
   shieldRegen: 0
   maxShield: 0
   currentShield: 0
-  discharge: 1
+  healthRegen: 0
+  discharge: 0
   critChance: 0
   critMultiplier: 1
   lifesteal: 0
