@@ -175,8 +175,8 @@ public class ShootingWeapon : MonoBehaviour {
         playerRB2D.isKinematic = false;
         playerRB2D.mass = 1f;
         Transform jumpPoint = transform.Find("FirepointArrow");
-        Debug.Log(jumpPoint.forward * 0.00001f * chargeLevel);
-        playerRB2D.AddForce(jumpPoint.forward * 14 * chargeLevel, ForceMode2D.Impulse);
+        playerStats.PlayJumpSound();
+        playerRB2D.AddForce(jumpPoint.forward * 17 * chargeLevel, ForceMode2D.Impulse);
         player.powerjumped = true;
         chargeLevel = 0;
         powerJumpMode = false;
