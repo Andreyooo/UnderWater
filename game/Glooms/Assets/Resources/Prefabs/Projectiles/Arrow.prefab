@@ -217,7 +217,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 28
-  expGain: 2
+  expGain: 3
   bulletSpeed: 24
   firepoint: FirepointArrow
   poison: 0

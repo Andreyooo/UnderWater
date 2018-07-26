@@ -1740,13 +1740,15 @@ MonoBehaviour:
   classPath: 
   damageMultiplier: 1
   damageTakenMultiplier: 1
+  shieldRegen: 0
+  maxShield: 0
   critChance: 0
   critMultiplier: 1
   lifesteal: 0
   lifeStealedThisTurn: 0
   poisoned: 0
   poisonedTurns: 0
-  poisonActive: 1
+  poisonActive: 0
   finishedTurn: 0
   playerHealed: 0
   poisonDamageTaken: 0

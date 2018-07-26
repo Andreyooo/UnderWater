@@ -17,8 +17,8 @@ public class PlayerStats : MonoBehaviour
     public float damageTakenMultiplier = 1;
 
     //GuardianPath
-    private int shieldRegen = 0;
-    private int maxShield = 0;
+    public int shieldRegen = 0;
+    public int maxShield = 0;
     private int currentShield = 0;
     private int healthRegen = 0;
 
@@ -299,13 +299,14 @@ public class PlayerStats : MonoBehaviour
 
     public void RegenShield()
     {
+        Debug.Log(currentShield + "    " + maxShield);
         // Increase the current shield by shieldRegen-Value
         currentShield += shieldRegen;
 
         // If the current shield is greater than max, then set it to max.
         if (currentShield > maxShield)
             currentShield = maxShield;
-
+        Debug.Log(currentShield + "    " + maxShield);
         // Update the Simple Health Bar with the new Shield values.
         shieldBar.UpdateBar(currentShield, maxHealth);
     }
@@ -328,8 +329,11 @@ public class PlayerStats : MonoBehaviour
         }
         if (currentHealth <= 0)
         {
+            currentHealth = 1;
+            healthBar.UpdateBar(currentHealth, maxHealth);
             poisonedImg.SetActive(false);
-            Death();
+            poisoned = 0;
+            poisonedTurns = 0;
         } else
         {
             if (poisonPS.IsAlive())

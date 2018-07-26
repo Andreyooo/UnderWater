@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour {
     public bool playersSpawned = false;
 
     //Camera
-    private CameraManager cam;
+    public CameraManager cam;
 
     //Announcer
     public Text announcer;
@@ -105,7 +105,7 @@ public class GameManager : MonoBehaviour {
         StartCoroutine(SwitchPlayer());
     }
 
-    private IEnumerator SwitchPlayer()
+    public IEnumerator SwitchPlayer()
     {
         if (fractions[currentFraction] == vikings)
         {
@@ -190,7 +190,7 @@ public class GameManager : MonoBehaviour {
         StartCoroutine(SwitchPlayer());
     }
 
-    private void CheckLivingPlayers()
+    public void CheckLivingPlayers()
     {
         for (int i = 0; i < fractions.Count; i++)
         {
@@ -376,7 +376,8 @@ public class GameManager : MonoBehaviour {
         yield return new WaitForSeconds(0.11f);
 
         playerStats.classPath = "Guardian";
-        //Todo
+        playerStats.shieldRegen = 10;
+        playerStats.maxShield = 10;
         percChosen = true;
     }
 

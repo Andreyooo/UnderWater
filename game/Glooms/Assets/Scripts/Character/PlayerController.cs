@@ -60,7 +60,7 @@ public class PlayerController : PhysicsObject {
     //Update Method
     protected override void HandlePlayer()
     {
-        if (!passiveMode)
+        if (!passiveMode && !GameManager.instance.cam.fullscreen)
         {
             if (movingMode)
             {
@@ -71,14 +71,12 @@ public class PlayerController : PhysicsObject {
                 animator.SetTrigger("Aim");
             } else
             {
-                Debug.Log("Check1");
                 if (!canMove && !inAir)
                 {
                     animator.SetTrigger("Idle");
                 }
                 if (powerjumped)
                 {
-                    Debug.Log("Check2");
                     animator.SetTrigger("Offground");
                 } else
                 {   
@@ -255,7 +253,7 @@ public class PlayerController : PhysicsObject {
     //Set To Aiming Mode
     public void AimingModeActive()
     {
-        if (!passiveMode)
+        if (!passiveMode && !GameManager.instance.cam.fullscreen)
         {
             movingMode = false;
             movementTimer.playerMoving = false;
@@ -268,7 +266,7 @@ public class PlayerController : PhysicsObject {
     //Set To Moving Mode
     public void MovingModeActive()
     {
-        if (!passiveMode && canMove)
+        if (!passiveMode && canMove && !GameManager.instance.cam.fullscreen)
         {
             aimingMode = false;
             movingMode = true;
@@ -280,7 +278,7 @@ public class PlayerController : PhysicsObject {
 
     public void PowerJumpModeActive()
     {
-        if (!passiveMode && shootingWeaponScript.canJump)
+        if (!passiveMode && shootingWeaponScript.canJump && !GameManager.instance.cam.fullscreen )
         {
             aimingMode = false;
             movingMode = false;
