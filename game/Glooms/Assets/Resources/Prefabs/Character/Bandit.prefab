@@ -2116,7 +2116,7 @@ MonoBehaviour:
   classPath: 
   damageMultiplier: 1
   damageTakenMultiplier: 1
-  critChance: 1
+  critChance: 0
   critMultiplier: 1
   lifesteal: 0
   lifeStealedThisTurn: 0
