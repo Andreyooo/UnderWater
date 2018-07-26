@@ -406,7 +406,8 @@ public class GameManager : MonoBehaviour {
         }
         if (playerStats.classPath == "Guardian")
         {
-            //Todo
+            playerStats.discharge = true;
+            playerStats.shieldRegen = 15;
         }
         if (playerStats.classPath == "Hunter")
         {
@@ -427,7 +428,8 @@ public class GameManager : MonoBehaviour {
         }
         if (playerStats.classPath == "Guardian")
         {
-            //Todo
+            playerStats.discharge = true;
+            playerStats.shieldRegen = 15;
         }
         if (playerStats.classPath == "Hunter")
         {

@@ -9,6 +9,7 @@ public abstract class Projectile : MonoBehaviour {
     public string firepoint;
     public int poison;
     public int poisonTurns = 3;
+    public int dischargeDmg = 0;
     public bool poisonActive = false;
     public bool critActive = true;
     public int lifesteal = 0;
@@ -28,6 +29,7 @@ public abstract class Projectile : MonoBehaviour {
             SoundManager.PlayAudioClip(releaseSound);
         }
         damage = Mathf.RoundToInt(damage * GameManager.instance.currentPlayer.GetComponent<PlayerStats>().damageMultiplier);
+        damage += dischargeDmg;
         poison = Mathf.RoundToInt(damage * 0.4f);
         Debug.Log("Projectile " + damage);
         DestroyProjectileAfterTime(lifeTime);

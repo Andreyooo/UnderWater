@@ -19,8 +19,9 @@ public class PlayerStats : MonoBehaviour
     //GuardianPath
     public int shieldRegen = 0;
     public int maxShield = 0;
-    private int currentShield = 0;
+    public int currentShield = 0;
     private int healthRegen = 0;
+    public bool discharge = false;
 
     //HunterPath
     public float critChance = 0;
@@ -61,6 +62,8 @@ public class PlayerStats : MonoBehaviour
     public AudioClip bubbling;
     public ParticleSystem heal;
     public AudioClip healing;
+    public ParticleSystem dischargePS;
+    public AudioClip dischargeSound;
 
     public bool spreadShot = false;
     public bool doubleShot = false;
@@ -100,7 +103,7 @@ public class PlayerStats : MonoBehaviour
         // Set the current health to max values.
         currentHealth = maxHealth;
         healthBar.UpdateBar(currentHealth, maxHealth);
-        shieldBar.UpdateBar(currentShield, maxHealth);
+        shieldBar.UpdateBar(currentShield, 15);
         expBar.UpdateBar(experience, maxExp);
     }
 
@@ -122,7 +125,7 @@ public class PlayerStats : MonoBehaviour
                 damage = -currentShield;
                 currentShield = 0;
             }
-            shieldBar.UpdateBar(currentShield, maxHealth);
+            shieldBar.UpdateBar(currentShield, 15);
         }
         currentHealth -= damage;
         if (currentHealth > 0) SoundManager.PlaySound(playerHitSound);
@@ -235,6 +238,7 @@ public class PlayerStats : MonoBehaviour
                         StartCoroutine(GameManager.instance.LevelUp());
                         maxLevel = true;
                         yield return new WaitUntil(() => GameManager.instance.percChosen);
+                        yield return new WaitForSeconds(1);
                         SoundManager.PlayAudioClip(GameManager.instance.superSayin);
                         level3AuraPS.Play();
                         yield return new WaitForSeconds(1f);
@@ -306,9 +310,8 @@ public class PlayerStats : MonoBehaviour
         // If the current shield is greater than max, then set it to max.
         if (currentShield > maxShield)
             currentShield = maxShield;
-        Debug.Log(currentShield + "    " + maxShield);
         // Update the Simple Health Bar with the new Shield values.
-        shieldBar.UpdateBar(currentShield, maxHealth);
+        shieldBar.UpdateBar(currentShield, 15);
     }
 
     public IEnumerator TakePoisonDamge()
@@ -355,6 +358,23 @@ public class PlayerStats : MonoBehaviour
             poisonedTurns = poisonDmgTurns;
             poisonedImg.SetActive(true);
         }
+    }
+
+    public int DischargeDamage()
+    {
+        if (discharge)
+        {
+            return currentShield;
+        } else
+        {
+            return 0;
+        }
+    }
+
+    public void Discharged()
+    {
+        dischargePS.Play();
+        SoundManager.PlayAudioClip(dischargeSound);
     }
 
     public void Lifesteal(){

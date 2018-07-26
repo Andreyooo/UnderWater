@@ -47,7 +47,15 @@ public class ArrowScript : Projectile {
                 if (playerStats != null)
                 {
                     playerStats.TakeDamage(damage);
-                    if(critActive) StartCoroutine(GameManager.instance.ShakeCamera());
+                    PlayerStats currentPlayerStats = GameManager.instance.currentPlayer.GetComponent<PlayerStats>();
+                    if (critActive) StartCoroutine(GameManager.instance.ShakeCamera());
+                    if (currentPlayerStats.discharge)
+                    {
+                        playerStats.Discharged();
+                        currentPlayerStats.currentShield = 0;
+                        currentPlayerStats.shieldBar.UpdateBar(0, 15);
+                    }
+                    if (critActive) StartCoroutine(GameManager.instance.ShakeCamera());
                     if (poisonActive)
                     {
                         playerStats.Poisoned(poison, 3);

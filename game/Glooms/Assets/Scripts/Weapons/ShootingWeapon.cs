@@ -208,12 +208,12 @@ public class ShootingWeapon : MonoBehaviour {
             projectile.damage = projectile.damage * tempCritMultiplier;
             projectile.poisonActive = playerStats.poisonActive;
             projectile.critActive = critActive;
-            //critActive = false;
+
+            projectile.dischargeDmg = playerStats.DischargeDamage();
             projectile.fpnt = transform.Find(projectile.firepoint);
             projectile.transform.position = projectile.fpnt.position;
             projectile.transform.rotation = gameObject.transform.rotation;
 
-            //Debug.Log(projectile.fpnt.forward* projectile.bulletSpeed* currentChargelevel);
             projectile.GetComponent<Rigidbody2D>().AddForce(projectile.fpnt.forward * projectile.bulletSpeed * currentChargelevel, ForceMode2D.Impulse);
             weapon.Fired();
             StartCoroutine(GameManager.instance.HasFired(projectile));
