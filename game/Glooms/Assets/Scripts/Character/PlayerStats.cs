@@ -20,7 +20,7 @@ public class PlayerStats : MonoBehaviour
     public int shieldRegen = 0;
     public int maxShield = 0;
     public int currentShield = 0;
-    private int healthRegen = 0;
+    public int healthRegen = 0;
     public bool discharge = false;
 
     //HunterPath
