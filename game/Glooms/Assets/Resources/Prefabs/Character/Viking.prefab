@@ -342,7 +342,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1433073433594040
 GameObject:
   m_ObjectHideFlags: 0
@@ -1943,7 +1943,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.49803922, g: 0.57254905, b: 1, a: 1}
+  m_Color: {r: 0.13725491, g: 0.2784314, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -83203,7 +83203,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 0.6666667, b: 0.23529412, a: 0.7058824}
-      maxColor: {r: 0.1745283, g: 0.30980393, b: 1, a: 0.59607846}
+      maxColor: {r: 0.63529414, g: 0.6862745, b: 0.9529412, a: 0.59607846}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
