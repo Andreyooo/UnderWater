@@ -219,12 +219,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edf702ab341e70a4187ce9ab0588c09a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 3
+  damage: 12
   expGain: 0
   bulletSpeed: 39
   firepoint: FirepointBazookaBullet
   poison: 0
   poisonTurns: 0
+  poisonActive: 0
+  critActive: 1
   lifesteal: 0
   critMultiplier: 1
   mainProjectile: 1

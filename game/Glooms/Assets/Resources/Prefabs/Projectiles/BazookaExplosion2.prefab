@@ -321,7 +321,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   delay: 0
   damage: 0
-  expGain: 3
+  expGain: 1
+  poison: 0
+  poisonTurns: 3
+  poisonActive: 0
+  critActive: 0
 --- !u!114 &114833965317665696
 MonoBehaviour:
   m_ObjectHideFlags: 1

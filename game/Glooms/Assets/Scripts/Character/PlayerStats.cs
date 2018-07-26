@@ -6,7 +6,7 @@ using System.Collections;
 
 public class PlayerStats : MonoBehaviour
 {
-    public int maxHealth = 25;
+    public int maxHealth = 100;
     float currentHealth = 0;
 
     public string fraction;
@@ -36,7 +36,7 @@ public class PlayerStats : MonoBehaviour
     public bool poisonDamageTaken = false;
 
     //ExpStuff
-    public int maxExp = 3;
+    public int maxExp = 4;
     public int experience = 0;
     public int turnExperience = 0;
     public int level = 1;
@@ -201,8 +201,8 @@ public class PlayerStats : MonoBehaviour
                     yield return new WaitUntil(() => !levelUpPS.IsAlive());
                     if (level == 2)
                     {
-                        maxHealth += 10;
-                        currentHealth += 10;
+                        maxHealth += 40;
+                        currentHealth += 40;
                         healthBar.UpdateBar(currentHealth, maxHealth);
                         StartCoroutine(GameManager.instance.LevelUp());
                         yield return new WaitUntil(() => GameManager.instance.percChosen);
