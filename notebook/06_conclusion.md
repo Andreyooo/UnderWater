@@ -10,13 +10,13 @@ Das RPG-System war die umfangreichste Erweiterung unseres Spiels, welche uns zum
 Zusätzlich zu den angegebenen Werten erhält der Gloomy etwas mehr Leben(+25%).
 Sammelt der Gloomy nun weitere Erfahrungspunkte erreicht er die nächste Stufe und kann sich neue Fähigkeiten aussuchen, welche auf dem vorherigen Pfad aufbauen:
 
-```html
+
 <p>Striker-Path</p>
 <p float="left">
   <img src="./images/RedCard-SpreadShot.png" width="30" />
   <img src="./images/RedCard-DoubleShot.png" width="20" /> 
 </p>
-```
+
 Striker-Path
 ![](./images/RedCard-SpreadShot.png) ![](./images/RedCard-DoubleShot.png)
 
