@@ -11,13 +11,13 @@ Zusätzlich zu den angegebenen Werten erhält der Gloomy etwas mehr Leben(+25%).
 Sammelt der Gloomy nun weitere Erfahrungspunkte erreicht er die nächste Stufe und kann sich neue Fähigkeiten aussuchen, welche auf dem vorherigen Pfad aufbauen:
 
 Striker-Path
-![](./images/RedCard-SpreadShot.PNG) ![](./images/RedCard-DoubleShot.PNG)
+![](./images/RedCard-SpreadShot.png) ![](./images/RedCard-DoubleShot.png)
 
 Guardian-Path
-![](./images/BlueCardDischarge.PNG) ![](./images/BlueCardDefenseBoost.PNG)
+![](./images/BlueCardDischarge.png) ![](./images/BlueCardDefenseBoost.png)
 
 Hunter-Path
-![](./images/YellowCard-Poison.PNG) ![](./images/YellowCard-CriticalAim.PNG)
+![](./images/YellowCard-Poison.png) ![](./images/YellowCard-CriticalAim.png)
 
 Bei den vollausgebauten Fähigkeiten sollte der Spieler spürbar Veränderungen merken. Das heißt neben passiven Dingen sollten auch neue Spielmechaniken freigeschaltet werden, wie z.B. das Gift, Kritische Treffer oder mehrere Projektile.
 Bei einem Levelaufstieg erhält der Gloomy eine Aura mit der entsprechenden Farbe des gewählten Pfades. Beim zweiten Aufstieg erhält die Aura Blitze, damit die anderen Spieler auch wissen, was für ein Gloomy vor ihnen Steht.
