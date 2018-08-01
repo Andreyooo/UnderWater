@@ -65,7 +65,7 @@ public class PlayerSpawning : MonoBehaviour {
             playerSpawnOrder.RemoveAt(0);
 
             //für schnellere Playtests
-           // newPlayer.GetComponent<PlayerController>().gravityModifier = 10;
+           //newPlayer.GetComponent<PlayerController>().gravityModifier = 10;
         }
         if (playerSpawnOrder.Count == 0 && !executed)
         {
@@ -107,12 +107,12 @@ public class PlayerSpawning : MonoBehaviour {
         GameManager.instance.playerTurnOrder.Add(playerSpawnOrder[2]);
         GameManager.instance.playerTurnOrder.Add(playerSpawnOrder[1]);
         GameManager.instance.playerTurnOrder.Add(playerSpawnOrder[0]);
-        playerSpawnOrder.Add(playerSpawnOrder[0]);
+        /* playerSpawnOrder.Add(playerSpawnOrder[0]);
         playerSpawnOrder.Add(playerSpawnOrder[1]);
         playerSpawnOrder.Add(playerSpawnOrder[2]);
         playerSpawnOrder.Add(playerSpawnOrder[0]);
         playerSpawnOrder.Add(playerSpawnOrder[1]);
-        playerSpawnOrder.Add(playerSpawnOrder[2]);
+        playerSpawnOrder.Add(playerSpawnOrder[2]); */
     }
 
     private IEnumerator ActionMusic()
