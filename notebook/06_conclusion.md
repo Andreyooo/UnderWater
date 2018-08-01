@@ -82,3 +82,5 @@ Eventuell auch zeigen was mit Unity alles möglich ist.
 &nbsp;
 
 Unity als Engine war sehr angenehm. Nachdem man den Aufbau verstanden hat, funktioniertE das Integrieren von Spiel-Elementen relativ einfach, zumindest bei einem 2D-Spiel. Man hat sehr schnell das Gefühl vertraut mit Unity zu sein. 
+
+(Trailer befindet sich im notebook-Ordner)
