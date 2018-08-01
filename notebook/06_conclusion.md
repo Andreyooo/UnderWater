@@ -5,20 +5,29 @@ Seitdem Alpha-Release hat sich viel getan.
 
 ### RPG System
 Das RPG-System war die umfangreichste Erweiterung unseres Spiels, welche uns zum Schluss die meiste Zeit gekostet hat. Es ist nun möglich durch erfolgreiche Treffer Erfahrung zu sammeln und damit bis zu zwei Stufen zu leveln. Die Waffen geben unterschiedlich viel Erfahrung, mit einer Rakete sind Gegner leichter zu treffen, daher erhält man damit weniger Erfahrung als mit einem Pfeil-Treffer. Hat man genug Erfahrungspunkte gesammelt, erreicht man die erste Stufe und kann sich anschließend für einen von drei Wegen entscheiden:
-![](./images/Level1.png)
+![](./images/Level1.PNG)
 
 Zusätzlich zu den angegebenen Werten erhält der Gloomy etwas mehr Leben(+25%).
 Sammelt der Gloomy nun weitere Erfahrungspunkte erreicht er die nächste Stufe und kann sich neue Fähigkeiten aussuchen, welche auf dem vorherigen Pfad aufbauen:
+
+Striker-Path
+![](./images/RedCard-SpreadShot.PNG) ![](./images/RedCard-DoubleShot.PNG)
+
+Guardian-Path
+![](./images/BlueCardDischarge.PNG) ![](./images/BlueCardDefenseBoost.PNG)
+
+Hunter-Path
+![](./images/YellowCard-Poison.PNG) ![](./images/YellowCard-CriticalAim.PNG)
 
 Bei den vollausgebauten Fähigkeiten sollte der Spieler spürbar Veränderungen merken. Das heißt neben passiven Dingen sollten auch neue Spielmechaniken freigeschaltet werden, wie z.B. das Gift, Kritische Treffer oder mehrere Projektile.
 Bei einem Levelaufstieg erhält der Gloomy eine Aura mit der entsprechenden Farbe des gewählten Pfades. Beim zweiten Aufstieg erhält die Aura Blitze, damit die anderen Spieler auch wissen, was für ein Gloomy vor ihnen Steht.
 
 ### zerstörbare Map + UnderWater-Thematik
 Die zerstörbare Map haben wir durch ein Asset erzeugt, welches ein Image in mehrere Teile aufspaltet. Dazu wurde es leicht angepasst, sodass die einzelnen Teile durch Explosionen zerstörbar sind. Beim Aufteilen der Map verändert sich leider auch der Sprite etwas, weshalb sie etwas optisch etwas schwächer aussieht:
-![](./images/MapDestructable.png)
+![](./images/MapDestructable.PNG)
 
 Zusätzlich wurde die Map als Unterwasser-Map gestaltet in dem wir den Hintergrund bearbeitet haben und einen UnderWater-Shader darauf angewendet haben:
-![](./images/UnderWaterMap.png)
+![](./images/UnderWaterMap.PNG)
 
 ### Fraktionen: Design/Voicing
 Für die Gloomies haben wir 3 Fraktionen entworfen: 
