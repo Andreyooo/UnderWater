@@ -13,8 +13,8 @@ Sammelt der Gloomy nun weitere Erfahrungspunkte erreicht er die nächste Stufe u
 
 <p>Striker-Path</p>
 <p float="left">
-  <img src="./images/RedCard-SpreadShot.png" width="30" />
-  <img src="./images/RedCard-DoubleShot.png" width="20" /> 
+  <img src="./images/RedCard-SpreadShot.png" width="80" />
+  <img src="./images/RedCard-DoubleShot.png" width="100" /> 
 </p>
 
 Striker-Path
