@@ -17,14 +17,22 @@ Sammelt der Gloomy nun weitere Erfahrungspunkte erreicht er die nächste Stufe u
   <img src="./images/RedCard-DoubleShot.png" width="250" /> 
 </p>
 
-Striker-Path
-![](./images/RedCard-SpreadShot.png) ![](./images/RedCard-DoubleShot.png)
+&nbsp;
 
-Guardian-Path
-![](./images/BlueCardDischarge.png) ![](./images/BlueCardDefenseBoost.png)
+<p>Guardian-Path</p>
+<p>
+  <img src="./images/BlueCardDischarget.png" width="250" />
+  <img src="./images/BlueCardDefenseBoost.png" width="250" /> 
+</p>
 
-Hunter-Path
-![](./images/YellowCard-Poison.png) ![](./images/YellowCard-CriticalAim.png)
+&nbsp;
+
+<p>Hunter-Path</p>
+<p float="left">
+  <img src="./images/YellowCard-Poison.png" width="250" />
+  <img src="./images/YellowCard-CriticalAim.png" width="250" /> 
+</p>
+
 
 Bei den vollausgebauten Fähigkeiten sollte der Spieler spürbar Veränderungen merken. Das heißt neben passiven Dingen sollten auch neue Spielmechaniken freigeschaltet werden, wie z.B. das Gift, Kritische Treffer oder mehrere Projektile.
 Bei einem Levelaufstieg erhält der Gloomy eine Aura mit der entsprechenden Farbe des gewählten Pfades. Beim zweiten Aufstieg erhält die Aura Blitze, damit die anderen Spieler auch wissen, was für ein Gloomy vor ihnen Steht.
@@ -38,6 +46,12 @@ Zusätzlich wurde die Map als Unterwasser-Map gestaltet in dem wir den Hintergru
 
 ### Fraktionen: Design/Voicing
 Für die Gloomies haben wir 3 Fraktionen entworfen: 
+
+<p float="left">
+  <img src="./images/Nerd" width="250" />
+  <img src="./images/Bandit.png" width="250" /> 
+  <img src="./images/Viking.png" width="250" /> 
+</p>
 
 Das Designen hat ebenfalls Zeit beansprucht, da wir nur wenige Pixel zur Verfügung haben um die Charaktere zu gestalten. Außerdem müssen mehrere Bilder pro Charakter angepasst werden, damit auch Animationen möglich sind.
 
