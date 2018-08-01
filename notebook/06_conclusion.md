@@ -21,7 +21,7 @@ Sammelt der Gloomy nun weitere Erfahrungspunkte erreicht er die nächste Stufe u
 
 <p>Guardian-Path</p>
 <p>
-  <img src="./images/BlueCardDischarget.png" width="250" />
+  <img src="./images/BlueCardDischarge.png" width="250" />
   <img src="./images/BlueCardDefenseBoost.png" width="250" /> 
 </p>
 
@@ -48,9 +48,9 @@ Zusätzlich wurde die Map als Unterwasser-Map gestaltet in dem wir den Hintergru
 Für die Gloomies haben wir 3 Fraktionen entworfen: 
 
 <p float="left">
-  <img src="./images/Nerd" width="250" />
-  <img src="./images/Bandit.png" width="250" /> 
-  <img src="./images/Viking.png" width="250" /> 
+  <img src="./images/Nerd.PNG" width="250" />
+  <img src="./images/Bandit.PNG" width="250" /> 
+  <img src="./images/Viking.PNG" width="250" /> 
 </p>
 
 Das Designen hat ebenfalls Zeit beansprucht, da wir nur wenige Pixel zur Verfügung haben um die Charaktere zu gestalten. Außerdem müssen mehrere Bilder pro Charakter angepasst werden, damit auch Animationen möglich sind.
